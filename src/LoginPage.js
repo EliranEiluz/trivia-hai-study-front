@@ -1,9 +1,14 @@
 import './LoginPage.css';
-
+import { useNavigate } from "react-router-dom";
 function LoginPage({ }) {
+    var navigation = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault()
+    }
+
+    function registerBtnClick() {
+        navigation('/register');
     }
 
     return (
@@ -13,7 +18,7 @@ function LoginPage({ }) {
                 <div className="card-body">
                     <div className='row'>
                         <div id="logo">
-                        Here is The logo!
+                            Logo here
                         </div>
                     </div>
                     <div className='row login-row'>
@@ -45,7 +50,7 @@ function LoginPage({ }) {
                     <div className='row login-row'>
                     <div className='col-1'></div>
                         <div className='col-5'>
-                            <button className='btn btn-primary' id="login_register_btn">Create new account</button>
+                            <button className='btn btn-primary' id="login_register_btn" onClick={registerBtnClick}>Create new account</button>
                         </div>
                         <div className='col-3'></div>
                         <div className='col-3'>

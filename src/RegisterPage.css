@@ -4,11 +4,11 @@
     margin-bottom: 30px;
 }
 
-.login-row {
+.register-row {
     margin: 10px;
 }
 
-#login_card {
+#register_card {
     background-color: #f8cd00;
     font-family: 'calibri';
     font-weight: bold;
@@ -17,21 +17,21 @@
     border-radius: 40px;
 }
 
-#login_read_more {
+#register_read_more {
     font-size: large;
     font-weight: normal;
 }
 
-#login_login_btn {
+#register_register_btn {
     width:60%;
     float: right;
 }
 
-#login_keep_login_text {
-    margin-right:5px;
+#register_keep_login_text {
+    margin-left:7px;
 }
 
-.login_input {
+.register_input {
     background:none;
     border-color: black;
     border-width: 3px;
@@ -65,12 +65,19 @@
 
 }
 
-#login_form {
-    margin-top:8%;
+#register_form {
+    margin-top:6%;
 }
 
-#img_logo {
-    width:400px;
-    height:200px;
+#register_loginPage_btn {
+    width:40%;
 }
 
+input[type="radio"] {
+    width: 0.85em;
+    height: 0.85em;
+    border: 1em black;
+    background-color: transparent;
+    accent-color:black;
+    border-radius: 50%;
+  }
