@@ -1,0 +1,71 @@
+#logo {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.login-row {
+    margin: 10px;
+}
+
+#login_card {
+    background-color: #f8cd00;
+    font-family: 'calibri';
+    font-weight: bold;
+    font-size: x-large;
+    box-shadow:0 0 0.3rem 0.3rem black;
+    border-radius: 40px;
+}
+
+#login_read_more {
+    font-size: large;
+    font-weight: normal;
+}
+
+#login_login_btn {
+    width:60%;
+    float: right;
+}
+
+#login_keep_login_text {
+    margin-right:5px;
+}
+
+.login_input {
+    background:none;
+    border-color: black;
+    border-width: 3px;
+    margin-bottom:3px;
+    margin-top:3px;
+}
+
+.form-control:focus {
+    border-color: black;
+    box-shadow: 0 0 0 0.25rem black;
+    background: none;
+}
+
+.btn-primary {
+    background-color: black;
+    border-color: black;
+}
+
+.btn-primary:hover {
+    background-color: white;
+    border-color: black;
+    color:black;
+}
+
+
+.btn-primary:focus {
+    background-color: black;
+    border-color: black;
+    color:white;
+    box-shadow:0 0 0 0.25rem black;
+
+}
+
+#login_form {
+    margin-top:8%;
+}
+
