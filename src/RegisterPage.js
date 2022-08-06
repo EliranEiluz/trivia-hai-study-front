@@ -1,7 +1,7 @@
 import './RegisterPage.css';
 import { useNavigate } from "react-router-dom";
 
-function RegisterPage({ }) {
+function RegisterPage({nowOnline}) {
     var navigation = useNavigate();
 
     function handleSubmit(e) {
@@ -28,7 +28,8 @@ function RegisterPage({ }) {
                             Username:
                         </div>
                         <div className='col-6'>
-                            <input className="register_input form-control"></input>
+                            <div id="userName_error"></div>
+                            <input className="register_input form-control" id="username_input"></input>
                         </div>
                     </div>
                     <div className='row register-row'>
@@ -37,8 +38,8 @@ function RegisterPage({ }) {
                             Password:
                         </div>
                         <div className='col-6'>
-
-                            <input className="register_input form-control"></input>
+                            <div id="password_error"></div>
+                            <input className="register_input form-control" id="password_input"></input>
                         </div>
                     </div>
                     <div className='row register-row'>
@@ -47,8 +48,8 @@ function RegisterPage({ }) {
                             Phone Number:
                         </div>
                         <div className='col-6'>
-
-                            <input className="register_input form-control"></input>
+                            <div id="phoneNumber_error"></div>
+                            <input className="register_input form-control" id="phoneNumber_input"></input>
                         </div>
                     </div>
                     <div className='row register-row'>
@@ -57,19 +58,19 @@ function RegisterPage({ }) {
                             Full Name:
                         </div>
                         <div className='col-6'>
-
-                            <input className="register_input form-control"></input>
+                            <div id="fullName_error"></div>
+                            <input className="register_input form-control" id="fullName_input"></input>
                         </div>
                     </div>
                     <div className='row register-row'>
                     <div className='col-2'></div>
                         <div className='col-4'>
-                            <input type="radio" name="player"></input>
+                            <input type="radio" name="player" value="0"></input>
                             <span id="register_keep_login_text">I'm a Grandparent</span>
                         </div>
                         <div className='col-1'></div>
                         <div className='col-5'>
-                            <input type="radio" name="player"></input>
+                            <input type="radio" name="player" value="1"></input>
                             <span id="register_keep_login_text">I'm a Grandson</span>
                         </div>
                     </div>
@@ -80,7 +81,7 @@ function RegisterPage({ }) {
                         </div>
                         <div className='col-3'></div>
                         <div className='col-3'>
-                            <button className='btn btn-primary' id="register_register_btn">Register</button>
+                            <button className='btn btn-primary' id="register_register_btn" type="submit">Register</button>
                         </div>
                     </div>
                     <div className='row register-row' id="register_read_more">

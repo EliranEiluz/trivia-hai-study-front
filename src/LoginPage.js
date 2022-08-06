@@ -1,6 +1,6 @@
 import './LoginPage.css';
 import { useNavigate } from "react-router-dom";
-function LoginPage({ }) {
+function LoginPage({ nowOnline }) {
     var navigation = useNavigate();
 
     function handleSubmit(e) {
