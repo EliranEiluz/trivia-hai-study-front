@@ -81,3 +81,29 @@ input[type="radio"] {
     accent-color:black;
     border-radius: 50%;
   }
+.error {
+    color:red;
+    font-size: medium;
+}
+
+#userName_error {
+    display:none;
+}
+
+#password_error {
+    display:none;
+}
+
+#fullName_error {
+    display:none;
+}
+
+#phoneNumber_error {
+    display:none;
+}
+
+#memberType_error {
+    display:none;
+}
+
+

@@ -29,7 +29,7 @@ class Team {
   }
 }
 
-const nowOnline = {onlineUser: null, signalR: null};
+const nowOnline = {onlineUser: null, signalR: null, JWT_Token:''};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -37,7 +37,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<LoginPage nowOnline={nowOnline}/>} />
-        <Route path='/register' element={<RegisterPage onlineUser={nowOnline}/>} />
+        <Route path='/register' element={<RegisterPage nowOnline={nowOnline}/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

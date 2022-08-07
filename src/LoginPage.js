@@ -1,14 +1,24 @@
 import './LoginPage.css';
 import { useNavigate } from "react-router-dom";
+import { User } from './index.js'
+
 function LoginPage({ nowOnline }) {
     var navigation = useNavigate();
-
+    nowOnline.onlineUser = new User();
+    var keepLoggedIn = false;
     function handleSubmit(e) {
         e.preventDefault()
     }
 
     function registerBtnClick() {
         navigation('/register');
+    }
+
+    function keepLoginChange(e) {
+        if(e.target.checked) {
+            keepLoggedIn = true;
+        }
+
     }
 
     return (
@@ -44,7 +54,7 @@ function LoginPage({ nowOnline }) {
                     <div className='col-1'></div>
                         <div className='col-5'>
                             <span id="login_keep_login_text">Keep me logged in</span>
-                            <input type="checkbox"></input>
+                            <input type="checkbox" onChange={keepLoginChange}></input>
                         </div>
                     </div>
                     <div className='row login-row'>
