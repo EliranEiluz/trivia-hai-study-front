@@ -3,11 +3,28 @@ import { useNavigate } from "react-router-dom";
 import { User } from './index.js'
 
 function LoginPage({ nowOnline }) {
+    
     var navigation = useNavigate();
+
     nowOnline.onlineUser = new User();
+
     var keepLoggedIn = false;
+
+    const details = {username: '', password: ''}
+
     function handleSubmit(e) {
         e.preventDefault()
+        if(details.username !== '' && details.password !== '') {
+            // server fetching...
+        }
+        else {
+            if(details.username === '') {
+                document.getElementById('login_userName_error').style.display = "block";
+            }
+            if(details.password.length < 8) {
+                document.getElementById('login_password_error').style.display = "block";
+            }
+        }
     }
 
     function registerBtnClick() {
@@ -19,6 +36,14 @@ function LoginPage({ nowOnline }) {
             keepLoggedIn = true;
         }
 
+    }
+
+    function userNameChange(e) {
+        details.username = e.target.value;
+    }
+
+    function passwordChange(e) {
+        details.password = e.target.value;
     }
 
     return (
@@ -37,7 +62,10 @@ function LoginPage({ nowOnline }) {
                             Username:
                         </div>
                         <div className='col-6'>
-                            <input className="login_input form-control"></input>
+                        <div class="error" id="login_userName_error">
+                                Please fill the username field.
+                            </div>
+                            <input className="login_input form-control" onChange={userNameChange}></input>
                         </div>
                     </div>
                     <div className='row login-row'>
@@ -46,8 +74,10 @@ function LoginPage({ nowOnline }) {
                             Password:
                         </div>
                         <div className='col-6'>
-
-                            <input className="login_input form-control"></input>
+                            <div class="error" id="login_password_error">
+                            The password field must contain at least 8 characters.
+                            </div>
+                            <input className="login_input form-control" onChange={passwordChange}></input>
                         </div>
                     </div>
                     <div className='row login-row'>
@@ -60,11 +90,11 @@ function LoginPage({ nowOnline }) {
                     <div className='row login-row'>
                     <div className='col-1'></div>
                         <div className='col-5'>
-                            <button className='btn btn-primary' id="login_register_btn" onClick={registerBtnClick}>Create new account</button>
+                            <button className='btn btn-primary login-btn' id="login_register_btn" onClick={registerBtnClick}>Create new account</button>
                         </div>
                         <div className='col-3'></div>
                         <div className='col-3'>
-                            <button className='btn btn-primary' id="login_login_btn">Log in</button>
+                            <button className='btn btn-primary login-btn' id="login_login_btn">Log in</button>
                         </div>
                     </div>
                     <div className='row login-row' id="login_read_more">

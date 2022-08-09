@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import LoginPage from './LoginPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RegisterPage from './RegisterPage';
+import WelcomePage from './WelcomePage';
 
 class User {
   constructor(username, password, fullName, phoneNumber, memberType) {
@@ -38,6 +39,7 @@ root.render(
       <Routes>
         <Route path='/' element={<LoginPage nowOnline={nowOnline}/>} />
         <Route path='/register' element={<RegisterPage nowOnline={nowOnline}/>} />
+        <Route path='/welcome' element={<WelcomePage nowOnline={nowOnline}/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

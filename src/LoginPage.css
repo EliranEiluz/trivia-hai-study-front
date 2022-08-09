@@ -45,19 +45,19 @@
     background: none;
 }
 
-.btn-primary {
+.login-btn {
     background-color: black;
     border-color: black;
 }
 
-.btn-primary:hover {
+.login-btn:hover {
     background-color: white;
     border-color: black;
     color:black;
 }
 
 
-.btn-primary:focus {
+.login-btn:focus {
     background-color: black;
     border-color: black;
     color:white;
@@ -73,4 +73,19 @@
     width:400px;
     height:200px;
 }
+
+.error {
+    color:red;
+    font-size: medium;
+}
+
+#login_userName_error {
+    display:none;
+}
+
+#login_password_error {
+    display:none;
+}
+
+
 

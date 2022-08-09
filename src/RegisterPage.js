@@ -23,19 +23,19 @@ function RegisterPage({nowOnline}) {
         else {
             document.getElementById("register_form").style.marginTop = "2.5%";
             if(!validity.isUserNameVaild) {
-                document.getElementById("userName_error").style.display = "block";
+                document.getElementById("register_username_error").style.display = "block";
             }
             if(!validity.isPasswordValid) {
-                document.getElementById("password_error").style.display = "block";
+                document.getElementById("register_password_error").style.display = "block";
             }
             if(!validity.isPhoneNumberValid) {
-                document.getElementById("phoneNumber_error").style.display = "block";
+                document.getElementById("register_phoneNumber_error").style.display = "block";
             }
             if(!validity.isFullNameValid) {
-                document.getElementById("fullName_error").style.display = "block";
+                document.getElementById("register_fullName_error").style.display = "block";
             }
             if(!validity.isMemberTypeValid) {
-                document.getElementById("memberType_error").style.display = "block";
+                document.getElementById("register_memberType_error").style.display = "block";
             }
         }
     }
@@ -112,7 +112,7 @@ function RegisterPage({nowOnline}) {
                             Username:
                         </div>
                         <div className='col-6'>
-                            <div id="userName_error" class="error">
+                            <div id="register_username_error" class="error">
                              Username must contain at least one character.
                             </div>
                             <input className="register_input form-control" id="username_input" onChange={userNameChange}></input>
@@ -124,7 +124,7 @@ function RegisterPage({nowOnline}) {
                             Password:
                         </div>
                         <div className='col-6'>
-                            <div id="password_error" class="error">
+                            <div id="register_password_error" class="error">
                             Choose at least 8 characters- one numeric digit, one uppercase and one lowercase letter.
                             </div>
                             <input className="register_input form-control" id="password_input" type="password" onChange={passwordChange}></input>
@@ -136,7 +136,7 @@ function RegisterPage({nowOnline}) {
                             Phone Number:
                         </div>
                         <div className='col-6'>
-                            <div id="phoneNumber_error" class="error">
+                            <div id="register_phoneNumber_error" class="error">
                                 Please enter valid phone number. 
                             </div>
                             <input className="register_input form-control" id="phoneNumber_input" type="tel" onChange={phoneNumberChange}></input>
@@ -148,7 +148,7 @@ function RegisterPage({nowOnline}) {
                             Full Name:
                         </div>
                         <div className='col-6'>
-                            <div id="fullName_error" class="error">
+                            <div id="register_fullName_error" class="error">
                                 Full name must contain at least one character.
                             </div>
                             <input className="register_input form-control" id="fullName_input" onChange={fullNameChange}></input>
@@ -156,7 +156,7 @@ function RegisterPage({nowOnline}) {
                     </div>
                     <div className='row register-row'>
                         <center>
-                        <div id="memberType_error" class="error">Please select one of the options below.</div>
+                        <div id="register_memberType_error" class="error">Please select one of the options below.</div>
                         </center>
                     <div className='col-2'></div>
                         <div className='col-4'>
@@ -172,11 +172,11 @@ function RegisterPage({nowOnline}) {
                     <div className='row register-row'>
                     <div className='col-1'></div>
                         <div className='col-5'>
-                            <button className='btn btn-primary' id="register_loginPage_btn" onClick={loginBtnClick}>Back to login page</button>
+                            <button className='btn btn-primary register-btn' id="register_loginPage_btn" onClick={loginBtnClick}>Back to login page</button>
                         </div>
                         <div className='col-3'></div>
                         <div className='col-3'>
-                            <button className='btn btn-primary' id="register_register_btn" type="submit">Register</button>
+                            <button className='btn btn-primary register-btn' id="register_register_btn" type="submit">Register</button>
                         </div>
                     </div>
                     <div className='row register-row' id="register_read_more">

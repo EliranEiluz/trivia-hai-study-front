@@ -45,19 +45,19 @@
     background: none;
 }
 
-.btn-primary {
+.register-btn {
     background-color: black;
     border-color: black;
 }
 
-.btn-primary:hover {
+.register-btn:hover {
     background-color: white;
     border-color: black;
     color:black;
 }
 
 
-.btn-primary:focus {
+.register-btn:focus {
     background-color: black;
     border-color: black;
     color:white;
@@ -86,23 +86,23 @@ input[type="radio"] {
     font-size: medium;
 }
 
-#userName_error {
+#register_username_error {
     display:none;
 }
 
-#password_error {
+#register_password_error {
     display:none;
 }
 
-#fullName_error {
+#register_fullName_error {
     display:none;
 }
 
-#phoneNumber_error {
+#register_phoneNumber_error {
     display:none;
 }
 
-#memberType_error {
+#register_memberType_error {
     display:none;
 }
 
