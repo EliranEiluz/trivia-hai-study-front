@@ -27,8 +27,10 @@
 }
 
 .welcome-btn {
-    background-color: black;
-    border-color: black;
+    background-color: #f8cd00;
+    border:3px solid #000;
+    color:black;
+    font-weight: bold;
     padding-left:90px;
     padding-right:90px;
     padding-top:20px;
@@ -38,16 +40,16 @@
 }
 
 .welcome-btn:hover {
-    background-color: white;
-    border-color: black;
-    color:black;
+    background-color: black;
+    border-color: #f8cd00;
+    color:#f8cd00;
 }
 
 
 .welcome-btn:focus {
     background-color: black;
-    border-color: black;
-    color:white;
+    border-color: #f8cd00;
+    color:#f8cd00;
     box-shadow:0 0 0 0.25rem black;
 
 }
