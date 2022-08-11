@@ -1,7 +1,7 @@
 import './WelcomePage.css';
 import { Link } from 'react-router-dom'
 function WelcomePage({ nowOnline }) {
-    nowOnline.fullName = "bla";
+    nowOnline.fullName = "Itzik Levi";
     return (
         <>
             <div id="navBar">
@@ -31,6 +31,11 @@ function WelcomePage({ nowOnline }) {
                         <div className='row justify-content-md-center'>
                             <div className='col-6 col-md-auto' id="TrainingModeBtn">
                                 <button className='btn btn-primary welcome-btn btn-lg'>Training Mode</button>
+                            </div>
+                            <div className='row justify-content-md-center'>
+                                <div className='col-6 col-md-auto'>
+                                    <button className='btn btn-primary welcome-btn btn-lg' id="GameModeBtn">Team Mode</button>
+                                </div>
                             </div>
                         </div>
                     </div>

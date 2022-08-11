@@ -53,3 +53,8 @@
     box-shadow:0 0 0 0.25rem black;
 
 }
+
+#GameModeBtn {
+    padding-left:116px;
+    padding-right: 116px;
+}
