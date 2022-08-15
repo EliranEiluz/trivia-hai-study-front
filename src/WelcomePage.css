@@ -54,7 +54,7 @@
 
 }
 
-#GameModeBtn {
+#teamModeBtn {
     padding-left:116px;
     padding-right: 116px;
 }
@@ -62,4 +62,10 @@
 #isInOtherGame {
     font-weight: normal;
     color:transparent;
+}
+
+.welcome-btn:disabled {
+    background-color: black;
+    border-color: #f8cd00;
+    color:#f8cd00;
 }

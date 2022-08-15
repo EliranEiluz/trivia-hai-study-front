@@ -1,7 +1,16 @@
 import './WelcomePage.css';
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react';
 function WelcomePage({ nowOnline }) {
-    nowOnline.fullName = "Itzik Levi";
+
+    function isGuest() {
+        if(nowOnline.onlineUser.fullName === "Guest") {
+            document.getElementById("teamModeBtn").disabled = "true";
+        }
+    }
+
+    useEffect(() => isGuest(), [])
+
     return (
         <>
             <div id="navBar">
@@ -24,7 +33,7 @@ function WelcomePage({ nowOnline }) {
                     </div>
                     <div className='row justify-content-md-center'>
                         <div className='col-6 col-md-auto' id="WelcomeMessage">
-                            Welcome back, {nowOnline.fullName}! <i className="fa-solid fa-hand-peace fa-1x"></i><br />
+                            Welcome back, {nowOnline.onlineUser.fullName}! <i className="fa-solid fa-hand-peace fa-1x"></i><br />
                             <i className="fa-solid fa-hand-wave"></i>
                             Please choose game mode:
                         </div>
@@ -34,7 +43,7 @@ function WelcomePage({ nowOnline }) {
                             </div>
                             <div className='row justify-content-md-center'>
                                 <div className='col-6 col-md-auto'>
-                                    <button className='btn btn-primary welcome-btn btn-lg' id="GameModeBtn">Team Mode</button>
+                                    <button className='btn btn-primary welcome-btn btn-lg' id="teamModeBtn">Team Mode</button>
                                 </div>
                             </div>
                         </div>

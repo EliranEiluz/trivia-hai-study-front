@@ -2,7 +2,24 @@ import './TeamPage.css';
 import { Link } from 'react-router-dom'
 
 
+
 function TeamPage() {
+
+    var isMicrophoneOn = false;
+
+    function micClick() {
+        if(isMicrophoneOn) {
+            document.getElementById("mic").innerHTML = "<i class='fa-solid fa-microphone'></i>"
+            isMicrophoneOn = false;
+        }
+        else {
+            document.getElementById("mic").innerHTML = "<i class='fa-solid fa-microphone-slash'></i>"
+            isMicrophoneOn = true;
+        }
+    }
+
+    
+
     return (
         <>
             <div id="navBar">
@@ -72,6 +89,9 @@ function TeamPage() {
                                 <button className='btn btn-primary teamPageMode-btn btn-lg' id="switchTeam">Switch Team</button>
                             </div>
                         </center>
+                        <button className='btn btn-primary teamPageMode-btn float-end' id="mic" onClick={micClick}>
+                            <i className='fa-solid fa-microphone'></i>
+                            </button>
                     </div>
                 </div>
             </div>

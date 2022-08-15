@@ -6,11 +6,16 @@ function LoginPage({ nowOnline }) {
     
     var navigation = useNavigate();
 
-    nowOnline.onlineUser = new User();
-
     var keepLoggedIn = false;
 
     const details = {username: '', password: ''}
+
+    function loginAsGuest() {
+        nowOnline.onlineUser = new User();
+        nowOnline.onlineUser.fullName = "Guest";
+        navigation('/welcome')
+    }
+
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -92,9 +97,11 @@ function LoginPage({ nowOnline }) {
                         <div className='col-5'>
                             <button className='btn btn-primary login-btn' id="login_register_btn" onClick={registerBtnClick}>Create new account</button>
                         </div>
-                        <div className='col-3'></div>
                         <div className='col-3'>
-                            <button className='btn btn-primary login-btn' id="login_login_btn">Log in</button>
+                        <button className='btn btn-primary login-btn' id="login_guest_btn" onClick={loginAsGuest}>Login as Guest</button>
+                        </div>
+                        <div className='col-3'>
+                            <button className='btn btn-primary login-btn' id="login_login_btn" type="submit">Log in</button>
                         </div>
                     </div>
                     <div className='row login-row' id="login_read_more">
