@@ -53,7 +53,7 @@ function LoginPage({ nowOnline }) {
                 <div className="card-body">
                     <div className='row'>
                         <div id="logo">
-                            Logo here
+                        Project Trivia Logo
                         </div>
                     </div>
                     <div className='row login-row'>

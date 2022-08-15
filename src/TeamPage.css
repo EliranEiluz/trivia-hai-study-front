@@ -1,0 +1,177 @@
+#page_container {
+    margin-top: 30px;
+}
+
+#navBar {
+
+    background-color: #f8cd00;
+    border: 1px solid #000;
+}
+
+.nav-link {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 15px
+}
+
+.nav-link:hover {
+    color: red;
+}
+
+#logoDiv {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+
+.teamPage-btn {
+    background-color: black;
+    border-color: black;
+}
+
+.teamPage-btn:hover {
+    background-color: white;
+    border-color: black;
+    color: black;
+}
+
+
+.teamPage-btn:focus {
+    background-color: black;
+    border-color: black;
+    color: white;
+    box-shadow: 0 0 0 0.25rem black;
+
+}
+
+
+.table {
+    border-color: #000;
+}
+
+#myTeams {
+    font-size: 34px;
+}
+
+
+@keyframes blink {
+    100% {
+        transform: scale(2, 2);
+        opacity: 0;
+    }
+}
+
+.online-indicator {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    background-color: #42ba96;
+    border-radius: 50%;
+    position: relative;
+}
+
+.greenblink {
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: #42ba96;
+    opacity: 0.7;
+    border-radius: 50%;
+    animation: blink 1s linear infinite;
+}
+
+.offline-indicator {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    background-color: #df4759;
+    border-radius: 50%;
+    position: relative;
+}
+
+.redblink {
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: #df4759;
+    opacity: 0.7;
+    border-radius: 50%;
+    animation: blink 1s linear infinite;
+}
+
+#teamPage_card {
+    background-color: #f8cd00;
+    font-family: 'calibri';
+    font-weight: bold;
+    font-size: x-large;
+    box-shadow:0 0 0.3rem 0.3rem black;
+    border-radius: 40px;
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+#smallText {
+    font-size: medium;
+    margin-top:0px;
+    font-weight: normal;
+}
+
+.scrollbar-ripe-malinka::-webkit-scrollbar-track {
+    
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+#isInRoomIndicator {
+    margin-right: 10px;
+}
+
+#loggedToTeam {
+    font-size: 45px;
+}
+
+#hallOfFamePlace {
+    font-size: 25px;
+}
+
+
+.teamPageMode-btn {
+    background-color: #f8cd00;
+    border:3px solid #000;
+    color:black;
+    font-weight: bold;
+    padding-left:90px;
+    padding-right:90px;
+    padding-top:20px;
+    padding-bottom: 20px;
+    margin-top:30px;
+    font-size: 40px;
+}
+
+.teamPageMode-btn:hover {
+    background-color: black;
+    border-color: #f8cd00;
+    color:#f8cd00;
+}
+
+
+.teamPageMode-btn:focus {
+    background-color: black;
+    border-color: #f8cd00;
+    color:#f8cd00;
+    box-shadow:0 0 0 0.25rem black;
+
+}
+
+#switchTeam {
+    padding-left:155px;
+    padding-right: 155px;
+    margin-top:50px;
+}
+
+#btns {
+    margin-top:20px;
+}

@@ -58,3 +58,8 @@
     padding-left:116px;
     padding-right: 116px;
 }
+
+#isInOtherGame {
+    font-weight: normal;
+    color:transparent;
+}

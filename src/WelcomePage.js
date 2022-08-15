@@ -20,11 +20,11 @@ function WelcomePage({ nowOnline }) {
             <div className='container-fluid' id="WelcomePageContent">
                 <div className='row justify-content-md-center'>
                     <div className='col-6 col-md-auto' id="logoDiv">
-                        Logo here
+                        Project Trivia Logo
                     </div>
                     <div className='row justify-content-md-center'>
                         <div className='col-6 col-md-auto' id="WelcomeMessage">
-                            Welcome back, {nowOnline.fullName}! <br />
+                            Welcome back, {nowOnline.fullName}! <i className="fa-solid fa-hand-peace fa-1x"></i><br />
                             <i className="fa-solid fa-hand-wave"></i>
                             Please choose game mode:
                         </div>

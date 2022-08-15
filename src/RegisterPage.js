@@ -103,7 +103,7 @@ function RegisterPage({nowOnline}) {
                 <div className="card-body">
                     <div className='row'>
                         <div id="logo">
-                        Here is The logo!
+                        Project Trivia Logo
                         </div>
                     </div>
                     <div className='row register-row'>

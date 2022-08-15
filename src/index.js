@@ -6,6 +6,8 @@ import LoginPage from './LoginPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RegisterPage from './RegisterPage';
 import WelcomePage from './WelcomePage';
+import Teams from './Teams';
+import TeamPage from './TeamPage';
 
 class User {
   constructor(username, password, fullName, phoneNumber, memberType) {
@@ -40,6 +42,8 @@ root.render(
         <Route path='/' element={<LoginPage nowOnline={nowOnline}/>} />
         <Route path='/register' element={<RegisterPage nowOnline={nowOnline}/>} />
         <Route path='/welcome' element={<WelcomePage nowOnline={nowOnline}/>} />
+        <Route path='/teams' element={<Teams nowOnline={nowOnline}/>} />
+        <Route path='/teamPage' element={<TeamPage nowOnline={nowOnline}/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
