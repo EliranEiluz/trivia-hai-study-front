@@ -13,7 +13,7 @@ function LoginPage({ nowOnline }) {
     function loginAsGuest() {
         nowOnline.onlineUser = new User();
         nowOnline.onlineUser.fullName = "Guest";
-        navigation('/welcome')
+        navigation('/welcome');
     }
 
 

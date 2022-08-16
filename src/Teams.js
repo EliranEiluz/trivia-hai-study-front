@@ -30,7 +30,7 @@ function Teams() {
             </div>
             <div id="faded_background">
                 <div className="container-fluid h-75 w-75">
-                    <div className="card scrollbar" id="teams_card">
+                    <div className="card" id="teams_card">
                         <div className="card-body overflow-auto">
                             <div className='row'>
                                 <div className='col-1'></div>
@@ -50,8 +50,8 @@ function Teams() {
                                             <span id="blink" className='greenblink'></span>
                                         </div></th>
                                         <th scope="col" id="teamName">
-                                                <div>HachiTovim</div>
-                                                <div id="smallText">Team with Gal Levi</div>
+                                            <div>HachiTovim</div>
+                                            <div id="smallText">Team with Gal Levi</div>
                                         </th>
                                         <th scope="col" id="isInOtherGame">sdsdghdsfgsdfgdsgsfdgsd</th>
                                         <th scope="col" id="connectBtn"><button className="btn btn-success menuBtn">Connect</button></th>
@@ -62,8 +62,8 @@ function Teams() {
                                             <span id="blink" className='greenblink'></span>
                                         </div></th>
                                         <th scope="col" id="teamName">
-                                                <div>HachiTovim</div>
-                                                <div id="smallText">Team with Gal Levi</div>
+                                            <div>HachiTovim</div>
+                                            <div id="smallText">Team with Gal Levi</div>
                                         </th>
                                         <th scope="col" id="isInOtherGame">sdsdghdsfgsdfgdsgsfdgsd</th>
                                         <th scope="col" id="connectBtn"><button className="btn btn-success menuBtn">Connect</button></th>
@@ -74,8 +74,8 @@ function Teams() {
                                             <span id="blink" className='greenblink'></span>
                                         </div></th>
                                         <th scope="col" id="teamName">
-                                                <div>HachiTovim</div>
-                                                <div id="smallText">Team with Gal Levi</div>
+                                            <div>HachiTovim</div>
+                                            <div id="smallText">Team with Gal Levi</div>
                                         </th>
                                         <th scope="col" id="isInOtherGame">sdsdghdsfgsdfgdsgsfdgsd</th>
                                         <th scope="col" id="connectBtn"><button className="btn btn-success menuBtn">Connect</button></th>
@@ -86,8 +86,8 @@ function Teams() {
                                             <span id="blink" className='greenblink'></span>
                                         </div></th>
                                         <th scope="col" id="teamName">
-                                                <div>HachiTovim</div>
-                                                <div id="smallText">Team with Gal Levi</div>
+                                            <div>HachiTovim</div>
+                                            <div id="smallText">Team with Gal Levi</div>
                                         </th>
                                         <th scope="col" id="isInOtherGame">sdsdghdsfgsdfgdsgsfdgsd</th>
                                         <th scope="col" id="connectBtn"><button className="btn btn-success menuBtn">Connect</button></th>
@@ -98,8 +98,8 @@ function Teams() {
                                             <span id="blink" className='greenblink'></span>
                                         </div></th>
                                         <th scope="col" id="teamName">
-                                                <div>HachiTovim</div>
-                                                <div id="smallText">Team with Gal Levi</div>
+                                            <div>HachiTovim</div>
+                                            <div id="smallText">Team with Gal Levi</div>
                                         </th>
                                         <th scope="col" id="isInOtherGame">sdsdghdsfgsdfgdsgsfdgsd</th>
                                         <th scope="col" id="connectBtn"><button className="btn btn-success menuBtn">Connect</button></th>
@@ -110,8 +110,8 @@ function Teams() {
                                             <span id="blink" className='greenblink'></span>
                                         </div></th>
                                         <th scope="col" id="teamName">
-                                                <div>HachiTovim</div>
-                                                <div id="smallText">Team with Gal Levi</div>
+                                            <div>HachiTovim</div>
+                                            <div id="smallText">Team with Gal Levi</div>
                                         </th>
                                         <th scope="col" id="isInOtherGame">sdsdghdsfgsdfgdsgsfdgsd</th>
                                         <th scope="col" id="connectBtn"><button className="btn btn-success menuBtn">Connect</button></th>
@@ -122,8 +122,8 @@ function Teams() {
                                             <span id="blink" className='greenblink'></span>
                                         </div></th>
                                         <th scope="col" id="teamName">
-                                                <div>HachiTovim</div>
-                                                <div id="smallText">Team with Gal Levi</div>
+                                            <div>HachiTovim</div>
+                                            <div id="smallText">Team with Gal Levi</div>
                                         </th>
                                         <th scope="col" id="isInOtherGame">sdsdghdsfgsdfgdsgsfdgsd</th>
                                         <th scope="col" id="connectBtn"><button className="btn btn-success menuBtn">Connect</button></th>
@@ -134,8 +134,8 @@ function Teams() {
                                             <span id="blink" className='greenblink'></span>
                                         </div></th>
                                         <th scope="col" id="teamName">
-                                                <div>HachiTovim</div>
-                                                <div id="smallText">Team with Gal Levi</div>
+                                            <div>HachiTovim</div>
+                                            <div id="smallText">Team with Gal Levi</div>
                                         </th>
                                         <th scope="col" id="isInOtherGame">sdsdghdsfgsdfgdsgsfdgsd</th>
                                         <th scope="col" id="connectBtn"><button className="btn btn-success menuBtn">Connect</button></th>
@@ -146,8 +146,8 @@ function Teams() {
                                             <span id="blink" className='greenblink'></span>
                                         </div></th>
                                         <th scope="col" id="teamName">
-                                                <div>HachiTovim</div>
-                                                <div id="smallText">Team with Gal Levi</div>
+                                            <div>HachiTovim</div>
+                                            <div id="smallText">Team with Gal Levi</div>
                                         </th>
                                         <th scope="col" id="isInOtherGame">sdsdghdsfgsdfgdsgsfdgsd</th>
                                         <th scope="col" id="connectBtn"><button className="btn btn-success menuBtn">Connect</button></th>
@@ -158,8 +158,8 @@ function Teams() {
                                             <span id="blink" className='greenblink'></span>
                                         </div></th>
                                         <th scope="col" id="teamName">
-                                                <div>HachiTovim</div>
-                                                <div id="smallText">Team with Gal Levi</div>
+                                            <div>HachiTovim</div>
+                                            <div id="smallText">Team with Gal Levi</div>
                                         </th>
                                         <th scope="col" id="isInOtherGame">sdsdghdsfgsdfgdsgsfdgsd</th>
                                         <th scope="col" id="connectBtn"><button className="btn btn-success menuBtn">Connect</button></th>
@@ -170,8 +170,8 @@ function Teams() {
                                             <span id="blink" className='greenblink'></span>
                                         </div></th>
                                         <th scope="col" id="teamName">
-                                                <div>HachiTovim</div>
-                                                <div id="smallText">Team with Gal Levi</div>
+                                            <div>HachiTovim</div>
+                                            <div id="smallText">Team with Gal Levi</div>
                                         </th>
                                         <th scope="col" id="isInOtherGame">sdsdghdsfgsdfgdsgsfdgsd</th>
                                         <th scope="col" id="connectBtn"><button className="btn btn-success menuBtn">Connect</button></th>

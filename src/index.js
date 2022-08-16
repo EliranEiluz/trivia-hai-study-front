@@ -8,6 +8,8 @@ import RegisterPage from './RegisterPage';
 import WelcomePage from './WelcomePage';
 import Teams from './Teams';
 import TeamPage from './TeamPage';
+import GamePage from './GamePage';
+import TMFinished from './TMFinished';
 
 class User {
   constructor(username, password, fullName, phoneNumber, memberType) {
@@ -32,7 +34,7 @@ class Team {
   }
 }
 
-const nowOnline = {onlineUser: null, signalR: null, JWT_Token:''};
+const nowOnline = {onlineUser: null, signalR: null, JWT_Token:'', isWin: false };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -44,6 +46,8 @@ root.render(
         <Route path='/welcome' element={<WelcomePage nowOnline={nowOnline}/>} />
         <Route path='/teams' element={<Teams nowOnline={nowOnline}/>} />
         <Route path='/teamPage' element={<TeamPage nowOnline={nowOnline}/>} />
+        <Route path='/game' element={<GamePage nowOnline={nowOnline}/>} />
+        <Route path='/TMfinished' element={<TMFinished nowOnline={nowOnline}/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

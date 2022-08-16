@@ -1,0 +1,65 @@
+#navBar {
+
+    background-color: #f8cd00;
+    border: 1px solid #000;
+}
+
+.nav-link {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 15px
+}
+
+.nav-link:hover {
+    color: red;
+}
+
+#finishedCard {
+    margin-top: 70px;
+    background-color: #f8cd00;
+    font-family: 'calibri';
+    font-weight: bold;
+    font-size: x-large;
+    box-shadow:0 0 0.3rem 0.3rem black;
+    border-radius: 40px;
+}
+
+#WinOrLoseMessage {
+    font-size: 60px;
+}
+
+#points {
+    font-size:30px;
+}
+
+.backToHome-btn {
+    background-color: black;
+    border-color: black;
+    padding-left:30px;
+    padding-right: 30px;
+}
+
+.backToHome-btn:hover {
+    background-color: white;
+    border-color: black;
+    color:black;
+}
+
+
+.backToHome-btn:focus {
+    background-color: black;
+    border-color: black;
+    color:white;
+    box-shadow:0 0 0 0.25rem black;
+
+}
+
+#backToHomeBtn {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#toHomePageTxt {
+    font-weight: 17px;
+}

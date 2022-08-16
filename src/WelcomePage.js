@@ -1,7 +1,13 @@
 import './WelcomePage.css';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react';
 function WelcomePage({ nowOnline }) {
+
+    var navigation = useNavigate();
+
+    function onClickTrainingMode() {
+        navigation('/game');
+    }
 
     function isGuest() {
         if(nowOnline.onlineUser.fullName === "Guest") {
@@ -39,7 +45,7 @@ function WelcomePage({ nowOnline }) {
                         </div>
                         <div className='row justify-content-md-center'>
                             <div className='col-6 col-md-auto' id="TrainingModeBtn">
-                                <button className='btn btn-primary welcome-btn btn-lg'>Training Mode</button>
+                                <button className='btn btn-primary welcome-btn btn-lg' onClick={onClickTrainingMode}>Training Mode</button>
                             </div>
                             <div className='row justify-content-md-center'>
                                 <div className='col-6 col-md-auto'>

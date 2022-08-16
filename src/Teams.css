@@ -137,3 +137,9 @@
     background-color: #F5F5F5;
     border-radius: 10px;
 }
+
+.outer {
+    border: 1px solid black;
+    border-radius: 15pt;
+    overflow: hidden;
+  }

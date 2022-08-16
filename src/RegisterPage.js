@@ -19,6 +19,7 @@ function RegisterPage({nowOnline}) {
         e.preventDefault();
         if(isFormValid()) {
             
+            navigation('/welcome')
         }
         else {
             document.getElementById("register_form").style.marginTop = "2.5%";

@@ -15,6 +15,11 @@
     color:red;
 }
 
+
+.nav {
+    --bs-nav-link-hover-color:black;
+}
+
 #logoDiv {
     margin-top: 20px;
     margin-bottom: 20px;
