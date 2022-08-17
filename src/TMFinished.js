@@ -1,11 +1,11 @@
 import './TMFinished.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function TMFinished({ nowOnline }) {
 
     var navigation = useNavigate();
-
+    const [timerClock, setTimerClock] = useState(10);
     function winOrLose() {
         var message = document.getElementById('message');
         if (nowOnline.isWin) {
@@ -20,7 +20,20 @@ function TMFinished({ nowOnline }) {
         navigation('/');
     }
 
-    useEffect(() => winOrLose(), []);
+    useEffect(() => {winOrLose();
+        var secondsPassed = 0;
+        const interval = setInterval(() => {
+            if(secondsPassed < 10) {
+                setTimerClock(prevTimerClock => prevTimerClock-1);
+                secondsPassed++;
+            }
+            else {
+                clearInterval(interval);
+                navigation('/')
+            }
+        }, 1000)
+        return () => clearInterval(interval);
+    }, []);
     return (
         <>
             <div id="navBar">
@@ -61,7 +74,7 @@ function TMFinished({ nowOnline }) {
                                     </div>
                                 </div>
                                 <div className='row justify-content-md-center' id="toHomePageTxt">
-                                    Returning to home page in 20 seconds...
+                                    Returning to home page in {timerClock} seconds...
                                 </div>
                             </div>
                         </div>

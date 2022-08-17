@@ -34,6 +34,18 @@ class Team {
   }
 }
 
+class Question {
+  constructor(Id, question, firstAnswer, secondAnswer, thirdAnswer, fourthAnswer, rightAnswer) {
+    this.Id = Id;
+    this.question = question;
+    this.firstAnswer = firstAnswer;
+    this.secondAnswer = secondAnswer;
+    this.thirdAnswer = thirdAnswer;
+    this.fourthAnswer = fourthAnswer;
+    this.rightAnswer = rightAnswer;
+  }
+}
+
 const nowOnline = {onlineUser: null, signalR: null, JWT_Token:'', isWin: false };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -58,4 +70,4 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-export {Team, User};
+export {Team, User, Question};
