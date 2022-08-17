@@ -6,7 +6,7 @@ function GamePage({ nowOnline }) {
     var navigation = useNavigate();
     const [points, setPoints] = useState(0);
     const [timerClock, setTimerClock] = useState(20);
-    const [questionCounter, setQuestionCounter] = useState(0);
+    const [questionCounter, setQuestionCounter] = useState(1);
     const [currentQuestion, setCurrentQuestion] = useState('When did Israel Declare independence?');
 
     function leaveGame() {
@@ -93,8 +93,8 @@ function GamePage({ nowOnline }) {
                                 <div className='container-fluid'>
                                     <div className='row'>
                                         <div className='col-5'>
-                                            Points: 0 <br />
-                                            Question 7/10
+                                            Points: {points} <br />
+                                            Question {questionCounter}/10
                                         </div>
                                         <div className='col-4' id="time">
                                             <span id="timeWord">Time:</span><br /> {timerClock} seconds
