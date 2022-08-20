@@ -1,0 +1,203 @@
+[
+    {
+        "id": 1,
+        "question":  "What is the capital city of Spain?",
+        "firstAnswer": "Barcelona", 
+        "secondAnswer": "Valencia",
+        "thirdAnswer": "Madrid",
+        "forthAnswer":"Sevilia", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 2,
+        "question": "When did Israel declare independece?",
+        "firstAnswer": "1957", 
+        "secondAnswer": "1967",
+        "thirdAnswer": "2021",
+        "forthAnswer":"1948", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 3,
+        "question": "Which sport is related to Michael Jordan?",
+        "firstAnswer": "Football", 
+        "secondAnswer": "Basketball",
+        "thirdAnswer": "Tennis",
+        "forthAnswer":"Volleyball", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 4,
+        "question": "What is the most densely populated U.S. state?",
+        "firstAnswer": "Connecticut", 
+        "secondAnswer": "New Jersey",
+        "thirdAnswer": "Rhode Island",
+        "forthAnswer":"Maryland", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 5,
+        "question": "Albert Einstein was a scientist famous for his work on physics. Where was he born?",
+        "firstAnswer": "Germany", 
+        "secondAnswer": "United States",
+        "thirdAnswer": "France",
+        "forthAnswer":"Israel", 
+        "rightAnswer":1
+    },
+
+    {
+        "id": 6,
+        "question": "On the TV sitcom Seinfeld, what is Kramer’s first name?",
+        "firstAnswer": "Kessler", 
+        "secondAnswer": "Newman",
+        "thirdAnswer": "Cosmo",
+        "forthAnswer":"Larry", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 7,
+        "question": "How much of your vision do you lose if you go blind in one eye?",
+        "firstAnswer": "50 percent", 
+        "secondAnswer": "10 percent",
+        "thirdAnswer": "35 percent",
+        "forthAnswer":"20 percent", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 8,
+        "question": "Goulash is a beef soup associated with this nation:",
+        "firstAnswer": "Morocco", 
+        "secondAnswer": "Greece",
+        "thirdAnswer": "Iraq",
+        "forthAnswer":"Hungary", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 9,
+        "question": "What is actually electricity?",
+        "firstAnswer": "A flow of water", 
+        "secondAnswer": "A flow of air",
+        "thirdAnswer": "A flow of electrons",
+        "forthAnswer":"A flow of atoms", 
+        "rightAnswer":3
+    },
+
+    
+    {
+        "id": 10,
+        "question": "Which of the following is not an international organisation?",
+        "firstAnswer": "FIFA", 
+        "secondAnswer": "NATO",
+        "thirdAnswer": "ASEAN",
+        "forthAnswer":"FBI", 
+        "rightAnswer":4
+    },
+    
+    {
+        "id": 11,
+        "question": "Which of the following is a song by the German heavy metal band “Scorpions”?",
+        "firstAnswer": "Stairway to Heaven", 
+        "secondAnswer": "Wind of Change",
+        "thirdAnswer": "Don’t Stop Me Now",
+        "forthAnswer":"Hey Jude", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 12,
+        "question": "What is the speed of sound?",
+        "firstAnswer": "120 km/h", 
+        "secondAnswer": "1,200 km/h",
+        "thirdAnswer": "400 km/h",
+        "forthAnswer":"700 km/h", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 13,
+        "question": "Which of the following animals can run the fastest?",
+        "firstAnswer": "Cheetah", 
+        "secondAnswer": "Leopard",
+        "thirdAnswer": "Tiger",
+        "forthAnswer":"Lion", 
+        "rightAnswer":1
+    },
+
+    {
+        "id": 14,
+        "question": "Where did the powers of Spiderman come from?",
+        "firstAnswer": "He was born with them", 
+        "secondAnswer": "He was bitten by a radioactive spider",
+        "thirdAnswer": "He went through a scientific experiment",
+        "forthAnswer":"He woke up with them after a dream", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 15,
+        "question": "Where did the powers of Spiderman come from?",
+        "firstAnswer": "He was born with them", 
+        "secondAnswer": "He was bitten by a radioactive spider",
+        "thirdAnswer": "He went through a scientific experiment",
+        "forthAnswer":"He woke up with them after a dream", 
+        "rightAnswer":2
+    },
+    
+    {
+        "id": 16,
+        "question": "The phrase: ”I think, therefore I am” was coined by which philosopher?",
+        "firstAnswer": "Socrates", 
+        "secondAnswer": "Plato",
+        "thirdAnswer": "Aristotle",
+        "forthAnswer":"Descartes", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 17,
+        "question": "What does the term “SOS” commonly stand for?",
+        "firstAnswer": "Save Our Sheep", 
+        "secondAnswer": "Save Our Ship",
+        "thirdAnswer": "Save Our Seal",
+        "forthAnswer":"Save Our Souls", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 18,
+        "question": "Which company is known for publishing the Mario video game?",
+        "firstAnswer": "Microsoft", 
+        "secondAnswer": "Nintendo",
+        "thirdAnswer": "SEGA",
+        "forthAnswer":"Electronic Arts", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 19,
+        "question": "How many time zones are there in total in the world?",
+        "firstAnswer": "8", 
+        "secondAnswer": "16",
+        "thirdAnswer": "24",
+        "forthAnswer":"32", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 20,
+        "question": "What is the rarest type of blood in the human body?",
+        "firstAnswer": "AB-", 
+        "secondAnswer": "O+",
+        "thirdAnswer": "B-",
+        "forthAnswer":"A+", 
+        "rightAnswer":1
+    }
+
+]

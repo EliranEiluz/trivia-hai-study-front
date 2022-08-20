@@ -46,11 +46,19 @@ class Question {
   }
 }
 
-const nowOnline = {onlineUser: null, signalR: null, JWT_Token:'', isWin: false };
+
+
+const nowOnline = {onlineUser: null, signalR: null, JWT_Token:'', isWin: false, questions: []};
+
+var questionsArray = require('./questions.json');
+for(let i = 0; i < questionsArray.length; i++) {
+    nowOnline.questions.push(new Question(questionsArray[i].id, questionsArray[i].question, questionsArray[i].firstAnswer,
+       questionsArray[i].secondAnswer, questionsArray[i].thirdAnswer, questionsArray[i].forthAnswer, questionsArray[i].rightAnswer));
+}
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<LoginPage nowOnline={nowOnline}/>} />
@@ -62,7 +70,6 @@ root.render(
         <Route path='/TMfinished' element={<TMFinished nowOnline={nowOnline}/>} />
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

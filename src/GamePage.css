@@ -28,6 +28,13 @@
     padding-right: 30px;
 }
 
+.passQuestion-btn:disabled {
+    background-color: black;
+    border-color: black;
+    padding-left:30px;
+    padding-right: 30px;
+}
+
 .passQuestion-btn:hover {
     background-color: white;
     border-color: black;
@@ -56,6 +63,25 @@
 }
 
 .question-btn {
+    background-color: #f8cd00;
+    border:3px solid #000;
+    color:black;
+    font-weight: bold;
+    padding-left:90px;
+    padding-right:90px;
+    padding-top:20px;
+    padding-bottom: 20px;
+    margin-top:30px;
+    border-radius: 15px;
+    height:300px;
+    display: inline-flex;
+    align-items: center; 
+    word-break: break-word;
+    max-width:70%;
+    font-size:19px;
+}
+
+.question-btn:disabled {
     background-color: #f8cd00;
     border:3px solid #000;
     color:black;
@@ -113,8 +139,19 @@
 
 }
 
+
 .modal-body {
     font-size:20px;
 }
 
+.rightAnswer:checked+.btn {
+    background-color: green;
+}
 
+.rightAnswer {
+    background-color: green;
+}
+
+#startGameModalBtn {
+    display: none;
+}

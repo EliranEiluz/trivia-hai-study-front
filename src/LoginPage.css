@@ -73,6 +73,11 @@
     border-color: black;
 }
 
+.login-btn:disabled {
+    background-color: black;
+    border-color: black;
+}
+
 .login-btn:hover {
     background-color: white;
     border-color: black;
@@ -91,7 +96,7 @@
 #login_guest_btn {
     padding-left: 20px;
     padding-right: 20px;
-    margin-right: 20px;
+    margin-left: 100px;
 }
 
 
