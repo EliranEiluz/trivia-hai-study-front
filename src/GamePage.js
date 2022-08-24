@@ -1,8 +1,12 @@
 import './GamePage.css';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import $ from 'jquery';
 function GamePage({ nowOnline }) {
 
+    var isClicked = false;
+    const [intervalId, setIntervalId] = useState(null);
+    const [timerInterval, setTimerInterval] = useState(null);
     var navigation = useNavigate();
     var playerPoints = 0;
     var agentPoints = 0;
@@ -18,60 +22,37 @@ function GamePage({ nowOnline }) {
     const [points, setPoints] = useState('0')
     const [questionCounter, setQuestionCounter] = useState(1);
     var gameCounter = 0;
-    var intervalId = null;
-    var timerInterval = null;
-    function checkAnswer() {
-        if (document.getElementById('1stAnswer').checked) {
-            return 1;
-        }
-        if (document.getElementById('2ndAnswer').checked) {
-            return 2;
-        }
-        if (document.getElementById('3rdAnswer').checked) {
-            return 3;
-        }
-        if (document.getElementById('4thAnswer').checked) {
-            return 4;
-        }
-        return 0;
+
+    function onChoosingAnswer(e) {
+        clearTimeout(intervalId);
+        clearTimeout(timerInterval);
+        console.log('im here')
+        gameCounter++;
+        gameFlow(parseInt(e.target.value));
     }
 
-    function passQuestionClicked() {
-        console.log(intervalId);
-        console.log(timerInterval)
-        clearInterval(intervalId)
-        clearInterval(timerInterval)
-        intervalId = null;
-        timerInterval = null;
-        intervalId = setInterval(() => {
-            gameCounter++;
-            if (gameCounter < 20) {
-                gameFlow();
-            }
-            else {
-                clearInterval(intervalId);
-            }
-        }, 23000)
-        timerInterval = setInterval(() => {
-            setTimerClock((prevTimerClock) => prevTimerClock - 1);
-        }, 1000)
-        if (isPlayerTurn) {
-            agent();
-        }
-        else {
-            player();
-        }
-        return () => {
-            clearInterval(intervalId);
-            clearInterval(timerInterval)
-        }
+    function onAgentChoosingAnswer(val) {
+        clearTimeout(intervalId);
+        clearTimeout(timerInterval);
+        gameCounter++;
+        gameFlow(val);
+    }
+
+    function timer() {
+        setTimerClock((prevTimerClock) => prevTimerClock - 1);
+        setTimerInterval(setTimeout(timer, 1000));
+        console.log('inTimer');
     }
 
     function leaveGame() {
+        clearTimeout(intervalId);
+        clearTimeout(timerInterval);
         navigation('/welcome')
     }
 
     function leaveToHomeGame() {
+        clearTimeout(intervalId);
+        clearTimeout(timerInterval);
         navigation('/')
     }
 
@@ -112,19 +93,7 @@ function GamePage({ nowOnline }) {
     }
 
     function startGame() {
-        timerInterval = null;
         gameFlow();
-        intervalId = setInterval(() => {
-            gameCounter++;
-            if (gameCounter < 20) {
-                gameFlow();
-            }
-            else {
-                clearInterval(intervalId);
-            }
-        }, 23000)
-        console.log(intervalId);
-        return () => clearInterval(intervalId);
     }
 
     const sleep = ms => new Promise(
@@ -137,24 +106,29 @@ function GamePage({ nowOnline }) {
         document.getElementById("2ndAnswer").disabled = "true";
         document.getElementById("3rdAnswer").disabled = "true";
         document.getElementById("4thAnswer").disabled = "true";
-        document.getElementById("passQuestionBtn").disabled = "true";
         var rand = (Math.floor(Math.random() * 17) + 1) * 1000;
         setTimeout(() => {
             var chosen = Math.floor(Math.random() * 4) + 1;
+            var e;
             switch (chosen) {
                 case 1:
-                    document.getElementById("1stAnswer").checked = "true";
+                    document.getElementById('1stAnswer').checked = true;
+                    e = 1
                     break;
                 case 2:
-                    document.getElementById("2ndAnswer").checked = "true";
+                    document.getElementById('2ndAnswer').checked = true;
+                    e = 2
                     break;
                 case 3:
-                    document.getElementById("3rdAnswer").checked = "true";
+                    document.getElementById('3rdAnswer').checked = true;
+                    e = 3
                     break;
                 case 4:
-                    document.getElementById("4thAnswer").checked = "true";
+                    document.getElementById('4thAnswer').checked = true;
+                    e = 4
                     break;
             }
+            onAgentChoosingAnswer(e)
         }, rand)
     }
 
@@ -163,16 +137,16 @@ function GamePage({ nowOnline }) {
         document.getElementById("2ndAnswer").disabled = false;
         document.getElementById("3rdAnswer").disabled = false;
         document.getElementById("4thAnswer").disabled = false;
-        document.getElementById("passQuestionBtn").disabled = false;
     }
 
-    async function gameFlow() {
-        if (timerInterval != null) {
-            clearInterval(timerInterval);
-            let answer = checkAnswer();
-            console.log(answer);
+    async function gameFlow(chosenAnswer) {
+        if (gameCounter > 0) {
+            if (chosenAnswer == 0) {
+                gameCounter++;
+            }
+            clearTimeout(timerInterval);
             if (isPlayerTurn) {
-                if (nowOnline.questions[gameCounter - 1].rightAnswer == answer) {
+                if (nowOnline.questions[gameCounter - 1].rightAnswer == chosenAnswer) {
                     playerPoints = playerPoints + 100;
                 }
                 else {
@@ -183,7 +157,7 @@ function GamePage({ nowOnline }) {
                 setPoints(playerPoints);
             }
             else {
-                if (nowOnline.questions[gameCounter - 1].rightAnswer == answer) {
+                if (nowOnline.questions[gameCounter - 1].rightAnswer == chosenAnswer) {
                     agentPoints = agentPoints + 100;
                 }
                 else {
@@ -216,6 +190,7 @@ function GamePage({ nowOnline }) {
         else {
             player();
         }
+
         removeClasses();
         setTimerClock(20);
         setCurrentQuestion(nowOnline.questions[gameCounter].question);
@@ -223,16 +198,17 @@ function GamePage({ nowOnline }) {
         setSecondAnswer(nowOnline.questions[gameCounter].secondAnswer);
         setThirdAnswer(nowOnline.questions[gameCounter].thirdAnswer);
         setFourthAnswer(nowOnline.questions[gameCounter].fourthAnswer);
-        timerInterval = setInterval(() => {
-            setTimerClock((prevTimerClock) => prevTimerClock - 1);
-        }, 1000)
+        timer();
+        setIntervalId(setTimeout(gameFlow, 20000, 0));
     }
 
     useEffect(() => {
+        clearTimeout(intervalId);
+        clearTimeout(timerInterval);
         document.getElementById('startGameModalBtn').click();
         return () => {
-            clearInterval(intervalId);
-            clearInterval(timerInterval);
+            clearTimeout(intervalId);
+            clearTimeout(timerInterval);
         }
     }, [])
     return (
@@ -275,6 +251,8 @@ function GamePage({ nowOnline }) {
                                 The agent can do it also, so be focused!<br />
                                 When a question is passed, the one who the question is passed to can only earn points.<br />
                                 Hope you will enjoy the game.
+                                <br />
+                                <b>After clicking "Start game", the game will start within 3 seconds.</b>
                             </p>
                         </div>
                         <div className="modal-footer">
@@ -332,9 +310,6 @@ function GamePage({ nowOnline }) {
                                         <div className='col-xl-4 col-sm-6' id="time">
                                             <span id="timeWord">Time:</span><br /> {timerClock} seconds
                                         </div>
-                                        <div className='col-xl-3 col-sm-6'>
-                                            <button className='btn btn-primary passQuestion-btn float-end' id="passQuestionBtn" onClick={passQuestionClicked}>Pass Question</button>
-                                        </div>
                                     </div>
                                     <div className='row justify-content-md-center' id="question">
                                         {currentQuestion}
@@ -346,19 +321,19 @@ function GamePage({ nowOnline }) {
                 </div>
                 <div className='row justify-content-center' id="answersRow" role="group" aria-label="Basic radio toggle button group">
                     <div className='col-xl-3 d-flex justify-content-center col-sm-6'>
-                        <input type="radio" id="1stAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='1'></input>
+                        <input type="radio" id="1stAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='1' onChange={onChoosingAnswer}></input>
                         <label className="btn question-btn" htmlFor="1stAnswer" id="1stAnswerLabel">{firstAnswer}</label>
                     </div>
                     <div className='col-xl-3 d-flex justify-content-center col-sm-6'>
-                        <input type="radio" id="2ndAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='2'></input>
+                        <input type="radio" id="2ndAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='2' onChange={onChoosingAnswer}></input>
                         <label className="btn question-btn" htmlFor="2ndAnswer" id="2ndAnswerLabel">{secondAnswer}</label>
                     </div>
                     <div className='col-xl-3 d-flex justify-content-center col-sm-6'>
-                        <input type="radio" id="3rdAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='3'></input>
+                        <input type="radio" id="3rdAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='3' onChange={onChoosingAnswer}></input>
                         <label className="btn question-btn jusify-content-center" htmlFor="3rdAnswer" id="3rdAnswerLabel">{thirdAnswer}</label>
                     </div>
                     <div className='col-xl-3 d-flex justify-content-center col-sm-6'>
-                        <input type="radio" id="4thAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='4'></input>
+                        <input type="radio" id="4thAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='4' onChange={onChoosingAnswer}></input>
                         <label className="btn btn-primary question-btn" htmlFor="4thAnswer" id="4thAnswerLabel">{fourthAnswer}</label>
                     </div>
                 </div>

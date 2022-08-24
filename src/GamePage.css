@@ -47,7 +47,6 @@
     border-color: black;
     color:white;
     box-shadow:0 0 0 0.25rem black;
-
 }
 
 #question {
@@ -112,7 +111,6 @@
     border-color: #f8cd00;
     color:#f8cd00;
     box-shadow:0 0 0 0.25rem black;
-
 }
 
 .question-btn:checked {
@@ -120,7 +118,6 @@
     border-color: #f8cd00;
     color:#f8cd00;
     box-shadow:0 0 0 0.25rem black;
-
 }
 
 .question-btn:active {
@@ -128,7 +125,6 @@
     border-color: #f8cd00;
     color:#f8cd00;
     box-shadow:0 0 0 0.25rem black;
-
 }
 
 .btn-check:checked+.btn {
@@ -136,7 +132,6 @@
     border-color: #f8cd00;
     color:#f8cd00;
     box-shadow:0 0 0 0.25rem black;
-
 }
 
 
@@ -155,3 +150,13 @@
 #startGameModalBtn {
     display: none;
 }
+
+.blink {
+    animation: blinker 1s linear infinite;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
