@@ -1,58 +1,61 @@
 import './GamePage.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import $ from 'jquery';
 function GamePage({ nowOnline }) {
 
-    var isClicked = false;
-    const [intervalId, setIntervalId] = useState(null);
-    const [timerInterval, setTimerInterval] = useState(null);
+    //var isClicked = false;
+    //const [intervalId, setIntervalId] = useState(null);
+    const timerInterval = useRef(null);
     var navigation = useNavigate();
-    var playerPoints = 0;
-    var agentPoints = 0;
+    const playerPoints = useRef(0);
+    const agentPoints = useRef(0);
     const [timerClock, setTimerClock] = useState(20);
-    var playerQuestionCounter = 1;
-    var agentQuestionCounter = 1;
+    const playerQuestionCounter = useRef(1);
+    const agentQuestionCounter = useRef(1);
     const [currentQuestion, setCurrentQuestion] = useState('');
     const [firstAnswer, setFirstAnswer] = useState('');
     const [secondAnswer, setSecondAnswer] = useState('');
     const [thirdAnswer, setThirdAnswer] = useState('');
     const [fourthAnswer, setFourthAnswer] = useState('');
-    var isPlayerTurn = true;
+    const isPlayerTurn = useRef(false);
     const [points, setPoints] = useState('0')
     const [questionCounter, setQuestionCounter] = useState(1);
-    var gameCounter = 0;
+    const gameCounter = useRef(0);
 
-    function onChoosingAnswer(e) {
-        clearTimeout(intervalId);
-        clearTimeout(timerInterval);
-        console.log('im here')
-        gameCounter++;
-        gameFlow(parseInt(e.target.value));
+    async function onChoosingAnswer(e) {
+        answerCheck(parseInt(e.target.value));
+        gameCounter.current += 1;
+        clearTimeout(timerInterval.current)
+        await sleep(3000);
+        console.log(gameCounter)
+        gameFlow();
     }
 
-    function onAgentChoosingAnswer(val) {
-        clearTimeout(intervalId);
-        clearTimeout(timerInterval);
-        gameCounter++;
-        gameFlow(val);
+    async function onAgentChoosingAnswer(val) {
+        answerCheck(val);
+        gameCounter.current += 1;
+        clearTimeout(timerInterval.current)
+        await sleep(3000);
+        console.log(gameCounter)
+        gameFlow();
     }
 
     function timer() {
-        setTimerClock((prevTimerClock) => prevTimerClock - 1);
-        setTimerInterval(setTimeout(timer, 1000));
-        console.log('inTimer');
+        if (timerClock != 0) {
+            setTimerClock((prevTimerClock) => prevTimerClock - 1);
+            timerInterval.current = setTimeout(timer, 1000);
+        }
+        else {
+            onAgentChoosingAnswer(0);
+        }
     }
 
     function leaveGame() {
-        clearTimeout(intervalId);
-        clearTimeout(timerInterval);
         navigation('/welcome')
     }
 
     function leaveToHomeGame() {
-        clearTimeout(intervalId);
-        clearTimeout(timerInterval);
         navigation('/')
     }
 
@@ -139,77 +142,63 @@ function GamePage({ nowOnline }) {
         document.getElementById("4thAnswer").disabled = false;
     }
 
-    async function gameFlow(chosenAnswer) {
-        if (gameCounter > 0) {
-            if (chosenAnswer == 0) {
-                gameCounter++;
-            }
-            clearTimeout(timerInterval);
-            if (isPlayerTurn) {
-                if (nowOnline.questions[gameCounter - 1].rightAnswer == chosenAnswer) {
-                    playerPoints = playerPoints + 100;
-                }
-                else {
-                    if (playerPoints > 0) {
-                        playerPoints = playerPoints - 100;
-                    }
-                }
-                setPoints(playerPoints);
-            }
-            else {
-                if (nowOnline.questions[gameCounter - 1].rightAnswer == chosenAnswer) {
-                    agentPoints = agentPoints + 100;
-                }
-                else {
-                    if (agentPoints > 0) {
-                        agentPoints = agentPoints - 100;
-                    }
-                }
-                setPoints(agentPoints);
-            }
-            switchAnswer(nowOnline.questions[gameCounter - 1].rightAnswer)
-            await sleep(3000);
-            isPlayerTurn = !isPlayerTurn;
-            if (isPlayerTurn) {
-                playerQuestionCounter++;
-                setPoints(playerPoints)
-                setQuestionCounter(playerQuestionCounter)
-            }
-            else {
-                setPoints(agentPoints)
-                setQuestionCounter(agentQuestionCounter)
-                agentQuestionCounter++;
-            }
+    function gameFlow() {
+        //await sleep(3000);
+        clearTimeout(timerInterval)
+        if (gameCounter > 20) {
+            navigation('/TMfinished');
         }
-        else {
-            await sleep(3000);
-        }
-        if (!isPlayerTurn) {
-            agent();
-        }
-        else {
-            player();
-        }
-
         removeClasses();
+        isPlayerTurn.current = !isPlayerTurn.current;
+        setCurrentQuestion(nowOnline.questions[gameCounter.current].question);
+        setFirstAnswer(nowOnline.questions[gameCounter.current].firstAnswer);
+        setSecondAnswer(nowOnline.questions[gameCounter.current].secondAnswer);
+        setThirdAnswer(nowOnline.questions[gameCounter.current].thirdAnswer);
+        setFourthAnswer(nowOnline.questions[gameCounter.current].fourthAnswer);
         setTimerClock(20);
-        setCurrentQuestion(nowOnline.questions[gameCounter].question);
-        setFirstAnswer(nowOnline.questions[gameCounter].firstAnswer);
-        setSecondAnswer(nowOnline.questions[gameCounter].secondAnswer);
-        setThirdAnswer(nowOnline.questions[gameCounter].thirdAnswer);
-        setFourthAnswer(nowOnline.questions[gameCounter].fourthAnswer);
         timer();
-        setIntervalId(setTimeout(gameFlow, 20000, 0));
+        if (isPlayerTurn.current) {
+            player();
+            setPoints(playerPoints.current);
+            setQuestionCounter(playerQuestionCounter.current);
+            playerQuestionCounter.current += 1;
+        }
+        else {
+            agent();
+            setPoints(agentPoints.current);
+            setQuestionCounter(agentQuestionCounter.current);
+            agentQuestionCounter.current += 1;
+        }
+    }
+
+    function answerCheck(ans) {
+        switchAnswer(nowOnline.questions[gameCounter.current].rightAnswer);
+        if (isPlayerTurn) {
+            if (ans === nowOnline.questions[gameCounter.current].rightAnswer) {
+                playerPoints.current += 100;
+            }
+            else {
+                if (playerPoints.current > 0) {
+                    playerPoints.current -= 100;
+                }
+            }
+            setPoints(playerPoints.current);
+        }
+        else {
+            if (ans === nowOnline.questions[gameCounter.current].rightAnswer) {
+                agentPoints.current += 100;
+            }
+            else {
+                if (agentPoints.current > 0) {
+                    agentPoints.current -= 100;
+                }
+            }
+            setPoints(agentPoints.current);
+        }
     }
 
     useEffect(() => {
-        clearTimeout(intervalId);
-        clearTimeout(timerInterval);
         document.getElementById('startGameModalBtn').click();
-        return () => {
-            clearTimeout(intervalId);
-            clearTimeout(timerInterval);
-        }
     }, [])
     return (
         <>
