@@ -1,7 +1,7 @@
 import './GamePage.css';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import $ from 'jquery';
+
 function GamePage({ nowOnline }) {
 
 
