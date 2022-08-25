@@ -4,8 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import $ from 'jquery';
 function GamePage({ nowOnline }) {
 
-    //var isClicked = false;
-    //const [intervalId, setIntervalId] = useState(null);
+
+    const timeLeft = useRef(20);
     const timerInterval = useRef(null);
     var navigation = useNavigate();
     const playerPoints = useRef(0);
@@ -28,7 +28,6 @@ function GamePage({ nowOnline }) {
         gameCounter.current += 1;
         clearTimeout(timerInterval.current)
         await sleep(3000);
-        console.log(gameCounter)
         gameFlow();
     }
 
@@ -37,14 +36,14 @@ function GamePage({ nowOnline }) {
         gameCounter.current += 1;
         clearTimeout(timerInterval.current)
         await sleep(3000);
-        console.log(gameCounter)
         gameFlow();
     }
 
     function timer() {
-        if (timerClock != 0) {
+        if(timeLeft.current > 0) {
             setTimerClock((prevTimerClock) => prevTimerClock - 1);
             timerInterval.current = setTimeout(timer, 1000);
+            timeLeft.current--;
         }
         else {
             onAgentChoosingAnswer(0);
@@ -52,10 +51,12 @@ function GamePage({ nowOnline }) {
     }
 
     function leaveGame() {
+        clearTimeout(timerInterval.current);
         navigation('/welcome')
     }
 
     function leaveToHomeGame() {
+        clearTimeout(timerInterval.current);
         navigation('/')
     }
 
@@ -143,7 +144,7 @@ function GamePage({ nowOnline }) {
     }
 
     function gameFlow() {
-        //await sleep(3000);
+        timeLeft.current = 20;
         clearTimeout(timerInterval)
         if (gameCounter > 20) {
             navigation('/TMfinished');
@@ -173,7 +174,7 @@ function GamePage({ nowOnline }) {
 
     function answerCheck(ans) {
         switchAnswer(nowOnline.questions[gameCounter.current].rightAnswer);
-        if (isPlayerTurn) {
+        if (isPlayerTurn.current) {
             if (ans === nowOnline.questions[gameCounter.current].rightAnswer) {
                 playerPoints.current += 100;
             }
