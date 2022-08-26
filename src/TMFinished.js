@@ -4,23 +4,30 @@ import { useEffect, useState } from 'react';
 
 function TMFinished({ nowOnline }) {
 
+    const [playerPoints, setPlayerPoints] = useState(nowOnline.playerPoints);
+    const [agentPoints, setAgentPoints] = useState(nowOnline.agentPoints);
     var navigation = useNavigate();
     const [timerClock, setTimerClock] = useState(10);
     function winOrLose() {
         var message = document.getElementById('message');
-        if (nowOnline.isWin) {
+        if (nowOnline.isWin == 2) {
             message.innerHTML = "WOW, you WIN! <i class='fa-solid fa-hands-clapping'></i>"
         }
-        else {
+        else if (nowOnline.isWin == 0) {
             message.innerHTML = "Sorry, you LOST! <i class='fa-solid fa-heart-crack'></i>"
         }
+        else {
+            message.innerHTML = "It's a DRAW! <i class='fa-solid fa-heart-crack'></i>"
+        }
+        console.log(nowOnline.playerPoints);
     }
 
     function toHomePageBtnClick() {
         navigation('/');
     }
 
-    useEffect(() => {winOrLose();
+    useEffect(() => {
+        winOrLose();
         var secondsPassed = 0;
         const interval = setInterval(() => {
             if(secondsPassed < 10) {
@@ -63,8 +70,8 @@ function TMFinished({ nowOnline }) {
                                     </center>
                                 </div>
                                 <div className='row justify-content-md-center' id="points">
-                                    Your points: 700<br />
-                                    Agent's points: 800
+                                    Your points: {playerPoints}<br />
+                                    Agent's points: {agentPoints}
                                 </div>
                                 <div className='row justify-content-md-center'>
                                     <div className='col-4'>

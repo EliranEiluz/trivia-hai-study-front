@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function GamePage({ nowOnline }) {
 
-
     const timeLeft = useRef(20);
     const timerInterval = useRef(null);
     var navigation = useNavigate();
@@ -23,24 +22,59 @@ function GamePage({ nowOnline }) {
     const [questionCounter, setQuestionCounter] = useState(1);
     const gameCounter = useRef(0);
 
+    function gameFinished() {
+        nowOnline.playerPoints = playerPoints.current;
+        nowOnline.agentPoints = agentPoints.current;
+        if (playerPoints.current > agentPoints.current) {
+            nowOnline.isWin = 2;
+        }
+        else if (agentPoints.current > playerPoints.current) {
+            nowOnline.isWin = 0;
+        }
+        else {
+            nowOnline.isWin = 1;
+        }
+        clearTimeout(timerInterval);
+        navigation('/TMfinished');
+    }
+
+    async function makeBlink(chosen) {
+        switch (chosen) {
+            case 1:
+                document.getElementById('1stAnswerLabel').classList.add("blink");
+                break;
+            case 2:
+                document.getElementById('2ndAnswerLabel').classList.add("blink");
+                break;
+            case 3:
+                document.getElementById('3rdAnswerLabel').classList.add("blink");
+                break;
+            case 4:
+                document.getElementById('4thAnswerLabel').classList.add("blink");
+                break;
+        }
+        await sleep(2000)
+    }
+
     async function onChoosingAnswer(e) {
-        answerCheck(parseInt(e.target.value));
-        gameCounter.current += 1;
-        clearTimeout(timerInterval.current)
-        await sleep(3000);
-        gameFlow();
+        onAgentChoosingAnswer(parseInt(e.target.value));
     }
 
     async function onAgentChoosingAnswer(val) {
-        answerCheck(val);
-        gameCounter.current += 1;
         clearTimeout(timerInterval.current)
-        await sleep(3000);
+        await makeBlink(val);
+        await answerCheck(val);
+        gameCounter.current += 1;
+        console.log(gameCounter);
+        if (gameCounter.current == 20) {
+            gameFinished();
+            return;
+        }
         gameFlow();
     }
 
     function timer() {
-        if(timeLeft.current > 0) {
+        if (timeLeft.current > 0) {
             setTimerClock((prevTimerClock) => prevTimerClock - 1);
             timerInterval.current = setTimeout(timer, 1000);
             timeLeft.current--;
@@ -105,7 +139,7 @@ function GamePage({ nowOnline }) {
     );
 
 
-    function agent() {
+    async function agent() {
         document.getElementById("1stAnswer").disabled = "true";
         document.getElementById("2ndAnswer").disabled = "true";
         document.getElementById("3rdAnswer").disabled = "true";
@@ -172,7 +206,7 @@ function GamePage({ nowOnline }) {
         }
     }
 
-    function answerCheck(ans) {
+    async function answerCheck(ans) {
         switchAnswer(nowOnline.questions[gameCounter.current].rightAnswer);
         if (isPlayerTurn.current) {
             if (ans === nowOnline.questions[gameCounter.current].rightAnswer) {
@@ -196,6 +230,11 @@ function GamePage({ nowOnline }) {
             }
             setPoints(agentPoints.current);
         }
+        document.getElementById("1stAnswerLabel").classList.remove("blink");
+        document.getElementById("2ndAnswerLabel").classList.remove("blink");
+        document.getElementById("3rdAnswerLabel").classList.remove("blink");
+        document.getElementById("4thAnswerLabel").classList.remove("blink");
+        await sleep(2000);
     }
 
     useEffect(() => {
@@ -235,14 +274,10 @@ function GamePage({ nowOnline }) {
                                 In Training mode, you will be playing against an agent, when each of you has 10 questions to answer on.<br />
                                 The one who holds the turn has 20 seconds to answer the question.<br />
                                 Right answer will increase your points by 100.<br />
-                                Wrong answer (if you have more than 0 points) will decrease your points by 100.
-                                If you don't know the answer and you don't want to lose points,<br />
-                                You can press the "Pass Question" button to pass the question to the agent.<br />
-                                The agent can do it also, so be focused!<br />
-                                When a question is passed, the one who the question is passed to can only earn points.<br />
-                                Hope you will enjoy the game.
+                                Wrong answer (if you have more than 0 points) will decrease your points by 100.<br/>
+                                The one who has more points after the 10 questions, wins!<br/>
+                                <b>Hope you will enjoy the game.</b>
                                 <br />
-                                <b>After clicking "Start game", the game will start within 3 seconds.</b>
                             </p>
                         </div>
                         <div className="modal-footer">
@@ -309,22 +344,26 @@ function GamePage({ nowOnline }) {
                         </div>
                     </div>
                 </div>
-                <div className='row justify-content-center' id="answersRow" role="group" aria-label="Basic radio toggle button group">
-                    <div className='col-xl-3 d-flex justify-content-center col-sm-6'>
-                        <input type="radio" id="1stAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='1' onChange={onChoosingAnswer}></input>
-                        <label className="btn question-btn" htmlFor="1stAnswer" id="1stAnswerLabel">{firstAnswer}</label>
+                <div id="answersRow" role="group" aria-label="Basic radio toggle button group">
+                    <div className='row justify-content-center'>
+                        <div className='col-xl-6 d-flex justify-content-center col-sm-6'>
+                            <input type="radio" id="1stAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='1' onChange={onChoosingAnswer}></input>
+                            <label className="btn question-btn" htmlFor="1stAnswer" id="1stAnswerLabel">{firstAnswer}</label>
+                        </div>
+                        <div className='col-xl-6 d-flex justify-content-center col-sm-6'>
+                            <input type="radio" id="2ndAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='2' onChange={onChoosingAnswer}></input>
+                            <label className="btn question-btn" htmlFor="2ndAnswer" id="2ndAnswerLabel">{secondAnswer}</label>
+                        </div>
                     </div>
-                    <div className='col-xl-3 d-flex justify-content-center col-sm-6'>
-                        <input type="radio" id="2ndAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='2' onChange={onChoosingAnswer}></input>
-                        <label className="btn question-btn" htmlFor="2ndAnswer" id="2ndAnswerLabel">{secondAnswer}</label>
-                    </div>
-                    <div className='col-xl-3 d-flex justify-content-center col-sm-6'>
-                        <input type="radio" id="3rdAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='3' onChange={onChoosingAnswer}></input>
-                        <label className="btn question-btn jusify-content-center" htmlFor="3rdAnswer" id="3rdAnswerLabel">{thirdAnswer}</label>
-                    </div>
-                    <div className='col-xl-3 d-flex justify-content-center col-sm-6'>
-                        <input type="radio" id="4thAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='4' onChange={onChoosingAnswer}></input>
-                        <label className="btn btn-primary question-btn" htmlFor="4thAnswer" id="4thAnswerLabel">{fourthAnswer}</label>
+                    <div className='row justify-content-center'>
+                        <div className='col-xl-6 d-flex justify-content-center col-sm-6'>
+                            <input type="radio" id="3rdAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='3' onChange={onChoosingAnswer}></input>
+                            <label className="btn question-btn jusify-content-center" htmlFor="3rdAnswer" id="3rdAnswerLabel">{thirdAnswer}</label>
+                        </div>
+                        <div className='col-xl-6 d-flex justify-content-center col-sm-6'>
+                            <input type="radio" id="4thAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='4' onChange={onChoosingAnswer}></input>
+                            <label className="btn question-btn" htmlFor="4thAnswer" id="4thAnswerLabel">{fourthAnswer}</label>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -48,7 +48,7 @@ class Question {
 
 
 
-const nowOnline = {onlineUser: null, signalR: null, JWT_Token:'', isWin: false, questions: []};
+const nowOnline = {onlineUser: null, signalR: null, JWT_Token:'', isWin: 1, questions: [], agentPoints:0, playerPoints:0};
 
 var questionsArray = require('./questions.json');
 for(let i = 0; i < questionsArray.length; i++) {
