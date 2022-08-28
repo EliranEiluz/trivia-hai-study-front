@@ -6,11 +6,23 @@ function WelcomePage({ nowOnline }) {
     var navigation = useNavigate();
 
     function onClickTrainingMode() {
+        //navigation('/game');
+        document.getElementById('toggleModal').click();
+
+    }
+
+    function onSinglePlayer() {
+        nowOnline.singlePlayer = true;
+        navigation('/game');
+    }
+
+    function onPlayWithAgent() {
+        nowOnline.singlePlayer = false;
         navigation('/game');
     }
 
     function isGuest() {
-        if(nowOnline.onlineUser.fullName === "Guest") {
+        if (nowOnline.onlineUser.fullName === "Guest") {
             document.getElementById("teamModeBtn").disabled = "true";
         }
     }
@@ -31,6 +43,36 @@ function WelcomePage({ nowOnline }) {
                         <Link className="nav-link" to="#">Scoreboard</Link>
                     </li>
                 </ul>
+            </div>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseTrainingMode" id="toggleModal">
+                Launch static backdrop modal
+            </button>
+            <div class="modal fade" id="chooseTrainingMode" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body container-fluid">
+                            <div className='row'>
+                                <div className='col-6'>
+                                    <center>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={onPlayWithAgent}>Play with Agent</button>
+                                    </center>
+                                </div>
+                                <div className='col-6'>
+                                    <center>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={onSinglePlayer}>Single Player</button>
+                                    </center>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className='container-fluid' id="WelcomePageContent">
                 <div className='row justify-content-md-center'>

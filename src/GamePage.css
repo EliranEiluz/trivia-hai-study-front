@@ -150,3 +150,11 @@
       opacity: 0;
     }
   }
+
+#playWithAgentInstructions {
+    display: none;
+}
+
+#singlePlayerInstructions {
+    display: none;
+}

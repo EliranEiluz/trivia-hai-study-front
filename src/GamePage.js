@@ -6,6 +6,8 @@ function GamePage({ nowOnline }) {
 
     const timeLeft = useRef(20);
     const timerInterval = useRef(null);
+    const playWithAgentOperations = useRef(null);
+    const agentTimeout = useRef(null);
     var navigation = useNavigate();
     const playerPoints = useRef(0);
     const agentPoints = useRef(0);
@@ -57,6 +59,9 @@ function GamePage({ nowOnline }) {
     }
 
     async function onChoosingAnswer(e) {
+        if(!nowOnline.singlePlayer) {
+            clearTimeout(agentTimeout.current)
+        }
         onAgentChoosingAnswer(parseInt(e.target.value));
     }
 
@@ -170,7 +175,7 @@ function GamePage({ nowOnline }) {
         }, rand)
     }
 
-    function player() {
+    function removeDisabled() {
         document.getElementById("1stAnswer").disabled = false;
         document.getElementById("2ndAnswer").disabled = false;
         document.getElementById("3rdAnswer").disabled = false;
@@ -193,7 +198,10 @@ function GamePage({ nowOnline }) {
         setTimerClock(20);
         timer();
         if (isPlayerTurn.current) {
-            player();
+            removeDisabled();
+            if(!nowOnline.singlePlayer) {
+                playWithAgent()
+            }
             setPoints(playerPoints.current);
             setQuestionCounter(playerQuestionCounter.current);
             playerQuestionCounter.current += 1;
@@ -237,7 +245,43 @@ function GamePage({ nowOnline }) {
         await sleep(2000);
     }
 
+    function playWithAgent() {
+        agentTimeout.current = setTimeout(() => {
+            var chosen = playWithAgentOperations.current[playerQuestionCounter.current - 1].answer;
+            var e;
+            switch (chosen) {
+                case 1:
+                    document.getElementById('1stAnswer').checked = true;
+                    e = 1
+                    break;
+                case 2:
+                    document.getElementById('2ndAnswer').checked = true;
+                    e = 2
+                    break;
+                case 3:
+                    document.getElementById('3rdAnswer').checked = true;
+                    e = 3
+                    break;
+                case 4:
+                    document.getElementById('4thAnswer').checked = true;
+                    e = 4
+                    break;
+            }
+            onAgentChoosingAnswer(e)
+        }, playWithAgentOperations.current[playerQuestionCounter.current - 1].time)
+    }
+
+
     useEffect(() => {
+        if(nowOnline.singlePlayer) {
+            document.getElementById('singlePlayerInstructions').style.display = "block";
+            console.log('im true!')
+        }
+        else {
+            document.getElementById('playWithAgentInstructions').style.display = "block";
+            playWithAgentOperations.current = require('./agent.json');
+            console.log('im false!')
+        }
         document.getElementById('startGameModalBtn').click();
     }, [])
     return (
@@ -269,10 +313,21 @@ function GamePage({ nowOnline }) {
                             <h5 className="modal-title">Game instructions</h5>
                         </div>
                         <div className="modal-body">
-                            <p>
+                            <p id="singlePlayerInstructions">
                                 Hello and welcome to Project Trivia game! <br />
-                                In Training mode, you will be playing against an agent, when each of you has 10 questions to answer on.<br />
+                                In Single-Player training mode, you will be playing against an agent, when each of you has 10 questions to answer on.<br />
                                 The one who holds the turn has 20 seconds to answer the question.<br />
+                                Right answer will increase your points by 100.<br />
+                                Wrong answer (if you have more than 0 points) will decrease your points by 100.<br/>
+                                The one who has more points after the 10 questions, wins!<br/>
+                                <b>Hope you will enjoy the game.</b>
+                                <br />
+                            </p>
+                            <p id="playWithAgentInstructions">
+                                Hello and welcome to Project Trivia game! <br />
+                                In Play With Agent training mode, you will be playing against an agent, when each of you has 10 questions to answer on.<br />
+                                The one who holds the turn has 20 seconds to answer the question.<br />
+                                Beacuse an agent is also playing with you, At any time this agent can answer the question instead of you.
                                 Right answer will increase your points by 100.<br />
                                 Wrong answer (if you have more than 0 points) will decrease your points by 100.<br/>
                                 The one who has more points after the 10 questions, wins!<br/>
