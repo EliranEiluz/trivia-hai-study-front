@@ -45,25 +45,24 @@ function WelcomePage({ nowOnline }) {
                 </ul>
             </div>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseTrainingMode" id="toggleModal">
-                Launch static backdrop modal
             </button>
             <div class="modal fade" id="chooseTrainingMode" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <div class="modal-content"  id="chooseTrainingModalBody">
+                        <div class="modal-header" id="chooseTrainingModalHeader">
+                            <h5 class="modal-title" id="staticBackdropLabel">Choose Training Mode</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body container-fluid">
                             <div className='row'>
                                 <div className='col-6'>
                                     <center>
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={onPlayWithAgent}>Play with Agent</button>
+                                        <button type="button" class="btn choose-mode-btn" data-bs-dismiss="modal" onClick={onPlayWithAgent}>Play with Agent</button>
                                     </center>
                                 </div>
                                 <div className='col-6'>
                                     <center>
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={onSinglePlayer}>Single Player</button>
+                                        <button type="button" class="btn choose-mode-btn" data-bs-dismiss="modal" onClick={onSinglePlayer}>Single Player</button>
                                     </center>
                                 </div>
                             </div>

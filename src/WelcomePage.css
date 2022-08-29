@@ -44,6 +44,23 @@
     font-size: 40px;
 }
 
+.choose-mode-btn {
+    background-color: #f8cd00;
+    border:3px solid #000;
+    color:black;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#chooseTrainingModalHeader {
+    background-color:  #f8cd00;
+}
+
+#chooseTrainingModalBody {
+    background-image: linear-gradient(120deg, #ff7974,red);
+    background-attachment: fixed;
+}
+
 .welcome-btn:hover {
     background-color: black;
     border-color: #f8cd00;
