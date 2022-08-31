@@ -15,6 +15,7 @@
     font-size: x-large;
     box-shadow:0 0 0.3rem 0.3rem black;
     border-radius: 40px;
+    margin-bottom: 40px;
 }
 
 #login_read_more {

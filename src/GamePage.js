@@ -23,7 +23,10 @@ function GamePage({ nowOnline }) {
     const [points, setPoints] = useState('0')
     const [questionCounter, setQuestionCounter] = useState(1);
     const gameCounter = useRef(0);
-
+    const [pointsStr, setPointsStr] = useState("Points");
+    const [turn, setTurn] = useState("It's your turn!");
+    const isBeepPlaying = useRef(false)
+    const beep = useRef(new Audio('https://sounds-mp3.com/mp3/0012921.mp3'));
     function gameFinished() {
         nowOnline.playerPoints = playerPoints.current;
         nowOnline.agentPoints = agentPoints.current;
@@ -59,18 +62,21 @@ function GamePage({ nowOnline }) {
     }
 
     async function onChoosingAnswer(e) {
-        if(!nowOnline.singlePlayer) {
+        if (!nowOnline.singlePlayer) {
             clearTimeout(agentTimeout.current)
         }
         onAgentChoosingAnswer(parseInt(e.target.value));
     }
 
     async function onAgentChoosingAnswer(val) {
+        beep.current.pause();
+        beep.current.currentTime = 0;
         clearTimeout(timerInterval.current)
-        await makeBlink(val);
+        if(val != 0) {
+            await makeBlink(val);
+        }
         await answerCheck(val);
         gameCounter.current += 1;
-        console.log(gameCounter);
         if (gameCounter.current == 20) {
             gameFinished();
             return;
@@ -83,6 +89,10 @@ function GamePage({ nowOnline }) {
             setTimerClock((prevTimerClock) => prevTimerClock - 1);
             timerInterval.current = setTimeout(timer, 1000);
             timeLeft.current--;
+            if(timeLeft.current < 6 && !isBeepPlaying.current) {
+                beep.current.play();
+                isBeepPlaying.current = true;
+            }
         }
         else {
             onAgentChoosingAnswer(0);
@@ -91,11 +101,13 @@ function GamePage({ nowOnline }) {
 
     function leaveGame() {
         clearTimeout(timerInterval.current);
+        beep.current.pause();
         navigation('/welcome')
     }
 
     function leaveToHomeGame() {
         clearTimeout(timerInterval.current);
+        beep.current.pause();
         navigation('/')
     }
 
@@ -149,7 +161,7 @@ function GamePage({ nowOnline }) {
         document.getElementById("2ndAnswer").disabled = "true";
         document.getElementById("3rdAnswer").disabled = "true";
         document.getElementById("4thAnswer").disabled = "true";
-        var rand = (Math.floor(Math.random() * 17) + 1) * 1000;
+        var rand = (Math.floor(Math.random() * 19) + 1) * 1000;
         setTimeout(() => {
             var chosen = Math.floor(Math.random() * 4) + 1;
             var e;
@@ -185,6 +197,7 @@ function GamePage({ nowOnline }) {
     function gameFlow() {
         timeLeft.current = 20;
         clearTimeout(timerInterval)
+        isBeepPlaying.current = false;
         if (gameCounter > 20) {
             navigation('/TMfinished');
         }
@@ -199,7 +212,10 @@ function GamePage({ nowOnline }) {
         timer();
         if (isPlayerTurn.current) {
             removeDisabled();
-            if(!nowOnline.singlePlayer) {
+            document.getElementById('turnBtn').classList.replace('btn-dark','btn-success')
+            setTurn("It's your turn!")
+            setPointsStr("Points");
+            if (!nowOnline.singlePlayer) {
                 playWithAgent()
             }
             setPoints(playerPoints.current);
@@ -207,6 +223,9 @@ function GamePage({ nowOnline }) {
             playerQuestionCounter.current += 1;
         }
         else {
+            document.getElementById('turnBtn').classList.replace('btn-success','btn-dark')
+            setPointsStr("Agent's Points");
+            setTurn("It's agent's turn")
             agent();
             setPoints(agentPoints.current);
             setQuestionCounter(agentQuestionCounter.current);
@@ -273,14 +292,12 @@ function GamePage({ nowOnline }) {
 
 
     useEffect(() => {
-        if(nowOnline.singlePlayer) {
+        if (nowOnline.singlePlayer) {
             document.getElementById('singlePlayerInstructions').style.display = "block";
-            console.log('im true!')
         }
         else {
             document.getElementById('playWithAgentInstructions').style.display = "block";
             playWithAgentOperations.current = require('./agent.json');
-            console.log('im false!')
         }
         document.getElementById('startGameModalBtn').click();
     }, [])
@@ -318,8 +335,8 @@ function GamePage({ nowOnline }) {
                                 In Single-Player training mode, you will be playing against an agent, when each of you has 10 questions to answer on.<br />
                                 The one who holds the turn has 20 seconds to answer the question.<br />
                                 Right answer will increase your points by 100.<br />
-                                Wrong answer (if you have more than 0 points) will decrease your points by 100.<br/>
-                                The one who has more points after the 10 questions, wins!<br/>
+                                Wrong answer (if you have more than 0 points) will decrease your points by 100.<br />
+                                The one who has more points after the 10 questions, wins!<br />
                                 <b>Hope you will enjoy the game.</b>
                                 <br />
                             </p>
@@ -329,8 +346,8 @@ function GamePage({ nowOnline }) {
                                 The one who holds the turn has 20 seconds to answer the question.<br />
                                 Beacuse an agent is also playing with you, At any time this agent can answer the question instead of you.
                                 Right answer will increase your points by 100.<br />
-                                Wrong answer (if you have more than 0 points) will decrease your points by 100.<br/>
-                                The one who has more points after the 10 questions, wins!<br/>
+                                Wrong answer (if you have more than 0 points) will decrease your points by 100.<br />
+                                The one who has more points after the 10 questions, wins!<br />
                                 <b>Hope you will enjoy the game.</b>
                                 <br />
                             </p>
@@ -384,11 +401,14 @@ function GamePage({ nowOnline }) {
                                 <div className='container-fluid'>
                                     <div className='row'>
                                         <div className='col-xl-5 col-sm-8'>
-                                            Points: {points} <br />
+                                            {pointsStr}: {points} <br />
                                             Question {questionCounter}/10
                                         </div>
                                         <div className='col-xl-4 col-sm-6' id="time">
                                             <span id="timeWord">Time:</span><br /> {timerClock} seconds
+                                        </div>
+                                        <div className='col-xl-3'>
+                                            <div className='btn btn-dark float-end' id="turnBtn"><span id="turnStr">{turn}</span></div>
                                         </div>
                                     </div>
                                     <div className='row justify-content-md-center' id="question">

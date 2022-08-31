@@ -172,11 +172,11 @@ function RegisterPage({nowOnline}) {
                     </div>
                     <div className='row register-row'>
                     <div className='col-1'></div>
-                        <div className='col-5'>
+                        <div className='col-5 col-sm-6'>
                             <button className='btn btn-primary register-btn' id="register_loginPage_btn" onClick={loginBtnClick}>Back to login page</button>
                         </div>
-                        <div className='col-3'></div>
-                        <div className='col-3'>
+                        <div className='col-3 col-sm-1'></div>
+                        <div className='col-3 col-sm-4'>
                             <button className='btn btn-primary register-btn' id="register_register_btn" type="submit">Register</button>
                         </div>
                     </div>

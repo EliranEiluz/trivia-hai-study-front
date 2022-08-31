@@ -93,13 +93,13 @@ function LoginPage({ nowOnline }) {
                             </div>
                         </div>
                         <div className='row login-row'>
-                            <div className='col-xl-1 col-sm-0'></div>
-                            <div className='col-xl-4 col-sm-6'>
+                            <div className='col-1'></div>
+                            <div className='col-4'>
                                 <button className='btn btn-primary login-btn' id="login_register_btn" onClick={registerBtnClick}>Create new account</button>
                             </div>
-                            <div className='col-xl-4 col-sm-0'>
+                            <div className='col-4'>
                             </div>
-                            <div className='col-xl-3 col-sm-6'>
+                            <div className='col-3'>
                                 <button className='btn btn-primary login-btn' id="login_login_btn" type="submit">Log in</button>
                             </div>
                         </div>

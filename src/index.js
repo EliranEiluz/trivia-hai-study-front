@@ -59,7 +59,7 @@ for(let i = 0; i < questionsArray.length; i++) {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <BrowserRouter>
+    <BrowserRouter basename={'/trivia'}>
       <Routes>
         <Route path='/' element={<LoginPage nowOnline={nowOnline}/>} />
         <Route path='/register' element={<RegisterPage nowOnline={nowOnline}/>} />
