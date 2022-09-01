@@ -169,12 +169,11 @@
 
 @media screen and (max-width:800px) {
     .question-btn {
-        margin:0px;
+        margin:5px;
     }
     #time {
         margin-top: 0px;
-        font-size: 17px;
-        width:fit-content;
+        font-size: 23px;
         margin-left: 60px;
     }
     #question {
@@ -183,10 +182,39 @@
         word-break: break-word;
     }
     #pointsDiv {
+        font-size: 20px;
+    }
+    #question-card {
+        margin-top:20px;
+    }
+    #gamePageContainer {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .question-btn {
+        margin:5px;
+    }
+    #time {
+        margin-top: 0px;
         font-size: 17px;
+        margin-left: 65px;
+        width:fit-content;
+    }
+    #question {
+        margin-top:20px;
+        font-size:25px;
+        word-break: break-word;
+    }
+    #pointsDiv {
+        font-size: 18px;
         width:fit-content;
     }
     #question-card {
         margin-top:20px;
+    }
+    #gamePageContainer {
+        margin-bottom: 20px;
     }
 }

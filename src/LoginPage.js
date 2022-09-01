@@ -97,17 +97,17 @@ function LoginPage({ nowOnline }) {
                                     </div>
                                     <div className='row login-row'>
                                         <div className='col-1'></div>
-                                        <div className='col-xl-4 col-sm-12 d-flex justify-content-center justify-content-md-start'>
+                                        <div className='col-xl-4 col-xs-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-start'>
                                             <button className='btn btn-primary login-btn' id="login_register_btn" onClick={registerBtnClick}>Create new account</button>
                                         </div>
-                                        <div className='col-xl-3 col-sm-12 d-flex justify-content-center justify-content-md-start'>
+                                        <div className='col-xl-3 d-flex justify-content-center d-none d-xl-block justify-content-md-start'>
                                         </div>
-                                        <div className='col-xl-4 col-sm-12 d-flex justify-content-center justify-content-md-end'>
+                                        <div className='col-xl-4 col-xs-12 col-sm-12 col-md-5 d-flex justify-content-center justify-content-md-end'>
                                             <button className='btn btn-primary login-btn' id="login_login_btn" type="submit">Log in</button>
                                         </div>
                                     </div>
                                     <div className='row login-row justify-content-center'>
-                                        <div className='col-xl-4 col-sm-12 d-flex justify-content-center'>
+                                        <div className='col-xl-4 col-xs-12 col-sm-12 col-md-6 d-flex justify-content-center'>
                                             <button className='btn btn-primary login-btn' id="login_guest_btn" onClick={loginAsGuest} type="button">Login as Guest</button>
                                         </div>
                                     </div>

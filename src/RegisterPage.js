@@ -176,12 +176,12 @@ function RegisterPage({ nowOnline }) {
                                         </div>
                                     </div>
                                     <div className='row register-row'>
-                                        <div className='col-xl-1 col-sm-1'></div>
-                                        <div className='col-xl-5 col-sm-12 d-flex justify-content-md-start justify-content-center'>
+                                        <div className='col-xl-1 d-none d-xl-block'></div>
+                                        <div className='col-xl-5 col-sm-12 col-md-6 d-flex justify-content-md-start justify-content-center'>
                                             <button className='btn btn-primary register-btn' id="register_loginPage_btn" onClick={loginBtnClick}>Back to login page</button>
                                         </div>
-                                        <div className='col-xl-3 col-sm-1'></div>
-                                        <div className='col-xl-3 col-sm-12 d-flex justify-content-md-end justify-content-center'>
+                                        <div className='col-xl-3 d-none d-xl-block'></div>
+                                        <div className='col-xl-3 col-sm-12 col-md-6 d-flex justify-content-md-end justify-content-center'>
                                             <button className='btn btn-primary register-btn' id="register_register_btn" type="submit">Register</button>
                                         </div>
                                     </div>

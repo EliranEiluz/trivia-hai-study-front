@@ -30,8 +30,8 @@ function TMFinished({ nowOnline }) {
         winOrLose();
         var secondsPassed = 0;
         const interval = setInterval(() => {
-            if(secondsPassed < 10) {
-                setTimerClock(prevTimerClock => prevTimerClock-1);
+            if (secondsPassed < 10) {
+                setTimerClock(prevTimerClock => prevTimerClock - 1);
                 secondsPassed++;
             }
             else {
@@ -60,28 +60,30 @@ function TMFinished({ nowOnline }) {
                 </ul>
             </div>
             <div className='container-fluid'>
-                <div className='row justify-content-md-center'>
-                    <div className='card w-50' id="finishedCard">
-                        <div className='card-body'>
-                            <div className='container-fluid'>
-                                <div className='row row justify-content-md-center' id="WinOrLoseMessage">
-                                    <center>
-                                        <span id="message"></span>
-                                    </center>
-                                </div>
-                                <div className='row justify-content-md-center' id="points">
-                                    Your points: {playerPoints}<br />
-                                    Agent's points: {agentPoints}
-                                </div>
-                                <div className='row justify-content-md-center'>
-                                    <div className='col-4'>
+                <div className='row justify-content-center'>
+                    <div className='col-xl-8 col-xs-12'>
+                        <div className='card' id="finishedCard">
+                            <div className='card-body'>
+                                <div className='container-fluid'>
+                                    <div className='row row justify-content-md-center' id="WinOrLoseMessage">
                                         <center>
-                                        <button className='btn btn-primary backToHome-btn' id="backToHomeBtn" onClick={toHomePageBtnClick}>Back to Home Page</button>
+                                            <span id="message"></span>
                                         </center>
                                     </div>
-                                </div>
-                                <div className='row justify-content-md-center' id="toHomePageTxt">
-                                    Returning to home page in {timerClock} seconds...
+                                    <div className='row justify-content-md-center' id="points">
+                                        Your points: {playerPoints}<br />
+                                        Agent's points: {agentPoints}
+                                    </div>
+                                    <div className='row justify-content-center'>
+                                        <div className='col-xl-4'>
+                                            <center>
+                                                <button className='btn btn-primary backToHome-btn' id="backToHomeBtn" onClick={toHomePageBtnClick}>Back to Home Page</button>
+                                            </center>
+                                        </div>
+                                    </div>
+                                    <div className='row justify-content-md-center' id="toHomePageTxt">
+                                        Returning to home page in {timerClock} seconds...
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -89,6 +91,7 @@ function TMFinished({ nowOnline }) {
                 </div>
             </div>
         </>
+
     )
 
 }

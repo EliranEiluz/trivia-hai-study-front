@@ -27,6 +27,7 @@ function GamePage({ nowOnline }) {
     const [turn, setTurn] = useState("It's your turn!");
     const isBeepPlaying = useRef(false)
     const beep = useRef(new Audio('https://sounds-mp3.com/mp3/0012921.mp3'));
+
     function gameFinished() {
         nowOnline.playerPoints = playerPoints.current;
         nowOnline.agentPoints = agentPoints.current;
@@ -400,17 +401,15 @@ function GamePage({ nowOnline }) {
                             <div className='card-body'>
                                 <div className='container-fluid'>
                                     <div className='row'>
-                                        <div className='col-xl-5 d-flex col-xs-5' id="pointsDiv">
+                                        <div className='col-xs-1 col-sm-4 col-md-4 col-l-2 col-xl-5' id="pointsDiv">
                                             {pointsStr}: {points} <br />
                                             Question {questionCounter}/10
                                         </div>
-                                        <div className='col-xl-4 d-flex col-xs-4 justify-content-md-start' id="time">
+                                        <div className='col-xs-1 col-sm-3 col-md-3 col-l-2 col-xl-4 justify-content-center' id="time">
                                             <div><span id="timeWord">Time:</span><br /> {timerClock} seconds</div>
                                         </div>
-                                        <div className='row'>
-                                            <div className='col-xl-3 justify-content-md-end justify-content-sm-center col-sm-3' id="turnCol">
-                                                <div className='btn btn-dark float-end' id="turnBtn"><span id="turnStr">{turn}</span></div>
-                                            </div>
+                                        <div className='col-xs-1 col-sm-3 col-md-3 col-l-3 col-xl-3 justify-content-center justify-content-sm-end d-xs-hidden d-none d-sm-block' id="turnCol">
+                                            <div className='btn btn-dark float-end' id="turnBtn"><span id="turnStr">{turn}</span></div>
                                         </div>
                                     </div>
                                     <div className='row justify-content-center' id="question">
