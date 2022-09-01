@@ -72,7 +72,7 @@ function GamePage({ nowOnline }) {
         beep.current.pause();
         beep.current.currentTime = 0;
         clearTimeout(timerInterval.current)
-        if(val != 0) {
+        if (val != 0) {
             await makeBlink(val);
         }
         await answerCheck(val);
@@ -89,7 +89,7 @@ function GamePage({ nowOnline }) {
             setTimerClock((prevTimerClock) => prevTimerClock - 1);
             timerInterval.current = setTimeout(timer, 1000);
             timeLeft.current--;
-            if(timeLeft.current < 6 && !isBeepPlaying.current) {
+            if (timeLeft.current < 6 && !isBeepPlaying.current) {
                 beep.current.play();
                 isBeepPlaying.current = true;
             }
@@ -212,7 +212,7 @@ function GamePage({ nowOnline }) {
         timer();
         if (isPlayerTurn.current) {
             removeDisabled();
-            document.getElementById('turnBtn').classList.replace('btn-dark','btn-success')
+            document.getElementById('turnBtn').classList.replace('btn-dark', 'btn-success')
             setTurn("It's your turn!")
             setPointsStr("Points");
             if (!nowOnline.singlePlayer) {
@@ -223,7 +223,7 @@ function GamePage({ nowOnline }) {
             playerQuestionCounter.current += 1;
         }
         else {
-            document.getElementById('turnBtn').classList.replace('btn-success','btn-dark')
+            document.getElementById('turnBtn').classList.replace('btn-success', 'btn-dark')
             setPointsStr("Agent's Points");
             setTurn("It's agent's turn")
             agent();
@@ -394,24 +394,26 @@ function GamePage({ nowOnline }) {
                 </div>
             </div>
             <div className='container-fluid' id="gamePageContainer">
-                <div className='row'>
-                    <div className='col-xl-11 col-sm-12'>
+                <div className='row justify-content-center'>
+                    <div className='col-xl-11 col-sm-12 justify-content-sm-center justify-content-md-start'>
                         <div className='card' id="question-card">
                             <div className='card-body'>
                                 <div className='container-fluid'>
                                     <div className='row'>
-                                        <div className='col-xl-5 col-sm-8'>
+                                        <div className='col-xl-5 d-flex col-xs-5' id="pointsDiv">
                                             {pointsStr}: {points} <br />
                                             Question {questionCounter}/10
                                         </div>
-                                        <div className='col-xl-4 col-sm-6' id="time">
-                                            <span id="timeWord">Time:</span><br /> {timerClock} seconds
+                                        <div className='col-xl-4 d-flex col-xs-4 justify-content-md-start' id="time">
+                                            <div><span id="timeWord">Time:</span><br /> {timerClock} seconds</div>
                                         </div>
-                                        <div className='col-xl-3'>
-                                            <div className='btn btn-dark float-end' id="turnBtn"><span id="turnStr">{turn}</span></div>
+                                        <div className='row'>
+                                            <div className='col-xl-3 justify-content-md-end justify-content-sm-center col-sm-3' id="turnCol">
+                                                <div className='btn btn-dark float-end' id="turnBtn"><span id="turnStr">{turn}</span></div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className='row justify-content-md-center' id="question">
+                                    <div className='row justify-content-center' id="question">
                                         {currentQuestion}
                                     </div>
                                 </div>
@@ -420,7 +422,7 @@ function GamePage({ nowOnline }) {
                     </div>
                 </div>
                 <div id="answersRow" role="group" aria-label="Basic radio toggle button group">
-                    <div className='row justify-content-center'>
+                    <div className='row' id="firstAnswerRow">
                         <div className='col-xl-6 d-flex justify-content-center col-sm-6'>
                             <input type="radio" id="1stAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='1' onChange={onChoosingAnswer}></input>
                             <label className="btn question-btn" htmlFor="1stAnswer" id="1stAnswerLabel">{firstAnswer}</label>
@@ -430,7 +432,7 @@ function GamePage({ nowOnline }) {
                             <label className="btn question-btn" htmlFor="2ndAnswer" id="2ndAnswerLabel">{secondAnswer}</label>
                         </div>
                     </div>
-                    <div className='row justify-content-center'>
+                    <div className='row'>
                         <div className='col-xl-6 d-flex justify-content-center col-sm-6'>
                             <input type="radio" id="3rdAnswer" name="answerRadio" autoComplete='off' className='btn-check' value='3' onChange={onChoosingAnswer}></input>
                             <label className="btn question-btn jusify-content-center" htmlFor="3rdAnswer" id="3rdAnswerLabel">{thirdAnswer}</label>

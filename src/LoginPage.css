@@ -15,7 +15,6 @@
     font-size: x-large;
     box-shadow:0 0 0.3rem 0.3rem black;
     border-radius: 40px;
-    margin-bottom: 40px;
 }
 
 #login_read_more {
@@ -24,8 +23,13 @@
 }
 
 #login_login_btn {
-    width:60%;
-    float: right;
+    width:50%;
+    margin-top: 10px;
+}
+
+#login_register_btn {
+    margin-top:10px;
+    width:50%;
 }
 
 #login_keep_login_text {
@@ -95,9 +99,7 @@
 }
 
 #login_guest_btn {
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: 100px;
+    width:50%;
 }
 
 

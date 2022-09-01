@@ -15,7 +15,7 @@
     font-size: x-large;
     box-shadow:0 0 0.3rem 0.3rem black;
     border-radius: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 #register_read_more {
@@ -24,8 +24,8 @@
 }
 
 #register_register_btn {
-    width:60%;
-    float: right;
+    width:50%;
+    margin-top:10px;
 }
 
 #register_keep_login_text {
@@ -71,7 +71,8 @@
 }
 
 #register_loginPage_btn {
-    width:40%;
+    width:50%;
+    margin-top:10px;
 }
 
 input[type="radio"] {

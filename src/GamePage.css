@@ -9,7 +9,7 @@
     box-shadow:0 0 0.3rem 0.3rem black;
     font-size: 22px;
     font-weight: 600;
-    margin-left: 110px;
+    margin-bottom: 20px;
 }
 
 #time {
@@ -55,6 +55,7 @@
     word-break: break-word;
 }
 
+
 .answerCard {
     height:280px;
     margin-top:50px;
@@ -66,16 +67,19 @@
     border:3px solid #000;
     color:black;
     font-weight: bold;
-    padding-left:200px;
-    padding-right:200px;
-    padding-top:40px;
-    padding-bottom: 40px;
+    margin-bottom: 30px;
     margin-top:30px;
+    margin-bottom: 30px;
     border-radius: 15px;
     align-items: center; 
     word-break: break-word;
-    width:80%;
+    width:90%;
+    height:90%;
     font-size:19px;
+}
+
+.btn-check {
+    margin-top:30px;
 }
 
 .question-btn:disabled {
@@ -161,4 +165,28 @@
 
 #turnBtn {
     pointer-events: none;
+}
+
+@media screen and (max-width:800px) {
+    .question-btn {
+        margin:0px;
+    }
+    #time {
+        margin-top: 0px;
+        font-size: 17px;
+        width:fit-content;
+        margin-left: 60px;
+    }
+    #question {
+        margin-top:20px;
+        font-size:30px;
+        word-break: break-word;
+    }
+    #pointsDiv {
+        font-size: 17px;
+        width:fit-content;
+    }
+    #question-card {
+        margin-top:20px;
+    }
 }

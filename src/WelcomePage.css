@@ -42,7 +42,9 @@
     padding-bottom: 20px;
     margin-top:30px;
     font-size: 40px;
+    width:80%;
 }
+
 
 .choose-mode-btn {
     background-color: #f8cd00;
@@ -77,8 +79,7 @@
 }
 
 #teamModeBtn {
-    padding-left:116px;
-    padding-right: 116px;
+    margin-bottom: 20px;
 }
 
 #isInOtherGame {
@@ -94,4 +95,15 @@
 
 #toggleModal {
     display: none;
+}
+
+@media screen and (max-width:576px) {
+    #WelcomePageContent {
+        font-size: 30px;
+    }
+    .welcome-btn {
+        font-size: 30px;
+        width:100%;
+    } 
+    
 }

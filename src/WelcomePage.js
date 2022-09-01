@@ -44,56 +44,57 @@ function WelcomePage({ nowOnline }) {
                     </li>
                 </ul>
             </div>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseTrainingMode" id="toggleModal">
+            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseTrainingMode" id="toggleModal">
             </button>
-            <div class="modal fade" id="chooseTrainingMode" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content"  id="chooseTrainingModalBody">
-                        <div class="modal-header" id="chooseTrainingModalHeader">
-                            <h5 class="modal-title" id="staticBackdropLabel">Choose Training Mode</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id="chooseTrainingMode" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content" id="chooseTrainingModalBody">
+                        <div className="modal-header" id="chooseTrainingModalHeader">
+                            <h5 className="modal-title" id="staticBackdropLabel">Choose Training Mode</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body container-fluid">
+                        <div className="modal-body container-fluid">
                             <div className='row'>
                                 <div className='col-6'>
                                     <center>
-                                        <button type="button" class="btn choose-mode-btn" data-bs-dismiss="modal" onClick={onPlayWithAgent}>Play with Agent</button>
+                                        <button type="button" className="btn choose-mode-btn" data-bs-dismiss="modal" onClick={onPlayWithAgent}>Play with Agent</button>
                                     </center>
                                 </div>
                                 <div className='col-6'>
                                     <center>
-                                        <button type="button" class="btn choose-mode-btn" data-bs-dismiss="modal" onClick={onSinglePlayer}>Single Player</button>
+                                        <button type="button" className="btn choose-mode-btn" data-bs-dismiss="modal" onClick={onSinglePlayer}>Single Player</button>
                                     </center>
                                 </div>
                             </div>
 
-                        </div>
-                        <div class="modal-footer">
                         </div>
                     </div>
                 </div>
             </div>
             <div className='container-fluid' id="WelcomePageContent">
                 <div className='row justify-content-md-center'>
-                    <div className='col-6 col-md-auto' id="logoDiv">
+                    <div className='col-xl-6 col-sm-12 d-flex justify-content-center' id="logoDiv">
                         Project Trivia Logo
                     </div>
-                    <div className='row justify-content-md-center'>
-                        <div className='col-6 col-md-auto' id="WelcomeMessage">
-                            Welcome back, {nowOnline.onlineUser.fullName}! <i className="fa-solid fa-hand-peace fa-1x"></i><br />
-                            <i className="fa-solid fa-hand-wave"></i>
-                            Please choose game mode:
-                        </div>
-                        <div className='row justify-content-md-center'>
-                            <div className='col-6 col-md-auto' id="TrainingModeBtn">
-                                <button className='btn btn-primary welcome-btn btn-lg' onClick={onClickTrainingMode}>Training Mode</button>
-                            </div>
-                            <div className='row justify-content-md-center'>
-                                <div className='col-6 col-md-auto'>
-                                    <button className='btn btn-primary welcome-btn btn-lg' id="teamModeBtn">Team Mode</button>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div className='row justify-content-md-center'>
+                    <div className='col-xl-6 col-sm-12 d-flex justify-content-center' id="WelcomeMessage">
+                        <div>Welcome back, {nowOnline.onlineUser.fullName}! <i className="fa-solid fa-hand-peace fa-1x"></i></div><br></br>
+                    </div>
+                </div>
+                <div className='row justify-content-center'>
+                    <div className='col-xl-6 col-sm-12 d-flex justify-content-center' id="WelcomeMessage">
+                        <div>Please choose game mode:</div>
+                    </div>
+                </div>
+                <div className='row justify-content-md-center'>
+                    <div className='col-xl-6 d-flex justify-content-center'>
+                        <button className='btn btn-primary welcome-btn btn-lg' id="TrainingModeBtn" onClick={onClickTrainingMode}>Training Mode</button>
+                    </div>
+                </div>
+                <div className='row justify-content-md-center'>
+                    <div className='col-xl-6 d-flex justify-content-center'>
+                        <button className='btn btn-primary welcome-btn btn-lg' id="teamModeBtn">Team Mode</button>
                     </div>
                 </div>
             </div>
