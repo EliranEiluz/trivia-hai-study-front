@@ -8,7 +8,6 @@
     color:black;
     font-size: 20px;
     font-weight: bold;
-    margin-right:15px
 }
 
 .nav-link:hover {
@@ -18,6 +17,7 @@
 
 .nav {
     --bs-nav-link-hover-color:black;
+    padding: 0px;
 }
 
 #logoDiv {
@@ -61,6 +61,7 @@
 #chooseTrainingModalBody {
     background-image: linear-gradient(120deg, #ff7974,red);
     background-attachment: fixed;
+    border-bottom: none;
 }
 
 .welcome-btn:hover {
@@ -97,6 +98,11 @@
     display: none;
 }
 
+#imgLogo2 {
+    max-width: 100%;
+    height: 120px;
+}
+
 @media screen and (max-width:576px) {
     #WelcomePageContent {
         font-size: 30px;
@@ -106,4 +112,8 @@
         width:100%;
     } 
     
+}
+
+#closeBtn {
+    margin: 0px;
 }

@@ -26,7 +26,23 @@
                 "register_login_btn": "Back to login page",
                 "register_register_btn": "Register",
                 "hebrew": "Hebrew",
-                "english": "English"
+                "english": "English",
+                "welcome":"Welcome",
+                "guest":"Guest",
+                "choose_game_mode":"Please choose game mode:",
+                "training_mode":"Training Mode",
+                "team_mode":"Team Mode",
+                "home":"Home",
+                "about":"About",
+                "switch_mode":"Switch Mode",
+                "leave_game":"Leave Game",
+                "time":"Time",
+                "agent_points":"Agent's Points",
+                "points":"Points",
+                "scoreboard":"Scoreboard",
+                "choose_training_mode":"Choose Training Mode",
+                "play_with_agent":"Play With Agent",
+                "single_player":"Single Player"
             }
         },
         "iw": {
@@ -54,7 +70,23 @@
                 "register_login_btn": "חזרה לעמוד ההתחברות",
                 "register_register_btn": "הירשם",
                 "hebrew": "עברית",
-                "english": "אנגלית"
+                "english": "אנגלית",
+                "welcome":"ברוכים הבאים",
+                "guest":"אורח",
+                "choose_game_mode":"בחר את סוג המשחק",
+                "training_mode":"אימון",
+                "team_mode":"משחק קבוצתי",
+                "home":"עמוד הבית",
+                "about":"אודות",
+                "switch_mode":"החלף סוג משחק",
+                "leave_game":"עזוב את המשחק",
+                "time":"זמן",
+                "agent_points":"נקודות של הסוכן",
+                "points":"נקודות",
+                "scoreboard":"לוח תוצאות",
+                "choose_training_mode":"בחר את סוג האימון",
+                "play_with_agent":"שחק עם סוכן",
+                "single_player":"משחק יחיד"
             }
         }
     }

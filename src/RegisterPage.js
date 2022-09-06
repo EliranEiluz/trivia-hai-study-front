@@ -189,7 +189,7 @@ function RegisterPage({ nowOnline }) {
                                     <div className='row register-row'>
                                         <div className='col-xl-1 d-none d-xl-block'></div>
                                         <div className='col-xl-4 col-sm-12 col-md-6 d-flex justify-content-md-start justify-content-center'>
-                                            <button className='btn btn-primary register-btn' id="register_loginPage_btn" onClick={loginBtnClick}>{t('register_login_btn')}</button>
+                                            <button className='btn btn-primary register-btn' id="register_loginPage_btn" onClick={loginBtnClick} type="button">{t('register_login_btn')}</button>
                                         </div>
                                         <div className='col-xl-3 d-none d-xl-block'></div>
                                         <div className='col-xl-3 col-sm-12 col-md-6 d-flex justify-content-md-end justify-content-center'>

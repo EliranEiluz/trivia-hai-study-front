@@ -1,0 +1,203 @@
+[
+    {
+        "id": 1,
+        "question":  "מהי עיר הבירה של ספרד?",
+        "firstAnswer": "ברצלונה", 
+        "secondAnswer": "ולנסיה",
+        "thirdAnswer": "מדריד",
+        "forthAnswer":"סביליה", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 2,
+        "question": "באיזו שנה הכריזה מדינת ישראל על עצמאותה?",
+        "firstAnswer": "1957", 
+        "secondAnswer": "1967",
+        "thirdAnswer": "2021",
+        "forthAnswer":"1948", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 3,
+        "question": "באיזה ענף ספורט שיחק מייקל ג'ורדן?",
+        "firstAnswer": "כדורגל", 
+        "secondAnswer": "כדורסל",
+        "thirdAnswer": "טניס",
+        "forthAnswer":"כדורעף", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 4,
+        "question": "איזו מדינה היא המאוכלסת ביותר בארצות הברית?",
+        "firstAnswer": "קונטיקט", 
+        "secondAnswer": "ניו ג'רזי",
+        "thirdAnswer": "רוד איילנד",
+        "forthAnswer":"מרילנד", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 5,
+        "question": "אלברט אינששטיין הוא פיזיקאי מוכר. באיזו מדינה הוא נולד?",
+        "firstAnswer": "גרמניה", 
+        "secondAnswer": "ארצות הברית",
+        "thirdAnswer": "צרפת",
+        "forthAnswer":"ישראל", 
+        "rightAnswer":1
+    },
+
+    {
+        "id": 6,
+        "question": "בסיטקום סיינפלד, מהו שמו הפרטי של קרמר?",
+        "firstAnswer": "קסלר", 
+        "secondAnswer": "ניומן",
+        "thirdAnswer": "קוזמו",
+        "forthAnswer":"לארי", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 7,
+        "question": "מהם אחוזי הראייה של אדם שהתעוור בעין אחת?",
+        "firstAnswer": "50 אחוז", 
+        "secondAnswer": "10 אחוז",
+        "thirdAnswer": "35 אחוז",
+        "forthAnswer":"20 אחוז", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 8,
+        "question": "גולש הוא מרק בשר שהגיע מהעדה ה...",
+        "firstAnswer": "מרוקאית", 
+        "secondAnswer": "יוונית",
+        "thirdAnswer": "עיראקית",
+        "forthAnswer":"הונגרית", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 9,
+        "question": "מהו זרם חשמלי?",
+        "firstAnswer": "זרם של מים", 
+        "secondAnswer": "זרם של אוויק",
+        "thirdAnswer": "זרם של אלקטרונים",
+        "forthAnswer":"זרם של אטומים", 
+        "rightAnswer":3
+    },
+
+    
+    {
+        "id": 10,
+        "question": "מי מהבאים אינו אירגון בינלאומי?",
+        "firstAnswer": "FIFA", 
+        "secondAnswer": "NATO",
+        "thirdAnswer": "ASEAN",
+        "forthAnswer":"FBI", 
+        "rightAnswer":4
+    },
+    
+    {
+        "id": 11,
+        "question": "מי מהבאים הוא שיר של להקת הרוק הגרמנית Scorpions?",
+        "firstAnswer": "Stairway to Heaven", 
+        "secondAnswer": "Wind of Change",
+        "thirdAnswer": "Don’t Stop Me Now",
+        "forthAnswer":"Hey Jude", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 12,
+        "question": "מהי מהירות הקול?",
+        "firstAnswer": "120 קמש", 
+        "secondAnswer": "1,200 קמש",
+        "thirdAnswer": "400 קמש",
+        "forthAnswer":"700 קמש", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 13,
+        "question": "מי מהחיות הבאות רצה הכי מהר?",
+        "firstAnswer": "צ'יטה", 
+        "secondAnswer": "נמר",
+        "thirdAnswer": "טיגריס",
+        "forthAnswer":"אריה", 
+        "rightAnswer":1
+    },
+
+    {
+        "id": 14,
+        "question": "איך קיבל ספיידרמן את כוחות העל שלו?",
+        "firstAnswer": "הוא נולד איתם", 
+        "secondAnswer": "הוא ננשך על ידי עכביש רדיואקטיבי",
+        "thirdAnswer": "הוא קיבל אותם בניסוי מדעי",
+        "forthAnswer":"הוא קם איתם לאחר חלום", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 15,
+        "question": "Where did the powers of Spiderman come from?",
+        "firstAnswer": "He was born with them", 
+        "secondAnswer": "He was bitten by a radioactive spider",
+        "thirdAnswer": "He went through a scientific experiment",
+        "forthAnswer":"He woke up with them after a dream", 
+        "rightAnswer":2
+    },
+    
+    {
+        "id": 16,
+        "question": "מי המפילוסופים הבאים הגה את המשפט אני חושב משמע אני קיים?",
+        "firstAnswer": "סוקרטס", 
+        "secondAnswer": "פלאטו",
+        "thirdAnswer": "אריסטו",
+        "forthAnswer":"דקארט", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 17,
+        "question": "מהם ראשי התיבות SOS?",
+        "firstAnswer": "Save Our Sheep", 
+        "secondAnswer": "Save Our Ship",
+        "thirdAnswer": "Save Our Seal",
+        "forthAnswer":"Save Our Souls", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 18,
+        "question": "איזו חברה הפיצה את המשחק סופר מריו?",
+        "firstAnswer": "Microsoft", 
+        "secondAnswer": "Nintendo",
+        "thirdAnswer": "SEGA",
+        "forthAnswer":"Electronic Arts", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 19,
+        "question": "כמה אזורי זמן יש בעולם?",
+        "firstAnswer": "8", 
+        "secondAnswer": "16",
+        "thirdAnswer": "24",
+        "forthAnswer":"32", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 20,
+        "question": "מהו סוג הדם הנדיר ביותר בקרב בני האדם?",
+        "firstAnswer": "AB-", 
+        "secondAnswer": "O+",
+        "thirdAnswer": "B-",
+        "forthAnswer":"A+", 
+        "rightAnswer":1
+    }
+
+]

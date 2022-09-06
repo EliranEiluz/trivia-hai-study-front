@@ -1,26 +1,38 @@
 import './LogoRow.css';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 
 function LogoRow() {
 
     const { t } = useTranslation();
 
-    function changeToHeb() {
+    async function changeToHeb() {
         if (document.querySelector("html").lang == "en") {
             document.querySelector("html").lang = "iw";
             document.querySelector("html").dir = "rtl";
-            i18n.changeLanguage("iw");
+            await i18n.changeLanguage("iw");
+            document.getElementById("langBtn").innerHTML = document.getElementById("il").innerHTML;
         }
     }
 
-    function changeToEn() {
+    async function changeToEn() {
         if (document.querySelector("html").lang == "iw") {
             document.querySelector("html").lang = "en";
             document.querySelector("html").dir = "ltr";
-            i18n.changeLanguage("en");
+            await i18n.changeLanguage("en");
+            document.getElementById("langBtn").innerHTML = document.getElementById("us").innerHTML;
         }
     }
+
+    useEffect(() => {
+        if (document.querySelector("html").lang == "iw") {
+            document.getElementById("langBtn").innerHTML = document.getElementById("il").innerHTML;
+        }
+        else {
+            document.getElementById("langBtn").innerHTML = document.getElementById("us").innerHTML;
+        }
+    }, [])
 
     return (
         <div className='row'>
@@ -30,13 +42,13 @@ function LogoRow() {
                         <span className='flag-icon flag-icon-us'></span>{t('english')}
                     </button>
                     <ul className="dropdown-menu">
-                        <li><button className="dropdown-item" type="button" onClick={changeToEn}><span className='flag-icon flag-icon-us'></span>{t('english')}</button></li>
-                        <li><button className="dropdown-item" type="button" onClick={changeToHeb}><span className='flag-icon flag-icon-il'></span>{t('hebrew')}</button></li>
+                        <li><button className="dropdown-item" type="button" onClick={changeToEn} id="us"><span className='flag-icon flag-icon-us'></span>{t('english')}</button></li>
+                        <li><button className="dropdown-item" type="button" onClick={changeToHeb} id="il"><span className='flag-icon flag-icon-il'></span>{t('hebrew')}</button></li>
                     </ul>
                 </div>
             </div>
             <div className='col-xl-6 d-flex justify-content-center' id="logo">
-                <img src="./tp1.png" id="imgLogo"></img>
+                <img src={require("./tp2.png")} id="imgLogo"></img>
             </div>
             <div className='col-xl-3 d-none d-m-block'></div>
         </div>
