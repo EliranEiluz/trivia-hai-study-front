@@ -10,6 +10,12 @@ import Teams from './Teams';
 import TeamPage from './TeamPage';
 import GamePage from './GamePage';
 import TMFinished from './TMFinished';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+
+i18n.use(initReactI18next).init(require('./languange.json'));
+
+
 
 class User {
   constructor(username, password, fullName, phoneNumber, memberType) {
@@ -77,4 +83,4 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-export {Team, User, Question};
+export {Team, User, Question };

@@ -70,6 +70,7 @@ function GamePage({ nowOnline }) {
     }
 
     async function onAgentChoosingAnswer(val) {
+        afterChoosingAnswer();
         beep.current.pause();
         beep.current.currentTime = 0;
         clearTimeout(timerInterval.current)
@@ -138,6 +139,10 @@ function GamePage({ nowOnline }) {
         document.getElementById("2ndAnswerLabel").classList.remove("rightAnswer");
         document.getElementById("3rdAnswerLabel").classList.remove("rightAnswer");
         document.getElementById("4thAnswerLabel").classList.remove("rightAnswer");
+        document.getElementById("1stAnswerLabel").classList.remove("disableAnswers");
+        document.getElementById("2ndAnswerLabel").classList.remove("disableAnswers");
+        document.getElementById("3rdAnswerLabel").classList.remove("disableAnswers");
+        document.getElementById("4thAnswerLabel").classList.remove("disableAnswers");
         document.getElementById("1stAnswer").classList.remove("rightAnswer");
         document.getElementById("2ndAnswer").classList.remove("rightAnswer");
         document.getElementById("3rdAnswer").classList.remove("rightAnswer");
@@ -193,6 +198,13 @@ function GamePage({ nowOnline }) {
         document.getElementById("2ndAnswer").disabled = false;
         document.getElementById("3rdAnswer").disabled = false;
         document.getElementById("4thAnswer").disabled = false;
+    }
+
+    function afterChoosingAnswer() {
+        document.getElementById("1stAnswerLabel").classList.add("disableAnswers");
+        document.getElementById("2ndAnswerLabel").classList.add("disableAnswers");
+        document.getElementById("3rdAnswerLabel").classList.add("disableAnswers");
+        document.getElementById("4thAnswerLabel").classList.add("disableAnswers");
     }
 
     function gameFlow() {

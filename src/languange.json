@@ -1,0 +1,61 @@
+{
+    "lng": "en",
+    "resources": {
+        "en": {
+            "translation": {
+                "username": "Username:",
+                "password": "Password:",
+                "keep_logged": "Keep me logged in",
+                "click": "Click",
+                "here": "here",
+                "read_more": "to read more about Trivia Project",
+                "login_username_error": "Please fill the username field.",
+                "login_password_error": "The password field must contain at least 8 characters.",
+                "login_register_btn": "Create new account",
+                "login_login_btn": "Log in",
+                "login_guest_btn": "Login as Guest",
+                "register_username_error": "Username must contain at least one character.",
+                "register_password_error": "Choose at least 8 characters- one numeric digit, one uppercase and one lowercase letter.",
+                "phone_number": "Phone Number:",
+                "phone_number_error": "Please enter valid phone number.",
+                "full_name": "Full Name:",
+                "full_name_error": "Full name must contain at least one character.",
+                "radio_error": "Please select one of the options below.",
+                "grandparent": "I'm a Grandparent",
+                "grandson": "I'm a Grandson",
+                "register_login_btn": "Back to login page",
+                "register_register_btn": "Register",
+                "hebrew": "Hebrew",
+                "english": "English"
+            }
+        },
+        "iw": {
+            "translation": {
+                "username": "שם משתמש:",
+                "password": "סיסמה:",
+                "keep_logged": "השאר אותי מחובר",
+                "click": "לחץ",
+                "here": "כאן",
+                "read_more": "כדי לקרוא עוד על פרויקט טריוויה",
+                "login_username_error": "שם המשתמש הוא שדה חובה.",
+                "login_password_error": "הסיסמה חייבת להכיל 8 תווים לפחות.",
+                "login_register_btn": "הירשם",
+                "login_login_btn": "התחבר",
+                "login_guest_btn": "התחבר כאורח",
+                "register_username_error": "שם המשתמש חייב להכיל תו אחד לפחות.",
+                "register_password_error": "בחר לפחות 8 תווים המכילים אות קטנה, אות גדולה ומספר.",
+                "phone_number": "מספר טלפון:",
+                "phone_number_error": "אנא הכנס מספר טלפון תקין.",
+                "full_name": "שם מלא:",
+                "full_name_error": "שם מלא הינו שדה חובה.",
+                "radio_error": "בחר באחת האפשרויות - סבא או נכד.",
+                "grandparent": "אני סבא",
+                "grandson": "אני נכד",
+                "register_login_btn": "חזרה לעמוד ההתחברות",
+                "register_register_btn": "הירשם",
+                "hebrew": "עברית",
+                "english": "אנגלית"
+            }
+        }
+    }
+}

@@ -1,16 +1,8 @@
-#logo {
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
 
-.login-row {
-    margin: 10px;
-}
 
 #login_card {
     background-color: #f8cd00;
-    font-family: 'calibri';
+
     font-weight: bold;
     font-size: x-large;
     box-shadow:0 0 0.3rem 0.3rem black;
@@ -20,6 +12,10 @@
 #login_read_more {
     font-size: large;
     font-weight: normal;
+}
+
+#globeIcon {
+    margin-top: 15px;
 }
 
 #login_login_btn {
@@ -32,8 +28,9 @@
     width:50%;
 }
 
-#login_keep_login_text {
-    margin-right:5px;
+#keep_logged_checkbox {
+    margin-left: 7px;
+    margin-right: 7px;
 }
 
 .login_input {
@@ -100,7 +97,11 @@
 
 #login_guest_btn {
     width:50%;
+    margin-bottom: 7px;
 }
 
-
+.flag-icon {
+    margin-left:5px;
+    margin-right: 5px;
+}
 

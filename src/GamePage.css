@@ -141,6 +141,10 @@
     pointer-events: none;
 }
 
+.disableAnswers {
+    pointer-events: none;
+}
+
 @media screen and (max-width:800px) {
     .question-btn {
         margin:5px;

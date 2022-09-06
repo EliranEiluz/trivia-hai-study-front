@@ -1,12 +1,17 @@
 import './LoginPage.css';
 import { useNavigate } from "react-router-dom";
-import { User } from './index.js'
+import { User } from './index.js';
+import LogoRow from './LogoRow';
+import { useTranslation } from 'react-i18next';
+
 
 function LoginPage({ nowOnline }) {
 
     var navigation = useNavigate();
 
     var keepLoggedIn = false;
+
+    const { t } = useTranslation();
 
     const details = { username: '', password: '' }
 
@@ -59,62 +64,68 @@ function LoginPage({ nowOnline }) {
                         <form id="login_form" onSubmit={handleSubmit} className="container-fluid h-100 w-100">
                             <div className="card" id="login_card">
                                 <div className="card-body">
-                                    <div className='row'>
-                                        <div id="logo">
-                                            Project Trivia Logo
-                                        </div>
-                                    </div>
+                                    <LogoRow />
                                     <div className='row login-row'>
-                                        <div className='col-xl-1 col-sm-0'></div>
-                                        <div className='col-xl-5 col-sm-12'>
-                                            Username:
+                                        <div className='col-xl-1 d-none d-md-block'>
+                                        </div>
+                                        <div className='col-xl-4 col-sm-12 jusify-content-md-center'>
+                                            {t('username')}
                                         </div>
                                         <div className='col-xl-6 col-sm-12'>
                                             <div className="error" id="login_userName_error">
-                                                Please fill the username field.
+                                                {t('login_username_error')}
                                             </div>
                                             <input className="login_input form-control" onChange={userNameChange}></input>
                                         </div>
+                                        <div className='col-xl-1 d-none d-md-block'>
+                                        </div>
                                     </div>
                                     <div className='row login-row'>
-                                        <div className='col-xl-1 col-sm-0'></div>
-                                        <div className='col-xl-5 col-sm-12'>
-                                            Password:
+                                        <div className='col-xl-1 d-none d-md-block'>
+                                        </div>
+                                        <div className='col-xl-4 col-sm-12'>
+                                            {t('password')}
                                         </div>
                                         <div className='col-xl-6 col-sm-12'>
                                             <div className="error" id="login_password_error">
-                                                The password field must contain at least 8 characters.
+                                                {t('login_password_error')}
                                             </div>
                                             <input className="login_input form-control" onChange={passwordChange}></input>
                                         </div>
+                                        <div className='col-xl-1 d-none d-md-block'>
+                                        </div>
                                     </div>
                                     <div className='row login-row'>
-                                        <div className='col-1 col-sm-0'></div>
+                                        <div className='col-xl-1 d-none d-md-block'>
+                                        </div>
                                         <div className='col-xl-5 col-sm-6'>
-                                            <span id="login_keep_login_text">Keep me logged in</span>
-                                            <input type="checkbox" onChange={keepLoginChange}></input>
+                                            <span id="login_keep_login_text">{t('keep_logged')}</span>
+                                            <input type="checkbox" onChange={keepLoginChange} id="keep_logged_checkbox"></input>
                                         </div>
                                     </div>
                                     <div className='row login-row'>
-                                        <div className='col-1'></div>
-                                        <div className='col-xl-4 col-xs-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-start'>
-                                            <button className='btn btn-primary login-btn' id="login_register_btn" onClick={registerBtnClick}>Create new account</button>
+                                        <div className='col-xl-1 d-none d-md-block'>
                                         </div>
-                                        <div className='col-xl-3 d-flex justify-content-center d-none d-xl-block justify-content-md-start'>
+                                        <div className='col-xl-4 col-xs-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-start'>
+                                            <button className='btn btn-primary login-btn' id="login_register_btn" onClick={registerBtnClick}>{t('login_register_btn')}</button>
+                                        </div>
+                                        <div className='col-xl-2 d-flex justify-content-center d-none d-xl-block justify-content-md-start'>
                                         </div>
                                         <div className='col-xl-4 col-xs-12 col-sm-12 col-md-5 d-flex justify-content-center justify-content-md-end'>
-                                            <button className='btn btn-primary login-btn' id="login_login_btn" type="submit">Log in</button>
+                                            <button className='btn btn-primary login-btn' id="login_login_btn" type="submit">{t('login_login_btn')}</button>
+                                        </div>
+                                        <div className='col-xl-1 d-none d-md-block'>
                                         </div>
                                     </div>
                                     <div className='row login-row justify-content-center'>
                                         <div className='col-xl-4 col-xs-12 col-sm-12 col-md-6 d-flex justify-content-center'>
-                                            <button className='btn btn-primary login-btn' id="login_guest_btn" onClick={loginAsGuest} type="button">Login as Guest</button>
+                                            <button className='btn btn-primary login-btn' id="login_guest_btn" onClick={loginAsGuest} type="button">{t('login_guest_btn')}</button>
                                         </div>
                                     </div>
                                     <div className='row login-row' id="login_read_more">
                                         <div className='col-xl-12'>
                                             <center>
-                                                Click <a href="#">Here</a> to read more about Trivia Project
+                                                {t('click')} <a href="#">{t('here')}</a> {t('read_more')}
                                             </center>
                                         </div>
                                     </div>
