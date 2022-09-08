@@ -83,7 +83,7 @@
         "id": 9,
         "question": "מהו זרם חשמלי?",
         "firstAnswer": "זרם של מים", 
-        "secondAnswer": "זרם של אוויק",
+        "secondAnswer": "זרם של אוויר",
         "thirdAnswer": "זרם של אלקטרונים",
         "fourthAnswer":"זרם של אטומים", 
         "rightAnswer":3
