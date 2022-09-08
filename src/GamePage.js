@@ -82,7 +82,7 @@ function GamePage({ nowOnline }) {
         }
         await answerCheck(val);
         gameCounter.current += 1;
-        if (gameCounter.current == 1) {
+        if (gameCounter.current == 20) {
             gameFinished();
             return;
         }
