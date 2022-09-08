@@ -142,11 +142,11 @@
 
     {
         "id": 15,
-        "question": "Where did the powers of Spiderman come from?",
-        "firstAnswer": "He was born with them", 
-        "secondAnswer": "He was bitten by a radioactive spider",
-        "thirdAnswer": "He went through a scientific experiment",
-        "fourthAnswer":"He woke up with them after a dream", 
+        "question": "כמה שפות נכתבות מימין לשמאל?",
+        "firstAnswer": "11", 
+        "secondAnswer": "12",
+        "thirdAnswer": "13",
+        "fourthAnswer":"14", 
         "rightAnswer":2
     },
     
