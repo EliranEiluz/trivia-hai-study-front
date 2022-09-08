@@ -1,8 +1,10 @@
 import './TMFinished.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function TMFinished({ nowOnline }) {
+    const {t} = useTranslation();
 
     const [playerPoints, setPlayerPoints] = useState(nowOnline.playerPoints);
     const [agentPoints, setAgentPoints] = useState(nowOnline.agentPoints);
@@ -11,13 +13,13 @@ function TMFinished({ nowOnline }) {
     function winOrLose() {
         var message = document.getElementById('message');
         if (nowOnline.isWin == 2) {
-            message.innerHTML = "WOW, you WIN! <i class='fa-solid fa-hands-clapping'></i>"
+            message.innerHTML = t('you_win') + " <i class='fa-solid fa-hands-clapping'></i>"
         }
         else if (nowOnline.isWin == 0) {
-            message.innerHTML = "Sorry, you LOST! <i class='fa-solid fa-heart-crack'></i>"
+            message.innerHTML = t('you_lost') + " <i class='fa-solid fa-heart-crack'></i>"
         }
         else {
-            message.innerHTML = "It's a DRAW! <i class='fa-solid fa-heart-crack'></i>"
+            message.innerHTML = t('draw') + " <i class='fa-solid fa-heart-crack'></i>"
         }
         console.log(nowOnline.playerPoints);
     }
@@ -46,16 +48,16 @@ function TMFinished({ nowOnline }) {
             <div id="navBar">
                 <ul className="nav py-3">
                     <li className="nav-item">
-                        <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                        <Link className="nav-link active" aria-current="page" to="/">{t('home')}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="#">About</Link>
+                        <Link className="nav-link" to="#">{t('about')}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="#">Scoreboard</Link>
+                        <Link className="nav-link" to="#">{t('scoreboard')}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="#">Switch Mode</Link>
+                        <Link className="nav-link" to="#">{t('switch_mode')}</Link>
                     </li>
                 </ul>
             </div>
@@ -71,18 +73,18 @@ function TMFinished({ nowOnline }) {
                                         </center>
                                     </div>
                                     <div className='row justify-content-md-center' id="points">
-                                        Your points: {playerPoints}<br />
-                                        Agent's points: {agentPoints}
+                                        {t('your_points')}: {playerPoints}<br />
+                                        {t('agent_points')}: {agentPoints}
                                     </div>
                                     <div className='row justify-content-center'>
                                         <div className='col-xl-4'>
                                             <center>
-                                                <button className='btn btn-primary backToHome-btn' id="backToHomeBtn" onClick={toHomePageBtnClick}>Back to Home Page</button>
+                                                <button className='btn btn-primary backToHome-btn' id="backToHomeBtn" onClick={toHomePageBtnClick}>{t('back_to_home_page')}</button>
                                             </center>
                                         </div>
                                     </div>
                                     <div className='row justify-content-md-center' id="toHomePageTxt">
-                                        Returning to home page in {timerClock} seconds...
+                                        {t('returning_home_page')} {timerClock} {t('seconds')}...
                                     </div>
                                 </div>
                             </div>

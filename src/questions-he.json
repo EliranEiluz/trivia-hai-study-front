@@ -5,7 +5,7 @@
         "firstAnswer": "ברצלונה", 
         "secondAnswer": "ולנסיה",
         "thirdAnswer": "מדריד",
-        "forthAnswer":"סביליה", 
+        "fourthAnswer":"סביליה", 
         "rightAnswer":3
     },
 
@@ -15,7 +15,7 @@
         "firstAnswer": "1957", 
         "secondAnswer": "1967",
         "thirdAnswer": "2021",
-        "forthAnswer":"1948", 
+        "fourthAnswer":"1948", 
         "rightAnswer":4
     },
 
@@ -25,7 +25,7 @@
         "firstAnswer": "כדורגל", 
         "secondAnswer": "כדורסל",
         "thirdAnswer": "טניס",
-        "forthAnswer":"כדורעף", 
+        "fourthAnswer":"כדורעף", 
         "rightAnswer":2
     },
 
@@ -35,7 +35,7 @@
         "firstAnswer": "קונטיקט", 
         "secondAnswer": "ניו ג'רזי",
         "thirdAnswer": "רוד איילנד",
-        "forthAnswer":"מרילנד", 
+        "fourthAnswer":"מרילנד", 
         "rightAnswer":2
     },
 
@@ -45,7 +45,7 @@
         "firstAnswer": "גרמניה", 
         "secondAnswer": "ארצות הברית",
         "thirdAnswer": "צרפת",
-        "forthAnswer":"ישראל", 
+        "fourthAnswer":"ישראל", 
         "rightAnswer":1
     },
 
@@ -55,7 +55,7 @@
         "firstAnswer": "קסלר", 
         "secondAnswer": "ניומן",
         "thirdAnswer": "קוזמו",
-        "forthAnswer":"לארי", 
+        "fourthAnswer":"לארי", 
         "rightAnswer":3
     },
 
@@ -65,7 +65,7 @@
         "firstAnswer": "50 אחוז", 
         "secondAnswer": "10 אחוז",
         "thirdAnswer": "35 אחוז",
-        "forthAnswer":"20 אחוז", 
+        "fourthAnswer":"20 אחוז", 
         "rightAnswer":4
     },
 
@@ -75,7 +75,7 @@
         "firstAnswer": "מרוקאית", 
         "secondAnswer": "יוונית",
         "thirdAnswer": "עיראקית",
-        "forthAnswer":"הונגרית", 
+        "fourthAnswer":"הונגרית", 
         "rightAnswer":4
     },
 
@@ -85,7 +85,7 @@
         "firstAnswer": "זרם של מים", 
         "secondAnswer": "זרם של אוויק",
         "thirdAnswer": "זרם של אלקטרונים",
-        "forthAnswer":"זרם של אטומים", 
+        "fourthAnswer":"זרם של אטומים", 
         "rightAnswer":3
     },
 
@@ -96,7 +96,7 @@
         "firstAnswer": "FIFA", 
         "secondAnswer": "NATO",
         "thirdAnswer": "ASEAN",
-        "forthAnswer":"FBI", 
+        "fourthAnswer":"FBI", 
         "rightAnswer":4
     },
     
@@ -106,7 +106,7 @@
         "firstAnswer": "Stairway to Heaven", 
         "secondAnswer": "Wind of Change",
         "thirdAnswer": "Don’t Stop Me Now",
-        "forthAnswer":"Hey Jude", 
+        "fourthAnswer":"Hey Jude", 
         "rightAnswer":2
     },
 
@@ -116,7 +116,7 @@
         "firstAnswer": "120 קמש", 
         "secondAnswer": "1,200 קמש",
         "thirdAnswer": "400 קמש",
-        "forthAnswer":"700 קמש", 
+        "fourthAnswer":"700 קמש", 
         "rightAnswer":2
     },
 
@@ -126,7 +126,7 @@
         "firstAnswer": "צ'יטה", 
         "secondAnswer": "נמר",
         "thirdAnswer": "טיגריס",
-        "forthAnswer":"אריה", 
+        "fourthAnswer":"אריה", 
         "rightAnswer":1
     },
 
@@ -136,7 +136,7 @@
         "firstAnswer": "הוא נולד איתם", 
         "secondAnswer": "הוא ננשך על ידי עכביש רדיואקטיבי",
         "thirdAnswer": "הוא קיבל אותם בניסוי מדעי",
-        "forthAnswer":"הוא קם איתם לאחר חלום", 
+        "fourthAnswer":"הוא קם איתם לאחר חלום", 
         "rightAnswer":2
     },
 
@@ -146,7 +146,7 @@
         "firstAnswer": "He was born with them", 
         "secondAnswer": "He was bitten by a radioactive spider",
         "thirdAnswer": "He went through a scientific experiment",
-        "forthAnswer":"He woke up with them after a dream", 
+        "fourthAnswer":"He woke up with them after a dream", 
         "rightAnswer":2
     },
     
@@ -156,7 +156,7 @@
         "firstAnswer": "סוקרטס", 
         "secondAnswer": "פלאטו",
         "thirdAnswer": "אריסטו",
-        "forthAnswer":"דקארט", 
+        "fourthAnswer":"דקארט", 
         "rightAnswer":4
     },
 
@@ -166,7 +166,7 @@
         "firstAnswer": "Save Our Sheep", 
         "secondAnswer": "Save Our Ship",
         "thirdAnswer": "Save Our Seal",
-        "forthAnswer":"Save Our Souls", 
+        "fourthAnswer":"Save Our Souls", 
         "rightAnswer":4
     },
 
@@ -176,7 +176,7 @@
         "firstAnswer": "Microsoft", 
         "secondAnswer": "Nintendo",
         "thirdAnswer": "SEGA",
-        "forthAnswer":"Electronic Arts", 
+        "fourthAnswer":"Electronic Arts", 
         "rightAnswer":2
     },
 
@@ -186,7 +186,7 @@
         "firstAnswer": "8", 
         "secondAnswer": "16",
         "thirdAnswer": "24",
-        "forthAnswer":"32", 
+        "fourthAnswer":"32", 
         "rightAnswer":3
     },
 
@@ -196,7 +196,7 @@
         "firstAnswer": "AB-", 
         "secondAnswer": "O+",
         "thirdAnswer": "B-",
-        "forthAnswer":"A+", 
+        "fourthAnswer":"A+", 
         "rightAnswer":1
     }
 

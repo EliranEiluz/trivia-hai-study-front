@@ -2,8 +2,9 @@ import './LogoRow.css';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-function LogoRow() {
+function LogoRow({ nowOnline }) {
 
     const { t } = useTranslation();
 
@@ -48,7 +49,7 @@ function LogoRow() {
                 </div>
             </div>
             <div className='col-xl-6 d-flex justify-content-center' id="logo">
-                <img src={require("./tp2.png")} id="imgLogo"></img>
+                <Link to="/"><img src={require("./tp2.png")} id="imgLogo"></img></Link>
             </div>
             <div className='col-xl-3 d-none d-m-block'></div>
         </div>

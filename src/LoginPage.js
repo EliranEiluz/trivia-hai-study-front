@@ -64,7 +64,7 @@ function LoginPage({ nowOnline }) {
                         <form id="login_form" onSubmit={handleSubmit} className="container-fluid h-100 w-100">
                             <div className="card" id="login_card">
                                 <div className="card-body">
-                                    <LogoRow />
+                                    <LogoRow nowOnline={nowOnline} />
                                     <div className='row login-row'>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>
@@ -75,7 +75,7 @@ function LoginPage({ nowOnline }) {
                                             <div className="error" id="login_userName_error">
                                                 {t('login_username_error')}
                                             </div>
-                                            <input className="login_input form-control" onChange={userNameChange}></input>
+                                            <input className="login_input form-control" onChange={userNameChange} dir="ltr"></input>
                                         </div>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>
@@ -90,7 +90,7 @@ function LoginPage({ nowOnline }) {
                                             <div className="error" id="login_password_error">
                                                 {t('login_password_error')}
                                             </div>
-                                            <input className="login_input form-control" onChange={passwordChange}></input>
+                                            <input className="login_input form-control" onChange={passwordChange} dir="ltr"></input>
                                         </div>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>

@@ -1,0 +1,9 @@
+                                Hello and welcome to Project Trivia game! <br />
+                                In Play With Agent training mode, you will be playing against an agent, when each of you has 10 questions to answer on.<br />
+                                The one who holds the turn has 20 seconds to answer the question.<br />
+                                Beacuse an agent is also playing with you, At any time this agent can answer the question instead of you.
+                                Right answer will increase your points by 100.<br />
+                                Wrong answer (if you have more than 0 points) will decrease your points by 100.<br />
+                                The one who has more points after the 10 questions, wins!<br />
+                                <b>Hope you will enjoy the game.</b>
+                                <br />

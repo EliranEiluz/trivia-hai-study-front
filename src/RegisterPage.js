@@ -110,7 +110,7 @@ function RegisterPage({ nowOnline }) {
                         <form id="register_form" onSubmit={handleSubmit} className="container-fluid h-100 w-100">
                             <div className="card" id="register_card">
                                 <div className="card-body">
-                                    <LogoRow />
+                                    <LogoRow nowOnline={nowOnline} />
                                     <div className='row register-row'>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>
@@ -121,7 +121,7 @@ function RegisterPage({ nowOnline }) {
                                             <div id="register_username_error" className="error">
                                                 {t('register_username_error')}
                                             </div>
-                                            <input className="register_input form-control" id="username_input" onChange={userNameChange}></input>
+                                            <input className="register_input form-control" id="username_input" onChange={userNameChange} dir="ltr"></input>
                                         </div>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>
@@ -138,7 +138,7 @@ function RegisterPage({ nowOnline }) {
                                             </div>
                                             <div className='col-xl-1 d-none d-md-block'>
                                             </div>
-                                            <input className="register_input form-control" id="password_input" type="password" onChange={passwordChange}></input>
+                                            <input className="register_input form-control" id="password_input" type="password" onChange={passwordChange} dir="ltr"></input>
                                         </div>
                                     </div>
                                     <div className='row register-row'>
@@ -151,7 +151,7 @@ function RegisterPage({ nowOnline }) {
                                             <div id="register_phoneNumber_error" className="error">
                                                 {t('phone_number_error')}
                                             </div>
-                                            <input className="register_input form-control" id="phoneNumber_input" type="tel" onChange={phoneNumberChange}></input>
+                                            <input className="register_input form-control" id="phoneNumber_input" type="tel" onChange={phoneNumberChange} dir="ltr"></input>
                                         </div>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>
@@ -166,7 +166,7 @@ function RegisterPage({ nowOnline }) {
                                             <div id="register_fullName_error" className="error">
                                                 {t('full_name_error')}
                                             </div>
-                                            <input className="register_input form-control" id="fullName_input" onChange={fullNameChange}></input>
+                                            <input className="register_input form-control" id="fullName_input" onChange={fullNameChange} dir="ltr"></input>
                                         </div>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>

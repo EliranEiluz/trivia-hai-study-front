@@ -5,7 +5,7 @@
         "firstAnswer": "Barcelona", 
         "secondAnswer": "Valencia",
         "thirdAnswer": "Madrid",
-        "forthAnswer":"Sevilia", 
+        "fourthAnswer":"Sevilia", 
         "rightAnswer":3
     },
 
@@ -15,7 +15,7 @@
         "firstAnswer": "1957", 
         "secondAnswer": "1967",
         "thirdAnswer": "2021",
-        "forthAnswer":"1948", 
+        "fourthAnswer":"1948", 
         "rightAnswer":4
     },
 
@@ -25,7 +25,7 @@
         "firstAnswer": "Football", 
         "secondAnswer": "Basketball",
         "thirdAnswer": "Tennis",
-        "forthAnswer":"Volleyball", 
+        "fourthAnswer":"Volleyball", 
         "rightAnswer":2
     },
 
@@ -35,7 +35,7 @@
         "firstAnswer": "Connecticut", 
         "secondAnswer": "New Jersey",
         "thirdAnswer": "Rhode Island",
-        "forthAnswer":"Maryland", 
+        "fourthAnswer":"Maryland", 
         "rightAnswer":2
     },
 
@@ -45,7 +45,7 @@
         "firstAnswer": "Germany", 
         "secondAnswer": "United States",
         "thirdAnswer": "France",
-        "forthAnswer":"Israel", 
+        "fourthAnswer":"Israel", 
         "rightAnswer":1
     },
 
@@ -55,7 +55,7 @@
         "firstAnswer": "Kessler", 
         "secondAnswer": "Newman",
         "thirdAnswer": "Cosmo",
-        "forthAnswer":"Larry", 
+        "fourthAnswer":"Larry", 
         "rightAnswer":3
     },
 
@@ -65,7 +65,7 @@
         "firstAnswer": "50 percent", 
         "secondAnswer": "10 percent",
         "thirdAnswer": "35 percent",
-        "forthAnswer":"20 percent", 
+        "fourthAnswer":"20 percent", 
         "rightAnswer":4
     },
 
@@ -75,7 +75,7 @@
         "firstAnswer": "Morocco", 
         "secondAnswer": "Greece",
         "thirdAnswer": "Iraq",
-        "forthAnswer":"Hungary", 
+        "fourthAnswer":"Hungary", 
         "rightAnswer":4
     },
 
@@ -85,7 +85,7 @@
         "firstAnswer": "A flow of water", 
         "secondAnswer": "A flow of air",
         "thirdAnswer": "A flow of electrons",
-        "forthAnswer":"A flow of atoms", 
+        "fourthAnswer":"A flow of atoms", 
         "rightAnswer":3
     },
 
@@ -96,7 +96,7 @@
         "firstAnswer": "FIFA", 
         "secondAnswer": "NATO",
         "thirdAnswer": "ASEAN",
-        "forthAnswer":"FBI", 
+        "fourthAnswer":"FBI", 
         "rightAnswer":4
     },
     
@@ -106,7 +106,7 @@
         "firstAnswer": "Stairway to Heaven", 
         "secondAnswer": "Wind of Change",
         "thirdAnswer": "Don’t Stop Me Now",
-        "forthAnswer":"Hey Jude", 
+        "fourthAnswer":"Hey Jude", 
         "rightAnswer":2
     },
 
@@ -116,7 +116,7 @@
         "firstAnswer": "120 km/h", 
         "secondAnswer": "1,200 km/h",
         "thirdAnswer": "400 km/h",
-        "forthAnswer":"700 km/h", 
+        "fourthAnswer":"700 km/h", 
         "rightAnswer":2
     },
 
@@ -126,7 +126,7 @@
         "firstAnswer": "Cheetah", 
         "secondAnswer": "Leopard",
         "thirdAnswer": "Tiger",
-        "forthAnswer":"Lion", 
+        "fourthAnswer":"Lion", 
         "rightAnswer":1
     },
 
@@ -136,7 +136,7 @@
         "firstAnswer": "He was born with them", 
         "secondAnswer": "He was bitten by a radioactive spider",
         "thirdAnswer": "He went through a scientific experiment",
-        "forthAnswer":"He woke up with them after a dream", 
+        "fourthAnswer":"He woke up with them after a dream", 
         "rightAnswer":2
     },
 
@@ -146,7 +146,7 @@
         "firstAnswer": "He was born with them", 
         "secondAnswer": "He was bitten by a radioactive spider",
         "thirdAnswer": "He went through a scientific experiment",
-        "forthAnswer":"He woke up with them after a dream", 
+        "fourthAnswer":"He woke up with them after a dream", 
         "rightAnswer":2
     },
     
@@ -156,7 +156,7 @@
         "firstAnswer": "Socrates", 
         "secondAnswer": "Plato",
         "thirdAnswer": "Aristotle",
-        "forthAnswer":"Descartes", 
+        "fourthAnswer":"Descartes", 
         "rightAnswer":4
     },
 
@@ -166,7 +166,7 @@
         "firstAnswer": "Save Our Sheep", 
         "secondAnswer": "Save Our Ship",
         "thirdAnswer": "Save Our Seal",
-        "forthAnswer":"Save Our Souls", 
+        "fourthAnswer":"Save Our Souls", 
         "rightAnswer":4
     },
 
@@ -176,7 +176,7 @@
         "firstAnswer": "Microsoft", 
         "secondAnswer": "Nintendo",
         "thirdAnswer": "SEGA",
-        "forthAnswer":"Electronic Arts", 
+        "fourthAnswer":"Electronic Arts", 
         "rightAnswer":2
     },
 
@@ -186,7 +186,7 @@
         "firstAnswer": "8", 
         "secondAnswer": "16",
         "thirdAnswer": "24",
-        "forthAnswer":"32", 
+        "fourthAnswer":"32", 
         "rightAnswer":3
     },
 
@@ -196,7 +196,7 @@
         "firstAnswer": "AB-", 
         "secondAnswer": "O+",
         "thirdAnswer": "B-",
-        "forthAnswer":"A+", 
+        "fourthAnswer":"A+", 
         "rightAnswer":1
     }
 

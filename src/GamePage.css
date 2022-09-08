@@ -1,5 +1,6 @@
 #leaveGameBtn {
     margin-right: 10px;
+    margin-left: 10px;
 }
 
 #question-card {
@@ -15,10 +16,12 @@
 #time {
     margin-top: 7px;
     font-size: 30px;
+    text-align: center;
 }
 
 #timeWord {
-    margin-left: 30px;
+    display: inline-block;
+    margin: 0 auto;
 }
 
 .passQuestion-btn {
@@ -145,6 +148,7 @@
     pointer-events: none;
 }
 
+
 @media screen and (max-width:800px) {
     .question-btn {
         margin:5px;
@@ -152,7 +156,6 @@
     #time {
         margin-top: 0px;
         font-size: 23px;
-        margin-left: 60px;
     }
     #question {
         margin-top:20px;
@@ -183,8 +186,7 @@
     #time {
         margin-top: 0px;
         font-size: 17px;
-        margin-left: 62px;
-        width:fit-content;
+        max-width: 50%;
     }
     #question {
         margin-top:20px;
@@ -193,7 +195,7 @@
     }
     #pointsDiv {
         font-size: 18px;
-        width:fit-content;
+        max-width: 50%;
     }
     #question-card {
         margin-top:20px;

@@ -1,9 +1,11 @@
 import './GamePage.css';
+import { Question } from './index.js';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function GamePage({ nowOnline }) {
-
+    const { t } = useTranslation();
     const timeLeft = useRef(20);
     const timerInterval = useRef(null);
     const playWithAgentOperations = useRef(null);
@@ -23,8 +25,8 @@ function GamePage({ nowOnline }) {
     const [points, setPoints] = useState('0')
     const [questionCounter, setQuestionCounter] = useState(1);
     const gameCounter = useRef(0);
-    const [pointsStr, setPointsStr] = useState("Points");
-    const [turn, setTurn] = useState("It's your turn!");
+    const [pointsStr, setPointsStr] = useState(t('points'));
+    const [turn, setTurn] = useState(t('your_turn'));
     const isBeepPlaying = useRef(false)
     const beep = useRef(new Audio('https://sounds-mp3.com/mp3/0012921.mp3'));
 
@@ -41,6 +43,7 @@ function GamePage({ nowOnline }) {
             nowOnline.isWin = 1;
         }
         clearTimeout(timerInterval);
+        beep.current.pause();
         navigation('/TMfinished');
     }
 
@@ -79,7 +82,7 @@ function GamePage({ nowOnline }) {
         }
         await answerCheck(val);
         gameCounter.current += 1;
-        if (gameCounter.current == 20) {
+        if (gameCounter.current == 1) {
             gameFinished();
             return;
         }
@@ -226,8 +229,8 @@ function GamePage({ nowOnline }) {
         if (isPlayerTurn.current) {
             removeDisabled();
             document.getElementById('turnBtn').classList.replace('btn-dark', 'btn-success')
-            setTurn("It's your turn!")
-            setPointsStr("Points");
+            setTurn(t('your_turn'))
+            setPointsStr(t('points'));
             if (!nowOnline.singlePlayer) {
                 playWithAgent()
             }
@@ -237,8 +240,8 @@ function GamePage({ nowOnline }) {
         }
         else {
             document.getElementById('turnBtn').classList.replace('btn-success', 'btn-dark')
-            setPointsStr("Agent's Points");
-            setTurn("It's agent's turn")
+            setPointsStr(t('agent_points'));
+            setTurn(t('agent_turn'))
             agent();
             setPoints(agentPoints.current);
             setQuestionCounter(agentQuestionCounter.current);
@@ -305,12 +308,23 @@ function GamePage({ nowOnline }) {
 
 
     useEffect(() => {
+        var questionsArray;
         if (nowOnline.singlePlayer) {
             document.getElementById('singlePlayerInstructions').style.display = "block";
         }
         else {
             document.getElementById('playWithAgentInstructions').style.display = "block";
             playWithAgentOperations.current = require('./agent.json');
+        }
+        if (document.querySelector("html").lang == "en") {
+            nowOnline.questions = require('./questions.json');
+            document.getElementById("leaveGameBtnLi").classList.add("ms-auto");
+            document.getElementById("turnBtn").classList.add("float-end");
+        }
+        else {
+            nowOnline.questions = require('./questions-he.json');
+            document.getElementById("leaveGameBtnLi").classList.add("me-auto");
+            document.getElementById("turnBtn").classList.add("float-start");
         }
         document.getElementById('startGameModalBtn').click();
     }, [])
@@ -319,55 +333,40 @@ function GamePage({ nowOnline }) {
             <div id="navBar">
                 <ul className="nav py-3">
                     <li className="nav-item">
-                        <a className="nav-link active" href="#leaveToHomeGameModal" data-bs-toggle="modal">Home</a>
+                        <a className="nav-link active" href="#leaveToHomeGameModal" data-bs-toggle="modal">{t('home')}</a>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="#">About</Link>
+                        <Link className="nav-link" to="#">{t('about')}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="#">Scoreboard</Link>
+                        <Link className="nav-link" to="#">{t('scoreboard')}</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#leaveGameModal" data-bs-toggle="modal">Switch Mode</a>
+                        <a className="nav-link" href="#leaveGameModal" data-bs-toggle="modal">{t('switch_mode')}</a>
                     </li>
-                    <li className="nav-item ms-auto">
-                        <button className='btn btn-danger' id="leaveGameBtn" data-bs-toggle="modal" data-bs-target="#leaveGameModal">Leave Game</button>
+                    <li className="nav-item" id="leaveGameBtnLi">
+                        <button className='btn btn-danger' id="leaveGameBtn" data-bs-toggle="modal" data-bs-target="#leaveGameModal">{t('leave_game')}</button>
                     </li>
                 </ul>
             </div>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#startGameModal" id="startGameModalBtn">Launch modal</button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#startGameModal" id="startGameModalBtn"></button>
             <div className="modal modal-lg fade" tabIndex="-1" aria-hidden="true" id="startGameModal">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title">Game instructions</h5>
+                            <h5 className="modal-title">{t('game_instructions')}</h5>
                         </div>
                         <div className="modal-body">
                             <p id="singlePlayerInstructions">
-                                Hello and welcome to Project Trivia game! <br />
-                                In Single-Player training mode, you will be playing against an agent, when each of you has 10 questions to answer on.<br />
-                                The one who holds the turn has 20 seconds to answer the question.<br />
-                                Right answer will increase your points by 100.<br />
-                                Wrong answer (if you have more than 0 points) will decrease your points by 100.<br />
-                                The one who has more points after the 10 questions, wins!<br />
-                                <b>Hope you will enjoy the game.</b>
-                                <br />
+                                {t('single_player_instructions')}
                             </p>
                             <p id="playWithAgentInstructions">
-                                Hello and welcome to Project Trivia game! <br />
-                                In Play With Agent training mode, you will be playing against an agent, when each of you has 10 questions to answer on.<br />
-                                The one who holds the turn has 20 seconds to answer the question.<br />
-                                Beacuse an agent is also playing with you, At any time this agent can answer the question instead of you.
-                                Right answer will increase your points by 100.<br />
-                                Wrong answer (if you have more than 0 points) will decrease your points by 100.<br />
-                                The one who has more points after the 10 questions, wins!<br />
-                                <b>Hope you will enjoy the game.</b>
-                                <br />
+                                {t('play_with_agent_instructions')}
                             </p>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={startGame}>Start game!</button>
-                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={leaveToHomeGame}>Back to home page</button>
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={startGame}>{t('start_game')}</button>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={leaveToHomeGame}>{t('back_to_home_page')}</button>
                         </div>
                     </div>
                 </div>
@@ -376,15 +375,14 @@ function GamePage({ nowOnline }) {
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="leaveGameModalLabel">Leave Game</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h5 className="modal-title" id="leaveGameModalLabel">{t('leave_game')}</h5>
                         </div>
                         <div className="modal-body">
-                            Are you sure you want to leave the game? It will be a technical lost!
+                            {t('leave_game_exp')}
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={leaveGame}>Leave Game</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">{t('close')}</button>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={leaveGame}>{t('leave_game')}</button>
                         </div>
                     </div>
                 </div>
@@ -393,15 +391,14 @@ function GamePage({ nowOnline }) {
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="leaveToHomeGameModalLabel">Back to Home Page</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h5 className="modal-title" id="leaveToHomeGameModalLabel">{t('back_to_home_page')}</h5>
                         </div>
                         <div className="modal-body">
-                            Are you sure you want to leave the game to home page? It will be a technical lost!
+                            {t('leave_game_exp')}
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={leaveToHomeGame}>Back to home page</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">{t('close')}</button>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={leaveToHomeGame}>{t('back_to_home_page')}</button>
                         </div>
                     </div>
                 </div>
@@ -413,15 +410,15 @@ function GamePage({ nowOnline }) {
                             <div className='card-body'>
                                 <div className='container-fluid'>
                                     <div className='row'>
-                                        <div className='col-xs-1 col-sm-4 col-md-4 col-l-2 col-xl-5' id="pointsDiv">
+                                        <div className='col-xs-1 col-sm-4' id="pointsDiv">
                                             {pointsStr}: {points} <br />
-                                            Question {questionCounter}/10
+                                            {t('question')} {questionCounter}/10
                                         </div>
-                                        <div className='col-xs-1 col-sm-3 col-md-3 col-l-2 col-xl-4 justify-content-center' id="time">
-                                            <div><span id="timeWord">Time:</span><br /> {timerClock} seconds</div>
+                                        <div className='col-xs-1 col-sm-4 d-flex justify-content-end justify-content-sm-center' id="time">
+                                            <div><span id="timeWord">{t('time')}:</span><br /> {timerClock} {t('seconds')}</div>
                                         </div>
-                                        <div className='col-xs-1 col-sm-3 col-md-3 col-l-3 col-xl-3 justify-content-center justify-content-sm-end d-xs-hidden d-none d-sm-block' id="turnCol">
-                                            <div className='btn btn-dark float-end' id="turnBtn"><span id="turnStr">{turn}</span></div>
+                                        <div className='col-xs-1 col-sm-4 d-xs-hidden d-none d-sm-block' id="turnCol">
+                                            <div className='btn btn-dark' id="turnBtn"><span id="turnStr">{turn}</span></div>
                                         </div>
                                     </div>
                                     <div className='row justify-content-center' id="question">

@@ -54,13 +54,10 @@ class Question {
 
 
 
-const nowOnline = {onlineUser: null, signalR: null, JWT_Token:'', isWin: 1, questions: [], agentPoints:0, playerPoints:0, singlePlayer:true};
+const nowOnline = {onlineUser: null, signalR: null, JWT_Token:'', isWin: 1, questions: null, agentPoints:0, playerPoints:0, singlePlayer:true};
 
-var questionsArray = require('./questions.json');
-for(let i = 0; i < questionsArray.length; i++) {
-    nowOnline.questions.push(new Question(questionsArray[i].id, questionsArray[i].question, questionsArray[i].firstAnswer,
-       questionsArray[i].secondAnswer, questionsArray[i].thirdAnswer, questionsArray[i].forthAnswer, questionsArray[i].rightAnswer));
-}
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

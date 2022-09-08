@@ -41,6 +41,11 @@ body {
   background-attachment: fixed;
 }
 
+#root {
+  white-space: pre-line;
+}
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
