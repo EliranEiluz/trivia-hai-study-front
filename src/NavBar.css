@@ -1,0 +1,20 @@
+#navBar {
+    background-color: #B5EAD7;
+    border:1px solid #000;
+}
+
+.nav-link {
+    color:black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color:red;
+}
+
+
+.nav {
+    --bs-nav-link-hover-color:black;
+    padding: 0px;
+}

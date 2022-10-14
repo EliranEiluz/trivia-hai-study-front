@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 function GamePage({ nowOnline }) {
     const { t } = useTranslation();
     const timeLeft = useRef(20);
+    const presentage = useRef(0);
     const timerInterval = useRef(null);
     const playWithAgentOperations = useRef(null);
     const agentTimeout = useRef(null);
@@ -94,7 +95,11 @@ function GamePage({ nowOnline }) {
             setTimerClock((prevTimerClock) => prevTimerClock - 1);
             timerInterval.current = setTimeout(timer, 1000);
             timeLeft.current--;
+            presentage.current += 5;
+            document.getElementById("prog-bar").style.width = presentage.current + "%";
             if (timeLeft.current < 6 && !isBeepPlaying.current) {
+                document.getElementById("prog-bar").classList.replace("bg-dark", "bg-danger");
+                document.getElementById("timeText").style.display = "block";
                 beep.current.play();
                 isBeepPlaying.current = true;
             }
@@ -211,6 +216,10 @@ function GamePage({ nowOnline }) {
     }
 
     function gameFlow() {
+        document.getElementById("timeText").style.display = "none";
+        document.getElementById("prog-bar").classList.replace("bg-danger", "bg-dark");
+        document.getElementById("prog-bar").style.width = "0%"
+        presentage.current = 0;
         timeLeft.current = 20;
         clearTimeout(timerInterval)
         isBeepPlaying.current = false;
@@ -414,8 +423,11 @@ function GamePage({ nowOnline }) {
                                             {pointsStr}: {points} <br />
                                             {t('question')} {questionCounter}/10
                                         </div>
-                                        <div className='col-xs-1 col-sm-4 d-flex justify-content-end justify-content-sm-center' id="time">
-                                            <div><span id="timeWord">{t('time')}:</span><br /> {timerClock} {t('seconds')}</div>
+                                        <div className='col-xs-1 col-sm-4 justify-content-end justify-content-sm-center' id="time">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-striped bg-dark" id="prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <div id="timeText">{t('time')}: {timeLeft.current} {t('seconds')}</div>
                                         </div>
                                         <div className='col-xs-1 col-sm-4 d-xs-hidden d-none d-sm-block' id="turnCol">
                                             <div className='btn btn-dark' id="turnBtn"><span id="turnStr">{turn}</span></div>

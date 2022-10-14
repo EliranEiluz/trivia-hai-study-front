@@ -1,24 +1,3 @@
-#navBar {
-    
-    background-color: #f8cd00;
-    border:1px solid #000;
-}
-
-.nav-link {
-    color:black;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.nav-link:hover {
-    color:red;
-}
-
-
-.nav {
-    --bs-nav-link-hover-color:black;
-    padding: 0px;
-}
 
 #logoDiv {
     margin-top: 20px;
@@ -32,7 +11,7 @@
 }
 
 .welcome-btn {
-    background-color: #f8cd00;
+    background-color: #B5EAD7;
     border:3px solid #000;
     color:black;
     font-weight: bold;
@@ -45,9 +24,14 @@
     width:80%;
 }
 
+.welcome-btn:disabled {
+    background-color: black;
+    border-color: #B5EAD7;
+    color:#B5EAD7;
+}
 
 .choose-mode-btn {
-    background-color: #f8cd00;
+    background-color: #B5EAD7;
     border:3px solid #000;
     color:black;
     font-weight: bold;
@@ -55,26 +39,26 @@
 }
 
 #chooseTrainingModalHeader {
-    background-color:  #f8cd00;
+    background-color:  #B5EAD7;
 }
 
 #chooseTrainingModalBody {
-    background-image: linear-gradient(120deg, #ff7974,red);
+    background-image: linear-gradient(0deg,#FFEFC2, #faf2dd);
     background-attachment: fixed;
     border-bottom: none;
 }
 
 .welcome-btn:hover {
     background-color: black;
-    border-color: #f8cd00;
-    color:#f8cd00;
+    border-color: #B5EAD7;
+    color:#B5EAD7;
 }
 
 
 .welcome-btn:focus {
     background-color: black;
-    border-color: #f8cd00;
-    color:#f8cd00;
+    border-color: #B5EAD7;
+    color:#B5EAD7;
     box-shadow:0 0 0 0.25rem black;
 
 }
@@ -88,11 +72,6 @@
     color:transparent;
 }
 
-.welcome-btn:disabled {
-    background-color: black;
-    border-color: #f8cd00;
-    color:#f8cd00;
-}
 
 #toggleModal {
     display: none;

@@ -2,22 +2,6 @@
     margin-top: 30px;
 }
 
-#navBar {
-
-    background-color: #f8cd00;
-    border: 1px solid #000;
-}
-
-.nav-link {
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
-    margin-right: 15px
-}
-
-.nav-link:hover {
-    color: red;
-}
 
 #logoDiv {
     margin-top: 20px;

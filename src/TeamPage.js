@@ -1,6 +1,6 @@
 import './TeamPage.css';
 import { Link } from 'react-router-dom'
-
+import './NavBar.css';
 
 
 function TeamPage() {

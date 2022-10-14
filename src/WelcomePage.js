@@ -2,6 +2,7 @@ import './WelcomePage.css';
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import './NavBar.css';
 
 function WelcomePage({ nowOnline }) {
 
