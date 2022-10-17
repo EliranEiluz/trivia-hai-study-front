@@ -210,3 +210,15 @@
 .progress {
     height:30px;
 }
+
+#playerImg {
+    width: 25%;
+}
+
+#agentImg {
+    width: 25%;
+}
+
+#agentImgDiv {
+    display: inline-block;
+}

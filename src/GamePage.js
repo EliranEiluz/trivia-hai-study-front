@@ -328,12 +328,12 @@ function GamePage({ nowOnline }) {
         if (document.querySelector("html").lang == "en") {
             nowOnline.questions = require('./questions.json');
             document.getElementById("leaveGameBtnLi").classList.add("ms-auto");
-            document.getElementById("turnBtn").classList.add("float-end");
+            document.getElementById("agentImgDiv").classList.add("float-end");
         }
         else {
             nowOnline.questions = require('./questions-he.json');
             document.getElementById("leaveGameBtnLi").classList.add("me-auto");
-            document.getElementById("turnBtn").classList.add("float-start");
+            document.getElementById("agentImgDiv").classList.add("float-start");
         }
         document.getElementById('startGameModalBtn').click();
     }, [])
@@ -420,8 +420,9 @@ function GamePage({ nowOnline }) {
                                 <div className='container-fluid'>
                                     <div className='row'>
                                         <div className='col-xs-1 col-sm-4' id="pointsDiv">
-                                            {pointsStr}: {points} <br />
-                                            {t('question')} {questionCounter}/10
+                                            <div>hey</div>
+                                            <div><img src={require('./PNG/avatar1.png')} id="playerImg"></img></div>
+                                            <div>bye</div>
                                         </div>
                                         <div className='col-xs-1 col-sm-4 justify-content-end justify-content-sm-center' id="time">
                                             <div class="progress">
@@ -430,7 +431,11 @@ function GamePage({ nowOnline }) {
                                             <div id="timeText">{t('time')}: {timeLeft.current} {t('seconds')}</div>
                                         </div>
                                         <div className='col-xs-1 col-sm-4 d-xs-hidden d-none d-sm-block' id="turnCol">
-                                            <div className='btn btn-dark' id="turnBtn"><span id="turnStr">{turn}</span></div>
+                                            <div id="agentImgDiv">
+                                                <div >hey</div>
+                                                <img src={require('./PNG/avatar1.png')} id="agentImg"></img>
+                                                <div>bye</div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className='row justify-content-center' id="question">
