@@ -4,10 +4,10 @@
 }
 
 #question-card {
-    margin-top:40px;
+    margin-top: 40px;
     background-color: transparent;
     border-color: black;
-    box-shadow:0 0 0.3rem 0.3rem black;
+    box-shadow: 0 0 0.3rem 0.3rem black;
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 20px;
@@ -27,81 +27,83 @@
 .passQuestion-btn {
     background-color: black;
     border-color: black;
-    padding-left:30px;
+    padding-left: 30px;
     padding-right: 30px;
 }
 
 .passQuestion-btn:disabled {
     background-color: black;
     border-color: black;
-    padding-left:30px;
+    padding-left: 30px;
     padding-right: 30px;
 }
 
 .passQuestion-btn:hover {
     background-color: white;
     border-color: black;
-    color:black;
+    color: black;
 }
 
 
 .passQuestion-btn:focus {
     background-color: black;
     border-color: black;
-    color:white;
-    box-shadow:0 0 0 0.25rem black;
+    color: white;
+    box-shadow: 0 0 0 0.25rem black;
 }
 
 #question {
-    margin-top:20px;
-    font-size:40px;
+    margin-top: 20px;
+    font-size: 40px;
     word-break: break-word;
 }
 
 
 .answerCard {
-    height:280px;
-    margin-top:50px;
+    height: 280px;
+    margin-top: 50px;
     text-align: center;
 }
 
 .question-btn {
     background-color: #B5EAD7;
-    border:3px solid #000;
-    color:black;
+    border: 3px solid #000;
+    color: black;
     font-weight: bold;
     margin-bottom: 30px;
-    margin-top:30px;
+    margin-top: 30px;
     margin-bottom: 30px;
     border-radius: 15px;
-    align-items: center; 
+    align-items: center;
     word-break: break-word;
-    width:90%;
-    height:90%;
-    font-size:25px;
+    width: 90%;
+    height: 90%;
+    font-size: 25px;
 }
 
 .btn-check {
-    margin-top:30px;
+    margin-top: 30px;
 }
 
 .question-btn:disabled {
     background-color: #ccece0;
-    color:black;
+    color: black;
 }
 
 
 
 .btn-check:checked+.btn {
     background-color: black;
-    border-color: #B5EAD7;;
-    color:#B5EAD7;;
-    box-shadow:0 0 0 0.25rem black;
+    border-color: #B5EAD7;
+    ;
+    color: #B5EAD7;
+    ;
+    box-shadow: 0 0 0 0.25rem black;
 }
 
 
 .modal-body {
-    font-size:20px;
+    font-size: 20px;
 }
 
 .rightAnswer:checked+.btn {
@@ -118,13 +120,13 @@
 
 .blink {
     animation: blinker 1s linear infinite;
-  }
-  
-  @keyframes blinker {
+}
+
+@keyframes blinker {
     50% {
-      opacity: 0;
+        opacity: 0;
     }
-  }
+}
 
 #playWithAgentInstructions {
     display: none;
@@ -145,23 +147,28 @@
 
 @media screen and (max-width:800px) {
     .question-btn {
-        margin:5px;
+        margin: 5px;
     }
+
     #time {
         margin-top: 0px;
         font-size: 23px;
     }
+
     #question {
-        margin-top:20px;
-        font-size:30px;
+        margin-top: 20px;
+        font-size: 30px;
         word-break: break-word;
     }
+
     #pointsDiv {
         font-size: 20px;
     }
+
     #question-card {
-        margin-top:20px;
+        margin-top: 20px;
     }
+
     #gamePageContainer {
         margin-bottom: 20px;
     }
@@ -170,30 +177,35 @@
 .question-btn:hover {
     background-color: #B5EAD7;
     border-color: black;
-    color:black;
+    color: black;
 }
 
 @media screen and (max-width:550px) {
     .question-btn {
-        margin:5px;
+        margin: 5px;
     }
+
     #time {
         margin-top: 0px;
         font-size: 17px;
         max-width: 50%;
     }
+
     #question {
-        margin-top:20px;
-        font-size:25px;
+        margin-top: 20px;
+        font-size: 25px;
         word-break: break-word;
     }
+
     #pointsDiv {
         font-size: 18px;
         max-width: 50%;
     }
+
     #question-card {
-        margin-top:20px;
+        margin-top: 20px;
     }
+
     #gamePageContainer {
         margin-bottom: 20px;
     }
@@ -202,13 +214,14 @@
 @media(hover: hover) and (pointer: fine) {
     .question-btn:hover {
         background-color: black;
-        border-color: #B5EAD7;;
-        color:#B5EAD7;
+        border-color: #B5EAD7;
+        ;
+        color: #B5EAD7;
     }
 }
 
 .progress {
-    height:30px;
+    height: 30px;
 }
 
 #playerImg {
@@ -217,8 +230,5 @@
 
 #agentImg {
     width: 25%;
-}
-
-#agentImgDiv {
-    display: inline-block;
+    display: block;
 }
