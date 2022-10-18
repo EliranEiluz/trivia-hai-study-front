@@ -422,7 +422,7 @@ function GamePage({ nowOnline }) {
                                         </div>
                                         <div className='col-xs-1 col-sm-4 justify-content-end justify-content-sm-center' id="time">
                                             <div>
-                                                Question {questionCounter}/10
+                                                {t('question')} {questionCounter}/10
                                             </div>
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-striped bg-dark" id="prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
