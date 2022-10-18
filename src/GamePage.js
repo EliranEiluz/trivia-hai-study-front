@@ -225,6 +225,7 @@ function GamePage({ nowOnline }) {
         timer();
         console.log(isPlayerTurn.current)
         if (isPlayerTurn.current) {
+            
             removeDisabled();
             if (!nowOnline.singlePlayer) {
                 playWithAgent();
@@ -330,10 +331,10 @@ function GamePage({ nowOnline }) {
                             <div className='card-body'>
                                 <div className='container-fluid'>
                                     <div className='row'>
-                                        <div className='col-xs-1 col-sm-4 avatarsRow'>
+                                        <div className='col-xs-1 col-sm-4 avatarsRow' id="playerCol">
                                             <div id="playerDiv" className='avatarDiv'>
                                                 <div>You</div>
-                                                <img src={require("./PNG/avatar1.png")} className="avatarImg"></img>
+                                                <img src={require("./PNG/avatar1.png")} className="avatarImg" id="playerImg"></img>
                                                 <div>{playerPoints.current}</div>
                                             </div>
                                         </div>
@@ -346,7 +347,7 @@ function GamePage({ nowOnline }) {
                                             </div>
                                             <div id="timeText">{t('time')}: {timeLeft.current} {t('seconds')}</div>
                                         </div>
-                                        <div className='col-xs-1 col-sm-4 avatarsRow'>
+                                        <div className='col-xs-1 col-sm-4 avatarsRow' id="agentCol">
                                             <div id="agentDiv" className='float-end avatarDiv'>
                                                 <div>Agent</div>
                                                 <img src={require("./PNG/avatar3.png")}  className="avatarImg"></img>
