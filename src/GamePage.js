@@ -1,8 +1,11 @@
 import './GamePage.css';
 import { Question } from './index.js';
 import { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import GamePageNavBar from './GamePageNavBar';
+import GamePageModals from './GamePageModals';
+
 
 function GamePage({ nowOnline }) {
     const { t } = useTranslation();
@@ -26,8 +29,6 @@ function GamePage({ nowOnline }) {
     const [points, setPoints] = useState('0')
     const [questionCounter, setQuestionCounter] = useState(1);
     const gameCounter = useRef(0);
-    const [pointsStr, setPointsStr] = useState(t('points'));
-    const [turn, setTurn] = useState(t('your_turn'));
     const isBeepPlaying = useRef(false)
     const beep = useRef(new Audio('https://sounds-mp3.com/mp3/0012921.mp3'));
 
@@ -109,17 +110,6 @@ function GamePage({ nowOnline }) {
         }
     }
 
-    function leaveGame() {
-        clearTimeout(timerInterval.current);
-        beep.current.pause();
-        navigation('/welcome')
-    }
-
-    function leaveToHomeGame() {
-        clearTimeout(timerInterval.current);
-        beep.current.pause();
-        navigation('/')
-    }
 
     function switchAnswer(rightAnswer) {
         switch (rightAnswer) {
@@ -161,9 +151,7 @@ function GamePage({ nowOnline }) {
         document.getElementById("4thAnswer").checked = false;
     }
 
-    function startGame() {
-        gameFlow();
-    }
+
 
     const sleep = ms => new Promise(
         resolve => setTimeout(resolve, ms)
@@ -235,22 +223,17 @@ function GamePage({ nowOnline }) {
         setFourthAnswer(nowOnline.questions[gameCounter.current].fourthAnswer);
         setTimerClock(20);
         timer();
+        console.log(isPlayerTurn.current)
         if (isPlayerTurn.current) {
             removeDisabled();
-            document.getElementById('turnBtn').classList.replace('btn-dark', 'btn-success')
-            setTurn(t('your_turn'))
-            setPointsStr(t('points'));
             if (!nowOnline.singlePlayer) {
-                playWithAgent()
+                playWithAgent();
             }
             setPoints(playerPoints.current);
             setQuestionCounter(playerQuestionCounter.current);
             playerQuestionCounter.current += 1;
         }
         else {
-            document.getElementById('turnBtn').classList.replace('btn-success', 'btn-dark')
-            setPointsStr(t('agent_points'));
-            setTurn(t('agent_turn'))
             agent();
             setPoints(agentPoints.current);
             setQuestionCounter(agentQuestionCounter.current);
@@ -337,79 +320,9 @@ function GamePage({ nowOnline }) {
     }, [])
     return (
         <>
-            <div id="navBar">
-                <ul className="nav py-3">
-                    <li className="nav-item">
-                        <a className="nav-link active" href="#leaveToHomeGameModal" data-bs-toggle="modal">{t('home')}</a>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="#">{t('about')}</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="#">{t('scoreboard')}</Link>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#leaveGameModal" data-bs-toggle="modal">{t('switch_mode')}</a>
-                    </li>
-                    <li className="nav-item" id="leaveGameBtnLi">
-                        <button className='btn btn-danger' id="leaveGameBtn" data-bs-toggle="modal" data-bs-target="#leaveGameModal">{t('leave_game')}</button>
-                    </li>
-                </ul>
-            </div>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#startGameModal" id="startGameModalBtn"></button>
-            <div className="modal modal-lg fade" tabIndex="-1" aria-hidden="true" id="startGameModal">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">{t('game_instructions')}</h5>
-                        </div>
-                        <div className="modal-body">
-                            <p id="singlePlayerInstructions">
-                                {t('single_player_instructions')}
-                            </p>
-                            <p id="playWithAgentInstructions">
-                                {t('play_with_agent_instructions')}
-                            </p>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={startGame}>{t('start_game')}</button>
-                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={leaveToHomeGame}>{t('back_to_home_page')}</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="modal fade" id="leaveGameModal" tabIndex="-1" aria-labelledby="leaveGameModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="leaveGameModalLabel">{t('leave_game')}</h5>
-                        </div>
-                        <div className="modal-body">
-                            {t('leave_game_exp')}
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">{t('close')}</button>
-                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={leaveGame}>{t('leave_game')}</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="modal fade" id="leaveToHomeGameModal" tabIndex="-1" aria-labelledby="leaveToHomeGameModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="leaveToHomeGameModalLabel">{t('back_to_home_page')}</h5>
-                        </div>
-                        <div className="modal-body">
-                            {t('leave_game_exp')}
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">{t('close')}</button>
-                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={leaveToHomeGame}>{t('back_to_home_page')}</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <GamePageNavBar />
+
+            <GamePageModals beep={beep} timerInterval={timerInterval} gameFlow={gameFlow}/>
             <div className='container-fluid' id="gamePageContainer">
                 <div className='row justify-content-center'>
                     <div className='col-xl-11 col-sm-12 justify-content-sm-center justify-content-md-start'>
@@ -417,10 +330,14 @@ function GamePage({ nowOnline }) {
                             <div className='card-body'>
                                 <div className='container-fluid'>
                                     <div className='row'>
-                                        <div className='col-xs-1 col-sm-4' id="pointsDiv">
-                                            
+                                        <div className='col-xs-1 col-sm-4 avatarsRow'>
+                                            <div id="playerDiv" className='avatarDiv'>
+                                                <div>You</div>
+                                                <img src={require("./PNG/avatar1.png")} className="avatarImg"></img>
+                                                <div>{playerPoints.current}</div>
+                                            </div>
                                         </div>
-                                        <div className='col-xs-1 col-sm-4 justify-content-end justify-content-sm-center' id="time">
+                                        <div className='col-xs-1 col-sm-4 time' id="timeCol">
                                             <div>
                                                 {t('question')} {questionCounter}/10
                                             </div>
@@ -429,8 +346,12 @@ function GamePage({ nowOnline }) {
                                             </div>
                                             <div id="timeText">{t('time')}: {timeLeft.current} {t('seconds')}</div>
                                         </div>
-                                        <div className='col-xs-1 col-sm-4' id="turnCol">
-                                           
+                                        <div className='col-xs-1 col-sm-4 avatarsRow'>
+                                            <div id="agentDiv" className='float-end avatarDiv'>
+                                                <div>Agent</div>
+                                                <img src={require("./PNG/avatar3.png")}  className="avatarImg"></img>
+                                                <div>{agentPoints.current}</div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className='row justify-content-center' id="question">

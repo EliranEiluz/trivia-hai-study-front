@@ -13,8 +13,7 @@
     margin-bottom: 20px;
 }
 
-#time {
-    margin-top: 7px;
+.time {
     font-size: 30px;
     text-align: center;
 }
@@ -90,14 +89,17 @@
     color: black;
 }
 
+.btn-check:focus+.btn, .btn:focus {
+    background-color: #ccece0;
+    color: black;
+}
+
 
 
 .btn-check:checked+.btn {
     background-color: black;
     border-color: #B5EAD7;
-    ;
     color: #B5EAD7;
-    ;
     box-shadow: 0 0 0 0.25rem black;
 }
 
@@ -145,47 +147,45 @@
 }
 
 
-@media screen and (max-width:800px) {
-    .question-btn {
-        margin: 5px;
-    }
-
-    #time {
-        margin-top: 0px;
-        font-size: 23px;
-    }
-
-    #question {
-        margin-top: 20px;
-        font-size: 30px;
-        word-break: break-word;
-    }
-
-    #pointsDiv {
-        font-size: 20px;
-    }
-
-    #question-card {
-        margin-top: 20px;
-    }
-
-    #gamePageContainer {
-        margin-bottom: 20px;
-    }
-}
-
 .question-btn:hover {
     background-color: #B5EAD7;
     border-color: black;
     color: black;
 }
 
+.progress {
+    height: 30px;
+}
+
+.avatarImg {
+    width: 100px;
+    display: block;
+}
+
+
+#playerText {
+    margin-left: 35px;
+}
+
+.avatarDiv {
+    width:fit-content;
+    text-align: center;
+    font-size: 18px;
+}
+
+#timeCol {
+    align-items: center;
+}
+
+
+
+
 @media screen and (max-width:550px) {
     .question-btn {
         margin: 5px;
     }
 
-    #time {
+    .time {
         margin-top: 0px;
         font-size: 17px;
         max-width: 50%;
@@ -209,6 +209,50 @@
     #gamePageContainer {
         margin-bottom: 20px;
     }
+
+    .avatarsRow {
+        max-width: 25%;
+    }
+
+    #timeCol {
+        width: 50%;
+    }
+
+    .avatarImg {
+        width: 50px;
+        display: block;
+    }
+
+    .avatarDiv {
+        font-size: 15px;
+    }
+    
+}
+
+@media screen and (max-width:800px) {
+    .question-btn {
+        margin: 5px;
+    }
+
+    .time {
+        margin-top: 0px;
+        font-size: 23px;
+    }
+
+    #question {
+        margin-top: 20px;
+        font-size: 30px;
+        word-break: break-word;
+    }
+
+
+    #question-card {
+        margin-top: 20px;
+    }
+
+    #gamePageContainer {
+        margin-bottom: 20px;
+    }
 }
 
 @media(hover: hover) and (pointer: fine) {
@@ -220,15 +264,5 @@
     }
 }
 
-.progress {
-    height: 30px;
-}
 
-#playerImg {
-    width: 25%;
-}
 
-#agentImg {
-    width: 25%;
-    display: block;
-}
