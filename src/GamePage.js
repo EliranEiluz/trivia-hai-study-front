@@ -334,12 +334,12 @@ function GamePage({ nowOnline }) {
             <GamePageModals beep={beep} timerInterval={timerInterval} gameFlow={gameFlow}/>
             <div className='container-fluid' id="gamePageContainer">
                 <div className='row justify-content-center'>
-                    <div className='col-xl-11 col-sm-12 justify-content-sm-center justify-content-md-start'>
+                    <div className='col-md-10 col-sm-11 col-xs-12 justify-content-sm-center justify-content-md-start'>
                         <div className='card' id="question-card">
                             <div className='card-body'>
                                 <div className='container-fluid'>
                                     <div className='row'>
-                                        <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center' id="playerCol">
+                                        <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center align-items-center' id="playerCol">
                                             <div id="playerDiv" className='avatarDiv'>
                                                 <div>{t('you')}</div>
                                                 <img src={require("./PNG/avatar1.png")} className="avatarImg" id="playerImg"></img>
@@ -355,8 +355,8 @@ function GamePage({ nowOnline }) {
                                             </div>
                                             <div id="timeText">{t('time')}: {timeLeft.current} {t('seconds')}</div>
                                         </div>
-                                        <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center' id="agentCol">
-                                            <div id="agentDiv" className='avatarDiv'>
+                                        <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center align-items-center' id="agentCol">
+                                            <div id="agentDiv" className='avatarDiv float-end'>
                                                 <div>{t('agent')}</div>
                                                 <img src={require("./PNG/avatar3.png")} className="avatarImg" id="agentImg"></img>
                                                 <div>{agentPoints.current}</div>
