@@ -231,8 +231,8 @@ function GamePage({ nowOnline }) {
         timer();
         if (isPlayerTurn.current) {
             console.log(width.current);
-            document.getElementById("playerImg").style.width = width.current * 1.3 + "px";
-            document.getElementById("agentImg").style.width = width.current / 1.3 + "px";
+            document.getElementById("playerImg").style.width = width.current * 1.4 + "px";
+            document.getElementById("agentImg").style.width = width.current / 1.5 + "px";
             document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
             removeDisabled();
             if (!nowOnline.singlePlayer) {
@@ -243,9 +243,9 @@ function GamePage({ nowOnline }) {
             playerQuestionCounter.current += 1;
         }
         else {
-            document.body.style.backgroundImage = "linear-gradient(0deg,#ff9688, #ff9688)";
-            document.getElementById("playerImg").style.width = width.current / 1.3 + "px";
-            document.getElementById("agentImg").style.width = width.current * 1.3 + "px";
+            document.body.style.backgroundImage = "linear-gradient(0deg,#c0a0c3, #c0a0c3)";
+            document.getElementById("playerImg").style.width = width.current / 1.5 + "px";
+            document.getElementById("agentImg").style.width = width.current * 1.4 + "px";
             agent();
             setPoints(agentPoints.current);
             setQuestionCounter(agentQuestionCounter.current);
@@ -336,7 +336,7 @@ function GamePage({ nowOnline }) {
             <GamePageModals beep={beep} timerInterval={timerInterval} gameFlow={gameFlow}/>
             <div className='container-fluid' id="gamePageContainer">
                 <div className='row justify-content-center'>
-                    <div className='col-md-10 col-sm-11 col-xs-12 justify-content-sm-center justify-content-md-start'>
+                    <div className='col-md-9 col-sm-11 col-xs-12 justify-content-sm-center justify-content-md-start'>
                         <div className='card' id="question-card">
                             <div className='card-body'>
                                 <div className='container-fluid'>
@@ -348,17 +348,17 @@ function GamePage({ nowOnline }) {
                                                 <div>{playerPoints.current}</div>
                                             </div>
                                         </div>
-                                        <div className='col-xs-1 col-sm-4 time' id="timeCol">
+                                        <div className='col-xs-1 col-sm-4 time d-flex flex-column justify-content-center' id="timeCol">
                                             <div>
                                                 {t('question')} {questionCounter}/10
                                             </div>
-                                            <div class="progress">
+                                            <div class="progress w-100">
                                                 <div class="progress-bar progress-bar-striped bg-dark" id="prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div id="timeText">{t('time')}: {timeLeft.current} {t('seconds')}</div>
                                         </div>
                                         <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center align-items-center' id="agentCol">
-                                            <div id="agentDiv" className='avatarDiv float-end'>
+                                            <div id="agentDiv" className='avatarDiv'>
                                                 <div>{t('agent')}</div>
                                                 <img src={require("./PNG/avatar3.png")} className="avatarImg" id="agentImg"></img>
                                                 <div>{agentPoints.current}</div>
