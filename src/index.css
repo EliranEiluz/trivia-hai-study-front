@@ -37,7 +37,7 @@ body {
   font-family: 'Calibri', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(0deg,#FFEFC2, #faf2dd);
+  background-image: linear-gradient(0deg,#fce0b3, #ffda9e);
   background-attachment: fixed;
 }
 

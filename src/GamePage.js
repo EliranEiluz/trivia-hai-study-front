@@ -233,6 +233,7 @@ function GamePage({ nowOnline }) {
             console.log(width.current);
             document.getElementById("playerImg").style.width = width.current * 1.3 + "px";
             document.getElementById("agentImg").style.width = width.current / 1.3 + "px";
+            document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
             removeDisabled();
             if (!nowOnline.singlePlayer) {
                 playWithAgent();
@@ -242,6 +243,7 @@ function GamePage({ nowOnline }) {
             playerQuestionCounter.current += 1;
         }
         else {
+            document.body.style.backgroundImage = "linear-gradient(0deg,#ff9688, #ff9688)";
             document.getElementById("playerImg").style.width = width.current / 1.3 + "px";
             document.getElementById("agentImg").style.width = width.current * 1.3 + "px";
             agent();

@@ -9,12 +9,14 @@ function GamePageModals({ beep, timerInterval, gameFlow }) {
     function leaveGame() {
         clearTimeout(timerInterval.current);
         beep.current.pause();
+        document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
         navigation('/welcome')
     }
 
     function leaveToHomeGame() {
         clearTimeout(timerInterval.current);
         beep.current.pause();
+        document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
         navigation('/')
     }
 
