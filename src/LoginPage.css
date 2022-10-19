@@ -73,6 +73,7 @@
 .login-btn {
     background-color: black;
     border-color: black;
+    font-size: large;
 }
 
 .login-btn:disabled {

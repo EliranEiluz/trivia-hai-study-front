@@ -44,6 +44,7 @@
 .register-btn {
     background-color: black;
     border-color: black;
+    font-size: large;
 }
 
 .register-btn:hover {

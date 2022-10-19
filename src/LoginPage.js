@@ -110,6 +110,7 @@ function LoginPage({ nowOnline }) {
                                             <button className='btn btn-primary login-btn' id="login_register_btn" onClick={registerBtnClick} type="button">{t('login_register_btn')}</button>
                                         </div>
                                         <div className='col-xl-2 d-flex justify-content-center d-none d-xl-block justify-content-md-start'>
+                                            
                                         </div>
                                         <div className='col-xl-4 col-xs-12 col-sm-12 col-md-5 d-flex justify-content-center justify-content-md-end'>
                                             <button className='btn btn-primary login-btn' id="login_login_btn" type="submit">{t('login_login_btn')}</button>
