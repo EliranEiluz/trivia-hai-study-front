@@ -3,6 +3,8 @@
     "resources": {
         "en": {
             "translation": {
+                "agent":"Agent",
+                "you":"You",
                 "username": "Username:",
                 "password": "Password:",
                 "keep_logged": "Keep me logged in",
@@ -65,6 +67,8 @@
         },
         "iw": {
             "translation": {
+                "agent":"סוכן",
+                "you":"אתה",
                 "username": "שם משתמש:",
                 "password": "סיסמה:",
                 "keep_logged": "השאר אותי מחובר",

@@ -31,6 +31,8 @@ function GamePage({ nowOnline }) {
     const gameCounter = useRef(0);
     const isBeepPlaying = useRef(false)
     const beep = useRef(new Audio('https://sounds-mp3.com/mp3/0012921.mp3'));
+    const width = useRef(0);
+    const firstTime = useRef(true);
 
     function gameFinished() {
         nowOnline.playerPoints = playerPoints.current;
@@ -204,6 +206,10 @@ function GamePage({ nowOnline }) {
     }
 
     function gameFlow() {
+        if(firstTime.current) {
+            width.current = document.querySelector(".avatarImg").width;
+            firstTime.current = false;
+        }
         document.getElementById("timeText").style.display = "none";
         document.getElementById("prog-bar").classList.replace("bg-danger", "bg-dark");
         document.getElementById("prog-bar").style.width = "0%"
@@ -223,9 +229,10 @@ function GamePage({ nowOnline }) {
         setFourthAnswer(nowOnline.questions[gameCounter.current].fourthAnswer);
         setTimerClock(20);
         timer();
-        console.log(isPlayerTurn.current)
         if (isPlayerTurn.current) {
-            
+            console.log(width.current);
+            document.getElementById("playerImg").style.width = width.current * 1.3 + "px";
+            document.getElementById("agentImg").style.width = width.current / 1.3 + "px";
             removeDisabled();
             if (!nowOnline.singlePlayer) {
                 playWithAgent();
@@ -235,6 +242,8 @@ function GamePage({ nowOnline }) {
             playerQuestionCounter.current += 1;
         }
         else {
+            document.getElementById("playerImg").style.width = width.current / 1.3 + "px";
+            document.getElementById("agentImg").style.width = width.current * 1.3 + "px";
             agent();
             setPoints(agentPoints.current);
             setQuestionCounter(agentQuestionCounter.current);
@@ -301,7 +310,6 @@ function GamePage({ nowOnline }) {
 
 
     useEffect(() => {
-        var questionsArray;
         if (nowOnline.singlePlayer) {
             document.getElementById('singlePlayerInstructions').style.display = "block";
         }
@@ -331,9 +339,9 @@ function GamePage({ nowOnline }) {
                             <div className='card-body'>
                                 <div className='container-fluid'>
                                     <div className='row'>
-                                        <div className='col-xs-1 col-sm-4 avatarsRow' id="playerCol">
+                                        <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center' id="playerCol">
                                             <div id="playerDiv" className='avatarDiv'>
-                                                <div>You</div>
+                                                <div>{t('you')}</div>
                                                 <img src={require("./PNG/avatar1.png")} className="avatarImg" id="playerImg"></img>
                                                 <div>{playerPoints.current}</div>
                                             </div>
@@ -347,10 +355,10 @@ function GamePage({ nowOnline }) {
                                             </div>
                                             <div id="timeText">{t('time')}: {timeLeft.current} {t('seconds')}</div>
                                         </div>
-                                        <div className='col-xs-1 col-sm-4 avatarsRow' id="agentCol">
-                                            <div id="agentDiv" className='float-end avatarDiv'>
-                                                <div>Agent</div>
-                                                <img src={require("./PNG/avatar3.png")}  className="avatarImg"></img>
+                                        <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center' id="agentCol">
+                                            <div id="agentDiv" className='avatarDiv'>
+                                                <div>{t('agent')}</div>
+                                                <img src={require("./PNG/avatar3.png")} className="avatarImg" id="agentImg"></img>
                                                 <div>{agentPoints.current}</div>
                                             </div>
                                         </div>
