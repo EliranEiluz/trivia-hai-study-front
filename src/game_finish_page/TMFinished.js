@@ -2,7 +2,7 @@ import './TMFinished.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import './NavBar.css';
+import '../NavBar.css';
 
 function TMFinished({ nowOnline }) {
     const {t} = useTranslation();

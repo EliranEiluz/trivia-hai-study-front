@@ -1,6 +1,6 @@
 import './RegisterPage.css';
 import { useNavigate } from "react-router-dom";
-import { User } from './index.js';
+import { User } from '../index.js';
 import LogoRow from './LogoRow';
 import { useTranslation } from 'react-i18next';
 

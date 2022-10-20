@@ -2,7 +2,7 @@ import './WelcomePage.css';
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import './NavBar.css';
+import '../NavBar.css';
 
 function WelcomePage({ nowOnline }) {
 
@@ -87,7 +87,7 @@ function WelcomePage({ nowOnline }) {
             <div className='container-fluid' id="WelcomePageContent">
                 <div className='row justify-content-md-center'>
                     <div className='col-xl-6 col-sm-12 d-flex justify-content-center' id="logoDiv">
-                        <img src={require("./tp2.png")} id="imgLogo2"></img>
+                        <img src={require("../tp2.png")} id="imgLogo2"></img>
                     </div>
                 </div>
                 <div className='row justify-content-md-center'>

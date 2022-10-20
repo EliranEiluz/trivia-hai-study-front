@@ -1,5 +1,5 @@
 import './GamePage.css';
-import { Question } from './index.js';
+import { Question } from '../index.js';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -8,30 +8,58 @@ import GamePageModals from './GamePageModals';
 
 
 function GamePage({ nowOnline }) {
+
+    // translation variable.
     const { t } = useTranslation();
+
+    // the time to answer each question.
     const timeLeft = useRef(20);
+
+    // the prestentage of the progress bar. starting from 0, as the time passed at the start of each question is 0.
     const presentage = useRef(0);
+
+    // the return value from setTimeout of the countdown clock of each question.
     const timerInterval = useRef(null);
+
+    // the value of the chosen answer by the agent when playing on "Play With Agent" mode
     const playWithAgentOperations = useRef(null);
+
+    // The return value from setTimeout on the agent turn
     const agentTimeout = useRef(null);
+
+    // react navigation variable.
     var navigation = useNavigate();
+
+    // game variables.
     const playerPoints = useRef(0);
     const agentPoints = useRef(0);
-    const [timerClock, setTimerClock] = useState(20);
     const playerQuestionCounter = useRef(1);
     const agentQuestionCounter = useRef(1);
+
+    // the current question string.
     const [currentQuestion, setCurrentQuestion] = useState('');
+
+    // the current optional answers strings.
     const [firstAnswer, setFirstAnswer] = useState('');
     const [secondAnswer, setSecondAnswer] = useState('');
     const [thirdAnswer, setThirdAnswer] = useState('');
     const [fourthAnswer, setFourthAnswer] = useState('');
+
+    // boolean variable to tell who holds the turn right now.
     const isPlayerTurn = useRef(false);
-    const [points, setPoints] = useState('0')
+
+    // the number of the current question (now, out of 10).
     const [questionCounter, setQuestionCounter] = useState(1);
+
+    // counting the number of turns (player and agent). so now, out of 20.
     const gameCounter = useRef(0);
+
+    // boolean variable to tell if the beep that starts on the last 5 seconds to answer the question is now playing.
     const isBeepPlaying = useRef(false)
+
+    // 
     const beep = useRef(new Audio('https://sounds-mp3.com/mp3/0012921.mp3'));
-    const width = useRef(0);
+    const avatarWidth = useRef(0);
     const firstTime = useRef(true);
 
     function gameFinished() {
@@ -95,7 +123,6 @@ function GamePage({ nowOnline }) {
 
     function timer() {
         if (timeLeft.current > 0) {
-            setTimerClock((prevTimerClock) => prevTimerClock - 1);
             timerInterval.current = setTimeout(timer, 1000);
             timeLeft.current--;
             presentage.current += 5;
@@ -207,7 +234,7 @@ function GamePage({ nowOnline }) {
 
     function gameFlow() {
         if(firstTime.current) {
-            width.current = document.querySelector(".avatarImg").width;
+            avatarWidth.current = document.querySelector(".avatarImg").width;
             firstTime.current = false;
         }
         document.getElementById("timeText").style.display = "none";
@@ -230,24 +257,21 @@ function GamePage({ nowOnline }) {
         setTimerClock(20);
         timer();
         if (isPlayerTurn.current) {
-            console.log(width.current);
-            document.getElementById("playerImg").style.width = width.current * 1.4 + "px";
-            document.getElementById("agentImg").style.width = width.current / 1.5 + "px";
+            document.getElementById("playerImg").style.width = avatarWidth.current * 1.4 + "px";
+            document.getElementById("agentImg").style.width = avatarWidth.current / 1.5 + "px";
             document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
             removeDisabled();
             if (!nowOnline.singlePlayer) {
                 playWithAgent();
             }
-            setPoints(playerPoints.current);
             setQuestionCounter(playerQuestionCounter.current);
             playerQuestionCounter.current += 1;
         }
         else {
             document.body.style.backgroundImage = "linear-gradient(0deg,#c0a0c3, #c0a0c3)";
-            document.getElementById("playerImg").style.width = width.current / 1.5 + "px";
-            document.getElementById("agentImg").style.width = width.current * 1.4 + "px";
+            document.getElementById("playerImg").style.width = avatarWidth.current / 1.5 + "px";
+            document.getElementById("agentImg").style.width = avatarWidth.current * 1.4 + "px";
             agent();
-            setPoints(agentPoints.current);
             setQuestionCounter(agentQuestionCounter.current);
             agentQuestionCounter.current += 1;
         }
@@ -344,7 +368,7 @@ function GamePage({ nowOnline }) {
                                         <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center align-items-center' id="playerCol">
                                             <div id="playerDiv" className='avatarDiv'>
                                                 <div>{t('you')}</div>
-                                                <img src={require("./PNG/avatar1.png")} className="avatarImg" id="playerImg"></img>
+                                                <img src={require("../PNG/avatar1.png")} className="avatarImg" id="playerImg"></img>
                                                 <div>{playerPoints.current}</div>
                                             </div>
                                         </div>
@@ -360,7 +384,7 @@ function GamePage({ nowOnline }) {
                                         <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center align-items-center' id="agentCol">
                                             <div id="agentDiv" className='avatarDiv'>
                                                 <div>{t('agent')}</div>
-                                                <img src={require("./PNG/avatar3.png")} className="avatarImg" id="agentImg"></img>
+                                                <img src={require("../PNG/avatar3.png")} className="avatarImg" id="agentImg"></img>
                                                 <div>{agentPoints.current}</div>
                                             </div>
                                         </div>
