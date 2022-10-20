@@ -1,4 +1,6 @@
-/* latin */
+/*
+ * This css file 
+ */
 @font-face {
   font-family: 'Calibri';
   font-style: italic;
@@ -7,7 +9,7 @@
   unicode-range: U+???;
 }
 
-/* latin */
+
 @font-face {
   font-family: 'Calibri';
   font-style: italic;
@@ -15,7 +17,7 @@
   src: url(https://fonts.gstatic.com/l/font?kit=J7aYnpV-BGlaFfdAhLQgUp5aHRge&skey=8b00183e5f6700b6&v=v15) format('woff2');
   unicode-range: U+?????;
 }
-/* latin */
+
 @font-face {
   font-family: 'Calibri';
   font-style: normal;
@@ -23,7 +25,7 @@
   src: url(https://fonts.gstatic.com/l/font?kit=J7afnpV-BGlaFfdAhLEY6w&skey=a1029226f80653a8&v=v15) format('woff2');
   unicode-range: U+?????;
 }
-/* latin */
+
 @font-face {
   font-family: 'Calibri';
   font-style: normal;

@@ -5,11 +5,11 @@ import reportWebVitals from './reportWebVitals';
 import LoginPage from './LoginPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RegisterPage from './RegisterPage';
-import WelcomePage from './WelcomePage';
+import WelcomePage from './welcome_page/WelcomePage';
 import Teams from './Teams';
-import TeamPage from './TeamPage';
+import TeamPage from './team_page/TeamPage';
 import GamePage from './GamePage';
-import TMFinished from './TMFinished';
+import TMFinished from './game_finish_page/TMFinished';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 

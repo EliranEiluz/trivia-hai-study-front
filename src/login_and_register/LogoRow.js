@@ -49,7 +49,7 @@ function LogoRow({ nowOnline }) {
                 </div>
             </div>
             <div className='col-xl-6 d-flex justify-content-center' id="logo">
-                <Link to="/"><img src={require("./tp2.png")} id="imgLogo"></img></Link>
+                <Link to="/"><img src={require("../tp2.png")} id="imgLogo"></img></Link>
             </div>
             <div className='col-xl-3 d-none d-m-block'></div>
         </div>
