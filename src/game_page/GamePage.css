@@ -4,13 +4,13 @@
 }
 
 #question-card {
-    margin-top: 40px;
+    margin-top: 30px;
     background-color: transparent;
     border-color: black;
     box-shadow: 0 0 0.3rem 0.3rem black;
     font-size: 22px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .time {
@@ -52,8 +52,8 @@
 }
 
 #question {
-    margin-top: 20px;
-    font-size: 40px;
+    
+    font-size: 37px;
     word-break: break-word;
 }
 
