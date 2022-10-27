@@ -15,11 +15,25 @@ function RegisterPage({ nowOnline }) {
     nowOnline.onlineUser = new User();
     nowOnline.onlineUser.memberType = -1;
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function isFormValid() {
         return validity.isUserNameVaild && validity.isPasswordValid && validity.isMemberTypeValid && validity.isPhoneNumberValid
             && validity.isFullNameValid;
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function handleSubmit(e) {
         e.preventDefault();
         if (isFormValid()) {
@@ -46,11 +60,25 @@ function RegisterPage({ nowOnline }) {
         }
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function loginBtnClick() {
         navigation('/');
 
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function memberTypeChange(e) {
         if (e.target.checked) {
             nowOnline.onlineUser.memberType = e.target.value;
@@ -58,6 +86,13 @@ function RegisterPage({ nowOnline }) {
         }
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function userNameChange(e) {
         if (e.target.value !== '') {
             nowOnline.onlineUser.username = e.target.value;
@@ -68,6 +103,13 @@ function RegisterPage({ nowOnline }) {
         }
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function fullNameChange(e) {
         if (e.target.value !== '') {
             nowOnline.onlineUser.username = e.target.value;
@@ -78,6 +120,13 @@ function RegisterPage({ nowOnline }) {
         }
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function passwordChange(e) {
         var password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
         if (e.target.value.match(password)) {
@@ -89,6 +138,13 @@ function RegisterPage({ nowOnline }) {
         }
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function phoneNumberChange(e) {
         var phone = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
         if (e.target.value.match(phone)) {
@@ -99,8 +155,6 @@ function RegisterPage({ nowOnline }) {
             validity.isPhoneNumberValid = false;
         }
     }
-
-
 
     return (
         <div className='container-fluid'>

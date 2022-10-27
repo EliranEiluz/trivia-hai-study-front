@@ -7,6 +7,13 @@ function TeamPage() {
 
     var isMicrophoneOn = false;
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function micClick() {
         if(isMicrophoneOn) {
             document.getElementById("mic").innerHTML = "<i class='fa-solid fa-microphone'></i>"

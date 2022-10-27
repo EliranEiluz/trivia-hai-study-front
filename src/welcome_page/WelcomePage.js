@@ -13,22 +13,50 @@ function WelcomePage({ nowOnline }) {
 
     const { t } = useTranslation();
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function onClickTrainingMode() {
         //navigation('/game');
         document.getElementById('toggleModal').click();
 
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function onSinglePlayer() {
         nowOnline.singlePlayer = true;
         navigation('/game');
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function onPlayWithAgent() {
         nowOnline.singlePlayer = false;
         navigation('/game');
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function isGuest() {
         if(nowOnline.onlineUser == null) {
             navigation('/');
@@ -41,7 +69,16 @@ function WelcomePage({ nowOnline }) {
         }
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     useEffect(() => isGuest(), []);
+
+    
     return (
         <>
             <div id="navBar">

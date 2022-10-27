@@ -2,6 +2,9 @@ import './Teams.css';
 import { Link } from 'react-router-dom';
 import '../NavBar.css';
 
+//TODO: NEEDS MASSIVE EDIT, ADD COMPONENT FOR EACH TEAM, ADD LOGO INSTEAD OF TEXT, CHANGE COLORS.
+
+
 function Teams() {
     return (
         <>

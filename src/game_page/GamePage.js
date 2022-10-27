@@ -1,5 +1,4 @@
 import './GamePage.css';
-import { Question } from '../index.js';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -10,9 +9,14 @@ import GamePageModals from './GamePageModals';
 
 /*
  * This component holds the game page and it's logic, for any available mode.
- *
 */
 function GamePage({ nowOnline }) {
+
+    const TIME_FOR_QUESTION = 20;
+
+    const PRESENTAGE_TO_ADD = 100 / TIME_FOR_QUESTION;
+    
+    const NUM_OF_ROUNDS = 20
 
     // translation variable.
     const { t } = useTranslation();
@@ -129,6 +133,8 @@ function GamePage({ nowOnline }) {
             case 4:
                 document.getElementById('4thAnswerLabel').classList.add("blink");
                 break;
+            default:
+                return;
         }
         await sleep(2000)
     }
@@ -156,20 +162,37 @@ function GamePage({ nowOnline }) {
     *                if the player is the one who chose the answer, so this function is called from the onChoosingAnswer function,
     *                which is the event listener of the answer radio buttons. If the agent is the one who chose the answer,
     *                so the function is called from the agent function.
-    *                This  
+    *                This function calls "afterChoosingAnswer" function, which disables the answers button, so the user cannot change it's
+    *                answer after choosing. after that, the function stops the last 5 seconds beep, and returns it to default 0 time.
+    *                After that, the function clears the question timer's timeout, make the chosen answer blink by calling "makeBlink" function,
+    *                check which is the right answer and mark it, increasing the game counter variable and check if it was the last round.
+    *                If it was, the function returns. If not, it calls the gameFlow function to run another round.
     */
     async function choosingAnswer(val) {
+
+        // disable the answers buttons
         afterChoosingAnswer();
+
+        // stop the beep, if it was on, and set it back to 0.
         beep.current.pause();
         beep.current.currentTime = 0;
+
+        // clear the question timer's timeout.
         clearTimeout(timerInterval.current)
-        if (val != 0) {
+
+        // check if an answer was chosen(in case the user/agent did not chose an answer by the given time, val is 0),
+        // and if so, make the chosen answer button blink.
+        if (val !== 0) {
             await makeBlink(val);
         }
+
+        // mark the right answer with green color.
         await answerCheck(val);
+
+        // increasing the game counter variable and check if the game is finished. If yes, call gameFinished and return.
+        // If not, call gameFlow to run another round.
         gameCounter.current += 1;
-        if (gameCounter.current == 20) {
-            console.log("Im in choosing answer")
+        if (gameCounter.current === NUM_OF_ROUNDS) {
             gameFinished();
             return;
         }
@@ -177,17 +200,28 @@ function GamePage({ nowOnline }) {
     }
 
     /*
-    * 1.Name:
-    * 2.Parameters:
-    * 3.Return value:
-    * 4.Description:
+    * 1.Name: timer
+    * 2.Parameters: none
+    * 3.Return value: none
+    * 4.Description: This function is responsible on the timer clock for each question, which is displays to the user by
+    *                a progress bar, and in the last 5 seconds also by text and beep.
     */
     function timer() {
+
+        // timeLeft is set to X, X is the time for each question. So, if there is time left, make the following:
         if (timeLeft.current > 0) {
+
+            // call the function again in 1 second.
             timerInterval.current = setTimeout(timer, 1000);
+
+            // decrease timeLeft by 1.
             timeLeft.current--;
+
+            // set the current time to the time after decreasing.
             setCurrentTime(timeLeft.current)
-            presentage.current += 5;
+
+            // add PRESENTAGE_TO_ADD% width to the progress bar.
+            presentage.current += PRESENTAGE_TO_ADD;
             document.getElementById("prog-bar").style.width = presentage.current + "%";
             if (timeLeft.current < 6 && !isBeepPlaying.current) {
                 document.getElementById("prog-bar").classList.replace("bg-dark", "bg-danger");
@@ -203,10 +237,11 @@ function GamePage({ nowOnline }) {
 
 
     /*
-    * 1.Name:
-    * 2.Parameters:
-    * 3.Return value:
-    * 4.Description:
+    * 1.Name: switchAnswer
+    * 2.Parameters: rightanswer, the right answer to the current question.
+    * 3.Return value: none
+    * 4.Description: This function is called after the user/agent marked an answer, or after the time for the question is over.
+    *                The function marks the right answer in green.
     */
     function switchAnswer(rightAnswer) {
         switch (rightAnswer) {
@@ -226,11 +261,13 @@ function GamePage({ nowOnline }) {
                 document.getElementById("4thAnswerLabel").classList.add("rightAnswer");
                 document.getElementById("4thAnswer").classList.add("rightAnswer");
                 break;
+            default:
+                return;
         }
     }
 
     /*
-    * 1.Name:
+    * 1.Name: This function is called at the start of every 
     * 2.Parameters:
     * 3.Return value:
     * 4.Description:
@@ -240,9 +277,9 @@ function GamePage({ nowOnline }) {
         document.getElementById("2ndAnswerLabel").classList.remove("rightAnswer");
         document.getElementById("3rdAnswerLabel").classList.remove("rightAnswer");
         document.getElementById("4thAnswerLabel").classList.remove("rightAnswer");
-        document.getElementById("1stAnswerLabel").classList.remove("disableAnswers");
-        document.getElementById("2ndAnswerLabel").classList.remove("disableAnswers");
-        document.getElementById("3rdAnswerLabel").classList.remove("disableAnswers");
+        document.getElementById("1stAnswerLabel").classList.remove("disableAnswersTouchScreen");
+        document.getElementById("2ndAnswerLabel").classList.remove("disableAnswersTouchScreen");
+        document.getElementById("3rdAnswerLabel").classList.remove("disableAnswersTouchScreen");
         document.getElementById("4thAnswerLabel").classList.remove("disableAnswers");
         document.getElementById("1stAnswer").classList.remove("rightAnswer");
         document.getElementById("2ndAnswer").classList.remove("rightAnswer");
@@ -278,7 +315,7 @@ function GamePage({ nowOnline }) {
         document.getElementById("2ndAnswer").disabled = "true";
         document.getElementById("3rdAnswer").disabled = "true";
         document.getElementById("4thAnswer").disabled = "true";
-        var rand = (Math.floor(Math.random() * 19) + 1) * 1000;
+        var rand = (Math.floor(Math.random() * (TIME_FOR_QUESTION - 1)) + 1) * 1000;
         setTimeout(() => {
             var chosen = Math.floor(Math.random() * 4) + 1;
             var e;
@@ -299,6 +336,8 @@ function GamePage({ nowOnline }) {
                     document.getElementById('4thAnswer').checked = true;
                     e = 4
                     break;
+                default:
+                    return;
             }
             choosingAnswer(e)
         }, rand)
@@ -348,10 +387,6 @@ function GamePage({ nowOnline }) {
         timeLeft.current = 20;
         clearTimeout(timerInterval)
         isBeepPlaying.current = false;
-        if (gameCounter > 20) {
-            navigation('/TMfinished');
-            console.log("Im in gameFlow")
-        }
         removeClasses();
         isPlayerTurn.current = !isPlayerTurn.current;
         setCurrentQuestion(nowOnline.questions[gameCounter.current].question);
@@ -443,6 +478,8 @@ function GamePage({ nowOnline }) {
                     document.getElementById('4thAnswer').checked = true;
                     e = 4
                     break;
+                default:
+                    return;
             }
             choosingAnswer(e)
         }, playWithAgentOperations.current[playerQuestionCounter.current - 1].time)
@@ -463,7 +500,7 @@ function GamePage({ nowOnline }) {
             document.getElementById('playWithAgentInstructions').style.display = "block";
             playWithAgentOperations.current = require('./agent.json');
         }
-        if (document.querySelector("html").lang == "en") {
+        if (document.querySelector("html").lang === "en") {
             nowOnline.questions = require('./questions.json');
             document.getElementById("leaveGameBtnLi").classList.add("ms-auto");
         }
@@ -472,7 +509,7 @@ function GamePage({ nowOnline }) {
             document.getElementById("leaveGameBtnLi").classList.add("me-auto");
         }
         document.getElementById('startGameModalBtn').click();
-    }, [])
+    }, [nowOnline])
 
 
     return (
@@ -491,7 +528,7 @@ function GamePage({ nowOnline }) {
                                         <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center align-items-center' id="playerCol">
                                             <div id="playerDiv" className='avatarDiv'>
                                                 <div>{t('you')}</div>
-                                                <img src={require("../PNG/avatar1.png")} className="avatarImg" id="playerImg"></img>
+                                                <img src={require("../PNG/avatar1.png")} className="avatarImg" id="playerImg" alt="player's Avatar"></img>
                                                 <div>{playerPoints.current}</div>
                                             </div>
                                         </div>
@@ -507,7 +544,7 @@ function GamePage({ nowOnline }) {
                                         <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center align-items-center' id="agentCol">
                                             <div id="agentDiv" className='avatarDiv'>
                                                 <div>{t('agent')}</div>
-                                                <img src={require("../PNG/avatar3.png")} className="avatarImg" id="agentImg"></img>
+                                                <img src={require("../PNG/avatar3.png")} className="avatarImg" id="agentImg" alt="agent's Avatar"></img>
                                                 <div>{agentPoints.current}</div>
                                             </div>
                                         </div>

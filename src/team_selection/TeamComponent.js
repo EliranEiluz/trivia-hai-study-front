@@ -6,14 +6,35 @@ function TeamComponent({ teamName, otherUserFullName, nowOnline }) {
 
     var navigation = useNavigate();
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function deleteTeam() {
 
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function connectTeam() {
 
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function isOnline() {
         // check if the other user is online via server.
 

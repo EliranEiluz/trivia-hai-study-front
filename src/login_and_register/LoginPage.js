@@ -15,6 +15,13 @@ function LoginPage({ nowOnline }) {
 
     const details = { username: '', password: '' }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function loginAsGuest() {
         nowOnline.onlineUser = new User();
         nowOnline.onlineUser.fullName = "Guest";
@@ -22,6 +29,12 @@ function LoginPage({ nowOnline }) {
     }
 
 
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function handleSubmit(e) {
         e.preventDefault()
         if (details.username !== '' && details.password !== '') {
@@ -37,10 +50,24 @@ function LoginPage({ nowOnline }) {
         }
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function registerBtnClick() {
         navigation('/register');
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function keepLoginChange(e) {
         if (e.target.checked) {
             keepLoggedIn = true;
@@ -48,10 +75,24 @@ function LoginPage({ nowOnline }) {
 
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function userNameChange(e) {
         details.username = e.target.value;
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function passwordChange(e) {
         details.password = e.target.value;
     }

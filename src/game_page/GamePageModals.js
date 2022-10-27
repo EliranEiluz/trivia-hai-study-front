@@ -6,6 +6,13 @@ function GamePageModals({ beep, timerInterval, gameFlow }) {
     const navigation = useNavigate();
     const { t } = useTranslation();
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function leaveGame() {
         clearTimeout(timerInterval.current);
         beep.current.pause();
@@ -13,6 +20,13 @@ function GamePageModals({ beep, timerInterval, gameFlow }) {
         navigation('/welcome')
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     function leaveToHomeGame() {
         clearTimeout(timerInterval.current);
         beep.current.pause();

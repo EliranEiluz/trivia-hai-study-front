@@ -8,6 +8,13 @@ function LogoRow({ nowOnline }) {
 
     const { t } = useTranslation();
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     async function changeToHeb() {
         if (document.querySelector("html").lang == "en") {
             document.querySelector("html").lang = "iw";
@@ -17,6 +24,13 @@ function LogoRow({ nowOnline }) {
         }
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     async function changeToEn() {
         if (document.querySelector("html").lang == "iw") {
             document.querySelector("html").lang = "en";
@@ -26,6 +40,13 @@ function LogoRow({ nowOnline }) {
         }
     }
 
+    
+    /*
+    * 1.Name: This function is called at the start of every 
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
     useEffect(() => {
         if (document.querySelector("html").lang == "iw") {
             document.getElementById("langBtn").innerHTML = document.getElementById("il").innerHTML;
