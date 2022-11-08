@@ -130,7 +130,7 @@ function RegisterPage({ nowOnline }) {
     function passwordChange(e) {
         var password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
         if (e.target.value.match(password)) {
-            nowOnline.onlineUser.username = e.target.value;
+            nowOnline.onlineUser.password = e.target.value;
             validity.isPasswordValid = true;
         }
         else {
@@ -148,7 +148,7 @@ function RegisterPage({ nowOnline }) {
     function phoneNumberChange(e) {
         var phone = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
         if (e.target.value.match(phone)) {
-            nowOnline.onlineUser.phone = e.target.value;
+            nowOnline.onlineUser.phoneNumber = e.target.value;
             validity.isPhoneNumberValid = true;
         }
         else {
