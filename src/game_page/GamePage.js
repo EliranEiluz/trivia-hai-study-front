@@ -520,16 +520,16 @@ function GamePage({ nowOnline }) {
 
             <div className='container-fluid' id="gamePageContainer">
                 <div className='row justify-content-center'>
-                    <div className='col-md-10 col-sm-11 col-xs-12 justify-content-sm-center justify-content-md-start'>
+                    <div className='col-md-9 col-sm-11 col-xs-12 justify-content-sm-center justify-content-md-start'>
                         <div className='card' id="question-card">
                             <div className='card-body'>
                                 <div className='container-fluid'>
                                     <div className='row'>
                                         <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center align-items-center' id="playerCol">
                                             <div id="playerDiv" className='avatarDiv'>
-                                                <div>{t('you')}</div>
+                                                <div className='avatarTxt'>{t('you')}</div>
                                                 <img src={require("../PNG/avatar1.png")} className="avatarImg" id="playerImg" alt="player's Avatar"></img>
-                                                <div>{playerPoints.current}</div>
+                                                <div className='avatarTxt'>{playerPoints.current}</div>
                                             </div>
                                         </div>
                                         <div className='col-xs-1 col-sm-4 time d-flex flex-column justify-content-center' id="timeCol">
@@ -543,9 +543,9 @@ function GamePage({ nowOnline }) {
                                         </div>
                                         <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center align-items-center' id="agentCol">
                                             <div id="agentDiv" className='avatarDiv'>
-                                                <div>{t('agent')}</div>
+                                                <div className='avatarTxt'>{t('agent')}</div>
                                                 <img src={require("../PNG/avatar3.png")} className="avatarImg" id="agentImg" alt="agent's Avatar"></img>
-                                                <div>{agentPoints.current}</div>
+                                                <div className='avatarTxt'>{agentPoints.current}</div>
                                             </div>
                                         </div>
                                     </div>

@@ -160,6 +160,7 @@
 .avatarImg {
     width: 100px;
     display: block;
+    transition-duration: 0.7s;
 }
 
 
@@ -177,6 +178,9 @@
     align-items: center;
 }
 
+.avatarTxt {
+    font-size: x-large;
+}
 
 
 
@@ -207,6 +211,10 @@
 
     #gamePageContainer {
         margin-bottom: 20px;
+    }
+
+    .avatarTxt {
+        font-size: medium;
     }
 }
 

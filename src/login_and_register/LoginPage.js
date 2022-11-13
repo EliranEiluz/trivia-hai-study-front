@@ -102,7 +102,7 @@ function LoginPage({ nowOnline }) {
             <div className='container-fluid'>
                 <div className='row justify-content-center'>
                     <div className='col-xl-10 col-xs-12'>
-                        <form id="login_form" onSubmit={handleSubmit} className="container-fluid h-100 w-100">
+                        <form id="login_form" onSubmit={handleSubmit} className="container-fluid w-100">
                             <div className="card" id="login_card">
                                 <div className="card-body">
                                     <LogoRow nowOnline={nowOnline} />
