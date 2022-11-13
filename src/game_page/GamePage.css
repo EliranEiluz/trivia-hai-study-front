@@ -182,6 +182,9 @@
     font-size: x-large;
 }
 
+.btn-check:disabled+.btn, .btn-check[disabled]+.btn {
+    
+}
 
 
 @media screen and (max-width:800px) {
