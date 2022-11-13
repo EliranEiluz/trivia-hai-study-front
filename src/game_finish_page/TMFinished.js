@@ -14,6 +14,7 @@ function TMFinished({ nowOnline }) {
     function winOrLose() {
         var message = document.getElementById('message');
         if (nowOnline.isWin == 2) {
+            document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
             message.innerHTML = t('you_win') + " <i class='fa-solid fa-hands-clapping'></i>"
         }
         else if (nowOnline.isWin == 0) {
@@ -26,6 +27,7 @@ function TMFinished({ nowOnline }) {
     }
 
     function toHomePageBtnClick() {
+        document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
         navigation('/');
     }
 
@@ -39,7 +41,7 @@ function TMFinished({ nowOnline }) {
             }
             else {
                 clearInterval(interval);
-                navigation('/')
+                toHomePageBtnClick();
             }
         }, 1000)
         return () => clearInterval(interval);
