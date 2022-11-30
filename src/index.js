@@ -53,8 +53,13 @@ class Question {
 }
 
 
-
-const nowOnline = {onlineUser: null, signalR: null, JWT_Token:'', isWin: 1, questions: null, agentPoints:0, playerPoints:0, singlePlayer:true};
+// playType = 0 - play against agent.
+// playType = 1 - play against agent with agent in your team.
+// playType = 2 - play with given number of questions.
+// playType = 3 - play with given number of questions with agent in your team.
+// playtype = 4 - answer as much questions as you can in given period of time.
+// playType = 5 - answer as much questions as you can in given period of time with agent in your team.
+const nowOnline = {onlineUser: null, signalR: null, JWT_Token:'', isWin: 1, questions: null, agentPoints:0, playerPoints:0, playType:0};
 
 
 

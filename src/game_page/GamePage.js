@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import GamePageNavBar from './GamePageNavBar';
 import GamePageModals from './GamePageModals';
+import { now } from 'jquery';
 
 
 
@@ -12,10 +13,12 @@ import GamePageModals from './GamePageModals';
 */
 function GamePage({ nowOnline }) {
 
+    const amountOfQuestions = useRef(20)
+
     const TIME_FOR_QUESTION = 20;
 
     const PRESENTAGE_TO_ADD = 100 / TIME_FOR_QUESTION;
-    
+
     const NUM_OF_ROUNDS = 20
 
     // translation variable.
@@ -148,10 +151,15 @@ function GamePage({ nowOnline }) {
     *                In any case, the onAgentC
     */
     async function onChoosingAnswer(e) {
-        if (!nowOnline.singlePlayer) {
+        if (nowOnline.playType == 1) {
             clearTimeout(agentTimeout.current)
         }
-        choosingAnswer(parseInt(e.target.value));
+        if(nowOnline.playType < 4) {
+            choosingAnswer(parseInt(e.target.value));
+        }
+        else {
+
+        }
     }
 
     /*
@@ -169,7 +177,6 @@ function GamePage({ nowOnline }) {
     *                If it was, the function returns. If not, it calls the gameFlow function to run another round.
     */
     async function choosingAnswer(val) {
-
         // disable the answers buttons
         afterChoosingAnswer();
 
@@ -199,6 +206,10 @@ function GamePage({ nowOnline }) {
         gameFlow();
     }
 
+    function choosingAnswerAgainstClock() {
+
+    }
+
     /*
     * 1.Name: timer
     * 2.Parameters: none
@@ -225,13 +236,16 @@ function GamePage({ nowOnline }) {
             document.getElementById("prog-bar").style.width = presentage.current + "%";
             if (timeLeft.current < 6 && !isBeepPlaying.current) {
                 document.getElementById("prog-bar").classList.replace("bg-dark", "bg-danger");
+                // add shake to prog bar.
                 document.getElementById("timeText").style.display = "block";
                 beep.current.play();
                 isBeepPlaying.current = true;
             }
         }
         else {
-            choosingAnswer(0);
+            if(nowOnline.playType  < 4) {
+                choosingAnswer(0);
+            }
         }
     }
 
@@ -280,7 +294,7 @@ function GamePage({ nowOnline }) {
         document.getElementById("1stAnswerLabel").classList.remove("disableAnswersTouchScreen");
         document.getElementById("2ndAnswerLabel").classList.remove("disableAnswersTouchScreen");
         document.getElementById("3rdAnswerLabel").classList.remove("disableAnswersTouchScreen");
-        document.getElementById("4thAnswerLabel").classList.remove("disableAnswers");
+        document.getElementById("4thAnswerLabel").classList.remove("disableAnswersTouchScreen");
         document.getElementById("1stAnswer").classList.remove("rightAnswer");
         document.getElementById("2ndAnswer").classList.remove("rightAnswer");
         document.getElementById("3rdAnswer").classList.remove("rightAnswer");
@@ -289,6 +303,10 @@ function GamePage({ nowOnline }) {
         document.getElementById("2ndAnswer").checked = false;
         document.getElementById("3rdAnswer").checked = false;
         document.getElementById("4thAnswer").checked = false;
+        document.getElementById("1stAnswer").disabled = false;
+        document.getElementById("2ndAnswer").disabled = false;
+        document.getElementById("3rdAnswer").disabled = false;
+        document.getElementById("4thAnswer").disabled = false;
     }
 
 
@@ -304,6 +322,9 @@ function GamePage({ nowOnline }) {
     );
 
 
+    function playAgainstClock() {
+        
+    }
     /*
     * 1.Name:
     * 2.Parameters:
@@ -349,19 +370,6 @@ function GamePage({ nowOnline }) {
     * 3.Return value:
     * 4.Description:
     */
-    function removeDisabled() {
-        document.getElementById("1stAnswer").disabled = false;
-        document.getElementById("2ndAnswer").disabled = false;
-        document.getElementById("3rdAnswer").disabled = false;
-        document.getElementById("4thAnswer").disabled = false;
-    }
-
-    /*
-    * 1.Name:
-    * 2.Parameters:
-    * 3.Return value:
-    * 4.Description:
-    */
     function afterChoosingAnswer() {
         document.getElementById("1stAnswerLabel").classList.add("disableAnswers");
         document.getElementById("2ndAnswerLabel").classList.add("disableAnswers");
@@ -369,17 +377,7 @@ function GamePage({ nowOnline }) {
         document.getElementById("4thAnswerLabel").classList.add("disableAnswers");
     }
 
-    /*
-    * 1.Name:
-    * 2.Parameters:
-    * 3.Return value:
-    * 4.Description:
-    */
-    function gameFlow() {
-        if (firstTime.current) {
-            avatarWidth.current = document.querySelector(".avatarImg").width;
-            firstTime.current = false;
-        }
+    function initializeBeforeTurn() {
         document.getElementById("timeText").style.display = "none";
         document.getElementById("prog-bar").classList.replace("bg-danger", "bg-dark");
         document.getElementById("prog-bar").style.width = "0%"
@@ -388,19 +386,45 @@ function GamePage({ nowOnline }) {
         clearTimeout(timerInterval)
         isBeepPlaying.current = false;
         removeClasses();
-        isPlayerTurn.current = !isPlayerTurn.current;
+    }
+
+    function setQuestions() {
         setCurrentQuestion(nowOnline.questions[gameCounter.current].question);
         setFirstAnswer(nowOnline.questions[gameCounter.current].firstAnswer);
         setSecondAnswer(nowOnline.questions[gameCounter.current].secondAnswer);
         setThirdAnswer(nowOnline.questions[gameCounter.current].thirdAnswer);
         setFourthAnswer(nowOnline.questions[gameCounter.current].fourthAnswer);
+    }
+    /*
+    * 1.Name:
+    * 2.Parameters:
+    * 3.Return value:
+    * 4.Description:
+    */
+    function gameFlow() {
+        if (nowOnline.playType == 0 || nowOnline.playType == 1) {
+            playAgainstAgent()
+        }
+        else if (nowOnline.playType == 2) {
+            playWithGivenAmountOfQuestions()
+        }
+    }
+
+    function playAgainstAgent() {
+        if (firstTime.current) {
+            avatarWidth.current = document.querySelector(".avatarImg").width;
+            firstTime.current = false;
+            amountOfQuestions.current = 10
+        }
+        initializeBeforeTurn();
+        isPlayerTurn.current = !isPlayerTurn.current;
+        setQuestions();
         timer();
         if (isPlayerTurn.current) {
             document.getElementById("playerImg").style.width = avatarWidth.current * 1.3 + "px";
             document.getElementById("agentImg").style.width = avatarWidth.current / 1.5 + "px";
             document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
-            removeDisabled();
-            if (!nowOnline.singlePlayer) {
+            if (nowOnline.playType == 1) {
                 playWithAgent();
             }
             setQuestionCounter(playerQuestionCounter.current);
@@ -416,6 +440,19 @@ function GamePage({ nowOnline }) {
         }
     }
 
+    function playWithGivenAmountOfQuestions() {
+        if (firstTime.current) {
+            document.getElementById("playerImg").style.width = document.querySelector(".avatarImg").width * 1.3 + "px";
+            document.getElementById("agentCol").classList.add('d-none')
+            firstTime.current = false;
+            isPlayerTurn.current = true;
+        }
+        initializeBeforeTurn();
+        setQuestions();
+        timer();
+        setQuestionCounter(playerQuestionCounter.current)
+        playerQuestionCounter.current += 1
+    }
     /*
     * 1.Name:
     * 2.Parameters:
@@ -448,7 +485,9 @@ function GamePage({ nowOnline }) {
         document.getElementById("2ndAnswerLabel").classList.remove("blink");
         document.getElementById("3rdAnswerLabel").classList.remove("blink");
         document.getElementById("4thAnswerLabel").classList.remove("blink");
-        await sleep(2000);
+        if(nowOnline.playType < 4) {
+            await sleep(2000);
+        }
     }
 
     /*
@@ -493,12 +532,18 @@ function GamePage({ nowOnline }) {
     * 4.Description:
     */
     useEffect(() => {
-        if (nowOnline.singlePlayer) {
+        if (nowOnline.playType == 0) {
             document.getElementById('singlePlayerInstructions').style.display = "block";
         }
-        else {
+        else if (nowOnline.playType == 1) {
             document.getElementById('playWithAgentInstructions').style.display = "block";
             playWithAgentOperations.current = require('./agent.json');
+        }
+        else if(nowOnline.playType == 3) {
+
+        }
+        else if(nowOnline.playType == 4) {
+            
         }
         if (document.querySelector("html").lang === "en") {
             nowOnline.questions = require('./questions.json');
@@ -517,7 +562,6 @@ function GamePage({ nowOnline }) {
             <GamePageNavBar />
 
             <GamePageModals beep={beep} timerInterval={timerInterval} gameFlow={gameFlow} />
-
             <div className='container-fluid' id="gamePageContainer">
                 <div className='row justify-content-center'>
                     <div className='col-md-9 col-sm-11 col-xs-12 justify-content-sm-center justify-content-md-start'>
@@ -534,7 +578,7 @@ function GamePage({ nowOnline }) {
                                         </div>
                                         <div className='col-xs-1 col-sm-4 time d-flex flex-column justify-content-center' id="timeCol">
                                             <div>
-                                                {t('question')} {questionCounter}/10
+                                                {t('question')} {questionCounter}/{amountOfQuestions.current}
                                             </div>
                                             <div className="progress w-100">
                                                 <div className="progress-bar progress-bar-striped bg-dark" id="prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>

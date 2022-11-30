@@ -45,7 +45,7 @@
                 "points": "Points",
                 "scoreboard": "Scoreboard",
                 "choose_training_mode": "Choose Training Mode",
-                "play_with_agent": "Play With Agent",
+                "play_with_agent": "Play with agent in your team",
                 "single_player": "Single Player",
                 "your_turn": "It's your turn!",
                 "agent_turn": "It's Agent's turn",
@@ -60,8 +60,15 @@
                 "returning_home_page":"Returning to home page in",
                 "you_win":"WOW, you WIN!",
                 "you_lost":"Sorry, you LOST!",
-                "draw":"It's a DRAW!"
-
+                "draw":"It's a DRAW!",
+                "play_against_agent": "Play againts agent",
+                "play_alone":"Play alone",
+                "given_amount_of_questions": "Given amount of questions mode",
+                "on_time_mode": "Against the clock mode",
+                "0_gameMode_tooltip": "Play alone against an agent",
+                "1_gameMode_tooltip": "Play with an agent in your team against an other agent",
+                "2_gameMode_tooltip": "Answer as much right answers you can over 20 questions.",
+                "4_gameMode_tooltip": "Answer as much right answers you can in 20 seconds!"
                 
             }
         },
@@ -109,7 +116,7 @@
                 "points": "נקודות",
                 "scoreboard": "לוח תוצאות",
                 "choose_training_mode": "בחר את סוג האימון",
-                "play_with_agent": "שחק עם סוכן",
+                "play_with_agent": "שחק עם סוכן בקבוצתך",
                 "single_player": "משחק יחיד",
                 "your_turn": "זהו תורך!",
                 "agent_turn": "תורו של הסוכן",
@@ -124,8 +131,15 @@
                 "returning_home_page":"חוזר לעמוד הבית בעוד",
                 "you_win":"וואו, אתה המנצח!",
                 "you_lost":"מצטערים, הפסדת",
-                "draw":"זה תיקו!"
-
+                "draw":"זה תיקו!",
+                "play_against_agent": "שחק נגד סוכן",
+                "play_alone":"שחק לבד",
+                "given_amount_of_questions": "כמות שאלות נתונה",
+                "on_time_mode": "נגד השעון",
+                "0_gameMode_tooltip": "שחק לבד נגד סוכן",
+                "1_gameMode_tooltip": "שחק עם סוכן בקבוצתך כנגד סוכן אחר",
+                "2_gameMode_tooltip": "ענה על כמה שיותר תשובות נכונות מתוך 20 שאלות.",
+                "4_gameMode_tooltip": "ענה כמה שיותר תשובות נכונות ב-20 שניות!"
             }
         }
     }
