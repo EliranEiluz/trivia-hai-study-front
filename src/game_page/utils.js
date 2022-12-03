@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 export function initializeBeforeTurn() {
     document.getElementById("timeText").style.display = "none";
     document.getElementById("prog-bar").classList.replace("bg-danger", "bg-dark");
@@ -112,4 +114,4 @@ export function removeBlink() {
     document.getElementById("4thAnswerLabel").classList.remove("blink");
 }
 
-export{}
+

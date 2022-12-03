@@ -2,7 +2,7 @@ import * as utils from './utils'
 import {Beep} from './Beep'
 
 class PlayWithGivenAmountOfQuestions {
-    constructor(amountOfQuestions, timeForQuestion, setQuestionCounter, questions, setQuestion, playerPoints, setCurrentTime) {
+    constructor(amountOfQuestions, timeForQuestion, setQuestionCounter, questions, setQuestion, playerPoints, setCurrentTime, nowOnline, navigateToFinishPage) {
         this.amountOfQuestions = amountOfQuestions;
         this.timeForQuestion = timeForQuestion;
         this.setQuestionCounter = setQuestionCounter;
@@ -10,6 +10,8 @@ class PlayWithGivenAmountOfQuestions {
         this.setQuestion = setQuestion;
         this.playerPoints = playerPoints;
         this.setCurrentTime = setCurrentTime;
+        this.nowOnline = nowOnline;
+        this.navigateToFinishPage = navigateToFinishPage;
 
         this.rightAnswers = 0;
         this.timerInterval = null;
@@ -24,6 +26,7 @@ class PlayWithGivenAmountOfQuestions {
         document.getElementById("playerImg").style.width = document.querySelector(".avatarImg").width * 1.3 + "px";
         this.playerPoints.current = "0/20";
     }
+
     gameFlow() {
         this.presentage = 0;
         this.timeLeft = 20;
@@ -37,10 +40,10 @@ class PlayWithGivenAmountOfQuestions {
     async answerCheck(ans) {
         utils.switchAnswer(this.questions[this.gameCounter].rightAnswer);
         if (ans === this.questions[this.gameCounter].rightAnswer) {
-            this.rightAnswers += 1
-            this.playerPoints.current = this.rightAnswers + "/" + this.amountOfQuestions
+            this.rightAnswers += 1;
+            this.playerPoints.current = this.rightAnswers + "/" + this.amountOfQuestions;
         }
-        utils.removeBlink()
+        utils.removeBlink();
         await utils.sleep(2000);
     }
 
@@ -107,7 +110,7 @@ class PlayWithGivenAmountOfQuestions {
     }
 
     gameFinished() {
-        this.clear()
+        this.clear();
     }
 
 }

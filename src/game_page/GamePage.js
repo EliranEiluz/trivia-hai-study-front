@@ -26,7 +26,6 @@ function GamePage({ nowOnline }) {
     // the value of the chosen answer by the agent when playing on "Play With Agent" mode
     const playWithAgentOperations = useRef(null);
 
-
     // react navigation variable.
     var navigation = useNavigate();
 
@@ -43,38 +42,13 @@ function GamePage({ nowOnline }) {
     const [thirdAnswer, setThirdAnswer] = useState('');
     const [fourthAnswer, setFourthAnswer] = useState('');
 
-
-    // the number of the current question (now, out of 10).
+    // the number of the current question
     const [questionCounter, setQuestionCounter] = useState(1);
 
-    /*
-    * 1.Name: gameFinished
-    * 2.Parameters: none
-    * 3.Return value: none
-    * 4.Description: After X rounds(now X=20), the game is finished and this function is called.
-    *                The function checks who has more points, the player or the agent, and according to that fills the "nowOnline.isWin"
-    *                value, when "nowOnline" is a common variable to all components.
-    *                If the player won, than isWin=2.
-    *                If the agent won, than isWin=1.
-    *                If it's a draw, than isWin=0.
-    *                after setting the variabe value, the function clears the clock timeOut, stops the beep of the last 5 seconds
-    *                and navigates to the game finish page, to declare the winner.
-    */
-    function gameFinished() {
-        nowOnline.playerPoints = playerPoints.current;
-        nowOnline.agentPoints = agentPoints.current;
-        if (playerPoints.current > agentPoints.current) {
-            nowOnline.isWin = 2;
-        }
-        else if (agentPoints.current > playerPoints.current) {
-            nowOnline.isWin = 0;
-        }
-        else {
-            nowOnline.isWin = 1;
-        }
-        navigation('/TMfinished');
+    function navigateToFinishPage() {
+        navigation('/TMFinished');
     }
-
+    
 
     /*
     * 1.Name: onChoosingAnswer
@@ -90,12 +64,6 @@ function GamePage({ nowOnline }) {
 
 
     function setQuestions(index) {
-        // setCurrentQuestion(nowOnline.questions[gameCounter.current].question);
-        // setFirstAnswer(nowOnline.questions[gameCounter.current].firstAnswer);
-        // setSecondAnswer(nowOnline.questions[gameCounter.current].secondAnswer);
-        // setThirdAnswer(nowOnline.questions[gameCounter.current].thirdAnswer);
-        // setFourthAnswer(nowOnline.questions[gameCounter.current].fourthAnswer);
-
         setCurrentQuestion(nowOnline.questions[index].question);
         setFirstAnswer(nowOnline.questions[index].firstAnswer);
         setSecondAnswer(nowOnline.questions[index].secondAnswer);
@@ -112,68 +80,23 @@ function GamePage({ nowOnline }) {
     function gameFlow() {
         if (nowOnline.playType == 0) {
             amountOfQuestions.current = 10
-            playModeClass.current = new PlayAgainstAgent(20, 20, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, null);
+            playModeClass.current = new PlayAgainstAgent(20, 20, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, null, nowOnline, navigateToFinishPage);
             playModeClass.current.gameFlow();
         }
         else if (nowOnline.playType == 1) {
             amountOfQuestions.current = 10
-            playModeClass.current = new PlayAgainstAgent(20, 20, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations);
+            playModeClass.current = new PlayAgainstAgent(20, 20, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage);
             playModeClass.current.gameFlow();
         }
         else if (nowOnline.playType == 2) {
-            playModeClass.current = new PlayWithGivenAmountOfQuestions(20, 20, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, setCurrentTime)
+            playModeClass.current = new PlayWithGivenAmountOfQuestions(20, 20, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, setCurrentTime, nowOnline, navigateToFinishPage)
             playModeClass.current.gameFlow();
         }
         else if (nowOnline.playType == 4) {
-            playModeClass.current = new PlayAgainstTheClock(20, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, setCurrentTime)
+            playModeClass.current = new PlayAgainstTheClock(20, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, setCurrentTime, nowOnline, navigateToFinishPage)
             playModeClass.current.gameFlow();
         }
     }
-
-    // function playAgainstAgent() {
-    //     if (firstTime.current) {
-    //         avatarWidth.current = document.querySelector(".avatarImg").width;
-    //         firstTime.current = false;
-    //         amountOfQuestions.current = 10
-    //     }
-    //     initializeBeforeTurn();
-    //     isPlayerTurn.current = !isPlayerTurn.current;
-    //     setQuestions();
-    //     timer();
-    //     if (isPlayerTurn.current) {
-    //         document.getElementById("playerImg").style.width = avatarWidth.current * 1.3 + "px";
-    //         document.getElementById("agentImg").style.width = avatarWidth.current / 1.5 + "px";
-    //         document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
-    //         if (nowOnline.playType == 1) {
-    //             playWithAgent();
-    //         }
-    //         setQuestionCounter(playerQuestionCounter.current);
-    //         playerQuestionCounter.current += 1;
-    //     }
-    //     else {
-    //         document.body.style.backgroundImage = "linear-gradient(0deg,#c0a0c3, #c0a0c3)";
-    //         document.getElementById("playerImg").style.width = avatarWidth.current / 1.5 + "px";
-    //         document.getElementById("agentImg").style.width = avatarWidth.current * 1.3 + "px";
-    //         agent();
-    //         setQuestionCounter(agentQuestionCounter.current);
-    //         agentQuestionCounter.current += 1;
-    //     }
-    // }
-
-    // function playWithGivenAmountOfQuestions() {
-    //     if (firstTime.current) {
-    //         document.getElementById("playerImg").style.width = document.querySelector(".avatarImg").width * 1.3 + "px";
-    //         document.getElementById("agentCol").classList.add('d-none')
-    //         firstTime.current = false;
-    //         isPlayerTurn.current = true;
-    //     }
-    //     initializeBeforeTurn();
-    //     setQuestions();
-    //     timer();
-    //     setQuestionCounter(playerQuestionCounter.current)
-    //     playerQuestionCounter.current += 1
-    // }
-
 
     /*
     * 1.Name:

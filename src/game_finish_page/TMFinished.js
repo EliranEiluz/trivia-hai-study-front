@@ -13,17 +13,21 @@ function TMFinished({ nowOnline }) {
     const [timerClock, setTimerClock] = useState(10);
     function winOrLose() {
         var message = document.getElementById('message');
-        if (nowOnline.isWin == 2) {
-            document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
-            message.innerHTML = t('you_win') + " <i class='fa-solid fa-hands-clapping'></i>"
+        if(nowOnline.playType === 0 || nowOnline.playType === 1) {
+            if (nowOnline.isWin == 2) {
+                document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
+                message.innerHTML = t('you_win') + " <i class='fa-solid fa-hands-clapping'></i>"
+            }
+            else if (nowOnline.isWin == 0) {
+                message.innerHTML = t('you_lost') + " <i class='fa-solid fa-heart-crack'></i>"
+            }
+            else {
+                message.innerHTML = t('draw') + " <i class='fa-solid fa-heart-crack'></i>"
+            }
         }
-        else if (nowOnline.isWin == 0) {
-            message.innerHTML = t('you_lost') + " <i class='fa-solid fa-heart-crack'></i>"
+        else if(nowOnline.playType === 2 || nowOnline.playType === 4) {
+
         }
-        else {
-            message.innerHTML = t('draw') + " <i class='fa-solid fa-heart-crack'></i>"
-        }
-        console.log(nowOnline.playerPoints);
     }
 
     function toHomePageBtnClick() {
@@ -76,8 +80,8 @@ function TMFinished({ nowOnline }) {
                                         </center>
                                     </div>
                                     <div className='row justify-content-md-center' id="points">
-                                        {t('your_points')}: {playerPoints}<br />
-                                        {t('agent_points')}: {agentPoints}
+                                        <div id="playerPoints">{t('your_points')}: {playerPoints}</div>
+                                        <div id="agentPoints"> {t('agent_points')}: {agentPoints}</div>
                                     </div>
                                     <div className='row justify-content-center'>
                                         <div className='col-xl-4'>

@@ -2,7 +2,7 @@ import * as utils from './utils'
 import { Beep } from './Beep'
 
 class PlayAgainstTheClock {
-    constructor(amountOfQuestions, totalTime, setQuestionCounter, questions, setQuestion, playerPoints, setCurrentTime) {
+    constructor(amountOfQuestions, totalTime, setQuestionCounter, questions, setQuestion, playerPoints, setCurrentTime, nowOnline, navigateToFinishPage) {
         this.amountOfQuestions = amountOfQuestions;
         this.totalTime = totalTime
         this.setQuestionCounter = setQuestionCounter;
@@ -10,6 +10,8 @@ class PlayAgainstTheClock {
         this.setQuestion = setQuestion;
         this.playerPoints = playerPoints;
         this.setCurrentTime = setCurrentTime;
+        this.nowOnline = nowOnline;
+        this.navigateToFinishPage = navigateToFinishPage;
 
         this.firstRound = true;
         this.fromGameFinished = false;

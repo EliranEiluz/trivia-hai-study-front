@@ -1,7 +1,7 @@
 import * as utils from './utils'
 import {Beep} from './Beep.js'
 class PlayAgainstAgent {
-    constructor(amountOfQuestions, timeForQuestion, setQuestionCounter, questions, setQuestion, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations) {
+    constructor(amountOfQuestions, timeForQuestion, setQuestionCounter, questions, setQuestion, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage) {
         this.amountOfQuestions = amountOfQuestions;
         this.timeForQuestion = timeForQuestion;
         this.timerInterval = null;
@@ -23,6 +23,8 @@ class PlayAgainstAgent {
         this.setCurrentTime = setCurrentTime;
         this.playWithAgentOperations = playWithAgentOperations
         this.agentTimeout = null;
+        this.nowOnline = nowOnline;
+        this.navigateToFinishPage = navigateToFinishPage
     }
 
     gameFlow() {
@@ -224,7 +226,19 @@ class PlayAgainstAgent {
     }
 
     gameFinished() {
-        this.clear()
+        this.clear();
+        this.nowOnline.playerPoints = this.playerPoints.current;
+        this.nowOnline.agentPoints = this.agentPoints.current;
+        if (this.playerPoints.current > this.agentPoints.current) {
+            this.nowOnline.isWin = 2;
+        }
+        else if (this.agentPoints.current > this.playerPoints.current) {
+            this.nowOnline.isWin = 0;
+        }
+        else {
+            this.nowOnline.isWin = 1;
+        }
+        this.navigateToFinishPage();
     }
 
 }
