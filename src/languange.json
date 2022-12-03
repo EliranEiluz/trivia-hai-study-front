@@ -68,7 +68,10 @@
                 "0_gameMode_tooltip": "Play alone against an agent",
                 "1_gameMode_tooltip": "Play with an agent in your team against an other agent",
                 "2_gameMode_tooltip": "Answer as much right answers you can over 20 questions.",
-                "4_gameMode_tooltip": "Answer as much right answers you can in 20 seconds!"
+                "4_gameMode_tooltip": "Answer as much right answers you can in 40 seconds!",
+                "you_can_do_better": "You can do better!",
+                "very_nice": "Very Nice!",
+                "you_are_genius": "You are a genius!"
                 
             }
         },
@@ -139,7 +142,10 @@
                 "0_gameMode_tooltip": "שחק לבד נגד סוכן",
                 "1_gameMode_tooltip": "שחק עם סוכן בקבוצתך כנגד סוכן אחר",
                 "2_gameMode_tooltip": "ענה על כמה שיותר תשובות נכונות מתוך 20 שאלות.",
-                "4_gameMode_tooltip": "ענה כמה שיותר תשובות נכונות ב-20 שניות!"
+                "4_gameMode_tooltip": "ענה כמה שיותר תשובות נכונות ב-40 שניות!",
+                "you_can_do_better": "אתה יכול טוב יותר!",
+                "very_nice": "יפה מאוד!",
+                "you_are_genius": "אתה גאון!"
             }
         }
     }

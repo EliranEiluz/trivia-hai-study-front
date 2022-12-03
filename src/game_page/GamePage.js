@@ -7,6 +7,7 @@ import GamePageModals from './GamePageModals';
 import { PlayAgainstAgent } from './PlayAgainstAgent'
 import { PlayWithGivenAmountOfQuestions } from './PlayWithGivenAmountOfQuestions'
 import { PlayAgainstTheClock } from './PlayAgainstTheClock'
+
 /*
  * This component holds the game page and it's logic, for any available mode.
 */
@@ -69,7 +70,6 @@ function GamePage({ nowOnline }) {
         setSecondAnswer(nowOnline.questions[index].secondAnswer);
         setThirdAnswer(nowOnline.questions[index].thirdAnswer);
         setFourthAnswer(nowOnline.questions[index].fourthAnswer);
-        console.log('imHere')
     }
     /*
     * 1.Name:
@@ -93,7 +93,7 @@ function GamePage({ nowOnline }) {
             playModeClass.current.gameFlow();
         }
         else if (nowOnline.playType == 4) {
-            playModeClass.current = new PlayAgainstTheClock(20, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, setCurrentTime, nowOnline, navigateToFinishPage)
+            playModeClass.current = new PlayAgainstTheClock(20, 40, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, setCurrentTime, nowOnline, navigateToFinishPage)
             playModeClass.current.gameFlow();
         }
     }
@@ -106,17 +106,17 @@ function GamePage({ nowOnline }) {
     */
     useEffect(() => {
         if (nowOnline.playType == 0) {
-            document.getElementById('singlePlayerInstructions').style.display = "block";
+            document.getElementById('singlePlayerInstructions').classList.remove('d-none')
         }
         else if (nowOnline.playType == 1) {
-            document.getElementById('playWithAgentInstructions').style.display = "block";
+            document.getElementById('playWithAgentInstructions').classList.remove('d-none')
             playWithAgentOperations.current = require('./agent.json');
         }
         else if (nowOnline.playType == 2) {
-
+            document.getElementById('playWithGivenAmountOfQuestionsInstrctions').classList.remove('d-none')
         }
         else if (nowOnline.playType == 4) {
-
+            document.getElementById('playAgainstTheClockInstrctions').classList.remove('d-none')
         }
         if (document.querySelector("html").lang === "en") {
             nowOnline.questions = require('./questions.json');

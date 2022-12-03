@@ -14,7 +14,9 @@ function GamePageModals({ playModeClass, gameFlow }) {
     * 4.Description:
     */
     function leaveGame() {
-        playModeClass.current.clear();
+        if(playModeClass.current) {
+            playModeClass.current.clear();
+        }
         navigation('/welcome')
     }
 
@@ -26,7 +28,9 @@ function GamePageModals({ playModeClass, gameFlow }) {
     * 4.Description:
     */
     function leaveToHomeGame() {
-        playModeClass.current.clear();
+        if(playModeClass.current) {
+            playModeClass.current.clear();
+        }
         navigation('/')
     }
 
@@ -40,11 +44,17 @@ function GamePageModals({ playModeClass, gameFlow }) {
                             <h5 className="modal-title">{t('game_instructions')}</h5>
                         </div>
                         <div className="modal-body">
-                            <p id="singlePlayerInstructions">
+                            <p id="singlePlayerInstructions" className='d-none'>
                                 {t('single_player_instructions')}
                             </p>
-                            <p id="playWithAgentInstructions">
+                            <p id="playWithAgentInstructions" className='d-none'>
                                 {t('play_with_agent_instructions')}
+                            </p>
+                            <p id="playWithGivenAmountOfQuestionsInstrctions" className='d-none'>
+                                {t('2_gameMode_tooltip')}
+                            </p>
+                            <p id="playAgainstTheClockInstrctions" className='d-none'>
+                                {t('4_gameMode_tooltip')}
                             </p>
                         </div>
                         <div className="modal-footer">

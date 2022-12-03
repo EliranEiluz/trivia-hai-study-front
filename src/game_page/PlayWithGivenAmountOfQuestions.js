@@ -111,6 +111,8 @@ class PlayWithGivenAmountOfQuestions {
 
     gameFinished() {
         this.clear();
+        this.nowOnline.isWin = this.rightAnswers;
+        this.navigateToFinishPage()
     }
 
 }

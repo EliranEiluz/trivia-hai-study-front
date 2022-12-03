@@ -48,6 +48,10 @@ class PlayAgainstTheClock {
         clearTimeout(this.gameTimeout);
         this.gameTimeout = setTimeout(this.gameFinished.bind(this), this.timeLeft * 1000)
         this.gameCounter += 1;
+        if(this.gameCounter == this.amountOfQuestions) {
+            this.clear();
+            this.gameFinished();
+        }
         this.gameFlow();
     }
 
@@ -57,7 +61,7 @@ class PlayAgainstTheClock {
             this.rightAnswers += 1
             this.playerPoints.current = this.rightAnswers + "/" + this.amountOfQuestions
         }
-        await utils.sleep(1000)
+        await utils.sleep(1500)
     }
 
     timer() {
@@ -90,6 +94,8 @@ class PlayAgainstTheClock {
     gameFinished() {
         this.fromGameFinished = true;
         this.clear();
+        this.nowOnline.isWin = this.rightAnswers;
+        this.navigateToFinishPage();
     }
 }
 
