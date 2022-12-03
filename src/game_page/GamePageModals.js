@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-function GamePageModals({ beep, timerInterval, gameFlow }) {
+function GamePageModals({ playModeClass, gameFlow }) {
 
     const navigation = useNavigate();
     const { t } = useTranslation();
@@ -14,9 +14,7 @@ function GamePageModals({ beep, timerInterval, gameFlow }) {
     * 4.Description:
     */
     function leaveGame() {
-        clearTimeout(timerInterval.current);
-        beep.current.pause();
-        document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
+        playModeClass.current.clear();
         navigation('/welcome')
     }
 
@@ -28,9 +26,7 @@ function GamePageModals({ beep, timerInterval, gameFlow }) {
     * 4.Description:
     */
     function leaveToHomeGame() {
-        clearTimeout(timerInterval.current);
-        beep.current.pause();
-        document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
+        playModeClass.current.clear();
         navigation('/')
     }
 

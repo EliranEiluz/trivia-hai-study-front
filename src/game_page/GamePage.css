@@ -74,6 +74,8 @@
     margin-bottom: 30px;
     border-radius: 15px;
     align-items: center;
+    justify-content: center;
+    display: flex;
     word-break: break-word;
     width: 90%;
     height: 90%;

@@ -4,42 +4,28 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import GamePageNavBar from './GamePageNavBar';
 import GamePageModals from './GamePageModals';
-
-
-
+import { PlayAgainstAgent } from './PlayAgainstAgent'
+import { PlayWithGivenAmountOfQuestions } from './PlayWithGivenAmountOfQuestions'
+import { PlayAgainstTheClock } from './PlayAgainstTheClock'
 /*
  * This component holds the game page and it's logic, for any available mode.
 */
 function GamePage({ nowOnline }) {
 
+    const playModeClass = useRef(null)
+
     const amountOfQuestions = useRef(20)
-
-    const TIME_FOR_QUESTION = 20;
-
-    const PRESENTAGE_TO_ADD = 100 / TIME_FOR_QUESTION;
-
-    const NUM_OF_ROUNDS = 20
 
     // translation variable.
     const { t } = useTranslation();
 
-    // the time to answer each question.
-    const timeLeft = useRef(20);
-
     // the variable to show the current time.
     const [currentTime, setCurrentTime] = useState(20)
 
-    // the prestentage of the progress bar. starting from 0, as the time passed at the start of each question is 0.
-    const presentage = useRef(0);
-
-    // the return value from setTimeout of the countdown clock of each question.
-    const timerInterval = useRef(null);
 
     // the value of the chosen answer by the agent when playing on "Play With Agent" mode
     const playWithAgentOperations = useRef(null);
 
-    // The return value from setTimeout on the agent turn
-    const agentTimeout = useRef(null);
 
     // react navigation variable.
     var navigation = useNavigate();
@@ -47,8 +33,6 @@ function GamePage({ nowOnline }) {
     // game variables.
     const playerPoints = useRef(0);
     const agentPoints = useRef(0);
-    const playerQuestionCounter = useRef(1);
-    const agentQuestionCounter = useRef(1);
 
     // the current question string.
     const [currentQuestion, setCurrentQuestion] = useState('');
@@ -59,27 +43,9 @@ function GamePage({ nowOnline }) {
     const [thirdAnswer, setThirdAnswer] = useState('');
     const [fourthAnswer, setFourthAnswer] = useState('');
 
-    // boolean variable to tell who holds the turn right now.
-    const isPlayerTurn = useRef(false);
 
     // the number of the current question (now, out of 10).
     const [questionCounter, setQuestionCounter] = useState(1);
-
-    // counting the number of turns (player and agent). so now, out of 20.
-    const gameCounter = useRef(0);
-
-    // boolean variable to tell if the beep that starts on the last 5 seconds to answer the question is now playing.
-    const isBeepPlaying = useRef(false)
-
-    // the beep sound of the last 5 seconds.
-    const beep = useRef(new Audio('https://sounds-mp3.com/mp3/0012921.mp3'));
-
-    // the width of the avatars depending on screen size.
-    const avatarWidth = useRef(0);
-
-    // a boolean variable to tell if it's the first round of the game. used for the avatarWidth.
-    const firstTime = useRef(true);
-
 
     /*
     * 1.Name: gameFinished
@@ -106,40 +72,9 @@ function GamePage({ nowOnline }) {
         else {
             nowOnline.isWin = 1;
         }
-        clearTimeout(timerInterval);
-        beep.current.pause();
         navigation('/TMfinished');
     }
 
-
-    /*
-    * 1.Name: makeBlink
-    * 2.Parameters: chosen, the chosen answer by the agent/player.
-    * 3.Return value: none
-    * 4.Description: in each round, after the agent/player chose an answer, this function is called.
-    *                This function makes the card of the chosen answer to blink, so it will be clear that this is the chosen answer.
-    *                after adding the blinking class to the chosen answer, the function sleeps for X seconds(now X=2),
-    *                so the blink will appear for X seconds. 
-    */
-    async function makeBlink(chosen) {
-        switch (chosen) {
-            case 1:
-                document.getElementById('1stAnswerLabel').classList.add("blink");
-                break;
-            case 2:
-                document.getElementById('2ndAnswerLabel').classList.add("blink");
-                break;
-            case 3:
-                document.getElementById('3rdAnswerLabel').classList.add("blink");
-                break;
-            case 4:
-                document.getElementById('4thAnswerLabel').classList.add("blink");
-                break;
-            default:
-                return;
-        }
-        await sleep(2000)
-    }
 
     /*
     * 1.Name: onChoosingAnswer
@@ -150,250 +85,23 @@ function GamePage({ nowOnline }) {
     *                In any case, the onAgentC
     */
     async function onChoosingAnswer(e) {
-        if (nowOnline.playType == 1) {
-            clearTimeout(agentTimeout.current)
-        }
-        if(nowOnline.playType < 4) {
-            choosingAnswer(parseInt(e.target.value));
-        }
-        else {
-
-        }
-    }
-
-    /*
-    * 1.Name: choosingAnswer
-    * 2.Parameters: val, the value of the chosen answer.
-    * 3.Return value: none
-    * 4.Description: This function is called immediatly after choosing an answer by the player/agent.
-    *                if the player is the one who chose the answer, so this function is called from the onChoosingAnswer function,
-    *                which is the event listener of the answer radio buttons. If the agent is the one who chose the answer,
-    *                so the function is called from the agent function.
-    *                This function calls "afterChoosingAnswer" function, which disables the answers button, so the user cannot change it's
-    *                answer after choosing. after that, the function stops the last 5 seconds beep, and returns it to default 0 time.
-    *                After that, the function clears the question timer's timeout, make the chosen answer blink by calling "makeBlink" function,
-    *                check which is the right answer and mark it, increasing the game counter variable and check if it was the last round.
-    *                If it was, the function returns. If not, it calls the gameFlow function to run another round.
-    */
-    async function choosingAnswer(val) {
-        // disable the answers buttons
-        afterChoosingAnswer();
-
-        // stop the beep, if it was on, and set it back to 0.
-        beep.current.pause();
-        beep.current.currentTime = 0;
-
-        // clear the question timer's timeout.
-        clearTimeout(timerInterval.current)
-
-        // check if an answer was chosen(in case the user/agent did not chose an answer by the given time, val is 0),
-        // and if so, make the chosen answer button blink.
-        if (val !== 0) {
-            await makeBlink(val);
-        }
-
-        // mark the right answer with green color.
-        await answerCheck(val);
-
-        // increasing the game counter variable and check if the game is finished. If yes, call gameFinished and return.
-        // If not, call gameFlow to run another round.
-        gameCounter.current += 1;
-        if (gameCounter.current === NUM_OF_ROUNDS) {
-            gameFinished();
-            return;
-        }
-        gameFlow();
-    }
-
-    function choosingAnswerAgainstClock() {
-        beep.current.pause();
-        clearTimeout(timerInterval.current)
-    }
-
-    /*
-    * 1.Name: timer
-    * 2.Parameters: none
-    * 3.Return value: none
-    * 4.Description: This function is responsible on the timer clock for each question, which is displays to the user by
-    *                a progress bar, and in the last 5 seconds also by text and beep.
-    */
-    function timer() {
-
-        // timeLeft is set to X, X is the time for each question. So, if there is time left, make the following:
-        if (timeLeft.current > 0) {
-
-            // call the function again in 1 second.
-            timerInterval.current = setTimeout(timer, 1000);
-
-            // decrease timeLeft by 1.
-            timeLeft.current--;
-
-            // set the current time to the time after decreasing.
-            setCurrentTime(timeLeft.current)
-
-            // add PRESENTAGE_TO_ADD% width to the progress bar.
-            presentage.current += PRESENTAGE_TO_ADD;
-            document.getElementById("prog-bar").style.width = presentage.current + "%";
-            if (timeLeft.current < 6 && !isBeepPlaying.current) {
-                document.getElementById("prog-bar").classList.replace("bg-dark", "bg-danger");
-                // add shake to prog bar.
-                document.getElementById("timeText").style.display = "block";
-                beep.current.play();
-                isBeepPlaying.current = true;
-            }
-        }
-        else {
-            if(nowOnline.playType  < 4) {
-                choosingAnswer(0);
-            }
-        }
+        playModeClass.current.onChoosingAnswer(parseInt(e.target.value));
     }
 
 
-    /*
-    * 1.Name: switchAnswer
-    * 2.Parameters: rightanswer, the right answer to the current question.
-    * 3.Return value: none
-    * 4.Description: This function is called after the user/agent marked an answer, or after the time for the question is over.
-    *                The function marks the right answer in green.
-    */
-    function switchAnswer(rightAnswer) {
-        switch (rightAnswer) {
-            case 1:
-                document.getElementById("1stAnswerLabel").classList.add("rightAnswer");
-                document.getElementById("1stAnswer").classList.add("rightAnswer");
-                break;
-            case 2:
-                document.getElementById("2ndAnswerLabel").classList.add("rightAnswer");
-                document.getElementById("2ndAnswer").classList.add("rightAnswer");
-                break;
-            case 3:
-                document.getElementById("3rdAnswerLabel").classList.add("rightAnswer");
-                document.getElementById("3rdAnswer").classList.add("rightAnswer");
-                break;
-            case 4:
-                document.getElementById("4thAnswerLabel").classList.add("rightAnswer");
-                document.getElementById("4thAnswer").classList.add("rightAnswer");
-                break;
-            default:
-                return;
-        }
-    }
+    function setQuestions(index) {
+        // setCurrentQuestion(nowOnline.questions[gameCounter.current].question);
+        // setFirstAnswer(nowOnline.questions[gameCounter.current].firstAnswer);
+        // setSecondAnswer(nowOnline.questions[gameCounter.current].secondAnswer);
+        // setThirdAnswer(nowOnline.questions[gameCounter.current].thirdAnswer);
+        // setFourthAnswer(nowOnline.questions[gameCounter.current].fourthAnswer);
 
-    /*
-    * 1.Name: This function is called at the start of every 
-    * 2.Parameters:
-    * 3.Return value:
-    * 4.Description:
-    */
-    function removeClasses() {
-        document.getElementById("1stAnswerLabel").classList.remove("rightAnswer");
-        document.getElementById("2ndAnswerLabel").classList.remove("rightAnswer");
-        document.getElementById("3rdAnswerLabel").classList.remove("rightAnswer");
-        document.getElementById("4thAnswerLabel").classList.remove("rightAnswer");
-        document.getElementById("1stAnswerLabel").classList.remove("disableAnswersTouchScreen");
-        document.getElementById("2ndAnswerLabel").classList.remove("disableAnswersTouchScreen");
-        document.getElementById("3rdAnswerLabel").classList.remove("disableAnswersTouchScreen");
-        document.getElementById("4thAnswerLabel").classList.remove("disableAnswersTouchScreen");
-        document.getElementById("1stAnswer").classList.remove("rightAnswer");
-        document.getElementById("2ndAnswer").classList.remove("rightAnswer");
-        document.getElementById("3rdAnswer").classList.remove("rightAnswer");
-        document.getElementById("4thAnswer").classList.remove("rightAnswer");
-        document.getElementById("1stAnswer").checked = false;
-        document.getElementById("2ndAnswer").checked = false;
-        document.getElementById("3rdAnswer").checked = false;
-        document.getElementById("4thAnswer").checked = false;
-        document.getElementById("1stAnswer").disabled = false;
-        document.getElementById("2ndAnswer").disabled = false;
-        document.getElementById("3rdAnswer").disabled = false;
-        document.getElementById("4thAnswer").disabled = false;
-    }
-
-
-
-    /*
-    * 1.Name:
-    * 2.Parameters:
-    * 3.Return value:
-    * 4.Description:
-    */
-    const sleep = ms => new Promise(
-        resolve => setTimeout(resolve, ms)
-    );
-
-
-    function playAgainstClock() {
-        
-    }
-    /*
-    * 1.Name:
-    * 2.Parameters:
-    * 3.Return value:
-    * 4.Description:
-    */
-    async function agent() {
-        document.getElementById("1stAnswer").disabled = "true";
-        document.getElementById("2ndAnswer").disabled = "true";
-        document.getElementById("3rdAnswer").disabled = "true";
-        document.getElementById("4thAnswer").disabled = "true";
-        var rand = (Math.floor(Math.random() * (TIME_FOR_QUESTION - 1)) + 1) * 1000;
-        setTimeout(() => {
-            var chosen = Math.floor(Math.random() * 4) + 1;
-            var e;
-            switch (chosen) {
-                case 1:
-                    document.getElementById('1stAnswer').checked = true;
-                    e = 1
-                    break;
-                case 2:
-                    document.getElementById('2ndAnswer').checked = true;
-                    e = 2
-                    break;
-                case 3:
-                    document.getElementById('3rdAnswer').checked = true;
-                    e = 3
-                    break;
-                case 4:
-                    document.getElementById('4thAnswer').checked = true;
-                    e = 4
-                    break;
-                default:
-                    return;
-            }
-            choosingAnswer(e)
-        }, rand)
-    }
-
-    /*
-    * 1.Name:
-    * 2.Parameters:
-    * 3.Return value:
-    * 4.Description:
-    */
-    function afterChoosingAnswer() {
-        document.getElementById("1stAnswerLabel").classList.add("disableAnswers");
-        document.getElementById("2ndAnswerLabel").classList.add("disableAnswers");
-        document.getElementById("3rdAnswerLabel").classList.add("disableAnswers");
-        document.getElementById("4thAnswerLabel").classList.add("disableAnswers");
-    }
-
-    function initializeBeforeTurn() {
-        document.getElementById("timeText").style.display = "none";
-        document.getElementById("prog-bar").classList.replace("bg-danger", "bg-dark");
-        document.getElementById("prog-bar").style.width = "0%"
-        presentage.current = 0;
-        timeLeft.current = 20;
-        clearTimeout(timerInterval)
-        isBeepPlaying.current = false;
-        removeClasses();
-    }
-
-    function setQuestions() {
-        setCurrentQuestion(nowOnline.questions[gameCounter.current].question);
-        setFirstAnswer(nowOnline.questions[gameCounter.current].firstAnswer);
-        setSecondAnswer(nowOnline.questions[gameCounter.current].secondAnswer);
-        setThirdAnswer(nowOnline.questions[gameCounter.current].thirdAnswer);
-        setFourthAnswer(nowOnline.questions[gameCounter.current].fourthAnswer);
+        setCurrentQuestion(nowOnline.questions[index].question);
+        setFirstAnswer(nowOnline.questions[index].firstAnswer);
+        setSecondAnswer(nowOnline.questions[index].secondAnswer);
+        setThirdAnswer(nowOnline.questions[index].thirdAnswer);
+        setFourthAnswer(nowOnline.questions[index].fourthAnswer);
+        console.log('imHere')
     }
     /*
     * 1.Name:
@@ -402,127 +110,69 @@ function GamePage({ nowOnline }) {
     * 4.Description:
     */
     function gameFlow() {
-        if (nowOnline.playType == 0 || nowOnline.playType == 1) {
-            playAgainstAgent()
+        if (nowOnline.playType == 0) {
+            amountOfQuestions.current = 10
+            playModeClass.current = new PlayAgainstAgent(20, 20, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, null);
+            playModeClass.current.gameFlow();
+        }
+        else if (nowOnline.playType == 1) {
+            amountOfQuestions.current = 10
+            playModeClass.current = new PlayAgainstAgent(20, 20, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations);
+            playModeClass.current.gameFlow();
         }
         else if (nowOnline.playType == 2) {
-            playWithGivenAmountOfQuestions()
+            playModeClass.current = new PlayWithGivenAmountOfQuestions(20, 20, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, setCurrentTime)
+            playModeClass.current.gameFlow();
+        }
+        else if (nowOnline.playType == 4) {
+            playModeClass.current = new PlayAgainstTheClock(20, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, setCurrentTime)
+            playModeClass.current.gameFlow();
         }
     }
 
-    function playAgainstAgent() {
-        if (firstTime.current) {
-            avatarWidth.current = document.querySelector(".avatarImg").width;
-            firstTime.current = false;
-            amountOfQuestions.current = 10
-        }
-        initializeBeforeTurn();
-        isPlayerTurn.current = !isPlayerTurn.current;
-        setQuestions();
-        timer();
-        if (isPlayerTurn.current) {
-            document.getElementById("playerImg").style.width = avatarWidth.current * 1.3 + "px";
-            document.getElementById("agentImg").style.width = avatarWidth.current / 1.5 + "px";
-            document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
-            if (nowOnline.playType == 1) {
-                playWithAgent();
-            }
-            setQuestionCounter(playerQuestionCounter.current);
-            playerQuestionCounter.current += 1;
-        }
-        else {
-            document.body.style.backgroundImage = "linear-gradient(0deg,#c0a0c3, #c0a0c3)";
-            document.getElementById("playerImg").style.width = avatarWidth.current / 1.5 + "px";
-            document.getElementById("agentImg").style.width = avatarWidth.current * 1.3 + "px";
-            agent();
-            setQuestionCounter(agentQuestionCounter.current);
-            agentQuestionCounter.current += 1;
-        }
-    }
+    // function playAgainstAgent() {
+    //     if (firstTime.current) {
+    //         avatarWidth.current = document.querySelector(".avatarImg").width;
+    //         firstTime.current = false;
+    //         amountOfQuestions.current = 10
+    //     }
+    //     initializeBeforeTurn();
+    //     isPlayerTurn.current = !isPlayerTurn.current;
+    //     setQuestions();
+    //     timer();
+    //     if (isPlayerTurn.current) {
+    //         document.getElementById("playerImg").style.width = avatarWidth.current * 1.3 + "px";
+    //         document.getElementById("agentImg").style.width = avatarWidth.current / 1.5 + "px";
+    //         document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
+    //         if (nowOnline.playType == 1) {
+    //             playWithAgent();
+    //         }
+    //         setQuestionCounter(playerQuestionCounter.current);
+    //         playerQuestionCounter.current += 1;
+    //     }
+    //     else {
+    //         document.body.style.backgroundImage = "linear-gradient(0deg,#c0a0c3, #c0a0c3)";
+    //         document.getElementById("playerImg").style.width = avatarWidth.current / 1.5 + "px";
+    //         document.getElementById("agentImg").style.width = avatarWidth.current * 1.3 + "px";
+    //         agent();
+    //         setQuestionCounter(agentQuestionCounter.current);
+    //         agentQuestionCounter.current += 1;
+    //     }
+    // }
 
-    function playWithGivenAmountOfQuestions() {
-        if (firstTime.current) {
-            document.getElementById("playerImg").style.width = document.querySelector(".avatarImg").width * 1.3 + "px";
-            document.getElementById("agentCol").classList.add('d-none')
-            firstTime.current = false;
-            isPlayerTurn.current = true;
-        }
-        initializeBeforeTurn();
-        setQuestions();
-        timer();
-        setQuestionCounter(playerQuestionCounter.current)
-        playerQuestionCounter.current += 1
-    }
-    /*
-    * 1.Name:
-    * 2.Parameters:
-    * 3.Return value:
-    * 4.Description:
-    */
-    async function answerCheck(ans) {
-        switchAnswer(nowOnline.questions[gameCounter.current].rightAnswer);
-        if (isPlayerTurn.current) {
-            if (ans === nowOnline.questions[gameCounter.current].rightAnswer) {
-                playerPoints.current += 100;
-            }
-            else {
-                if (playerPoints.current > 0) {
-                    playerPoints.current -= 100;
-                }
-            }
-        }
-        else {
-            if (ans === nowOnline.questions[gameCounter.current].rightAnswer) {
-                agentPoints.current += 100;
-            }
-            else {
-                if (agentPoints.current > 0) {
-                    agentPoints.current -= 100;
-                }
-            }
-        }
-        document.getElementById("1stAnswerLabel").classList.remove("blink");
-        document.getElementById("2ndAnswerLabel").classList.remove("blink");
-        document.getElementById("3rdAnswerLabel").classList.remove("blink");
-        document.getElementById("4thAnswerLabel").classList.remove("blink");
-        if(nowOnline.playType < 4) {
-            await sleep(2000);
-        }
-    }
-
-    /*
-    * 1.Name:
-    * 2.Parameters:
-    * 3.Return value:
-    * 4.Description:
-    */
-    function playWithAgent() {
-        agentTimeout.current = setTimeout(() => {
-            var chosen = playWithAgentOperations.current[playerQuestionCounter.current - 1].answer;
-            var e;
-            switch (chosen) {
-                case 1:
-                    document.getElementById('1stAnswer').checked = true;
-                    e = 1
-                    break;
-                case 2:
-                    document.getElementById('2ndAnswer').checked = true;
-                    e = 2
-                    break;
-                case 3:
-                    document.getElementById('3rdAnswer').checked = true;
-                    e = 3
-                    break;
-                case 4:
-                    document.getElementById('4thAnswer').checked = true;
-                    e = 4
-                    break;
-                default:
-                    return;
-            }
-            choosingAnswer(e)
-        }, playWithAgentOperations.current[playerQuestionCounter.current - 1].time)
-    }
+    // function playWithGivenAmountOfQuestions() {
+    //     if (firstTime.current) {
+    //         document.getElementById("playerImg").style.width = document.querySelector(".avatarImg").width * 1.3 + "px";
+    //         document.getElementById("agentCol").classList.add('d-none')
+    //         firstTime.current = false;
+    //         isPlayerTurn.current = true;
+    //     }
+    //     initializeBeforeTurn();
+    //     setQuestions();
+    //     timer();
+    //     setQuestionCounter(playerQuestionCounter.current)
+    //     playerQuestionCounter.current += 1
+    // }
 
 
     /*
@@ -539,11 +189,11 @@ function GamePage({ nowOnline }) {
             document.getElementById('playWithAgentInstructions').style.display = "block";
             playWithAgentOperations.current = require('./agent.json');
         }
-        else if(nowOnline.playType == 3) {
+        else if (nowOnline.playType == 2) {
 
         }
-        else if(nowOnline.playType == 4) {
-            
+        else if (nowOnline.playType == 4) {
+
         }
         if (document.querySelector("html").lang === "en") {
             nowOnline.questions = require('./questions.json');
@@ -561,7 +211,7 @@ function GamePage({ nowOnline }) {
         <>
             <GamePageNavBar />
 
-            <GamePageModals beep={beep} timerInterval={timerInterval} gameFlow={gameFlow} />
+            <GamePageModals playModeClass={playModeClass} gameFlow={gameFlow} />
             <div className='container-fluid' id="gamePageContainer">
                 <div className='row justify-content-center'>
                     <div className='col-md-9 col-sm-11 col-xs-12 justify-content-sm-center justify-content-md-start'>
