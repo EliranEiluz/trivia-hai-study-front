@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import GamePageNavBar from './GamePageNavBar';
 import GamePageModals from './GamePageModals';
-import { now } from 'jquery';
 
 
 
@@ -207,7 +206,8 @@ function GamePage({ nowOnline }) {
     }
 
     function choosingAnswerAgainstClock() {
-
+        beep.current.pause();
+        clearTimeout(timerInterval.current)
     }
 
     /*
