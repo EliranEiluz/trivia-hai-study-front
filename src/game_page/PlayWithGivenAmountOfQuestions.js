@@ -72,7 +72,7 @@ class PlayWithGivenAmountOfQuestions {
         // If not, call gameFlow to run another round.
         this.gameCounter += 1;
         if (this.gameCounter === this.amountOfQuestions) {
-            gameFinished();
+            this.gameFinished();
             return;
         }
         this.gameFlow();
