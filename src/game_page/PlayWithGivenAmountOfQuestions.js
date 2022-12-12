@@ -72,7 +72,7 @@ class PlayWithGivenAmountOfQuestions {
         // If not, call gameFlow to run another round.
         this.gameCounter += 1;
         if (this.gameCounter === this.amountOfQuestions) {
-            //gameFinished();
+            gameFinished();
             return;
         }
         this.gameFlow();
@@ -112,7 +112,7 @@ class PlayWithGivenAmountOfQuestions {
     gameFinished() {
         this.clear();
         this.nowOnline.isWin = this.rightAnswers;
-        this.navigateToFinishPage()
+        this.navigateToFinishPage();
     }
 
 }
