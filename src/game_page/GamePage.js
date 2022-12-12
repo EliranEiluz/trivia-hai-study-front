@@ -123,7 +123,7 @@ function GamePage({ nowOnline }) {
             document.getElementById("leaveGameBtnLi").classList.add("ms-auto");
         }
         else {
-            nowOnline.questions = require('./questions-he.json');
+            nowOnline.questions = require('./questions-he-edu.json');
             document.getElementById("leaveGameBtnLi").classList.add("me-auto");
         }
         document.getElementById('startGameModalBtn').click();
