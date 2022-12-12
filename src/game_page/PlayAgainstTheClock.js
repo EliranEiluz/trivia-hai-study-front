@@ -31,6 +31,7 @@ class PlayAgainstTheClock {
     }
 
     gameFlow() {
+        this.setQuestionCounter(this.gameCounter + 1);
         if (this.firstRound) {
             this.gameTimeout = setTimeout(this.gameFinished.bind(this), this.totalTime * 1000)
             this.firstRound = false;

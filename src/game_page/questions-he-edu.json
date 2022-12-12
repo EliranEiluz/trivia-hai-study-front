@@ -1,0 +1,203 @@
+[
+    {
+        "id": 1,
+        "question":  "מי היה ראש הממשלה הראשון של מדינת ישראל?",
+        "firstAnswer": "בנימין זאב הרצל", 
+        "secondAnswer": "גולדה מאיר",
+        "thirdAnswer": "דוד בן גוריון",
+        "fourthAnswer":"שמעון פרס", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 2,
+        "question": "מתי חתמו על מגילת העצמאות?",
+        "firstAnswer": "1967", 
+        "secondAnswer": "1971",
+        "thirdAnswer": "2001",
+        "fourthAnswer":"1948", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 3,
+        "question": "איזה דגל הרצל הציע?",
+        "firstAnswer": "דגל עם שני פסים וכוכב", 
+        "secondAnswer": "דגל עם 5 כוכבים",
+        "thirdAnswer":"דגל עם 7 כוכבים",
+        "fourthAnswer":"דגל עם מנורה", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 4,
+        "question": "מי כתב את המילון הראשון בעברית?",
+        "firstAnswer": "בנימין זאב הרצל", 
+        "secondAnswer": "אליעזר בן יהודה",
+        "thirdAnswer": "חיים נחמן ביאליק",
+        "fourthAnswer":"נפתלי הרץ אימבר", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 5,
+        "question": "מה שם הספר שכתב הרצל?",
+        "firstAnswer": "מדינת ישראל", 
+        "secondAnswer":"ארץ ישראל",
+        "thirdAnswer": "מדינת היהודים",
+        "fourthAnswer":"הציונות", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 6,
+        "question": "מיהי אשת הברזל הישראלית?",
+        "firstAnswer": "גולדה מאיר", 
+        "secondAnswer": "לאה גולדברג",
+        "thirdAnswer": "שושנה דמרי",
+        "fourthAnswer":"חנה סנש", 
+        "rightAnswer":1
+    },
+
+    {
+        "id": 7,
+        "question": "מה מקור השם באר שבע?",
+        "firstAnswer": "על שם 7 בארות שיש במקום", 
+        "secondAnswer": "על שם 7 הכבשות שאברהם הביא לאבימלך",
+        "thirdAnswer": "על שם בת שבע אשת דוד",
+        "fourthAnswer":"על שם 7 ימות השבוע", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 8,
+        "question": "איזה בית חולים נמצא בבאר שבע?",
+        "firstAnswer": "אסף הרופא", 
+        "secondAnswer": "סורוקה",
+        "thirdAnswer":"רמב\"מ",
+        "fourthAnswer":"פוריה", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 9,
+        "question": "איזו עיר יוצאת דופן(עיר ללא נמל)?",
+        "firstAnswer": "חיפה", 
+        "secondAnswer":"אילת",
+        "thirdAnswer": "חולון",
+        "fourthAnswer":"אשדוד", 
+        "rightAnswer":3
+    },
+
+    
+    {
+        "id": 10,
+        "question": "מהו מפרץ?",
+        "firstAnswer": "אזור שבו הים פורץ לתוך היבשה", 
+        "secondAnswer": "אזור עם שובר גלים",
+        "thirdAnswer": "אזור של יבשה מוקפת מים",
+        "fourthAnswer":"תעלה צרה שבה זורמים מים", 
+        "rightAnswer":1
+    },
+    
+    {
+        "id": 11,
+        "question": "מה הייתה המלחמה הראשונה בישראל?",
+        "firstAnswer": "מלחמת שלום הגליל", 
+        "secondAnswer": "מלחמת יום כיפור",
+        "thirdAnswer": "מלחמת העצמאות",
+        "fourthAnswer":"מלחמת ששת הימים", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 12,
+        "question": "אילו רשויות יש בישראל?",
+        "firstAnswer": "בית משפט, דואר ישראל, בנק ישראל", 
+        "secondAnswer": "משפטים, תעבורה, תרבות",
+        "thirdAnswer": "מחוקקת, שופטת, מבצעת",
+        "fourthAnswer":"חשמל, מים, העירייה", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 13,
+        "question": "מי בנה את השכונות החדשות בירושלים?",
+        "firstAnswer": "בנימין זאב הרצל", 
+        "secondAnswer": "מאיר דיזינגוף",
+        "thirdAnswer": "משה מונטיפיורי",
+        "fourthAnswer":"יואל משה סלומון", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 14,
+        "question": "מה זה ירושלים של זהב?",
+        "firstAnswer": "מבנה עשוי מזהב", 
+        "secondAnswer": "תכשיט",
+        "thirdAnswer": "כינוי לארץ ישראל",
+        "fourthAnswer":"כיפת הסלע", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 15,
+        "question": "מי נחשבת העיר העברית הראשונה?",
+        "firstAnswer": "תל אביב", 
+        "secondAnswer": "ירושלים",
+        "thirdAnswer": "צפת",
+        "fourthAnswer":"באר שבע", 
+        "rightAnswer":1
+    },
+    
+    {
+        "id": 16,
+        "question": "איפה הנמל העברי הראשון שהוקם?",
+        "firstAnswer": "נמל אשדוד", 
+        "secondAnswer": "נמל חיפה",
+        "thirdAnswer": "נמל תל אביב",
+        "fourthAnswer":"נמל חדרה", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 17,
+        "question": "מי מסתובב סביב מי בחלל?",
+        "firstAnswer": "השמש מסתובבת סביב כדור הארץ", 
+        "secondAnswer": "כדור הארץ מסתובב סביב השמש",
+        "thirdAnswer": "השמש מסתובבת סביב הירח",
+        "fourthAnswer":"כדור הארץ מסתובב סביב הירח", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 18,
+        "question": "מה ההמצאה המפורסמת של תומס אדיסון?",
+        "firstAnswer": "טלפון", 
+        "secondAnswer": "נורת חשמל",
+        "thirdAnswer": "טלוויזיה",
+        "fourthAnswer":"מטוס", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 19,
+        "question": "מי האסטרונאוט הראשון שדרך על הירח?",
+        "firstAnswer": "יורי גגארין", 
+        "secondAnswer": "באז אולדרין",
+        "thirdAnswer": "ניל אמסטרונג",
+        "fourthAnswer":"אלן שפארד", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 20,
+        "question": "איזו מדינה שלחה ראשונה אסטרונאוט לירח?",
+        "firstAnswer": "ארצות הברית", 
+        "secondAnswer": "ברית המועצות",
+        "thirdAnswer": "סין",
+        "fourthAnswer":"גרמניה", 
+        "rightAnswer":1
+    }
+
+]
