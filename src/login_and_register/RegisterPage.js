@@ -10,7 +10,7 @@ function RegisterPage({ nowOnline }) {
     var navigation = useNavigate();
     const validity = {
         isUserNameVaild: false, isPasswordValid: false, isMemberTypeValid: false,
-        isPhoneNumberValid: false, isFullNameValid: false
+        isPhoneNumberValid: false, isFullNameValid: false, isResearchGroupValid:false
     }
     nowOnline.onlineUser = new User();
     nowOnline.onlineUser.memberType = -1;
@@ -36,8 +36,11 @@ function RegisterPage({ nowOnline }) {
     */
     function handleSubmit(e) {
         e.preventDefault();
+        for(let i =0; i < document.getElementsByClassName("error").length; i++) {
+            document.getElementsByClassName("error")[i].style.display = "none";
+        }
         if (isFormValid()) {
-
+            //register in server.
             navigation('/welcome')
         }
         else {
@@ -56,6 +59,9 @@ function RegisterPage({ nowOnline }) {
             }
             if (!validity.isMemberTypeValid) {
                 document.getElementById("register_memberType_error").style.display = "block";
+            }
+            if(!validity.isResearchGroupValid) {
+                document.getElementById("register_research_error").style.display = "block";
             }
         }
     }
@@ -156,6 +162,11 @@ function RegisterPage({ nowOnline }) {
         }
     }
 
+    function researchGroupChange(e) {
+        nowOnline.onlineUser.researchGroup = e.target.value;
+        validity.isResearchGroupValid = true;
+    }
+
     return (
         <div className='container-fluid'>
             <div className='row justify-content-center'>
@@ -221,6 +232,21 @@ function RegisterPage({ nowOnline }) {
                                                 {t('full_name_error')}
                                             </div>
                                             <input className="register_input form-control" id="fullName_input" onChange={fullNameChange} dir="ltr"></input>
+                                        </div>
+                                        <div className='col-xl-1 d-none d-md-block'>
+                                        </div>
+                                    </div>
+                                    <div className='row register-row'>
+                                        <div className='col-xl-1 d-none d-md-block'>
+                                        </div>
+                                        <div className='col-xl-5'>
+                                            {t('research_group') + ":"}
+                                        </div>
+                                        <div className='col-xl-5'>
+                                            <div id="register_research_error" className="error">
+                                                {t('research_error')}
+                                            </div>
+                                            <input className="register_input form-control" id="research_input" onChange={researchGroupChange} dir="ltr"></input>
                                         </div>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>

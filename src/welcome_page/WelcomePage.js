@@ -75,7 +75,6 @@ function WelcomePage({ nowOnline }) {
         }
         setName(nowOnline.onlineUser.fullName);
         if (nowOnline.onlineUser.fullName === "Guest") {
-            document.getElementById("teamModeBtn").disabled = "true";
             setName(t('guest'));
         }
     }
@@ -195,7 +194,7 @@ function WelcomePage({ nowOnline }) {
                 </div>
                 <div className='row justify-content-md-center'>
                     <div className='col-xl-6 d-flex justify-content-center'>
-                        <button className='btn btn-primary welcome-btn btn-lg' id="teamModeBtn">{t('team_mode')}</button>
+                        <button className='btn btn-primary welcome-btn btn-lg' id="teamModeBtn" disabled={true}>{t('team_mode')}</button>
                     </div>
                 </div>
             </div>

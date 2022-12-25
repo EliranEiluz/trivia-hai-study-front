@@ -66,9 +66,14 @@
     display:none;
 }
 
+#login_error {
+    display:none;
+}
+
 #login_password_error {
     display:none;
 }
+
 
 .login-btn {
     background-color: black;

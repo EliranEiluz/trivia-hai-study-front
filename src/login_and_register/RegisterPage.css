@@ -106,6 +106,10 @@ input[type="radio"] {
     display:none;
 }
 
+#register_research_error {
+    display: none;
+}
+
 
 
 

@@ -3,42 +3,73 @@ import { useNavigate } from "react-router-dom";
 import { User } from '../index.js';
 import LogoRow from './LogoRow';
 import { useTranslation } from 'react-i18next';
-
+import { serverIp } from '../index.js';
+import { useEffect } from 'react';
 
 function LoginPage({ nowOnline }) {
 
     var navigation = useNavigate();
 
-    var keepLoggedIn = false;
+    var keepLoggedIn = 0;
 
     const { t } = useTranslation();
 
     const details = { username: '', password: '' }
 
-    
-    /*
-    * 1.Name: This function is called at the start of every 
-    * 2.Parameters:
-    * 3.Return value:
-    * 4.Description:
-    */
-    function loginAsGuest() {
-        nowOnline.onlineUser = new User();
-        nowOnline.onlineUser.fullName = "Guest";
-        navigation('/welcome');
+    async function checkCookie() {
+        const request = {
+            method: 'POST',
+            headers:{'Content-Type': 'application/json'},
+            credentials: 'include'
+        };
+        await fetch(serverIp.ip + "/Verify/verifyToken", request).then(async response => {
+            if(response.status == 200) {
+                return response.json();
+            }
+            else {
+                return null;
+            }
+        }).then(async user => {
+            if(user) {
+                nowOnline.onlineUser = user;
+                navigation('/welcome')
+            }
+        })
     }
 
-
     /*
     * 1.Name: This function is called at the start of every 
     * 2.Parameters:
     * 3.Return value:
     * 4.Description:
     */
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
+        document.getElementById('login_userName_error').style.display = "none";
+        document.getElementById('login_password_error').style.display = "none";
+        document.getElementById('login_error').style.display = "none";
         e.preventDefault()
         if (details.username !== '' && details.password !== '') {
-            // server fetching...
+            const request = {
+                method: 'POST',
+                headers:{'Content-Type': 'application/json'},
+                body:JSON.stringify({username:details.username, password:details.password, keepMeLoggedIn:keepLoggedIn}),
+                credentials: 'include'
+              };
+              await fetch(serverIp.ip + "/User/Login", request).then(async response => {
+                if(response.status == 200) {
+                    return response.json()
+                } else {
+                    return null;
+                }
+              }).then(async user=> {
+                if(user) {
+                    nowOnline.onlineUser = user;
+                    navigation('/welcome')
+                }
+                else {
+                    document.getElementById('login_error').style.display = "block";
+                }
+              })
         }
         else {
             if (details.username === '') {
@@ -70,7 +101,7 @@ function LoginPage({ nowOnline }) {
     */
     function keepLoginChange(e) {
         if (e.target.checked) {
-            keepLoggedIn = true;
+            keepLoggedIn = 1;
         }
 
     }
@@ -97,6 +128,10 @@ function LoginPage({ nowOnline }) {
         details.password = e.target.value;
     }
 
+    useEffect(() => {
+        checkCookie();
+    }, [])
+
     return (
         <div id="faded_background">
             <div className='container-fluid'>
@@ -108,6 +143,9 @@ function LoginPage({ nowOnline }) {
                                     <LogoRow nowOnline={nowOnline} />
                                     <div className='row login-row'>
                                         <div className='col-xl-1 d-none d-md-block'>
+                                        </div>
+                                        <div className="error" id="login_error">
+                                            {t('login__error')}
                                         </div>
                                         <div className='col-xl-4 col-sm-12 jusify-content-md-center'>
                                             {t('username')}
@@ -131,7 +169,7 @@ function LoginPage({ nowOnline }) {
                                             <div className="error" id="login_password_error">
                                                 {t('login_password_error')}
                                             </div>
-                                            <input className="login_input form-control" onChange={passwordChange} dir="ltr"></input>
+                                            <input className="login_input form-control" onChange={passwordChange} dir="ltr" type="password"></input>
                                         </div>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>
@@ -157,11 +195,6 @@ function LoginPage({ nowOnline }) {
                                             <button className='btn btn-primary login-btn' id="login_login_btn" type="submit">{t('login_login_btn')}</button>
                                         </div>
                                         <div className='col-xl-1 d-none d-md-block'>
-                                        </div>
-                                    </div>
-                                    <div className='row login-row justify-content-center'>
-                                        <div className='col-xl-4 col-xs-12 col-sm-12 col-md-6 d-flex justify-content-center'>
-                                            <button className='btn btn-primary login-btn' id="login_guest_btn" onClick={loginAsGuest} type="button">{t('login_guest_btn')}</button>
                                         </div>
                                     </div>
                                     <div className='row login-row' id="login_read_more">

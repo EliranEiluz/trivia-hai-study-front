@@ -14,16 +14,17 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 i18n.use(initReactI18next).init(require('./languange.json'));
-
+const serverIp = {ip:"http://localhost:3100"}
 
 
 class User {
-  constructor(username, password, fullName, phoneNumber, memberType) {
+  constructor(username, password, fullName, phoneNumber, memberType, researchGroup) {
     this.username = username;
     this.password = password;
     this.fullName = fullName;
     this.phoneNumber = phoneNumber;
     this.memberType = memberType;
+    this.researchGroup = researchGroup;
     this.teams = [];
   }
 }
@@ -85,4 +86,4 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-export {Team, User, Question };
+export {Team, User, Question, serverIp };

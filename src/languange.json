@@ -13,11 +13,13 @@
                 "read_more": "to read more about Trivia Project",
                 "login_username_error": "Please fill the username field.",
                 "login_password_error": "The password field must contain at least 8 characters.",
+                "login_error": "Unable to connect. you may have entered wrong username or password.",
                 "login_register_btn": "Create new account",
                 "login_login_btn": "Log in",
                 "login_guest_btn": "Login as Guest",
                 "register_username_error": "Username must contain at least one character.",
                 "register_password_error": "Choose at least 8 characters- one numeric digit, one uppercase and one lowercase letter.",
+                "research_error": "Please choose a research group.",
                 "phone_number": "Phone Number:",
                 "phone_number_error": "Please enter valid phone number.",
                 "full_name": "Full Name:",
@@ -71,8 +73,8 @@
                 "4_gameMode_tooltip": "Answer as much right answers you can in 40 seconds!",
                 "you_can_do_better": "You can do better!",
                 "very_nice": "Very Nice!",
-                "you_are_genius": "You are a genius!"
-                
+                "you_are_genius": "You are a genius!",
+                "research_group":"Research Group"
             }
         },
         "iw": {
@@ -87,11 +89,13 @@
                 "read_more": "כדי לקרוא עוד על פרויקט טריוויה",
                 "login_username_error": "שם המשתמש הוא שדה חובה.",
                 "login_password_error": "הסיסמה חייבת להכיל 8 תווים לפחות.",
+                "login_error": "לא ניתן להתחבר.שם משתמש או סיסמה שגויים.",
                 "login_register_btn": "הירשם",
                 "login_login_btn": "התחבר",
                 "login_guest_btn": "התחבר כאורח",
                 "register_username_error": "שם המשתמש חייב להכיל תו אחד לפחות.",
                 "register_password_error": "בחר לפחות 8 תווים המכילים אות קטנה, אות גדולה ומספר.",
+                "research_error": "חובה לבחור קבוצת ניסוי.",
                 "phone_number": "מספר טלפון:",
                 "phone_number_error": "אנא הכנס מספר טלפון תקין.",
                 "full_name": "שם מלא:",
@@ -145,7 +149,8 @@
                 "4_gameMode_tooltip": "ענה כמה שיותר תשובות נכונות ב-40 שניות!",
                 "you_can_do_better": "אתה יכול טוב יותר!",
                 "very_nice": "יפה מאוד!",
-                "you_are_genius": "אתה גאון!"
+                "you_are_genius": "אתה גאון!", 
+                "research_group":"קבוצת ניסוי"
             }
         }
     }
