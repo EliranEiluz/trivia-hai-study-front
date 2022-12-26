@@ -10,12 +10,6 @@ function LoginPage({ nowOnline }) {
 
     var navigation = useNavigate();
 
-    var keepLoggedIn = 0;
-
-    const { t } = useTranslation();
-
-    const details = { username: '', password: '' }
-
     async function checkCookie() {
         const request = {
             method: 'POST',
@@ -35,7 +29,14 @@ function LoginPage({ nowOnline }) {
                 navigation('/welcome')
             }
         })
-    }
+      }
+      
+    checkCookie();
+    var keepLoggedIn = 0;
+
+    const { t } = useTranslation();
+
+    const details = { username: '', password: '' }
 
     /*
     * 1.Name: This function is called at the start of every 
@@ -128,9 +129,6 @@ function LoginPage({ nowOnline }) {
         details.password = e.target.value;
     }
 
-    useEffect(() => {
-        checkCookie();
-    }, [])
 
     return (
         <div id="faded_background">

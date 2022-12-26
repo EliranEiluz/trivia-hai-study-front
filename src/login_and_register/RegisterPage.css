@@ -110,6 +110,13 @@ input[type="radio"] {
     display: none;
 }
 
+#research_select {
+    border-color: black;
+    border-width: 3px;
+    margin-bottom:3px;
+    margin-top:3px;
+}
+
 
 
 

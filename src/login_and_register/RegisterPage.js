@@ -1,19 +1,21 @@
 import './RegisterPage.css';
 import { useNavigate } from "react-router-dom";
-import { User } from '../index.js';
+import { serverIp, User } from '../index.js';
 import LogoRow from './LogoRow';
 import { useTranslation } from 'react-i18next';
-
+import { useEffect, useState } from 'react';
+import {ResearchGroupOption} from './ResearchGroupOption';
 function RegisterPage({ nowOnline }) {
 
     const { t } = useTranslation();
     var navigation = useNavigate();
     const validity = {
         isUserNameVaild: false, isPasswordValid: false, isMemberTypeValid: false,
-        isPhoneNumberValid: false, isFullNameValid: false, isResearchGroupValid:false
+        isPhoneNumberValid: false, isFullNameValid: false, isResearchGroupValid:true
     }
     nowOnline.onlineUser = new User();
     nowOnline.onlineUser.memberType = -1;
+    const [reserachOptions, setResearchOptions] = useState(null)
 
     
     /*
@@ -34,14 +36,41 @@ function RegisterPage({ nowOnline }) {
     * 3.Return value:
     * 4.Description:
     */
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         for(let i =0; i < document.getElementsByClassName("error").length; i++) {
             document.getElementsByClassName("error")[i].style.display = "none";
         }
         if (isFormValid()) {
-            //register in server.
-            navigation('/welcome')
+            const request = {
+                method: 'POST',
+                headers:{'Content-Type': 'application/json'},
+                body:JSON.stringify({
+                    username:nowOnline.onlineUser.username,
+                    password:nowOnline.onlineUser.password,
+                    phoneNumber:nowOnline.onlineUser.phoneNumber,
+                    fullName:nowOnline.onlineUser.fullName,
+                    memberType:nowOnline.onlineUser.memberType,
+                    researchGroup:nowOnline.onlineUser.researchGroup
+                }),
+                credentials: 'include'
+              };
+            await fetch(serverIp.ip + "/User/Register", request).then(async response => {
+                if(response.status == 201) {
+                    return response.json()
+                }
+                else {
+                    return null;
+                } 
+            }).then(async user => {
+                if(user) {
+                    nowOnline.onlineUser = user;
+                    navigation('/welcome');
+                }
+                else {
+                    //document.getElementById().classList.remove('d-none');
+                }
+            }) 
         }
         else {
             document.getElementById("register_form").style.marginTop = "2.5%";
@@ -87,7 +116,7 @@ function RegisterPage({ nowOnline }) {
     */
     function memberTypeChange(e) {
         if (e.target.checked) {
-            nowOnline.onlineUser.memberType = e.target.value;
+            nowOnline.onlineUser.memberType = parseInt(e.target.value);
             validity.isMemberTypeValid = true;
         }
     }
@@ -118,7 +147,7 @@ function RegisterPage({ nowOnline }) {
     */
     function fullNameChange(e) {
         if (e.target.value !== '') {
-            nowOnline.onlineUser.username = e.target.value;
+            nowOnline.onlineUser.fullName = e.target.value;
             validity.isFullNameValid = true;
         }
         else {
@@ -166,6 +195,32 @@ function RegisterPage({ nowOnline }) {
         nowOnline.onlineUser.researchGroup = e.target.value;
         validity.isResearchGroupValid = true;
     }
+
+    async function fetchResearchGroupOptions() {
+        const params = {
+            method: 'POST',
+            headers:{'Content-Type': 'application/json'},
+            credentials: 'include'
+        }
+        await fetch(serverIp.ip + "/reserachGroup/All", params).then(async response => {
+            if(response.status == 200) {
+                return response.json()
+            }
+            else {
+                return null;
+            }
+        }).then(async options => {
+            if(options) {
+                setResearchOptions(options.map((option, key) => {
+                    return <researchGroupOption key={key} value={option}/>
+                }))
+            }
+        })
+    }
+
+    useEffect(() => {
+        fetchResearchGroupOptions();
+    },[])
 
     return (
         <div className='container-fluid'>
@@ -246,7 +301,7 @@ function RegisterPage({ nowOnline }) {
                                             <div id="register_research_error" className="error">
                                                 {t('research_error')}
                                             </div>
-                                            <input className="register_input form-control" id="research_input" onChange={researchGroupChange} dir="ltr"></input>
+                                            <select class="form-select bg-transparent" aria-label="Default select example" id="research_select" onChange={researchGroupChange} dir="ltr"></select>
                                         </div>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>

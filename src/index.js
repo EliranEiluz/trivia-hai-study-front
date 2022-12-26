@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import LoginPage from './login_and_register/LoginPage';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import RegisterPage from './login_and_register/RegisterPage';
 import WelcomePage from './welcome_page/WelcomePage';
 import Teams from './team_selection/Teams';
@@ -13,8 +13,10 @@ import TMFinished from './game_finish_page/TMFinished';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
+
 i18n.use(initReactI18next).init(require('./languange.json'));
 const serverIp = {ip:"http://localhost:3100"}
+
 
 
 class User {
@@ -80,6 +82,7 @@ root.render(
       </Routes>
     </BrowserRouter>
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
