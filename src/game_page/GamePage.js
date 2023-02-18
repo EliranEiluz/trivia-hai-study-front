@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import GamePageNavBar from './GamePageNavBar';
 import GamePageModals from './GamePageModals';
 import { PlayAgainstAgent } from './Against_Agent_Classes/PlayAgainstAgent'
-import { PlayWithGivenAmountOfQuestions } from './PlayWithGivenAmountOfQuestions'
-import { PlayAgainstTheClock } from './PlayAgainstTheClock'
-import { PlayBuzzerMode } from './PlayBuzzerMode';
+import { PlayWithGivenAmountOfQuestions } from './Single_Player_Classes/PlayWithGivenAmountOfQuestions'
+import { PlayAgainstTheClock } from './Single_Player_Classes/PlayAgainstTheClock'
+import { PlayBuzzerMode } from './Against_Agent_Classes/PlayBuzzerMode';
 
 /*
  * This component holds the game page and it's logic, for any available mode.

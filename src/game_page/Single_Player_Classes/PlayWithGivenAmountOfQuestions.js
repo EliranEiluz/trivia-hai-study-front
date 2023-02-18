@@ -1,5 +1,5 @@
-import * as utils from './utils'
-import {Beep} from './Beep'
+import * as utils from '../utils'
+import {Beep} from '../Beep'
 
 class PlayWithGivenAmountOfQuestions {
     constructor(amountOfQuestions, timeForQuestion, setQuestionCounter, questions, setQuestion, playerPoints, setCurrentTime, nowOnline, navigateToFinishPage) {

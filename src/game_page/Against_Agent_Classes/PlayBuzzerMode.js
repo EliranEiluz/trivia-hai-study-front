@@ -1,5 +1,5 @@
-import * as utils from './utils'
-import { Beep } from './Beep'
+import * as utils from '../utils'
+import { Beep } from '../Beep'
 
 class PlayBuzzerMode {
     constructor(amountOfQuestions, totalTime, setQuestionCounter, questions, setQuestion, playerPoints, setCurrentTime, nowOnline, navigateToFinishPage) {
