@@ -61,7 +61,7 @@ function GamePage({ nowOnline }) {
     *                In any case, the onAgentC
     */
     async function onChoosingAnswer(e) {
-        playModeClass.current.onChoosingAnswer(parseInt(e.target.value));
+        playModeClass.current.onChoosingAnswer(parseInt(e.target.value), "player");
     }
 
 
@@ -94,7 +94,7 @@ function GamePage({ nowOnline }) {
             playModeClass.current.gameFlow();
         }
         else if (nowOnline.playType == 3) {
-            playModeClass.current = new PlayBuzzerMode(20, 30, setCurrentQuestion, nowOnline.questions, setQuestions, playerPoints, setCurrentTime, nowOnline, navigateToFinishPage)
+            playModeClass.current = new PlayBuzzerMode(20, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage);
             playModeClass.current.gameFlow();
         }
         else if (nowOnline.playType == 4) {
@@ -115,10 +115,13 @@ function GamePage({ nowOnline }) {
         }
         else if (nowOnline.playType == 1) {
             document.getElementById('playWithAgentInstructions').classList.remove('d-none')
-            playWithAgentOperations.current = require('./agent.json');
+            playWithAgentOperations.current = require('./AgentOperations/PlayAgainstAgent/agent.json');
         }
         else if (nowOnline.playType == 2) {
             document.getElementById('playWithGivenAmountOfQuestionsInstrctions').classList.remove('d-none')
+        }
+        else if(nowOnline.playType == 3) {
+            playWithAgentOperations.current = require('./AgentOperations/Buzzer/agent.json');
         }
         else if (nowOnline.playType == 4) {
             document.getElementById('playAgainstTheClockInstrctions').classList.remove('d-none')

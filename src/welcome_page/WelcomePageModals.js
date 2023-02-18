@@ -58,7 +58,7 @@ function WelcomePageModals({ onPlayWithAmountOfQuestions, onPlayAgainstClock, on
                                             </div>
                                             <div>
                                                 <center>
-                                                    <button id="PlayBuzzerMode" type="button" data-tippy-content={t('5_gameMode_tooltip')} className="btn choose-mode-btn gameTypeOptionBtn" data-bs-dismiss="modal" onClick={onPlayAgainstAgentAndClock}>{t('on_time_mode')}</button>
+                                                    <button id="PlayBuzzerMode" type="button" data-tippy-content={t('5_gameMode_tooltip')} className="btn choose-mode-btn gameTypeOptionBtn" data-bs-dismiss="modal" onClick={onPlayAgainstAgentAndClock}>{t('buzzer_mode')}</button>
                                                 </center>
                                             </div>
                                         </div>

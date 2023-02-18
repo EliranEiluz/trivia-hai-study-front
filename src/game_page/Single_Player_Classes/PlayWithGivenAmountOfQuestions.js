@@ -21,7 +21,6 @@ class PlayWithGivenAmountOfQuestions {
         this.beep = new Beep();
         this.playerQuestionCounter = 1;
         this.gameCounter = 0;
-
         document.getElementById("agentCol").classList.add('d-none');
         document.getElementById("playerImg").style.width = document.querySelector(".avatarImg").width * 1.3 + "px";
         this.playerPoints.current = "0/20";
