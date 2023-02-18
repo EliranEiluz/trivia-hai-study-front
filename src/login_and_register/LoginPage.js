@@ -1,10 +1,10 @@
 import './LoginPage.css';
 import { useNavigate } from "react-router-dom";
-import { User } from '../index.js';
 import LogoRow from './LogoRow';
 import { useTranslation } from 'react-i18next';
 import { serverIp } from '../index.js';
-import { useEffect } from 'react';
+import { useRef } from 'react';
+
 
 function LoginPage({ nowOnline }) {
 
@@ -13,30 +13,30 @@ function LoginPage({ nowOnline }) {
     async function checkCookie() {
         const request = {
             method: 'POST',
-            headers:{'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include'
         };
         await fetch(serverIp.ip + "/Verify/verifyToken", request).then(async response => {
-            if(response.status == 200) {
+            if (response.status == 200) {
                 return response.json();
             }
             else {
                 return null;
             }
         }).then(async user => {
-            if(user) {
+            if (user) {
                 nowOnline.onlineUser = user;
                 navigation('/welcome')
             }
         })
-      }
-      
+    }
+
     checkCookie();
-    var keepLoggedIn = 0;
+
 
     const { t } = useTranslation();
 
-    const details = { username: '', password: '' }
+    const details = useRef({ username: '', password: '', keepLoggedIn: 0 })
 
     /*
     * 1.Name: This function is called at the start of every 
@@ -52,25 +52,25 @@ function LoginPage({ nowOnline }) {
         if (details.username !== '' && details.password !== '') {
             const request = {
                 method: 'POST',
-                headers:{'Content-Type': 'application/json'},
-                body:JSON.stringify({username:details.username, password:details.password, keepMeLoggedIn:keepLoggedIn}),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: details.current.username, password: details.current.password, keepMeLoggedIn: details.current.keepLoggedIn }),
                 credentials: 'include'
-              };
-              await fetch(serverIp.ip + "/User/Login", request).then(async response => {
-                if(response.status == 200) {
+            };
+            await fetch(serverIp.ip + "/User/Login", request).then(async response => {
+                if (response.status == 200) {
                     return response.json()
                 } else {
                     return null;
                 }
-              }).then(async user=> {
-                if(user) {
+            }).then(async user => {
+                if (user) {
                     nowOnline.onlineUser = user;
                     navigation('/welcome')
                 }
                 else {
                     document.getElementById('login_error').style.display = "block";
                 }
-              })
+            })
         }
         else {
             if (details.username === '') {
@@ -82,7 +82,7 @@ function LoginPage({ nowOnline }) {
         }
     }
 
-    
+
     /*
     * 1.Name: This function is called at the start of every 
     * 2.Parameters:
@@ -93,7 +93,7 @@ function LoginPage({ nowOnline }) {
         navigation('/register');
     }
 
-    
+
     /*
     * 1.Name: This function is called at the start of every 
     * 2.Parameters:
@@ -102,12 +102,12 @@ function LoginPage({ nowOnline }) {
     */
     function keepLoginChange(e) {
         if (e.target.checked) {
-            keepLoggedIn = 1;
+            details.current.keepLoggedIn = 1;
         }
 
     }
 
-    
+
     /*
     * 1.Name: This function is called at the start of every 
     * 2.Parameters:
@@ -115,10 +115,10 @@ function LoginPage({ nowOnline }) {
     * 4.Description:
     */
     function userNameChange(e) {
-        details.username = e.target.value;
+        details.current.username = e.target.value;
     }
 
-    
+
     /*
     * 1.Name: This function is called at the start of every 
     * 2.Parameters:
@@ -126,7 +126,7 @@ function LoginPage({ nowOnline }) {
     * 4.Description:
     */
     function passwordChange(e) {
-        details.password = e.target.value;
+        details.current.password = e.target.value;
     }
 
 
@@ -135,15 +135,19 @@ function LoginPage({ nowOnline }) {
             <div className='container-fluid'>
                 <div className='row justify-content-center'>
                     <div className='col-xl-10 col-xs-12'>
-                        <form id="login_form" onSubmit={handleSubmit} className="container-fluid w-100">
+                        <form id="login_form" onSubmit={handleSubmit} className="container-fluid w-100" autoComplete='off'>
                             <div className="card" id="login_card">
                                 <div className="card-body">
-                                    <LogoRow nowOnline={nowOnline} />
+                                    <LogoRow nowOnline={nowOnline} toRunFunc={null}/>
+                                    <div className='row'>
+                                        <center>
+                                            <div className="error" id="login_error">
+                                                {t('login_error')}
+                                            </div>
+                                        </center>
+                                    </div>
                                     <div className='row login-row'>
                                         <div className='col-xl-1 d-none d-md-block'>
-                                        </div>
-                                        <div className="error" id="login_error">
-                                            {t('login__error')}
                                         </div>
                                         <div className='col-xl-4 col-sm-12 jusify-content-md-center'>
                                             {t('username')}
@@ -152,7 +156,7 @@ function LoginPage({ nowOnline }) {
                                             <div className="error" id="login_userName_error">
                                                 {t('login_username_error')}
                                             </div>
-                                            <input className="login_input form-control" onChange={userNameChange} dir="ltr"></input>
+                                            <input className="login_input form-control" onChange={userNameChange} dir="ltr" id="login_username_input"></input>
                                         </div>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>
@@ -167,7 +171,7 @@ function LoginPage({ nowOnline }) {
                                             <div className="error" id="login_password_error">
                                                 {t('login_password_error')}
                                             </div>
-                                            <input className="login_input form-control" onChange={passwordChange} dir="ltr" type="password"></input>
+                                            <input className="login_input form-control" onChange={passwordChange} dir="ltr" type="password" id="login_password_input"></input>
                                         </div>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>
@@ -187,7 +191,7 @@ function LoginPage({ nowOnline }) {
                                             <button className='btn btn-primary login-btn' id="login_register_btn" onClick={registerBtnClick} type="button">{t('login_register_btn')}</button>
                                         </div>
                                         <div className='col-xl-2 d-flex justify-content-center d-none d-xl-block justify-content-md-start'>
-                                            
+
                                         </div>
                                         <div className='col-xl-4 col-xs-12 col-sm-12 col-md-5 d-flex justify-content-center justify-content-md-end'>
                                             <button className='btn btn-primary login-btn' id="login_login_btn" type="submit">{t('login_login_btn')}</button>

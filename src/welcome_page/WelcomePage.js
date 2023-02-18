@@ -5,7 +5,8 @@ import { useTranslation } from 'react-i18next';
 import '../NavBar.css';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
-import  WelcomePageModals  from './WelcomePageModals.js';
+import WelcomePageModals from './WelcomePageModals.js';
+import LanguangeButton from '../LanguangeButton';
 function WelcomePage({ nowOnline }) {
 
     const [name, setName] = useState('');
@@ -79,6 +80,16 @@ function WelcomePage({ nowOnline }) {
         }
     }
 
+    function lngChanged() {
+        if (document.querySelector("html").lang === "en") {
+            document.getElementById("LogoutBtnLi").classList.remove("me-auto");
+            document.getElementById("LogoutBtnLi").classList.add("ms-auto");
+        }
+        else {
+            document.getElementById("LogoutBtnLi").classList.remove("ms-auto");
+            document.getElementById("LogoutBtnLi").classList.add("me-auto");
+        }
+    }
 
     /*
     * 1.Name: This function is called at the start of every 
@@ -87,6 +98,7 @@ function WelcomePage({ nowOnline }) {
     * 4.Description:
     */
     useEffect(() => {
+        lngChanged();
         isGuest();
         tippy('[data-tippy-content]',
             {
@@ -101,13 +113,19 @@ function WelcomePage({ nowOnline }) {
             <div id="navBar">
                 <ul className="nav py-3">
                     <li className="nav-item">
-                        <Link className="nav-link active" aria-current="page" to="/">{t('home')}</Link>
+                        <a className="nav-link active" href="#LogoutModal" data-bs-toggle="modal">{t('home')}</a>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="#">{t('about')}</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="#">{t('scoreboard')}</Link>
+                    </li>
+                    <li className='nav-item' id="LogoutBtnLi">
+                        <div id="LangBtnDiv">
+                            <LanguangeButton toRunFunc={lngChanged} />
+                        </div>
+                        <button type="button" id="logOutBtn_Welcome" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#LogoutModal">{t('logout')}</button>
                     </li>
                 </ul>
             </div>

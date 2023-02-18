@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-
+import LogoutModal from '../LogoutModal';
 function GamePageModals({ playModeClass, gameFlow }) {
 
     const navigation = useNavigate();
@@ -96,6 +96,7 @@ function GamePageModals({ playModeClass, gameFlow }) {
                     </div>
                 </div>
             </div>
+            <LogoutModal />
         </>
     )
 }

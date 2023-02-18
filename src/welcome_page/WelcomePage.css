@@ -10,6 +10,12 @@
     color:black;
 }
 
+#logOutBtn_Welcome {
+    margin-bottom: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
 .welcome-btn {
     background-color: #B5EAD7;
     border:3px solid #000;
@@ -117,4 +123,12 @@
 
 #closeBtn {
     margin: 0px;
+}
+
+#welcome_langBtnLi {
+    margin-right: 10px;
+}
+
+#LangBtnDiv{
+    display: inline-block;
 }

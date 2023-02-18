@@ -74,7 +74,10 @@
                 "you_can_do_better": "You can do better!",
                 "very_nice": "Very Nice!",
                 "you_are_genius": "You are a genius!",
-                "research_group":"Research Group"
+                "research_group":"Research Group",
+                "logout":"Logout",
+                "logout_title":"Logout",
+                "logout_message":"By logging out, you will need to log in again. are you sure you want to log out?"
             }
         },
         "iw": {
@@ -150,7 +153,10 @@
                 "you_can_do_better": "אתה יכול טוב יותר!",
                 "very_nice": "יפה מאוד!",
                 "you_are_genius": "אתה גאון!", 
-                "research_group":"קבוצת ניסוי"
+                "research_group":"קבוצת ניסוי",
+                "logout":"התנתק",
+                "logout_title":"התנתקות",
+                "logout_message":"אם תתנתק, יהיה עליך להתחבר מחדש.האם אתה בטוח?"
             }
         }
     }

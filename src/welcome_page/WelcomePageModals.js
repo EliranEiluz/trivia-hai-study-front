@@ -1,3 +1,4 @@
+import LogoutModal from "../LogoutModal";
 import { useTranslation } from 'react-i18next';
 
 function WelcomePageModals({ onPlayWithAmountOfQuestions, onPlayAgainstClock, onPlayAgainstAgent, onPlayAgainstAgentWithAgent }) {
@@ -63,6 +64,8 @@ function WelcomePageModals({ onPlayWithAmountOfQuestions, onPlayAgainstClock, on
                     </div>
                 </div>
             </div>
+
+            <LogoutModal />
         </>
     )
 }

@@ -4,7 +4,7 @@ import { serverIp, User } from '../index.js';
 import LogoRow from './LogoRow';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import {ResearchGroupOption} from './ResearchGroupOption';
+import ResearchGroupOption from './ResearchGroupOption';
 function RegisterPage({ nowOnline }) {
 
     const { t } = useTranslation();
@@ -212,7 +212,7 @@ function RegisterPage({ nowOnline }) {
         }).then(async options => {
             if(options) {
                 setResearchOptions(options.map((option, key) => {
-                    return <researchGroupOption key={key} value={option}/>
+                    return <ResearchGroupOption key={key} value={option}/>
                 }))
             }
         })
@@ -227,10 +227,10 @@ function RegisterPage({ nowOnline }) {
             <div className='row justify-content-center'>
                 <div className='col-xl-10 col-xs-12'>
                     <div id="faded_background">
-                        <form id="register_form" onSubmit={handleSubmit} className="container-fluid h-100 w-100">
+                        <form id="register_form" onSubmit={handleSubmit} className="container-fluid h-100 w-100" autoComplete='off'>
                             <div className="card" id="register_card">
                                 <div className="card-body">
-                                    <LogoRow nowOnline={nowOnline} />
+                                    <LogoRow nowOnline={nowOnline} toRunFunc={null}/>
                                     <div className='row register-row'>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>
