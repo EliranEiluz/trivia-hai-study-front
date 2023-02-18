@@ -47,6 +47,11 @@ function WelcomePage({ nowOnline }) {
         navigation('/game');
     }
 
+    function onPlayAgainstAgentAndClock() {
+        nowOnline.playType = 3;
+        navigation('/game');
+    }
+
     /*
     * 1.Name: This function is called at the start of every 
     * 2.Parameters:
@@ -131,7 +136,7 @@ function WelcomePage({ nowOnline }) {
             </div>
 
 
-            <WelcomePageModals onPlayWithAmountOfQuestions={onPlayWithAmountOfQuestions} onPlayAgainstClock={onPlayAgainstClock} onPlayAgainstAgent={onPlayAgainstAgent} onPlayAgainstAgentWithAgent={onPlayAgainstAgentWithAgent} />
+            <WelcomePageModals onPlayWithAmountOfQuestions={onPlayWithAmountOfQuestions} onPlayAgainstClock={onPlayAgainstClock} onPlayAgainstAgent={onPlayAgainstAgent} onPlayAgainstAgentWithAgent={onPlayAgainstAgentWithAgent} onPlayAgainstAgentAndClock={onPlayAgainstAgentAndClock}/>
             <div className='container-fluid' id="WelcomePageContent">
                 <div className='row justify-content-md-center'>
                     <div className='col-xl-6 col-sm-12 d-flex justify-content-center' id="logoDiv">

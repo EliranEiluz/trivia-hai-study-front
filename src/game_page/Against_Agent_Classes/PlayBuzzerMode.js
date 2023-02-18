@@ -1,7 +1,7 @@
 import * as utils from './utils'
 import { Beep } from './Beep'
 
-class PlayAgainstTheClock {
+class PlayBuzzerMode {
     constructor(amountOfQuestions, totalTime, setQuestionCounter, questions, setQuestion, playerPoints, setCurrentTime, nowOnline, navigateToFinishPage) {
         this.amountOfQuestions = amountOfQuestions;
         this.totalTime = totalTime
@@ -25,9 +25,8 @@ class PlayAgainstTheClock {
         this.playerQuestionCounter = 1;
         this.gameCounter = 0;
 
-        document.getElementById("agentCol").classList.add('d-none');
-        document.getElementById("playerImg").style.width = document.querySelector(".avatarImg").width * 1.3 + "px";
-        this.playerPoints.current = "0/20";
+        //document.getElementById("playerImg").style.width = document.querySelector(".avatarImg").width * 1.3 + "px";
+        this.playerPoints.current = "0/" + amountOfQuestions;
     }
 
     gameFlow() {
@@ -100,4 +99,4 @@ class PlayAgainstTheClock {
     }
 }
 
-export { PlayAgainstTheClock }
+export { PlayBuzzerMode }

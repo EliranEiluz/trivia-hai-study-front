@@ -1,5 +1,5 @@
-import * as utils from './utils'
-import {Beep} from './Beep.js'
+import * as utils from '../utils'
+import {Beep} from '../Beep.js'
 class PlayAgainstAgent {
     constructor(amountOfQuestions, timeForQuestion, setQuestionCounter, questions, setQuestion, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage) {
         this.amountOfQuestions = amountOfQuestions;

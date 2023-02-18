@@ -1,7 +1,7 @@
 import LogoutModal from "../LogoutModal";
 import { useTranslation } from 'react-i18next';
 
-function WelcomePageModals({ onPlayWithAmountOfQuestions, onPlayAgainstClock, onPlayAgainstAgent, onPlayAgainstAgentWithAgent }) {
+function WelcomePageModals({ onPlayWithAmountOfQuestions, onPlayAgainstClock, onPlayAgainstAgent, onPlayAgainstAgentWithAgent, onPlayAgainstAgentAndClock }) {
 
     const { t } = useTranslation();
     return (
@@ -54,6 +54,11 @@ function WelcomePageModals({ onPlayWithAmountOfQuestions, onPlayAgainstClock, on
                                             <div>
                                                 <center>
                                                     <button id="PlayAgainstAgentWithAgent" type="button" data-tippy-content={t('1_gameMode_tooltip')} className="btn choose-mode-btn gameTypeOptionBtn" data-bs-dismiss="modal" onClick={onPlayAgainstAgentWithAgent}>{t('play_with_agent')}</button>
+                                                </center>
+                                            </div>
+                                            <div>
+                                                <center>
+                                                    <button id="PlayBuzzerMode" type="button" data-tippy-content={t('5_gameMode_tooltip')} className="btn choose-mode-btn gameTypeOptionBtn" data-bs-dismiss="modal" onClick={onPlayAgainstAgentAndClock}>{t('on_time_mode')}</button>
                                                 </center>
                                             </div>
                                         </div>

@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import GamePageNavBar from './GamePageNavBar';
 import GamePageModals from './GamePageModals';
-import { PlayAgainstAgent } from './PlayAgainstAgent'
+import { PlayAgainstAgent } from './Against_Agent_Classes/PlayAgainstAgent'
 import { PlayWithGivenAmountOfQuestions } from './PlayWithGivenAmountOfQuestions'
 import { PlayAgainstTheClock } from './PlayAgainstTheClock'
+import { PlayBuzzerMode } from './PlayBuzzerMode';
 
 /*
  * This component holds the game page and it's logic, for any available mode.
@@ -90,6 +91,10 @@ function GamePage({ nowOnline }) {
         }
         else if (nowOnline.playType == 2) {
             playModeClass.current = new PlayWithGivenAmountOfQuestions(20, 20, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, setCurrentTime, nowOnline, navigateToFinishPage)
+            playModeClass.current.gameFlow();
+        }
+        else if (nowOnline.playType == 3) {
+            playModeClass.current = new PlayBuzzerMode(20, 30, setCurrentQuestion, nowOnline.questions, setQuestions, playerPoints, setCurrentTime, nowOnline, navigateToFinishPage)
             playModeClass.current.gameFlow();
         }
         else if (nowOnline.playType == 4) {
