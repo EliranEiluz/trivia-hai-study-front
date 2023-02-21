@@ -80,7 +80,10 @@
                 "logout":"Logout",
                 "logout_title":"Logout",
                 "logout_message":"By logging out, you will need to log in again. are you sure you want to log out?",
-                "round": "Round"
+                "round": "Round",
+                "keep_going_next_round":"Very nice! Keep going and beat the agent in the next rounds!",
+                "do_better_next_round":"Try beating the agent on the next rounds!",
+                "tie_round":"It's a tie - do better and beat the agent on the next rounds!"
             }
         },
         "iw": {
@@ -162,7 +165,10 @@
                 "logout":"התנתק",
                 "logout_title":"התנתקות",
                 "logout_message":"אם תתנתק, יהיה עליך להתחבר מחדש.האם אתה בטוח?",
-                "round": "סיבוב"
+                "round": "סיבוב",
+                "keep_going_next_round":"יפה מאוד! המשך כך גם בסיבובים הבאים!",
+                "do_better_next_round":"לא נורא, נסה לנצח את הסוכן בסיבובים הבאים.",
+                "tie_round":"זה תיקו! התאמץ עוד קצת ונצח את הסוכן בסיבובים הבאים"
             }
         }
     }

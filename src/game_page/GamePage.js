@@ -20,7 +20,6 @@ function GamePage({ nowOnline }) {
 
     const amountOfQuestions = useRef(20)
 
-
     // translation variable.
     const { t } = useTranslation();
 
@@ -112,7 +111,7 @@ function GamePage({ nowOnline }) {
                 playModeClass.current = new PlayBuzzerMode(20, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage);
             }
             else {
-                amountOfQuestions.current = nowOnline.amountOfQuestions[nowOnline.roundNumber];
+                amountOfQuestions.current = nowOnline.amountOfQuestions[nowOnline.roundNumber-1];
                 playModeClass.current = new PlayBuzzerMode(amountOfQuestions.current, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage);
             }
             playModeClass.current.gameFlow();
@@ -144,15 +143,14 @@ function GamePage({ nowOnline }) {
         else if(nowOnline.playType == 3) {
             if(nowOnline.isRoundPlaying) {
                 document.getElementById('roundCounter').classList.remove('d-none');
-                const questionsStr = './Questions/edu/questions-edu-he' + (nowOnline.roundNumber + 1) + '.json';
-                const agentStr = './AgentOperations/Buzzer/edu/agent-edu' + (nowOnline.roundNumber + 1) + '.json';
-                const instructionsStr = "PlayBuzzerModeInstructions" + (nowOnline.roundNumber + 1)
-                nowOnline.questions = require(questionsStr);
-                playWithAgentOperations.current = require(agentStr);
-                nowOnline.roundNumber++;
+                const questionsStr = './Questions/edu/questions-edu-he' + nowOnline.roundNumber + '.json';
+                const agentStr = './AgentOperations/Buzzer/edu/agent-edu' + nowOnline.roundNumber + '.json';
+                const instructionsStr = "PlayBuzzerModeInstructions" + nowOnline.roundNumber
+                nowOnline.questions = require('./Questions/edu/questions-edu-he' + nowOnline.roundNumber + '.json');
+                playWithAgentOperations.current = require('./AgentOperations/Buzzer/edu/agent-edu' + nowOnline.roundNumber + '.json');
             }
             else {
-                require('./AgentOperations/Buzzer/edu/agent-edu')
+                //require('./AgentOperations/Buzzer/edu/agent-edu1.json')
                 playWithAgentOperations.current = require('./AgentOperations/Buzzer/agent.json');
             }
         }
@@ -170,7 +168,7 @@ function GamePage({ nowOnline }) {
             document.getElementById("leaveGameBtnLi").classList.add("me-auto");
         }
         document.getElementById('startGameModalBtn').click();
-    }, [nowOnline])
+    }, [])
 
 
     return (
@@ -194,7 +192,7 @@ function GamePage({ nowOnline }) {
                                         </div>
                                         <div className='col-xs-1 col-sm-4 time d-flex flex-column justify-content-center' id="timeCol">
                                             <div id="roundCounter" className='d-none'>
-                                               {t('round')} {nowOnline.roundNumber + 1}/{nowOnline.amountOfRounds}
+                                               {t('round')} {nowOnline.roundNumber}/{nowOnline.amountOfRounds}
                                             </div>
                                             <div>
                                                 {t('question')} {questionCounter}/{amountOfQuestions.current}

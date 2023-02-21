@@ -11,9 +11,11 @@ function TMFinished({ nowOnline }) {
     const [agentPoints, setAgentPoints] = useState(nowOnline.agentPoints);
     var navigation = useNavigate();
     const [timerClock, setTimerClock] = useState(10);
+
     function winOrLose() {
         var message = document.getElementById('message');
-        if (nowOnline.playType === 0 || nowOnline.playType === 1) {
+        console.log('hererr')
+        if (nowOnline.playType === 0 || nowOnline.playType === 1 || (nowOnline.playType === 3 && !nowOnline.isRoundPlaying)) {
             if (nowOnline.isWin == 2) {
                 document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
                 message.innerHTML = t('you_win') + " <i class='fa-solid fa-hands-clapping'></i>"
@@ -38,11 +40,31 @@ function TMFinished({ nowOnline }) {
                 message.innerHTML = t('you_are_genius') + " <i class='fa-solid fa-hands-clapping'></i>"
             }
         }
+        else if(nowOnline.playType === 3 && nowOnline.isRoundPlaying && nowOnline.roundNumber < nowOnline.numOfRounds) {
+            console.log('here')
+            document.getElementById('TMRoundCounter').classList.remove('d-none');
+            if(nowOnline.isWin === 2) {
+                message.innerHTML = t('keep_going_next_round') + " <i class='fa-solid fa-hands-clapping'></i>"
+                nowOnline.playerWins++;
+            }
+            else if(nowOnline.isWin === 0) {
+                message.innerHTML = t('do_better_next_round') + " <i class='fa-solid fa-heart-crack'></i>"
+                nowOnline.agentWins++;
+            }
+            else {
+                message.innerHTML = t('tie_round') + " <i class='fa-solid fa-heart-crack'></i>"
+            }
+        }
+        nowOnline.roundNumber++;
+        if(nowOnline.roundNumber === (nowOnline.numOfRounds + 1)) {
+            nowOnline.roundNumber = 1;
+            console.log('here')
+        }
     }
 
     function toHomePageBtnClick() {
         document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
-        navigation('/');
+        navigation('/welcome');
     }
 
     useEffect(() => {
@@ -55,7 +77,7 @@ function TMFinished({ nowOnline }) {
             }
             else {
                 clearInterval(interval);
-                toHomePageBtnClick();
+                //toHomePageBtnClick();
             }
         }, 1000)
         return () => clearInterval(interval);
@@ -86,6 +108,7 @@ function TMFinished({ nowOnline }) {
                                 <div className='container-fluid'>
                                     <div className='row row justify-content-md-center' id="WinOrLoseMessage">
                                         <center>
+                                            <span id="TMRoundCounter" className='d-none'>{t('round')} {nowOnline.roundNumber}/{nowOnline.numOfRounds}</span>
                                             <span id="message"></span>
                                         </center>
                                     </div>
