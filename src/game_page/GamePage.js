@@ -8,15 +8,18 @@ import { PlayAgainstAgent } from './Against_Agent_Classes/PlayAgainstAgent'
 import { PlayWithGivenAmountOfQuestions } from './Single_Player_Classes/PlayWithGivenAmountOfQuestions'
 import { PlayAgainstTheClock } from './Single_Player_Classes/PlayAgainstTheClock'
 import { PlayBuzzerMode } from './Against_Agent_Classes/PlayBuzzerMode';
+import { RoundManager } from './RoundManager';
 
 /*
  * This component holds the game page and it's logic, for any available mode.
 */
 function GamePage({ nowOnline }) {
 
+    const roundManager = useRef(null);
     const playModeClass = useRef(null)
 
     const amountOfQuestions = useRef(20)
+
 
     // translation variable.
     const { t } = useTranslation();
@@ -51,6 +54,17 @@ function GamePage({ nowOnline }) {
         navigation('/TMFinished');
     }
     
+    function handleRoundManager() {
+        playWithAgentOperations.current = [];
+        playWithAgentOperations.current.push(require('./AgentOperations/Buzzer/edu/agent-edu1.json'));
+        playWithAgentOperations.current.push(require('./AgentOperations/Buzzer/edu/agent-edu2.json'));
+        playWithAgentOperations.current.push(require('./AgentOperations/Buzzer/edu/agent-edu3.json'));
+        nowOnline.questions = []
+        nowOnline.questions.push(require("./Questions/edu/questions-edu-he1.json"));
+        nowOnline.questions.push(require("./Questions/edu/questions-edu-he2.json"));
+        nowOnline.questions.push(require("./Questions/edu/questions-edu-he3.json"));
+        roundManager.current = new RoundManager(3, 20, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage, playModeClass);
+    }
 
     /*
     * 1.Name: onChoosingAnswer
@@ -94,8 +108,15 @@ function GamePage({ nowOnline }) {
             playModeClass.current.gameFlow();
         }
         else if (nowOnline.playType == 3) {
-            playModeClass.current = new PlayBuzzerMode(20, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage);
+            if(!nowOnline.isRoundPlaying || document.querySelector("html").lang === "en") {
+                playModeClass.current = new PlayBuzzerMode(20, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage);
+            }
+            else {
+                amountOfQuestions.current = nowOnline.amountOfQuestions[nowOnline.roundNumber];
+                playModeClass.current = new PlayBuzzerMode(amountOfQuestions.current, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage);
+            }
             playModeClass.current.gameFlow();
+            
         }
         else if (nowOnline.playType == 4) {
             playModeClass.current = new PlayAgainstTheClock(20, 40, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, setCurrentTime, nowOnline, navigateToFinishPage)
@@ -121,7 +142,19 @@ function GamePage({ nowOnline }) {
             document.getElementById('playWithGivenAmountOfQuestionsInstrctions').classList.remove('d-none')
         }
         else if(nowOnline.playType == 3) {
-            playWithAgentOperations.current = require('./AgentOperations/Buzzer/agent.json');
+            if(nowOnline.isRoundPlaying) {
+                document.getElementById('roundCounter').classList.remove('d-none');
+                const questionsStr = './Questions/edu/questions-edu-he' + (nowOnline.roundNumber + 1) + '.json';
+                const agentStr = './AgentOperations/Buzzer/edu/agent-edu' + (nowOnline.roundNumber + 1) + '.json';
+                const instructionsStr = "PlayBuzzerModeInstructions" + (nowOnline.roundNumber + 1)
+                nowOnline.questions = require(questionsStr);
+                playWithAgentOperations.current = require(agentStr);
+                nowOnline.roundNumber++;
+            }
+            else {
+                require('./AgentOperations/Buzzer/edu/agent-edu')
+                playWithAgentOperations.current = require('./AgentOperations/Buzzer/agent.json');
+            }
         }
         else if (nowOnline.playType == 4) {
             document.getElementById('playAgainstTheClockInstrctions').classList.remove('d-none')
@@ -131,7 +164,9 @@ function GamePage({ nowOnline }) {
             document.getElementById("leaveGameBtnLi").classList.add("ms-auto");
         }
         else {
-            nowOnline.questions = require('./questions-he-edu.json');
+            if(!nowOnline.isRoundPlaying || nowOnline.playType !== 3) {
+                nowOnline.questions = require('./questions-he-edu.json');
+            }
             document.getElementById("leaveGameBtnLi").classList.add("me-auto");
         }
         document.getElementById('startGameModalBtn').click();
@@ -158,6 +193,9 @@ function GamePage({ nowOnline }) {
                                             </div>
                                         </div>
                                         <div className='col-xs-1 col-sm-4 time d-flex flex-column justify-content-center' id="timeCol">
+                                            <div id="roundCounter" className='d-none'>
+                                               {t('round')} {nowOnline.roundNumber + 1}/{nowOnline.amountOfRounds}
+                                            </div>
                                             <div>
                                                 {t('question')} {questionCounter}/{amountOfQuestions.current}
                                             </div>

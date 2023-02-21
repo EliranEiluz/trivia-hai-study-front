@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import LoginPage from './login_and_register/LoginPage';
-import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RegisterPage from './login_and_register/RegisterPage';
 import WelcomePage from './welcome_page/WelcomePage';
 import Teams from './team_selection/Teams';
@@ -15,7 +15,7 @@ import { initReactI18next } from 'react-i18next';
 
 
 i18n.use(initReactI18next).init(require('./languange.json'));
-const serverIp = {ip:"http://localhost:3100"}
+const serverIp = { ip: "http://localhost:3100" }
 
 
 
@@ -62,7 +62,7 @@ class Question {
 // playType = 3 - play with given number of questions with agent in your team.
 // playtype = 4 - answer as much questions as you can in given period of time.
 // playType = 5 - answer as much questions as you can in given period of time with agent in your team.
-const nowOnline = {onlineUser: null, signalR: null, JWT_Token:'', isWin: 1, questions: null, agentPoints:0, playerPoints:0, playType:0};
+const nowOnline = { onlineUser: null, signalR: null, JWT_Token: '', isWin: 1, questions: null, agentPoints: 0, playerPoints: 0, playType: 0, roundNumber: 0, playerWins: 0, agentWins: 0, amountOfRounds: 3, amountOfQuestions: [6, 6, 3], isRoundPlaying:true};
 
 
 
@@ -70,17 +70,17 @@ const nowOnline = {onlineUser: null, signalR: null, JWT_Token:'', isWin: 1, ques
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <BrowserRouter basename={'/trivia'}>
-      <Routes>
-        <Route path='/' element={<LoginPage nowOnline={nowOnline}/>} />
-        <Route path='/register' element={<RegisterPage nowOnline={nowOnline}/>} />
-        <Route path='/welcome' element={<WelcomePage nowOnline={nowOnline}/>} />
-        <Route path='/teams' element={<Teams nowOnline={nowOnline}/>} />
-        <Route path='/teamPage' element={<TeamPage nowOnline={nowOnline}/>} />
-        <Route path='/game' element={<GamePage nowOnline={nowOnline}/>} />
-        <Route path='/TMfinished' element={<TMFinished nowOnline={nowOnline}/>} />
-      </Routes>
-    </BrowserRouter>
+  <BrowserRouter basename={'/trivia'}>
+    <Routes>
+      <Route path='/' element={<LoginPage nowOnline={nowOnline} />} />
+      <Route path='/register' element={<RegisterPage nowOnline={nowOnline} />} />
+      <Route path='/welcome' element={<WelcomePage nowOnline={nowOnline} />} />
+      <Route path='/teams' element={<Teams nowOnline={nowOnline} />} />
+      <Route path='/teamPage' element={<TeamPage nowOnline={nowOnline} />} />
+      <Route path='/game' element={<GamePage nowOnline={nowOnline} />} />
+      <Route path='/TMfinished' element={<TMFinished nowOnline={nowOnline} />} />
+    </Routes>
+  </BrowserRouter>
 );
 
 
@@ -89,4 +89,4 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-export {Team, User, Question, serverIp };
+export { Team, User, Question, serverIp };

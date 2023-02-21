@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "question":  "מי היה הנשיא הראשון של מדינת ישראל?",
+        "firstAnswer":"חיים ויצמן", 
+        "secondAnswer": "יצחק בן צבי",
+        "thirdAnswer": "רובי ריבלין",
+        "fourthAnswer":"יצחק רבין", 
+        "rightAnswer":1
+    },
+
+    {
+        "id": 2,
+        "question": "באיזו מלחמה שיחררו את הכותל המערבי?",
+        "firstAnswer": "1973 מלחמת יום כיפור", 
+        "secondAnswer": "1967 מלחמת ששת הימים",
+        "thirdAnswer": "1990 מלחמת המפרץ",
+        "fourthAnswer":"1950 מלחמת סיני", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 3,
+        "question": "מי כתב את ההמנון?",
+        "firstAnswer": "חיים נחמן ביאליק", 
+        "secondAnswer": "נתן אלתרמן",
+        "thirdAnswer":"נפתלי הרץ אימבר",
+        "fourthAnswer":"יהורם טהרלב", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 4,
+        "question": "באיזה כינוי הרצל מוכר?",
+        "firstAnswer": "נשיא המדינה", 
+        "secondAnswer": "חוזה המדינה",
+        "thirdAnswer": "ראש הממשלה",
+        "fourthAnswer":"לוחם חופש", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 5,
+        "question": "מי הייתה אשתו של משה רבינו?",
+        "firstAnswer": "לאה", 
+        "secondAnswer":"ציפורה",
+        "thirdAnswer": "חנה",
+        "fourthAnswer":"רבקה", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 6,
+        "question": "איזו מילה אליעזר בן יהודה לא המציא?",
+        "firstAnswer": "מטריה", 
+        "secondAnswer": "גלידה",
+        "thirdAnswer": "בובה",
+        "fourthAnswer":"מטוש", 
+        "rightAnswer":4
+    }
+
+]

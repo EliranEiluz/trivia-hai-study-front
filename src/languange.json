@@ -1,5 +1,5 @@
 {
-    "lng": "en",
+    "lng": "iw",
     "resources": {
         "en": {
             "translation": {
@@ -79,7 +79,8 @@
                 "research_group":"Research Group",
                 "logout":"Logout",
                 "logout_title":"Logout",
-                "logout_message":"By logging out, you will need to log in again. are you sure you want to log out?"
+                "logout_message":"By logging out, you will need to log in again. are you sure you want to log out?",
+                "round": "Round"
             }
         },
         "iw": {
@@ -160,7 +161,8 @@
                 "research_group":"קבוצת ניסוי",
                 "logout":"התנתק",
                 "logout_title":"התנתקות",
-                "logout_message":"אם תתנתק, יהיה עליך להתחבר מחדש.האם אתה בטוח?"
+                "logout_message":"אם תתנתק, יהיה עליך להתחבר מחדש.האם אתה בטוח?",
+                "round": "סיבוב"
             }
         }
     }

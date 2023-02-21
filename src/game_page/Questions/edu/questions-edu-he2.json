@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "question": "איזו מדינה נמצאת ביבשת אירופה?",
+        "firstAnswer":"ברזיל", 
+        "secondAnswer": "ישראל",
+        "thirdAnswer": "מרוקו",
+        "fourthAnswer":"צרפת", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 2,
+        "question": "איזו המצאה המציאו האחים רייט?",
+        "firstAnswer": "נורת חשמל", 
+        "secondAnswer": "טלפון",
+        "thirdAnswer": "מטוס",
+        "fourthAnswer":"אינטרנט", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 3,
+        "question": "מי מהשמות לא משורר",
+        "firstAnswer": "לאה גולדברג", 
+        "secondAnswer": "גודלה מאיר",
+        "thirdAnswer":"חיים נחמן ביאליק",
+        "fourthAnswer":"חנה סנש", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 4,
+        "question": "איזה הר נמצא נמצא בישרושלים",
+        "firstAnswer": "הר חרמון", 
+        "secondAnswer": "הר תבור",
+        "thirdAnswer": "הר הרצל",
+        "fourthAnswer":"הר רמון", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 5,
+        "question": "מה שם החללית שישראל שלחה לירח?",
+        "firstAnswer": "אפולו 10", 
+        "secondAnswer":"בראשית",
+        "thirdAnswer": "עצמאות",
+        "fourthAnswer":"ישראל", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 6,
+        "question": "באיזו עיר הכריז בן גוריון על הקמת המדינה?",
+        "firstAnswer": "ירושלים", 
+        "secondAnswer": "פתח תקווה",
+        "thirdAnswer": "תל אביב",
+        "fourthAnswer":"חיפה", 
+        "rightAnswer":3
+    }
+
+]

@@ -198,7 +198,7 @@ function RegisterPage({ nowOnline }) {
 
     async function fetchResearchGroupOptions() {
         const params = {
-            method: 'POST',
+            method: 'GET',
             headers:{'Content-Type': 'application/json'},
             credentials: 'include'
         }

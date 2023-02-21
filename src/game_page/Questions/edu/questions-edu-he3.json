@@ -1,0 +1,31 @@
+[
+    {
+        "id": 1,
+        "question": "מהו הים הנמוך בעולם?",
+        "firstAnswer":"הים השחור", 
+        "secondAnswer": "ים המלח",
+        "thirdAnswer": "הים התיכון",
+        "fourthAnswer": "ים סוף", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 2,
+        "question": "מי הייתה אמא של שמואל הנביא?",
+        "firstAnswer": "חנה", 
+        "secondAnswer": "רבקה",
+        "thirdAnswer": "דבורה",
+        "fourthAnswer":"ציפורה", 
+        "rightAnswer":1
+    },
+
+    {
+        "id": 3,
+        "question": "מה היה השם השני של אסתר המלכה?",
+        "firstAnswer": "ציפורה", 
+        "secondAnswer": "מיכל",
+        "thirdAnswer": "הדסה",
+        "fourthAnswer": "יעל", 
+        "rightAnswer":3
+    }
+]
