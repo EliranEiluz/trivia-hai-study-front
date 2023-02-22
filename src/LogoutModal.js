@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { serverIp } from '.';
 
-function LogoutModal() {
+function LogoutModal({playModeClass}) {
     const navigation = useNavigate();
     async function Logout() {
         const request = {
@@ -11,6 +11,9 @@ function LogoutModal() {
             credentials: 'include'
           };
         await fetch(serverIp.ip + "/User/Logout", request)
+        if (playModeClass) {
+            playModeClass.current.clear();
+        }
         document.getElementById("btnCloseLogoutModal").click();
         navigation('/')
     }

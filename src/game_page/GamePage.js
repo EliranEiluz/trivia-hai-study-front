@@ -141,11 +141,15 @@ function GamePage({ nowOnline }) {
             document.getElementById('playWithGivenAmountOfQuestionsInstrctions').classList.remove('d-none')
         }
         else if(nowOnline.playType == 3) {
+            if(nowOnline.isRoundPlaying && nowOnline.roundNumber < 2) {
+                document.getElementById('playBuzzerModeInstructions').classList.remove('d-none');
+            }
+            else {
+                document.getElementById('playBuzzerModeInstructions').classList.add('d-none');
+            }
             if(nowOnline.isRoundPlaying) {
+                document.getElementById('playRoundsMode').classList.remove('d-none');
                 document.getElementById('roundCounter').classList.remove('d-none');
-                const questionsStr = './Questions/edu/questions-edu-he' + nowOnline.roundNumber + '.json';
-                const agentStr = './AgentOperations/Buzzer/edu/agent-edu' + nowOnline.roundNumber + '.json';
-                const instructionsStr = "PlayBuzzerModeInstructions" + nowOnline.roundNumber
                 nowOnline.questions = require('./Questions/edu/questions-edu-he' + nowOnline.roundNumber + '.json');
                 playWithAgentOperations.current = require('./AgentOperations/Buzzer/edu/agent-edu' + nowOnline.roundNumber + '.json');
             }
@@ -175,7 +179,7 @@ function GamePage({ nowOnline }) {
         <>
             <GamePageNavBar />
 
-            <GamePageModals playModeClass={playModeClass} gameFlow={gameFlow} />
+            <GamePageModals playModeClass={playModeClass} gameFlow={gameFlow} nowOnline={nowOnline}/>
             <div className='container-fluid' id="gamePageContainer">
                 <div className='row justify-content-center'>
                     <div className='col-md-9 col-sm-11 col-xs-12 justify-content-sm-center justify-content-md-start'>

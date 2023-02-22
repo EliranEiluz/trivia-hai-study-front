@@ -21,7 +21,7 @@
 
     {
         "id": 3,
-        "question": "מי מהשמות לא משורר",
+        "question": "מי מהשמות לא משורר?",
         "firstAnswer": "לאה גולדברג", 
         "secondAnswer": "גודלה מאיר",
         "thirdAnswer":"חיים נחמן ביאליק",
@@ -31,7 +31,7 @@
 
     {
         "id": 4,
-        "question": "איזה הר נמצא נמצא בישרושלים",
+        "question": "?איזה הר נמצא נמצא בירושלים",
         "firstAnswer": "הר חרמון", 
         "secondAnswer": "הר תבור",
         "thirdAnswer": "הר הרצל",

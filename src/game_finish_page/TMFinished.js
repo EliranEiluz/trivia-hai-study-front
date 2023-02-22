@@ -1,6 +1,6 @@
 import './TMFinished.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import '../NavBar.css';
 
@@ -10,11 +10,11 @@ function TMFinished({ nowOnline }) {
     const [playerPoints, setPlayerPoints] = useState(nowOnline.playerPoints);
     const [agentPoints, setAgentPoints] = useState(nowOnline.agentPoints);
     var navigation = useNavigate();
+    const roundNumber = useRef(nowOnline.roundNumber)
     const [timerClock, setTimerClock] = useState(10);
 
     function winOrLose() {
         var message = document.getElementById('message');
-        console.log('hererr')
         if (nowOnline.playType === 0 || nowOnline.playType === 1 || (nowOnline.playType === 3 && !nowOnline.isRoundPlaying)) {
             if (nowOnline.isWin == 2) {
                 document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
@@ -40,8 +40,7 @@ function TMFinished({ nowOnline }) {
                 message.innerHTML = t('you_are_genius') + " <i class='fa-solid fa-hands-clapping'></i>"
             }
         }
-        else if(nowOnline.playType === 3 && nowOnline.isRoundPlaying && nowOnline.roundNumber < nowOnline.numOfRounds) {
-            console.log('here')
+        else if(nowOnline.playType === 3 && nowOnline.isRoundPlaying && nowOnline.roundNumber < nowOnline.amountOfRounds) {
             document.getElementById('TMRoundCounter').classList.remove('d-none');
             if(nowOnline.isWin === 2) {
                 message.innerHTML = t('keep_going_next_round') + " <i class='fa-solid fa-hands-clapping'></i>"
@@ -56,9 +55,8 @@ function TMFinished({ nowOnline }) {
             }
         }
         nowOnline.roundNumber++;
-        if(nowOnline.roundNumber === (nowOnline.numOfRounds + 1)) {
+        if(nowOnline.roundNumber === (nowOnline.amountOfRounds + 1)) {
             nowOnline.roundNumber = 1;
-            console.log('here')
         }
     }
 
@@ -77,7 +75,7 @@ function TMFinished({ nowOnline }) {
             }
             else {
                 clearInterval(interval);
-                //toHomePageBtnClick();
+                toHomePageBtnClick();
             }
         }, 1000)
         return () => clearInterval(interval);
@@ -108,7 +106,7 @@ function TMFinished({ nowOnline }) {
                                 <div className='container-fluid'>
                                     <div className='row row justify-content-md-center' id="WinOrLoseMessage">
                                         <center>
-                                            <span id="TMRoundCounter" className='d-none'>{t('round')} {nowOnline.roundNumber}/{nowOnline.numOfRounds}</span>
+                                        <span id="TMRoundCounter" className='d-none'>{t('round')} {roundNumber.current}/{nowOnline.amountOfRounds}</span><br></br>
                                             <span id="message"></span>
                                         </center>
                                     </div>

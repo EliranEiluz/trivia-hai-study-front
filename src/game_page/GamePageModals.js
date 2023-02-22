@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import LogoutModal from '../LogoutModal';
-function GamePageModals({ playModeClass, gameFlow }) {
+function GamePageModals({ playModeClass, gameFlow, nowOnline }) {
 
     const navigation = useNavigate();
     const { t } = useTranslation();
 
-    
+
     /*
     * 1.Name: This function is called at the start of every 
     * 2.Parameters:
@@ -14,13 +14,13 @@ function GamePageModals({ playModeClass, gameFlow }) {
     * 4.Description:
     */
     function leaveGame() {
-        if(playModeClass.current) {
+        if (playModeClass.current) {
             playModeClass.current.clear();
         }
         navigation('/welcome')
     }
 
-    
+
     /*
     * 1.Name: This function is called at the start of every 
     * 2.Parameters:
@@ -28,7 +28,7 @@ function GamePageModals({ playModeClass, gameFlow }) {
     * 4.Description:
     */
     function leaveToHomeGame() {
-        if(playModeClass.current) {
+        if (playModeClass.current) {
             playModeClass.current.clear();
         }
         navigation('/')
@@ -55,6 +55,13 @@ function GamePageModals({ playModeClass, gameFlow }) {
                             </p>
                             <p id="playAgainstTheClockInstrctions" className='d-none'>
                                 {t('4_gameMode_tooltip')}
+                            </p>
+                            <center>
+                                <p id="playRoundsMode" className='d-none'>{t('round')} {nowOnline.roundNumber}/{nowOnline.amountOfRounds}</p>
+                            </center>
+                            <p id="playBuzzerModeInstructions" className='d-none'>
+
+                                {t('play_buzzer_instructions')}
                             </p>
                         </div>
                         <div className="modal-footer">
@@ -96,7 +103,7 @@ function GamePageModals({ playModeClass, gameFlow }) {
                     </div>
                 </div>
             </div>
-            <LogoutModal />
+            <LogoutModal playModeClass={playModeClass} />
         </>
     )
 }

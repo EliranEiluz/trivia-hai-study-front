@@ -16,17 +16,17 @@
     },
     {
         "id": 4,
-        "time":9000,
+        "time":1000,
         "answer":1
     },
     {
         "id": 5,
-        "time":4000,
+        "time":3000,
         "answer":2
     },
     {
         "id": 6,
-        "time":6000,
+        "time":1000,
         "answer":3
     }
 ]

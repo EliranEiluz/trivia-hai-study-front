@@ -13,7 +13,6 @@ class PlayBuzzerMode {
         this.isPlayerTurn = false;
         this.beep = new Beep();
         this.avatarSize = 0;
-        this.playerQuestionCounter = 1;
         this.setQuestionCounter = setQuestionCounter;
         this.gameCounter = 0;
         this.questions = questions;
@@ -29,6 +28,7 @@ class PlayBuzzerMode {
         this.navigateToFinishPage = navigateToFinishPage
         this.agentPoints.current = "0/" + amountOfQuestions;
         this.playerPoints.current = "0/" + amountOfQuestions;
+        this.buzzerSound = new Audio(require('../buzzer.wav'));
     }
 
     gameFlow() {
@@ -61,6 +61,7 @@ class PlayBuzzerMode {
 
 
     async onChoosingAnswer(val, whoClicked) {
+        this.buzzerSound.play()
         clearTimeout(this.agentTimeout);
         // disable the answers buttons
         utils.afterChoosingAnswer();
@@ -129,7 +130,7 @@ class PlayBuzzerMode {
     */
     agent() {
         this.agentTimeout = setTimeout(() => {
-            var chosen = this.agentOperations.current[this.playerQuestionCounter - 1].answer;
+            var chosen = this.agentOperations.current[this.gameCounter].answer;
             var e;
             switch (chosen) {
                 case 1:
@@ -152,7 +153,7 @@ class PlayBuzzerMode {
                     return;
             }
             this.onChoosingAnswer(e, "agent")
-        }, this.agentOperations.current[this.playerQuestionCounter - 1].time)
+        }, this.agentOperations.current[this.gameCounter].time)
     }
 
     gameFinished() {
