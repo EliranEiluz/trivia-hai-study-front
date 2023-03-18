@@ -1,32 +1,17 @@
 [
     {
         "id": 1,
-        "time":15000,
-        "answer":3
+        "time":5000,
+        "answer":4
     },
     {
         "id": 2,
-        "time":17000,
+        "time":3000,
         "answer":3
     },
     {
         "id": 3,
-        "time":9000,
-        "answer":3
-    },
-    {
-        "id": 4,
-        "time":3000,
-        "answer":1
-    },
-    {
-        "id": 5,
-        "time":19000,
+        "time":2000,
         "answer":2
-    },
-    {
-        "id": 6,
-        "time":6000,
-        "answer":1
     }
 ]
