@@ -16,7 +16,7 @@ function TMFinished({ nowOnline }) {
 
     function winOrLose() {
         var message = document.getElementById('message');
-        if (nowOnline.playType === 0 || nowOnline.playType === 1 || (nowOnline.playType === 3 && !nowOnline.isRoundPlaying)) {
+        if (nowOnline.playType === 0 || nowOnline.playType === 1 || (nowOnline.playType === 4 && !nowOnline.isRoundPlaying)) {
             if (nowOnline.isWin == 2) {
                 document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
                 message.innerHTML = t('you_win') + " <i class='fa-solid fa-hands-clapping'></i>"
@@ -42,6 +42,7 @@ function TMFinished({ nowOnline }) {
             }
         }
         else if(nowOnline.playType === 3 && nowOnline.isRoundPlaying && nowOnline.roundNumber < nowOnline.amountOfRounds) {
+            roundNumber.current = t('train')
             document.getElementById('TMRoundCounter').classList.remove('d-none');
             if(nowOnline.isWin === 2) {
                 message.innerHTML = t('keep_going_next_round') + " <i class='fa-solid fa-hands-clapping'></i>"
@@ -118,7 +119,7 @@ function TMFinished({ nowOnline }) {
                                 <div className='container-fluid'>
                                     <div className='row row justify-content-md-center' id="WinOrLoseMessage">
                                         <center>
-                                        <span id="TMRoundCounter" className='d-none'>{t('round')} {roundNumber.current}/{nowOnline.amountOfRounds}</span><br></br>
+                                        <span id="TMRoundCounter" className='d-none'>{t('round')} {roundNumber.current}</span><br></br>
                                             <span id="message"></span>
                                         </center>
                                     </div>

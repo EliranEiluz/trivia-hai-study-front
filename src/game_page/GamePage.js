@@ -205,7 +205,7 @@ function GamePage({ nowOnline }) {
                                                {t('round')} {nowOnline.roundNumber}
                                             </div>
                                             <div id="trainRound" className='d-none'>
-                                                {t('train_round')}
+                                            {t('round')} {t('train')}
                                             </div>
                                             <div>
                                                 {t('question')} {questionCounter}
