@@ -1,6 +1,66 @@
 [
     {
         "id": 1,
+        "question":  "מי היה הנשיא הראשון של מדינת ישראל?",
+        "firstAnswer":"חיים ויצמן", 
+        "secondAnswer": "יצחק בן צבי",
+        "thirdAnswer": "רובי ריבלין",
+        "fourthAnswer":"יצחק רבין", 
+        "rightAnswer":1
+    },
+
+    {
+        "id": 2,
+        "question": "באיזו מלחמה שיחררו את הכותל המערבי?",
+        "firstAnswer": "1973 מלחמת יום כיפור", 
+        "secondAnswer": "1967 מלחמת ששת הימים",
+        "thirdAnswer": "1990 מלחמת המפרץ",
+        "fourthAnswer":"1950 מלחמת סיני", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 3,
+        "question": "מי כתב את ההמנון?",
+        "firstAnswer": "חיים נחמן ביאליק", 
+        "secondAnswer": "נתן אלתרמן",
+        "thirdAnswer":"נפתלי הרץ אימבר",
+        "fourthAnswer":"יהורם טהרלב", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 4,
+        "question": "באיזה כינוי הרצל מוכר?",
+        "firstAnswer": "נשיא המדינה", 
+        "secondAnswer": "חוזה המדינה",
+        "thirdAnswer": "ראש הממשלה",
+        "fourthAnswer":"לוחם חופש", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 5,
+        "question": "מי הייתה אשתו של משה רבינו?",
+        "firstAnswer": "לאה", 
+        "secondAnswer":"ציפורה",
+        "thirdAnswer": "חנה",
+        "fourthAnswer":"רבקה", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 6,
+        "question": "איזו מילה אליעזר בן יהודה לא המציא?",
+        "firstAnswer": "מטריה", 
+        "secondAnswer": "גלידה",
+        "thirdAnswer": "בובה",
+        "fourthAnswer":"מטוש", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 7,
         "question": "איזו מדינה נמצאת ביבשת אירופה?",
         "firstAnswer":"ברזיל", 
         "secondAnswer": "ישראל",
@@ -10,7 +70,7 @@
     },
 
     {
-        "id": 2,
+        "id": 8,
         "question": "איזו המצאה המציאו האחים רייט?",
         "firstAnswer": "נורת חשמל", 
         "secondAnswer": "טלפון",
@@ -20,7 +80,7 @@
     },
 
     {
-        "id": 3,
+        "id": 9,
         "question": "מי מהשמות לא משורר?",
         "firstAnswer": "לאה גולדברג", 
         "secondAnswer": "גודלה מאיר",
@@ -30,7 +90,17 @@
     },
 
     {
-        "id": 4,
+        "id": 10,
+        "question": "מי קיבל פרס נובל לשלום?",
+        "firstAnswer": "שמעון פרס", 
+        "secondAnswer": "בנימין נתניהו",
+        "thirdAnswer": "גולדה מאיר",
+        "fourthAnswer": "דוד בן גוריון", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 11,
         "question": "?איזה הר נמצא נמצא בירושלים",
         "firstAnswer": "הר חרמון", 
         "secondAnswer": "הר תבור",
@@ -40,7 +110,7 @@
     },
 
     {
-        "id": 5,
+        "id": 12,
         "question": "מה שם החללית שישראל שלחה לירח?",
         "firstAnswer": "אפולו 10", 
         "secondAnswer":"בראשית",
@@ -50,13 +120,83 @@
     },
 
     {
-        "id": 6,
+        "id": 13,
         "question": "באיזו עיר הכריז בן גוריון על הקמת המדינה?",
         "firstAnswer": "ירושלים", 
         "secondAnswer": "פתח תקווה",
         "thirdAnswer": "תל אביב",
         "fourthAnswer":"חיפה", 
         "rightAnswer":3
-    }
+    },
+    {
+        "id": 14,
+        "question": "מהו הים הנמוך בעולם?",
+        "firstAnswer":"הים השחור", 
+        "secondAnswer": "ים המלח",
+        "thirdAnswer": "הים התיכון",
+        "fourthAnswer": "ים סוף", 
+        "rightAnswer":2
+    },
 
+    {
+        "id": 15,
+        "question": "מי הייתה אמא של שמואל הנביא?",
+        "firstAnswer": "חנה", 
+        "secondAnswer": "רבקה",
+        "thirdAnswer": "דבורה",
+        "fourthAnswer":"ציפורה", 
+        "rightAnswer":1
+    },
+
+    {
+        "id": 16,
+        "question": "מה היה השם השני של אסתר המלכה?",
+        "firstAnswer": "ציפורה", 
+        "secondAnswer": "מיכל",
+        "thirdAnswer": "הדסה",
+        "fourthAnswer": "יעל", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 17,
+        "question": "מי בנה את בית המקדש הראשון?",
+        "firstAnswer": "שאול המלך", 
+        "secondAnswer": "שמואל הנביא",
+        "thirdAnswer": "שלמה המלך",
+        "fourthAnswer": "שמשון הגיבור", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 18,
+        "question": "עם איזו מדינה יש לישראל הסכם שלום?",
+        "firstAnswer": "איראן", 
+        "secondAnswer": "סוריה",
+        "thirdAnswer": "לבנון",
+        "fourthAnswer": "מצרים", 
+        "rightAnswer":4
+    },
+
+    {
+        "id": 19,
+        "question": "איזו מילה כתובה בסמל המדינה?",
+        "firstAnswer": "שלום", 
+        "secondAnswer": "תקווה",
+        "thirdAnswer": "ישראל",
+        "fourthAnswer": "ירושלים", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 20,
+        "question": "מהי העיר הכי דרומית בישראל?",
+        "firstAnswer": "ירושלים", 
+        "secondAnswer": "אילת",
+        "thirdAnswer": "טבריה",
+        "fourthAnswer": "תל אביב", 
+        "rightAnswer":2
+    }
+    
+   
 ]

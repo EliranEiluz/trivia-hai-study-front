@@ -149,7 +149,13 @@ function GamePage({ nowOnline }) {
             }
             if(nowOnline.isRoundPlaying) {
                 document.getElementById('playRoundsMode').classList.remove('d-none');
-                document.getElementById('roundCounter').classList.remove('d-none');
+                if(nowOnline.roundNumber === 1) {
+                    document.getElementById('trainRound').classList.remove('d-none');
+                }
+                else {
+                    document.getElementById('trainRound').classList.remove('d-none');
+                    document.getElementById('roundCounter').classList.remove('d-none');
+                }
                 nowOnline.questions = require('./Questions/edu/questions-edu-he' + nowOnline.roundNumber + '.json');
                 playWithAgentOperations.current = require('./AgentOperations/Buzzer/edu/agent-edu' + nowOnline.roundNumber + '.json');
             }
@@ -190,16 +196,19 @@ function GamePage({ nowOnline }) {
                                         <div className='col-xs-1 col-sm-4 avatarsRow d-flex justify-content-center align-items-center' id="playerCol">
                                             <div id="playerDiv" className='avatarDiv'>
                                                 <div className='avatarTxt'>{t('you')}</div>
-                                                <img src={require("../PNG/avatar1.png")} className="avatarImg" id="playerImg" alt="player's Avatar"></img>
+                                                <img src={require("../PNG/avatar7.png")} className="avatarImg" id="playerImg" alt="player's Avatar"></img>
                                                 <div className='avatarTxt'>{playerPoints.current}</div>
                                             </div>
                                         </div>
                                         <div className='col-xs-1 col-sm-4 time d-flex flex-column justify-content-center' id="timeCol">
                                             <div id="roundCounter" className='d-none'>
-                                               {t('round')} {nowOnline.roundNumber}/{nowOnline.amountOfRounds}
+                                               {t('round')} {nowOnline.roundNumber}
+                                            </div>
+                                            <div id="trainRound" className='d-none'>
+                                                {t('train_round')}
                                             </div>
                                             <div>
-                                                {t('question')} {questionCounter}/{amountOfQuestions.current}
+                                                {t('question')} {questionCounter}
                                             </div>
                                             <div className="progress w-100">
                                                 <div className="progress-bar progress-bar-striped bg-dark" id="prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>

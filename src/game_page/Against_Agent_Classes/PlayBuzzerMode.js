@@ -61,7 +61,7 @@ class PlayBuzzerMode {
 
 
     async onChoosingAnswer(val, whoClicked) {
-        this.buzzerSound.play()
+        //this.buzzerSound.play()
         clearTimeout(this.agentTimeout);
         // disable the answers buttons
         utils.afterChoosingAnswer();

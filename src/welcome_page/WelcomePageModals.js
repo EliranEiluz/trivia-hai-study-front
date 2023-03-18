@@ -24,7 +24,7 @@ function WelcomePageModals({ onPlayWithAmountOfQuestions, onPlayAgainstClock, on
                                 </div>
                                 <div className='col-6'>
                                     <center>
-                                        <button type="button" className="btn choose-mode-btn" data-bs-toggle="collapse" data-bs-target="#singlePlayerOptions" aria-expanded="false" aria-controls="singlePlayerOptions">{t('single_player')}</button>
+                                        <button type="button" className="btn choose-mode-btn" data-bs-toggle="collapse" data-bs-target="#singlePlayerOptions" aria-expanded="false" aria-controls="singlePlayerOptions" disabled={true}>{t('single_player')}</button>
                                     </center>
                                 </div>
                             </div>
@@ -48,12 +48,12 @@ function WelcomePageModals({ onPlayWithAmountOfQuestions, onPlayAgainstClock, on
                                         <div className='card card-body' id="gameModeMenu">
                                             <div>
                                                 <center>
-                                                    <button id="PlayAgainstAgent" type="button" data-tippy-content={t('0_gameMode_tooltip')} className="btn choose-mode-btn gameTypeOptionBtn" data-bs-dismiss="modal" onClick={onPlayAgainstAgent}>{t('play_alone')}</button>
+                                                    <button id="PlayAgainstAgent" type="button" data-tippy-content={t('0_gameMode_tooltip')} className="btn choose-mode-btn gameTypeOptionBtn" data-bs-dismiss="modal" onClick={onPlayAgainstAgent} disabled={true}>{t('play_alone')}</button>
                                                 </center>
                                             </div>
                                             <div>
                                                 <center>
-                                                    <button id="PlayAgainstAgentWithAgent" type="button" data-tippy-content={t('1_gameMode_tooltip')} className="btn choose-mode-btn gameTypeOptionBtn" data-bs-dismiss="modal" onClick={onPlayAgainstAgentWithAgent}>{t('play_with_agent')}</button>
+                                                    <button id="PlayAgainstAgentWithAgent" type="button" data-tippy-content={t('1_gameMode_tooltip')} className="btn choose-mode-btn gameTypeOptionBtn" data-bs-dismiss="modal" onClick={onPlayAgainstAgentWithAgent} disabled={true}>{t('play_with_agent')}</button>
                                                 </center>
                                             </div>
                                             <div>

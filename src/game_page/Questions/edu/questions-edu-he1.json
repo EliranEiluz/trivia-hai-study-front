@@ -11,11 +11,11 @@
 
     {
         "id": 2,
-        "question": "באיזו מלחמה שיחררו את הכותל המערבי?",
-        "firstAnswer": "1973 מלחמת יום כיפור", 
-        "secondAnswer": "1967 מלחמת ששת הימים",
-        "thirdAnswer": "1990 מלחמת המפרץ",
-        "fourthAnswer":"1950 מלחמת סיני", 
+        "question": "איזה בית חולים נמצא בבאר שבע?",
+        "firstAnswer": "אסף הרופא", 
+        "secondAnswer": "סורוקה",
+        "thirdAnswer":"רמב\"ם",
+        "fourthAnswer":"פוריה", 
         "rightAnswer":2
     },
 
@@ -31,12 +31,12 @@
 
     {
         "id": 4,
-        "question": "באיזה כינוי הרצל מוכר?",
-        "firstAnswer": "נשיא המדינה", 
-        "secondAnswer": "חוזה המדינה",
-        "thirdAnswer": "ראש הממשלה",
-        "fourthAnswer":"לוחם חופש", 
-        "rightAnswer":2
+        "question": "באיזה נהר הניחו את משה בתיבה?",
+        "firstAnswer": "הירקון", 
+        "secondAnswer": "הירדן",
+        "thirdAnswer": "היאור",
+        "fourthAnswer": "נחל דן", 
+        "rightAnswer":3
     },
 
     {
@@ -51,12 +51,11 @@
 
     {
         "id": 6,
-        "question": "איזו מילה אליעזר בן יהודה לא המציא?",
-        "firstAnswer": "מטריה", 
-        "secondAnswer": "גלידה",
-        "thirdAnswer": "בובה",
-        "fourthAnswer":"מטוש", 
-        "rightAnswer":4
+        "question": "מי בנה את בית המקדש הראשון?",
+        "firstAnswer": "שאול המלך", 
+        "secondAnswer": "שמואל הנביא",
+        "thirdAnswer": "שלמה המלך",
+        "fourthAnswer": "שמשון הגיבור", 
+        "rightAnswer":3
     }
-
 ]

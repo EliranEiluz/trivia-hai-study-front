@@ -65,6 +65,7 @@ function LoginPage({ nowOnline }) {
             }).then(async user => {
                 if (user) {
                     nowOnline.onlineUser = user;
+                    nowOnline.roundNumber = user.roundNumber;
                     navigation('/welcome')
                 }
                 else {
@@ -79,6 +80,38 @@ function LoginPage({ nowOnline }) {
             if (details.password.length < 8) {
                 document.getElementById('login_password_error').style.display = "block";
             }
+        }
+    }
+
+    async function handleSubmitTemp(e) {
+        document.getElementById('login_fullname_error').style.display = "none";
+        e.preventDefault()
+        if (details.current.username !== '') {
+            const request = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ fullname: details.current.username, keepMeLoggedIn: details.current.keepLoggedIn }),
+                credentials: 'include'
+            };
+            await fetch(serverIp.ip + "/User/TempLogin", request).then(async response => {
+                if (response.status == 200) {
+                    return response.json()
+                } else {
+                    return null;
+                }
+            }).then(async user => {
+                if (user) {
+                    nowOnline.onlineUser = user;
+                    nowOnline.roundNumber = user.roundNumber;
+                    navigation('/welcome')
+                }
+                else {
+                    document.getElementById('login_error').style.display = "block";
+                }
+            })
+        }
+        else {
+            document.getElementById('login_fullname_error').style.display = "block";
         }
     }
 
@@ -135,7 +168,7 @@ function LoginPage({ nowOnline }) {
             <div className='container-fluid'>
                 <div className='row justify-content-center'>
                     <div className='col-xl-10 col-xs-12'>
-                        <form id="login_form" onSubmit={handleSubmit} className="container-fluid w-100" autoComplete='off'>
+                        <form id="login_form" onSubmit={handleSubmitTemp} className="container-fluid w-100" autoComplete='off'>
                             <div className="card" id="login_card">
                                 <div className="card-body">
                                     <LogoRow nowOnline={nowOnline} toRunFunc={null}/>
@@ -150,6 +183,21 @@ function LoginPage({ nowOnline }) {
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>
                                         <div className='col-xl-4 col-sm-12 jusify-content-md-center'>
+                                            {t('full_name')}
+                                        </div>
+                                        <div className='col-xl-6 col-sm-12'>
+                                            <div className="error" id="login_fullname_error">
+                                                {t('full_name_error')}
+                                            </div>
+                                            <input className="login_input form-control" onChange={userNameChange} id="login_fullname_input"></input>
+                                        </div>
+                                        <div className='col-xl-1 d-none d-md-block'>
+                                        </div>
+                                    </div>
+                                    <div className='row login-row d-none'>
+                                        <div className='col-xl-1 d-none d-md-block'>
+                                        </div>
+                                        <div className='col-xl-4 col-sm-12 jusify-content-md-center'>
                                             {t('username')}
                                         </div>
                                         <div className='col-xl-6 col-sm-12'>
@@ -161,7 +209,7 @@ function LoginPage({ nowOnline }) {
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>
                                     </div>
-                                    <div className='row login-row'>
+                                    <div className='row login-row d-none'>
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>
                                         <div className='col-xl-4 col-sm-12'>
@@ -188,7 +236,7 @@ function LoginPage({ nowOnline }) {
                                         <div className='col-xl-1 d-none d-md-block'>
                                         </div>
                                         <div className='col-xl-4 col-xs-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-start'>
-                                            <button className='btn btn-primary login-btn' id="login_register_btn" onClick={registerBtnClick} type="button">{t('login_register_btn')}</button>
+                                            <button className='btn btn-primary login-btn d-none' id="login_register_btn" onClick={registerBtnClick} type="button">{t('login_register_btn')}</button>
                                         </div>
                                         <div className='col-xl-2 d-flex justify-content-center d-none d-xl-block justify-content-md-start'>
 

@@ -2,6 +2,7 @@ import './TMFinished.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { serverIp } from '../index.js';
 import '../NavBar.css';
 
 function TMFinished({ nowOnline }) {
@@ -58,11 +59,22 @@ function TMFinished({ nowOnline }) {
         if(nowOnline.roundNumber === (nowOnline.amountOfRounds + 1)) {
             nowOnline.roundNumber = 1;
         }
+        updateRoundNumber();
     }
 
     function toHomePageBtnClick() {
         document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
         navigation('/welcome');
+    }
+
+    function updateRoundNumber() {
+        const request = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fullname: nowOnline.onlineUser.fullName, roundNumber: nowOnline.roundNumber}),
+            credentials: 'include'
+        };
+        fetch(serverIp.ip + "/User/UpdateRoundNumber", request)
     }
 
     useEffect(() => {

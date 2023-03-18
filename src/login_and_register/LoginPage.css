@@ -66,6 +66,11 @@
     display:none;
 }
 
+#login_fullname_error {
+    display:none;
+}
+
+
 #login_error {
     display:none;
 }

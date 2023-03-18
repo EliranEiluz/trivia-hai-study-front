@@ -85,7 +85,8 @@
                 "keep_going_next_round":"Very nice! Keep going and beat the agent in the next rounds!",
                 "do_better_next_round":"Try beating the agent on the next rounds!",
                 "tie_round":"It's a tie - do better and beat the agent on the next rounds!",
-                "play_buzzer_instructions":""
+                "play_buzzer_instructions":"",
+                "train_round":"Train Round"
             }
         },
         "iw": {
@@ -171,7 +172,8 @@
                 "keep_going_next_round":"יפה מאוד! המשך כך גם בסיבובים הבאים!",
                 "do_better_next_round":"לא נורא, נסה לנצח את הסוכן בסיבובים הבאים.",
                 "tie_round":"זה תיקו! התאמץ עוד קצת ונצח את הסוכן בסיבובים הבאים",
-                "play_buzzer_instructions":"שלום וברוכים הבאים לפרויקט טריוויה! במצב באזר, תשחק מול סוכן וירטואלי ב-3 סיבובים, כך שהראשון שבוחר תשובה ועונה נכונה מקבל נקודה. כלומר,בכל רגע נתון, יכול הסוכן שמשחק מולך לענות על השאלה. לכל שאלה 30 שניות. מי שינצח ביותר משחקים מבין שלושת הסיבובים הוא המנצח.בהצלחה! "
+                "play_buzzer_instructions":"שלום וברוכים הבאים לפרויקט טריוויה! במצב באזר, תשחק מול סוכן וירטואלי ב-3 סיבובים, כך שהראשון שבוחר תשובה ועונה נכונה מקבל נקודה. כלומר,בכל רגע נתון, יכול הסוכן שמשחק מולך לענות על השאלה. לכל שאלה 30 שניות. מי שינצח ביותר משחקים מבין שלושת הסיבובים הוא המנצח.בהצלחה! ",
+                "train_round": "סיבוב אימון"
             }
         }
     }
