@@ -56,13 +56,22 @@ function GamePageModals({ playModeClass, gameFlow, nowOnline }) {
                             <p id="playAgainstTheClockInstrctions" className='d-none'>
                                 {t('4_gameMode_tooltip')}
                             </p>
-                            <center>
-                                <p id="playRoundsMode" className='d-none'>{t('round')} {nowOnline.roundNumber}/{nowOnline.amountOfRounds}</p>
-                            </center>
-                            <p id="playBuzzerModeInstructions" className='d-none'>
-
-                                {t('play_buzzer_instructions')}
-                            </p>
+                            <div id="playRoundsModeTrain" className='d-none'>
+                                <center>
+                                    <p>{t('round')} {t('train')}</p>
+                                </center>
+                                <p>
+                                    {t('play_buzzer_instructions_train')}
+                                </p>
+                            </div>
+                            <div id="playRoundsMode" className='d-none'>
+                                <center>
+                                    <p>{t('round')} {nowOnline.roundNumber}</p>
+                                </center>
+                                <p>
+                                    {t('play_buzzer_instructions')}
+                                </p>
+                            </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={gameFlow}>{t('start_game')}</button>

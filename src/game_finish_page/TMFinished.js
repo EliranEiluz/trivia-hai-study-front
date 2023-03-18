@@ -41,7 +41,7 @@ function TMFinished({ nowOnline }) {
                 message.innerHTML = t('you_are_genius') + " <i class='fa-solid fa-hands-clapping'></i>"
             }
         }
-        else if(nowOnline.playType === 3 && nowOnline.isRoundPlaying && nowOnline.roundNumber < nowOnline.amountOfRounds) {
+        else if(nowOnline.playType === 3 && nowOnline.isRoundPlaying && nowOnline.roundNumber === 1) {
             roundNumber.current = t('train')
             document.getElementById('TMRoundCounter').classList.remove('d-none');
             if(nowOnline.isWin === 2) {
@@ -50,6 +50,20 @@ function TMFinished({ nowOnline }) {
             }
             else if(nowOnline.isWin === 0) {
                 message.innerHTML = t('do_better_next_round') + " <i class='fa-solid fa-heart-crack'></i>"
+                nowOnline.agentWins++;
+            }
+            else {
+                message.innerHTML = t('tie_round') + " <i class='fa-solid fa-heart-crack'></i>"
+            }
+        }
+        else if (nowOnline.playType === 3 && nowOnline.isRoundPlaying && nowOnline.roundNumber <= nowOnline.amountOfRounds) {
+            document.getElementById('TMRoundCounter').classList.remove('d-none');
+            if(nowOnline.isWin === 2) {
+               
+                nowOnline.playerWins++;
+            }
+            else if(nowOnline.isWin === 0) {
+               
                 nowOnline.agentWins++;
             }
             else {
@@ -119,7 +133,7 @@ function TMFinished({ nowOnline }) {
                                 <div className='container-fluid'>
                                     <div className='row row justify-content-md-center' id="WinOrLoseMessage">
                                         <center>
-                                        <span id="TMRoundCounter" className='d-none'>{t('round')} {roundNumber.current}</span><br></br>
+                                            <span id="TMRoundCounter" className='d-none'>{t('round')} {roundNumber.current}</span><br></br>
                                             <span id="message"></span>
                                         </center>
                                     </div>

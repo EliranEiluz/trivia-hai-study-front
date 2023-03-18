@@ -141,14 +141,13 @@ function GamePage({ nowOnline }) {
             document.getElementById('playWithGivenAmountOfQuestionsInstrctions').classList.remove('d-none')
         }
         else if(nowOnline.playType == 3) {
-            if(nowOnline.isRoundPlaying && nowOnline.roundNumber < 2) {
-                document.getElementById('playBuzzerModeInstructions').classList.remove('d-none');
+            if(nowOnline.isRoundPlaying && nowOnline.roundNumber == 1) {
+                document.getElementById('playRoundsModeTrain').classList.remove('d-none');
             }
             else {
-                document.getElementById('playBuzzerModeInstructions').classList.add('d-none');
+                document.getElementById('playRoundsMode').classList.add('d-none');
             }
             if(nowOnline.isRoundPlaying) {
-                document.getElementById('playRoundsMode').classList.remove('d-none');
                 if(nowOnline.roundNumber === 1) {
                     document.getElementById('trainRound').classList.remove('d-none');
                 }
