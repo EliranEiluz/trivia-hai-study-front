@@ -10,9 +10,11 @@ function TMFinished({ nowOnline }) {
 
     const [playerPoints, setPlayerPoints] = useState(nowOnline.playerPoints);
     const [agentPoints, setAgentPoints] = useState(nowOnline.agentPoints);
-    var navigation = useNavigate();
     const roundNumber = useRef(nowOnline.roundNumber)
+    var navigation = useNavigate();
     const [timerClock, setTimerClock] = useState(10);
+    const loseSound = useRef(new Audio(require('./crowd_sad.mp3')));
+    const winSound = useRef(new Audio(require('./crowd_happy.mp3')));
 
     function winOrLose() {
         var message = document.getElementById('message');
@@ -42,29 +44,32 @@ function TMFinished({ nowOnline }) {
             }
         }
         else if(nowOnline.playType === 3 && nowOnline.isRoundPlaying && nowOnline.roundNumber === 0) {
+            document.getElementById('TMRoundCounterTrain').classList.remove('d-none');
             roundNumber.current = t('train')
-            document.getElementById('TMRoundCounter').classList.remove('d-none');
             if(nowOnline.isWin === 2) {
                 message.innerHTML = t('keep_going_next_round') + " <i class='fa-solid fa-hands-clapping'></i>"
-                nowOnline.playerWins++;
             }
             else if(nowOnline.isWin === 0) {
                 message.innerHTML = t('do_better_next_round') + " <i class='fa-solid fa-heart-crack'></i>"
-                nowOnline.agentWins++;
             }
             else {
                 message.innerHTML = t('tie_round') + " <i class='fa-solid fa-heart-crack'></i>"
             }
         }
         else if (nowOnline.playType === 3 && nowOnline.isRoundPlaying && nowOnline.roundNumber <= nowOnline.amountOfRounds) {
+            roundNumber.current = nowOnline.roundNumber
             document.getElementById('TMRoundCounter').classList.remove('d-none');
             if(nowOnline.isWin === 2) {
-               
                 nowOnline.playerWins++;
+                message.innerHTML = "<p class='emoji'>&#x1F600;</p>"
+                document.getElementById('you_win').classList.remove('d-none')
+                winSound.current.play();
             }
             else if(nowOnline.isWin === 0) {
-               
                 nowOnline.agentWins++;
+                message.innerHTML = "<p class='emoji'>&#x1F641;</p>"
+                document.getElementById('you_lost').classList.remove('d-none')
+                loseSound.current.play();
             }
             else {
                 message.innerHTML = t('tie_round') + " <i class='fa-solid fa-heart-crack'></i>"
@@ -72,13 +77,15 @@ function TMFinished({ nowOnline }) {
         }
         nowOnline.roundNumber++;
         if(nowOnline.roundNumber === (nowOnline.amountOfRounds + 1)) {
-            nowOnline.roundNumber = 1;
+            nowOnline.roundNumber = 0;
         }
         updateRoundNumber();
     }
 
     function toHomePageBtnClick() {
         document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
+        winSound.current.pause();
+        loseSound.current.pause();
         navigation('/welcome');
     }
 
@@ -102,7 +109,7 @@ function TMFinished({ nowOnline }) {
             }
             else {
                 clearInterval(interval);
-                toHomePageBtnClick();
+                //toHomePageBtnClick();
             }
         }, 1000)
         return () => clearInterval(interval);
@@ -133,7 +140,10 @@ function TMFinished({ nowOnline }) {
                                 <div className='container-fluid'>
                                     <div className='row row justify-content-md-center' id="WinOrLoseMessage">
                                         <center>
-                                            <span id="TMRoundCounter" className='d-none'>{t('round')} {roundNumber.current}</span><br></br>
+                                            <div id="TMRoundCounter" className='d-none'>{t('round')} {roundNumber.current}</div>
+                                            <div id="TMRoundCounterTrain" className='d-none'>{t('round')} {t('train')}</div>
+                                            <p id="you_lost" className='d-none'>{t('you_lost')}</p>
+                                            <p id="you_win" className='d-none'>{t('you_win')}</p>
                                             <span id="message"></span>
                                         </center>
                                     </div>

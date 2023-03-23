@@ -10,11 +10,15 @@
 }
 
 #WinOrLoseMessage {
-    font-size: 60px;
+    font-size: 75px;
+}
+
+#TMRoundCounter {
+    font-size: 35px;
 }
 
 #points {
-    font-size:30px;
+    font-size:25px;
 }
 
 .backToHome-btn {
@@ -46,4 +50,12 @@
 
 #toHomePageTxt {
     font-weight: 17px;
+}
+
+.emoji {
+    font-size: 200px;
+}
+
+#message {
+    font-size: 50px;
 }

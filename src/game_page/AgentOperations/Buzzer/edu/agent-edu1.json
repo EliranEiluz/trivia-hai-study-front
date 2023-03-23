@@ -2,17 +2,17 @@
     {
         "id": 1,
         "time":5000,
-        "answer":4
+        "answer":1
     },
     {
         "id": 2,
         "time":3000,
-        "answer":3
+        "answer":2
     },
     {
         "id": 3,
         "time":2000,
-        "answer":2
+        "answer":3
     },
     {
         "id": 4,
