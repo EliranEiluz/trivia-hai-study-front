@@ -111,7 +111,7 @@ function GamePage({ nowOnline }) {
                 playModeClass.current = new PlayBuzzerMode(20, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage);
             }
             else {
-                amountOfQuestions.current = nowOnline.amountOfQuestions[nowOnline.roundNumber-1];
+                amountOfQuestions.current = nowOnline.amountOfQuestions[nowOnline.roundNumber];
                 playModeClass.current = new PlayBuzzerMode(amountOfQuestions.current, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage);
             }
             playModeClass.current.gameFlow();
@@ -141,19 +141,14 @@ function GamePage({ nowOnline }) {
             document.getElementById('playWithGivenAmountOfQuestionsInstrctions').classList.remove('d-none')
         }
         else if(nowOnline.playType == 3) {
-            if(nowOnline.isRoundPlaying && nowOnline.roundNumber == 1) {
-                document.getElementById('playRoundsModeTrain').classList.remove('d-none');
-            }
-            else {
-                document.getElementById('playRoundsMode').classList.add('d-none');
-            }
             if(nowOnline.isRoundPlaying) {
-                if(nowOnline.roundNumber === 1) {
+                if(nowOnline.roundNumber === 0) {
                     document.getElementById('trainRound').classList.remove('d-none');
+                    document.getElementById('playRoundsModeTrain').classList.remove('d-none');
                 }
                 else {
-                    document.getElementById('trainRound').classList.remove('d-none');
                     document.getElementById('roundCounter').classList.remove('d-none');
+                    document.getElementById('playRoundsMode').classList.remove('d-none');
                 }
                 nowOnline.questions = require('./Questions/edu/questions-edu-he' + nowOnline.roundNumber + '.json');
                 playWithAgentOperations.current = require('./AgentOperations/Buzzer/edu/agent-edu' + nowOnline.roundNumber + '.json');

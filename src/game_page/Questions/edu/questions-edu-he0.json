@@ -1,0 +1,61 @@
+[
+    {
+        "id": 1,
+        "question":  "מי היה הנשיא הראשון של מדינת ישראל?",
+        "firstAnswer":"חיים ויצמן", 
+        "secondAnswer": "יצחק בן צבי",
+        "thirdAnswer": "רובי ריבלין",
+        "fourthAnswer":"יצחק רבין", 
+        "rightAnswer":1
+    },
+
+    {
+        "id": 2,
+        "question": "איזה בית חולים נמצא בבאר שבע?",
+        "firstAnswer": "אסף הרופא", 
+        "secondAnswer": "סורוקה",
+        "thirdAnswer":"רמב\"ם",
+        "fourthAnswer":"פוריה", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 3,
+        "question": "מי כתב את ההמנון?",
+        "firstAnswer": "חיים נחמן ביאליק", 
+        "secondAnswer": "נתן אלתרמן",
+        "thirdAnswer":"נפתלי הרץ אימבר",
+        "fourthAnswer":"יהורם טהרלב", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 4,
+        "question": "באיזה נהר הניחו את משה בתיבה?",
+        "firstAnswer": "הירקון", 
+        "secondAnswer": "הירדן",
+        "thirdAnswer": "היאור",
+        "fourthAnswer": "נחל דן", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 5,
+        "question": "מי הייתה אשתו של משה רבינו?",
+        "firstAnswer": "לאה", 
+        "secondAnswer":"ציפורה",
+        "thirdAnswer": "חנה",
+        "fourthAnswer":"רבקה", 
+        "rightAnswer":3
+    },
+
+    {
+        "id": 6,
+        "question": "מי בנה את בית המקדש הראשון?",
+        "firstAnswer": "שאול המלך", 
+        "secondAnswer": "שמואל הנביא",
+        "thirdAnswer": "שלמה המלך",
+        "fourthAnswer": "שמשון הגיבור", 
+        "rightAnswer":3
+    }
+]

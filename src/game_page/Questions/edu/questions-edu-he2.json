@@ -1,202 +1,203 @@
 [
     {
         "id": 1,
-        "question":  "מי היה הנשיא הראשון של מדינת ישראל?",
-        "firstAnswer":"חיים ויצמן", 
-        "secondAnswer": "יצחק בן צבי",
-        "thirdAnswer": "רובי ריבלין",
-        "fourthAnswer":"יצחק רבין", 
-        "rightAnswer":1
+        "question":  "מי היה ראש הממשלה הראשון של מדינת ישראל?",
+        "firstAnswer": "בנימין זאב הרצל", 
+        "secondAnswer": "גולדה מאיר",
+        "thirdAnswer": "דוד בן גוריון",
+        "fourthAnswer":"שמעון פרס", 
+        "rightAnswer":3
     },
 
     {
         "id": 2,
-        "question": "באיזו מלחמה שיחררו את הכותל המערבי?",
-        "firstAnswer": "1973 מלחמת יום כיפור", 
-        "secondAnswer": "1967 מלחמת ששת הימים",
-        "thirdAnswer": "1990 מלחמת המפרץ",
-        "fourthAnswer":"1950 מלחמת סיני", 
-        "rightAnswer":2
+        "question": "מתי חתמו על מגילת העצמאות?",
+        "firstAnswer": "1967", 
+        "secondAnswer": "1971",
+        "thirdAnswer": "2001",
+        "fourthAnswer":"1948", 
+        "rightAnswer":4
     },
 
     {
         "id": 3,
-        "question": "מי כתב את ההמנון?",
-        "firstAnswer": "חיים נחמן ביאליק", 
-        "secondAnswer": "נתן אלתרמן",
-        "thirdAnswer":"נפתלי הרץ אימבר",
-        "fourthAnswer":"יהורם טהרלב", 
+        "question": "איזה דגל הרצל הציע?",
+        "firstAnswer": "דגל עם עלי זית", 
+        "secondAnswer": "דגל עם 5 כוכבים",
+        "thirdAnswer":"דגל עם 7 כוכבים",
+        "fourthAnswer":"דגל עם מנורה", 
         "rightAnswer":3
     },
 
     {
         "id": 4,
-        "question": "באיזה כינוי הרצל מוכר?",
-        "firstAnswer": "נשיא המדינה", 
-        "secondAnswer": "חוזה המדינה",
-        "thirdAnswer": "ראש הממשלה",
-        "fourthAnswer":"לוחם חופש", 
+        "question": "מי כתב את המילון הראשון בעברית?",
+        "firstAnswer": "בנימין זאב הרצל", 
+        "secondAnswer": "אליעזר בן יהודה",
+        "thirdAnswer": "חיים נחמן ביאליק",
+        "fourthAnswer":"נפתלי הרץ אימבר", 
         "rightAnswer":2
     },
 
     {
         "id": 5,
-        "question": "מי הייתה אשתו של משה רבינו?",
-        "firstAnswer": "לאה", 
-        "secondAnswer":"ציפורה",
-        "thirdAnswer": "חנה",
-        "fourthAnswer":"רבקה", 
-        "rightAnswer":3
+        "question": "מי בוחר את השרים בממשלה?",
+        "firstAnswer": "הנשיא", 
+        "secondAnswer": "ראש הממשלה",
+        "thirdAnswer": "מבקר המדינה",
+        "fourthAnswer": "בית המשפט", 
+        "rightAnswer":2
     },
 
     {
         "id": 6,
-        "question": "איזו מילה אליעזר בן יהודה לא המציא?",
-        "firstAnswer": "מטריה", 
-        "secondAnswer": "גלידה",
-        "thirdAnswer": "בובה",
-        "fourthAnswer":"מטוש", 
-        "rightAnswer":4
-    },
-
-    {
-        "id": 7,
-        "question": "איזו מדינה נמצאת ביבשת אירופה?",
-        "firstAnswer":"ברזיל", 
-        "secondAnswer": "ישראל",
-        "thirdAnswer": "מרוקו",
-        "fourthAnswer":"צרפת", 
-        "rightAnswer":4
-    },
-
-    {
-        "id": 8,
-        "question": "איזו המצאה המציאו האחים רייט?",
-        "firstAnswer": "נורת חשמל", 
-        "secondAnswer": "טלפון",
-        "thirdAnswer": "מטוס",
-        "fourthAnswer":"אינטרנט", 
+        "question": "על כמה מדינות מלך המלך אחשוורוש?",
+        "firstAnswer": "על מדינה אחת", 
+        "secondAnswer": "על שתי מדינות",
+        "thirdAnswer": "על 120 מדינות",
+        "fourthAnswer": "על 1000 מדינות", 
         "rightAnswer":3
     },
 
     {
-        "id": 9,
-        "question": "מי מהשמות לא משורר?",
-        "firstAnswer": "לאה גולדברג", 
-        "secondAnswer": "גודלה מאיר",
-        "thirdAnswer":"חיים נחמן ביאליק",
-        "fourthAnswer":"חנה סנש", 
+        "id": 7,
+        "question": "איזה עוד שם יש לחג השבועות?",
+        "firstAnswer": "חג האביב", 
+        "secondAnswer": "חג הביכורים",
+        "thirdAnswer": "חג האסיף",
+        "fourthAnswer": "חג האורים", 
         "rightAnswer":2
     },
 
+    {
+        "id": 8,
+        "question": "איזה בית חולים נמצא בבאר שבע?",
+        "firstAnswer": "אסף הרופא", 
+        "secondAnswer": "סורוקה",
+        "thirdAnswer":"רמב\"ם",
+        "fourthAnswer":"פוריה", 
+        "rightAnswer":2
+    },
+
+    {
+        "id": 9,
+        "question": "איזו עיר יוצאת דופן(עיר ללא נמל)?",
+        "firstAnswer": "חיפה", 
+        "secondAnswer":"אילת",
+        "thirdAnswer": "חולון",
+        "fourthAnswer":"אשדוד", 
+        "rightAnswer":3
+    },
+
+    
     {
         "id": 10,
-        "question": "מי קיבל פרס נובל לשלום?",
-        "firstAnswer": "שמעון פרס", 
-        "secondAnswer": "בנימין נתניהו",
-        "thirdAnswer": "גולדה מאיר",
-        "fourthAnswer": "דוד בן גוריון", 
-        "rightAnswer":2
+        "question": "מהו אי?",
+        "firstAnswer": "מקום שבו עוגנות אוניות", 
+        "secondAnswer": "אזור עם שובר גלים",
+        "thirdAnswer": "יבשה מוקפת מים",
+        "fourthAnswer": "שלולית מים", 
+        "rightAnswer":3
     },
-
+    
     {
         "id": 11,
-        "question": "?איזה הר נמצא נמצא בירושלים",
-        "firstAnswer": "הר חרמון", 
-        "secondAnswer": "הר תבור",
-        "thirdAnswer": "הר הרצל",
-        "fourthAnswer":"הר רמון", 
+        "question": "מה השם הנוסף של מלחמת העצמאות?",
+        "firstAnswer": "מלחמת שלום הגליל", 
+        "secondAnswer": "מלחמת יום כיפור",
+        "thirdAnswer": "מלחמת השחרור",
+        "fourthAnswer":"מלחמת ששת הימים", 
         "rightAnswer":3
     },
 
     {
         "id": 12,
-        "question": "מה שם החללית שישראל שלחה לירח?",
-        "firstAnswer": "אפולו 10", 
-        "secondAnswer":"בראשית",
-        "thirdAnswer": "עצמאות",
-        "fourthAnswer":"ישראל", 
-        "rightAnswer":2
+        "question": "מהי עיר הבירה של גרמניה?",
+        "firstAnswer": "ירושלים", 
+        "secondAnswer": "לונדון",
+        "thirdAnswer": "ניו יורק",
+        "fourthAnswer": "ברלין", 
+        "rightAnswer":4
     },
 
     {
         "id": 13,
-        "question": "באיזו עיר הכריז בן גוריון על הקמת המדינה?",
-        "firstAnswer": "ירושלים", 
-        "secondAnswer": "פתח תקווה",
-        "thirdAnswer": "תל אביב",
-        "fourthAnswer":"חיפה", 
+        "question": "באיזה נהר הניחו את משה בתיבה?",
+        "firstAnswer": "הירקון", 
+        "secondAnswer": "הירדן",
+        "thirdAnswer": "היאור",
+        "fourthAnswer": "נחל דן", 
         "rightAnswer":3
     },
+
     {
         "id": 14,
-        "question": "מהו הים הנמוך בעולם?",
-        "firstAnswer":"הים השחור", 
-        "secondAnswer": "ים המלח",
-        "thirdAnswer": "הים התיכון",
-        "fourthAnswer": "ים סוף", 
+        "question": "מה זה ירושלים של זהב?",
+        "firstAnswer": "מבנה עשוי מזהב", 
+        "secondAnswer": "תכשיט",
+        "thirdAnswer": "כינוי לארץ ישראל",
+        "fourthAnswer":"כיפת הסלע", 
         "rightAnswer":2
     },
 
     {
         "id": 15,
-        "question": "מי הייתה אמא של שמואל הנביא?",
-        "firstAnswer": "חנה", 
-        "secondAnswer": "רבקה",
-        "thirdAnswer": "דבורה",
-        "fourthAnswer":"ציפורה", 
+        "question": "מי נחשבת העיר העברית הראשונה?",
+        "firstAnswer": "תל אביב", 
+        "secondAnswer": "ירושלים",
+        "thirdAnswer": "צפת",
+        "fourthAnswer":"באר שבע", 
         "rightAnswer":1
     },
-
+    
     {
         "id": 16,
-        "question": "מה היה השם השני של אסתר המלכה?",
-        "firstAnswer": "ציפורה", 
-        "secondAnswer": "מיכל",
-        "thirdAnswer": "הדסה",
-        "fourthAnswer": "יעל", 
+        "question": "מה הנמל העברי הראשון שהוקם?",
+        "firstAnswer": "נמל אשדוד", 
+        "secondAnswer": "נמל חיפה",
+        "thirdAnswer": "נמל תל אביב",
+        "fourthAnswer":"נמל חדרה", 
         "rightAnswer":3
     },
 
     {
         "id": 17,
-        "question": "מי בנה את בית המקדש הראשון?",
-        "firstAnswer": "שאול המלך", 
-        "secondAnswer": "שמואל הנביא",
-        "thirdAnswer": "שלמה המלך",
-        "fourthAnswer": "שמשון הגיבור", 
+        "question": "מאיזו מדינה מוצא הפיצה?",
+        "firstAnswer": "ישראל", 
+        "secondAnswer": "ארצות הברית",
+        "thirdAnswer": "איטליה",
+        "fourthAnswer": "יפן", 
         "rightAnswer":3
     },
 
     {
         "id": 18,
-        "question": "עם איזו מדינה יש לישראל הסכם שלום?",
-        "firstAnswer": "איראן", 
-        "secondAnswer": "סוריה",
-        "thirdAnswer": "לבנון",
-        "fourthAnswer": "מצרים", 
-        "rightAnswer":4
+        "question": "מה ההמצאה המפורסמת של תומס אדיסון?",
+        "firstAnswer": "טלפון", 
+        "secondAnswer": "נורת חשמל",
+        "thirdAnswer": "טלוויזיה",
+        "fourthAnswer":"מטוס", 
+        "rightAnswer":2
     },
 
     {
         "id": 19,
-        "question": "איזו מילה כתובה בסמל המדינה?",
-        "firstAnswer": "שלום", 
-        "secondAnswer": "תקווה",
-        "thirdAnswer": "ישראל",
-        "fourthAnswer": "ירושלים", 
-        "rightAnswer":3
+        "question": "מהו המקום הגבוה ביותר בעולם?",
+        "firstAnswer": "הר אוורסט", 
+        "secondAnswer":"הר החרמון",
+        "thirdAnswer": "הר תבור",
+        "fourthAnswer": "הרי האלפים", 
+        "rightAnswer":1
     },
 
     {
         "id": 20,
-        "question": "מהי העיר הכי דרומית בישראל?",
-        "firstAnswer": "ירושלים", 
-        "secondAnswer": "אילת",
-        "thirdAnswer": "טבריה",
-        "fourthAnswer": "תל אביב", 
-        "rightAnswer":2
+        "question": "מהי השנה שבה אסור לעבוד את האדמה?",
+        "firstAnswer": "שנת מעשר עני", 
+        "secondAnswer": "שנת אור",
+        "thirdAnswer": "שנת בצורת",
+        "fourthAnswer": "שנת שמיטה", 
+        "rightAnswer":4
     }
-    
-   
+
 ]

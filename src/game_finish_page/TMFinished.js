@@ -41,7 +41,7 @@ function TMFinished({ nowOnline }) {
                 message.innerHTML = t('you_are_genius') + " <i class='fa-solid fa-hands-clapping'></i>"
             }
         }
-        else if(nowOnline.playType === 3 && nowOnline.isRoundPlaying && nowOnline.roundNumber === 1) {
+        else if(nowOnline.playType === 3 && nowOnline.isRoundPlaying && nowOnline.roundNumber === 0) {
             roundNumber.current = t('train')
             document.getElementById('TMRoundCounter').classList.remove('d-none');
             if(nowOnline.isWin === 2) {
