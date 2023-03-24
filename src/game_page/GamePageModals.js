@@ -56,19 +56,19 @@ function GamePageModals({ playModeClass, gameFlow, nowOnline }) {
                             <p id="playAgainstTheClockInstrctions" className='d-none'>
                                 {t('4_gameMode_tooltip')}
                             </p>
-                            <div id="playRoundsModeTrain" className='d-none'>
+                            <div>
                                 <center>
-                                    <p>{t('round')} {t('train')}</p>
+                                    <p id="roundCounterTrain" className='d-none'>{t('round')} {t('train')}</p>
                                 </center>
-                                <p>
+                                <p id="BuzzerTrainInstructions" className='d-none'>
                                     {t('play_buzzer_instructions_train')}
                                 </p>
                             </div>
-                            <div id="playRoundsMode" className='d-none'>
+                            <div>
                                 <center>
-                                    <p>{t('round')} {nowOnline.roundNumber}</p>
+                                    <p id="roundCounterReal" className='d-none'>{t('round')} {nowOnline.roundNumber}</p>
                                 </center>
-                                <p>
+                                <p id="BuzzerInstructions" className='d-none'>
                                     {t('play_buzzer_instructions')}
                                 </p>
                             </div>

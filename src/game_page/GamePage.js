@@ -144,11 +144,17 @@ function GamePage({ nowOnline }) {
             if(nowOnline.isRoundPlaying) {
                 if(nowOnline.roundNumber === 0) {
                     document.getElementById('trainRound').classList.remove('d-none');
-                    document.getElementById('playRoundsModeTrain').classList.remove('d-none');
+                    document.getElementById('BuzzerTrainInstructions').classList.remove('d-none');
+                    document.getElementById('roundCounterTrain').classList.remove('d-none');
+                }
+                else if(nowOnline.roundNumber == 1){
+                    document.getElementById('roundCounter').classList.remove('d-none');
+                    document.getElementById('BuzzerInstructions').classList.remove('d-none');
+                    document.getElementById('roundCounterReal').classList.remove('d-none');
                 }
                 else {
                     document.getElementById('roundCounter').classList.remove('d-none');
-                    document.getElementById('playRoundsMode').classList.remove('d-none');
+                    document.getElementById('roundCounterReal').classList.remove('d-none');
                 }
                 nowOnline.questions = require('./Questions/edu/questions-edu-he' + nowOnline.roundNumber + '.json');
                 playWithAgentOperations.current = require('./AgentOperations/Buzzer/edu/agent-edu' + nowOnline.roundNumber + '.json');
