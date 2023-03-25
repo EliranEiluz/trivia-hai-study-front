@@ -15,7 +15,7 @@ import { initReactI18next } from 'react-i18next';
 
 
 i18n.use(initReactI18next).init(require('./languange.json'));
-const serverIp = { ip: "http://10.100.102.15:3100" }
+const serverIp = { ip: "https://www.sarnelab.com/api" }
 
 
 

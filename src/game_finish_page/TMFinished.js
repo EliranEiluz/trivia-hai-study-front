@@ -109,7 +109,7 @@ function TMFinished({ nowOnline }) {
             }
             else {
                 clearInterval(interval);
-                //toHomePageBtnClick();
+                toHomePageBtnClick();
             }
         }, 1000)
         return () => clearInterval(interval);
