@@ -112,7 +112,7 @@ function GamePage({ nowOnline }) {
             }
             else {
                 amountOfQuestions.current = nowOnline.amountOfQuestions[nowOnline.roundNumber];
-                playModeClass.current = new PlayBuzzerMode(amountOfQuestions.current, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage);
+                playModeClass.current = new PlayBuzzerMode(3, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage);
             }
             playModeClass.current.gameFlow();
             
