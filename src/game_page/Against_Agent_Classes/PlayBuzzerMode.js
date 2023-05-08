@@ -19,16 +19,17 @@ class PlayBuzzerMode {
         this.setQuestion = setQuestion;
         this.playerPoints = playerPoints;
         this.agentPoints = agentPoints;
-        this.playerPointsCounter = 0;
-        this.agentPointsCounter = 0;
         this.setCurrentTime = setCurrentTime;
         this.agentOperations = agentOperations;
         this.agentTimeout = null;
         this.nowOnline = nowOnline;
         this.navigateToFinishPage = navigateToFinishPage
-        this.agentPoints.current = "0/" + amountOfQuestions;
-        this.playerPoints.current = "0/" + amountOfQuestions;
+        this.agentPoints.current = 0;
+        this.playerPoints.current = 0;
         this.buzzerSound = new Audio(require('../buzzer.wav'));
+        utils.initDetails(this.nowOnline);
+        this.rightAnswerTime = 3500;
+        this.minTimeWhenAgentWrong = 7;
     }
 
     gameFlow() {
@@ -38,21 +39,27 @@ class PlayBuzzerMode {
         utils.initializeBeforeTurn();
         this.setQuestion(this.gameCounter);
         this.timer();
-        this.agent();
+        if(this.nowOnline.roundNumber === 0) {
+            this.agent();
+        }
+        else {
+            this.tempAgent();
+        }
     }
 
     async answerCheck(ans, whoClicked) {
         utils.switchAnswer(this.questions[this.gameCounter].rightAnswer);
         if (whoClicked == "player") {
             if (ans === this.questions[this.gameCounter].rightAnswer) {
-                this.playerPointsCounter += 1;
-                this.playerPoints.current = this.playerPointsCounter + "/" + this.amountOfQuestions;
+                utils.updateDetails(this.nowOnline, this.gameCounter + 1, true);
+                this.playerPoints.current += 1;
+            } else {
+                utils.updateDetails(this.nowOnline, this.gameCounter + 1, false);
             }
         }
         else {
             if (ans === this.questions[this.gameCounter].rightAnswer) {
-                this.agentPointsCounter += 1;
-                this.agentPoints.current = this.agentPointsCounter + "/" + this.amountOfQuestions;
+                this.agentPoints.current += 1;
             }
         }
         utils.removeBlink()
@@ -63,6 +70,8 @@ class PlayBuzzerMode {
     async onChoosingAnswer(val, whoClicked) {
         //this.buzzerSound.play()
         clearTimeout(this.agentTimeout);
+
+        //[val, whoClicked] = this.agentFirst(whoClicked, val)
         // disable the answers buttons
         utils.afterChoosingAnswer();
 
@@ -156,14 +165,63 @@ class PlayBuzzerMode {
         }, this.agentOperations.current[this.gameCounter].time)
     }
 
+    tempAgent() {
+        var chosen;
+        var time;
+        if(((this.playerPoints.current - this.agentPoints.current) > 1) && this.nowOnline.roundNumber == this.nowOnline.amountOfRounds) {
+            chosen = this.questions[this.gameCounter].rightAnswer;
+            time = this.rightAnswerTime;
+            console.log('here')
+        }
+        else if(((this.playerPoints.current - this.agentPoints.current) > 1 || this.gameCounter > (this.amountOfQuestions - 3)) && this.nowOnline.roundNumber != this.nowOnline.amountOfRounds) {
+            chosen = this.questions[this.gameCounter].rightAnswer;
+            time = this.rightAnswerTime;
+        }
+        else {
+            if (this.questions[this.gameCounter].rightAnswer === 1) {
+                chosen = 2;
+            }
+            else {
+                chosen = this.questions[this.gameCounter].rightAnswer - 1;
+            }
+            time = Math.floor(Math.random() * (this.timeForQuestion - this.minTimeWhenAgentWrong) + this.minTimeWhenAgentWrong) * 1000;
+        }
+        this.agentTimeout = setTimeout(() => {
+            var e;
+            switch (chosen) {
+                case 1:
+                    document.getElementById('1stAnswer').checked = true;
+                    e = 1
+                    break;
+                case 2:
+                    document.getElementById('2ndAnswer').checked = true;
+                    e = 2
+                    break;
+                case 3:
+                    document.getElementById('3rdAnswer').checked = true;
+                    e = 3
+                    break;
+                case 4:
+                    document.getElementById('4thAnswer').checked = true;
+                    e = 4
+                    break;
+                default:
+                    return;
+            }
+            this.onChoosingAnswer(e, "agent")
+        }, time)
+        
+    }
+
     gameFinished() {
         this.clear();
+        utils.fetchPlayerDetails(this.nowOnline);
         this.nowOnline.playerPoints = this.playerPoints.current;
         this.nowOnline.agentPoints = this.agentPoints.current;
-        if (this.playerPointsCounter > this.agentPointsCounter) {
+        if (this.nowOnline.playerPoints > this.nowOnline.agentPoints) {
             this.nowOnline.isWin = 2;
         }
-        else if (this.agentPointsCounter > this.playerPointsCounter) {
+        else if (this.nowOnline.agentPoints > this.nowOnline.playerPoints) {
             this.nowOnline.isWin = 0;
         }
         else {

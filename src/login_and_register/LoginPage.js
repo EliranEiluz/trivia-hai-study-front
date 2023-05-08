@@ -90,7 +90,7 @@ function LoginPage({ nowOnline }) {
             const request = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ fullname: details.current.username, keepMeLoggedIn: details.current.keepLoggedIn }),
+                body: JSON.stringify({ fullName: details.current.username, keepMeLoggedIn: details.current.keepLoggedIn }),
                 credentials: 'include'
             };
             await fetch(serverIp.ip + "/User/TempLogin", request).then(async response => {

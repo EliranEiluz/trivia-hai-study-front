@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { serverIp, Details } from "..";
 
 export function initializeBeforeTurn() {
     document.getElementById("timeText").style.display = "none";
@@ -114,4 +115,23 @@ export function removeBlink() {
     document.getElementById("4thAnswerLabel").classList.remove("blink");
 }
 
+
+export function fetchPlayerDetails(nowOnline) {
+    const request = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fullName: nowOnline.onlineUser.fullName, details: nowOnline.details }),
+        credentials: 'include'
+    };
+    fetch(serverIp.ip + "/User/Gamedetails", request);
+    nowOnline.details = null;
+}
+
+export function initDetails(nowOnline) {
+    nowOnline.details = new Details(nowOnline.roundNumber, nowOnline.onlineUser.gameNumber);
+}
+
+export function updateDetails(nowOnline, questionNumber, isRightAnswer) {
+    nowOnline.details.userAnswers.push({questionNumber: questionNumber, isRightAnswer: isRightAnswer})
+}
 
