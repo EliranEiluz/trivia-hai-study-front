@@ -26,6 +26,7 @@ function LoginPage({ nowOnline }) {
         }).then(async user => {
             if (user) {
                 nowOnline.onlineUser = user;
+                nowOnline.roundNumber = user.roundNumber;
                 navigation('/welcome')
             }
         })

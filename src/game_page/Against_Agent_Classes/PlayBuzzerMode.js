@@ -28,8 +28,8 @@ class PlayBuzzerMode {
         this.playerPoints.current = 0;
         this.buzzerSound = new Audio(require('../buzzer.wav'));
         utils.initDetails(this.nowOnline);
-        this.rightAnswerTime = 3500;
-        this.minTimeWhenAgentWrong = 7;
+        this.rightAnswerTime = 1200;
+        this.minTimeWhenAgentWrong = 10;
     }
 
     gameFlow() {
@@ -57,13 +57,13 @@ class PlayBuzzerMode {
                 utils.updateDetails(this.nowOnline, this.gameCounter + 1, false);
             }
         }
-        else {
+        else if (whoClicked == "agent"){
             if (ans === this.questions[this.gameCounter].rightAnswer) {
                 this.agentPoints.current += 1;
             }
         }
         utils.removeBlink()
-        await utils.sleep(2000);
+        await utils.sleep(4000);
     }
 
 
@@ -84,7 +84,7 @@ class PlayBuzzerMode {
         // check if an answer was chosen(in case the user/agent did not chose an answer by the given time, val is 0),
         // and if so, make the chosen answer button blink.
         if (val !== 0) {
-            await utils.makeBlink(val);
+            await utils.makeBlink(val, whoClicked);
         }
 
         // mark the right answer with green color.
@@ -171,10 +171,18 @@ class PlayBuzzerMode {
         if(((this.playerPoints.current - this.agentPoints.current) > 1) && this.nowOnline.roundNumber == this.nowOnline.amountOfRounds) {
             chosen = this.questions[this.gameCounter].rightAnswer;
             time = this.rightAnswerTime;
-            console.log('here')
         }
-        else if(((this.playerPoints.current - this.agentPoints.current) > 1 || this.gameCounter > (this.amountOfQuestions - 3)) && this.nowOnline.roundNumber != this.nowOnline.amountOfRounds) {
+        else if((((this.playerPoints.current - this.agentPoints.current) > 1) || ((this.playerPoints.current - this.agentPoints.current + 1) == (this.amountOfQuestions - this.gameCounter))) && this.nowOnline.roundNumber != this.nowOnline.amountOfRounds) {
             chosen = this.questions[this.gameCounter].rightAnswer;
+            time = this.rightAnswerTime;
+        }
+        else if(this.gameCounter == 17 && this.playerPoints.current - this.agentPoints.current == 1) {
+            if (this.questions[this.gameCounter].rightAnswer === 1) {
+                chosen = 2;
+            }
+            else {
+                chosen = this.questions[this.gameCounter].rightAnswer - 1;
+            }
             time = this.rightAnswerTime;
         }
         else {

@@ -88,7 +88,7 @@ export const sleep = ms => new Promise(
 );
 
 
-export async function makeBlink(chosen) {
+export async function makeBlink(chosen, whoClicked=0) {
     switch (chosen) {
         case 1:
             document.getElementById('1stAnswerLabel').classList.add("blink");
@@ -105,7 +105,14 @@ export async function makeBlink(chosen) {
         default:
             return;
     }
-    await sleep(2000)
+    if(whoClicked == 'agent') {
+        document.getElementById('agentImg').classList.add("blink");
+    }
+    else if(whoClicked == 'player') {
+        document.getElementById('playerImg').classList.add("blink");
+
+    }
+    await sleep(3000)
 }
 
 export function removeBlink() {
@@ -113,6 +120,8 @@ export function removeBlink() {
     document.getElementById("2ndAnswerLabel").classList.remove("blink");
     document.getElementById("3rdAnswerLabel").classList.remove("blink");
     document.getElementById("4thAnswerLabel").classList.remove("blink");
+    document.getElementById('playerImg').classList.remove("blink");
+    document.getElementById('agentImg').classList.remove("blink");
 }
 
 

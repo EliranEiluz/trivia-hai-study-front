@@ -83,7 +83,7 @@
         "id": 9,
         "question": "מי מהשמות לא משורר?",
         "firstAnswer": "לאה גולדברג", 
-        "secondAnswer": "גודלה מאיר",
+        "secondAnswer": "גולדה מאיר",
         "thirdAnswer":"חיים נחמן ביאליק",
         "fourthAnswer":"חנה סנש", 
         "rightAnswer":2
@@ -148,24 +148,25 @@
         "rightAnswer":1
     },
 
-    {
-        "id": 16,
-        "question": "מה היה השם השני של אסתר המלכה?",
-        "firstAnswer": "ציפורה", 
-        "secondAnswer": "מיכל",
-        "thirdAnswer": "הדסה",
-        "fourthAnswer": "יעל", 
-        "rightAnswer":3
-    },
 
     {
-        "id": 17,
+        "id": 16,
         "question": "מי בנה את בית המקדש הראשון?",
         "firstAnswer": "שאול המלך", 
         "secondAnswer": "שמואל הנביא",
         "thirdAnswer": "שלמה המלך",
         "fourthAnswer": "שמשון הגיבור", 
         "rightAnswer":3
+    },
+
+    {
+        "id": 17,
+        "question": "מהי העיר הכי דרומית בישראל?",
+        "firstAnswer": "ירושלים", 
+        "secondAnswer": "אילת",
+        "thirdAnswer": "טבריה",
+        "fourthAnswer": "תל אביב", 
+        "rightAnswer":2
     },
 
     {
@@ -190,12 +191,12 @@
 
     {
         "id": 20,
-        "question": "מהי העיר הכי דרומית בישראל?",
-        "firstAnswer": "ירושלים", 
-        "secondAnswer": "אילת",
-        "thirdAnswer": "טבריה",
-        "fourthAnswer": "תל אביב", 
-        "rightAnswer":2
+        "question": "מה היה השם השני של אסתר המלכה?",
+        "firstAnswer": "ציפורה", 
+        "secondAnswer": "מיכל",
+        "thirdAnswer": "הדסה",
+        "fourthAnswer": "יעל", 
+        "rightAnswer":3
     }
     
    
