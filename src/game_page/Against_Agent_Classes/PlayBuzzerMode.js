@@ -168,11 +168,11 @@ class PlayBuzzerMode {
     tempAgent() {
         var chosen;
         var time;
-        if(((this.playerPoints.current - this.agentPoints.current) > 1) && this.nowOnline.roundNumber == this.nowOnline.amountOfRounds) {
+        if(((this.playerPoints.current - this.agentPoints.current) > 1) && this.nowOnline.roundNumber == 3) {
             chosen = this.questions[this.gameCounter].rightAnswer;
             time = this.rightAnswerTime;
         }
-        else if((((this.playerPoints.current - this.agentPoints.current) > 1) || ((this.playerPoints.current - this.agentPoints.current + 1) == (this.amountOfQuestions - this.gameCounter))) && this.nowOnline.roundNumber != this.nowOnline.amountOfRounds) {
+        else if((((this.playerPoints.current - this.agentPoints.current) > 1) || ((this.playerPoints.current - this.agentPoints.current + 1) == (this.amountOfQuestions - this.gameCounter))) && this.nowOnline.roundNumber != 3) {
             chosen = this.questions[this.gameCounter].rightAnswer;
             time = this.rightAnswerTime;
         }

@@ -15,7 +15,7 @@ import { initReactI18next } from 'react-i18next';
 
 
 i18n.use(initReactI18next).init(require('./languange.json'));
-const serverIp = { ip: "https://sarnelab.com/trivia" }
+const serverIp = { ip: "https://sarnelab.com/api" }
 
 
 
@@ -72,7 +72,7 @@ class Details {
 // playType = 3 - play with given number of questions with agent in your team.
 // playtype = 4 - answer as much questions as you can in given period of time.
 // playType = 5 - answer as much questions as you can in given period of time with agent in your team.
-const nowOnline = { onlineUser: null, signalR: null, JWT_Token: '', isWin: 1, questions: null, agentPoints: 0, playerPoints: 0, playType: 0, roundNumber: 0, playerWins: 0, agentWins: 0, amountOfRounds: 3, amountOfQuestions: [6, 20, 20, 3], isRoundPlaying:true, details:null};
+const nowOnline = { onlineUser: null, signalR: null, JWT_Token: '', isWin: 1, questions: null, agentPoints: 0, playerPoints: 0, playType: 0, roundNumber: 0, playerWins: 0, agentWins: 0, amountOfRounds: 2, amountOfQuestions: [6, 20, 20, 3], isRoundPlaying:true, details:null};
 
 
 
