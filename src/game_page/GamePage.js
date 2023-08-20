@@ -8,14 +8,12 @@ import { PlayAgainstAgent } from './Against_Agent_Classes/PlayAgainstAgent'
 import { PlayWithGivenAmountOfQuestions } from './Single_Player_Classes/PlayWithGivenAmountOfQuestions'
 import { PlayAgainstTheClock } from './Single_Player_Classes/PlayAgainstTheClock'
 import { PlayBuzzerMode } from './Against_Agent_Classes/PlayBuzzerMode';
-import { RoundManager } from './RoundManager';
 
 /*
  * This component holds the game page and it's logic, for any available mode.
 */
 function GamePage({ nowOnline }) {
 
-    const roundManager = useRef(null);
     const playModeClass = useRef(null)
 
     const amountOfQuestions = useRef(20)
@@ -53,18 +51,6 @@ function GamePage({ nowOnline }) {
         navigation('/TMFinished');
     }
     
-    function handleRoundManager() {
-        playWithAgentOperations.current = [];
-        playWithAgentOperations.current.push(require('./AgentOperations/Buzzer/edu/agent-edu1.json'));
-        playWithAgentOperations.current.push(require('./AgentOperations/Buzzer/edu/agent-edu2.json'));
-        playWithAgentOperations.current.push(require('./AgentOperations/Buzzer/edu/agent-edu3.json'));
-        nowOnline.questions = []
-        nowOnline.questions.push(require("./Questions/edu/questions-edu-he1.json"));
-        nowOnline.questions.push(require("./Questions/edu/questions-edu-he2.json"));
-        nowOnline.questions.push(require("./Questions/edu/questions-edu-he3.json"));
-        roundManager.current = new RoundManager(3, 20, 30, setQuestionCounter, nowOnline.questions, setQuestions, playerPoints, agentPoints, setCurrentTime, playWithAgentOperations, nowOnline, navigateToFinishPage, playModeClass);
-    }
-
     /*
     * 1.Name: onChoosingAnswer
     * 2.Parameters: e, an answer radio button checked event.

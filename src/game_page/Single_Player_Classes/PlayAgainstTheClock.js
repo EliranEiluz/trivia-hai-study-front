@@ -52,8 +52,9 @@ class PlayAgainstTheClock {
         if(this.gameCounter == this.amountOfQuestions) {
             this.clear();
             this.gameFinished();
+        } else {
+            this.gameFlow();
         }
-        this.gameFlow();
     }
 
     async answerCheck(ans) {
