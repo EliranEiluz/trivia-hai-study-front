@@ -154,12 +154,12 @@ function GamePage({ nowOnline }) {
             document.getElementById('playAgainstTheClockInstrctions').classList.remove('d-none')
         }
         if (document.querySelector("html").lang === "en") {
-            nowOnline.questions = require('./questions.json');
+            nowOnline.questions = require('./Questions/questions.json');
             document.getElementById("leaveGameBtnLi").classList.add("ms-auto");
         }
         else {
             if(!nowOnline.isRoundPlaying || nowOnline.playType !== 3) {
-                nowOnline.questions = require('./questions-he-edu.json');
+                nowOnline.questions = require('./Questions/questions-he.json');
             }
             document.getElementById("leaveGameBtnLi").classList.add("me-auto");
         }
