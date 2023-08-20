@@ -17,7 +17,7 @@ function GamePageModals({ playModeClass, gameFlow, nowOnline }) {
         if (playModeClass.current) {
             playModeClass.current.clear();
         }
-        navigation('/welcome')
+        navigation('/')
     }
 
 
@@ -31,7 +31,7 @@ function GamePageModals({ playModeClass, gameFlow, nowOnline }) {
         if (playModeClass.current) {
             playModeClass.current.clear();
         }
-        navigation('/')
+        navigation('/welcome')
     }
 
     return (

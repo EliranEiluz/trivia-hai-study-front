@@ -63,13 +63,13 @@ function TMFinished({ nowOnline }) {
                 nowOnline.playerWins++;
                 message.innerHTML = "<p class='emoji'>&#x1F600;</p>"
                 document.getElementById('you_win').classList.remove('d-none')
-                //winSound.current.play();
+                winSound.current.play();
             }
             else if(nowOnline.isWin === 0) {
                 nowOnline.agentWins++;
                 message.innerHTML = "<p class='emoji'>&#x1F641;</p>"
                 document.getElementById('you_lost').classList.remove('d-none')
-                //loseSound.current.play();
+                loseSound.current.play();
             }
             else {
                 message.innerHTML = t('tie_round') + " <i class='fa-solid fa-heart-crack'></i>"
@@ -84,8 +84,8 @@ function TMFinished({ nowOnline }) {
 
     function toHomePageBtnClick() {
         document.body.style.backgroundImage = "linear-gradient(0deg,#fce0b3, #ffda9e)";
-        //winSound.current.pause();
-        //loseSound.current.pause();
+        winSound.current.pause();
+        loseSound.current.pause();
         navigation('/welcome');
     }
 

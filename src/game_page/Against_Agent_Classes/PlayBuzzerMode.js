@@ -28,7 +28,7 @@ class PlayBuzzerMode {
         this.playerPoints.current = 0;
         this.buzzerSound = new Audio(require('../buzzer.wav'));
         utils.initDetails(this.nowOnline);
-        this.rightAnswerTime = 1200;
+        this.rightAnswerTime = 2000;
         this.minTimeWhenAgentWrong = 10;
     }
 
