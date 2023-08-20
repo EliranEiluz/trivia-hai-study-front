@@ -80,7 +80,7 @@ const nowOnline = { onlineUser: null, signalR: null, JWT_Token: '', isWin: 1, qu
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter basename={'/trivia_otzmot'}>
+  <BrowserRouter basename={'/trivia'}>
     <Routes>
       <Route path='/' element={<LoginPage nowOnline={nowOnline} />} />
       <Route path='/register' element={<RegisterPage nowOnline={nowOnline} />} />

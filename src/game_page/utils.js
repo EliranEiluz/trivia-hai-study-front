@@ -140,7 +140,7 @@ export function initDetails(nowOnline) {
     nowOnline.details = new Details(nowOnline.roundNumber, nowOnline.onlineUser.gameNumber);
 }
 
-export function updateDetails(nowOnline, questionNumber, isRightAnswer) {
-    nowOnline.details.userAnswers.push({questionNumber: questionNumber, isRightAnswer: isRightAnswer})
+export function updateDetails(nowOnline, questionNumber, isRightAnswer, whoAnswered, time) {
+    nowOnline.details.userAnswers.push({questionNumber: questionNumber, isRightAnswer: isRightAnswer, whoAnswered:whoAnswered, time:time})
 }
 

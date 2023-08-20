@@ -28,7 +28,7 @@ class PlayBuzzerMode {
         this.playerPoints.current = 0;
         this.buzzerSound = new Audio(require('../buzzer.wav'));
         utils.initDetails(this.nowOnline);
-        this.rightAnswerTime = 2000;
+        this.rightAnswerTime = 1000;
         this.minTimeWhenAgentWrong = 10;
     }
 
@@ -51,15 +51,19 @@ class PlayBuzzerMode {
         utils.switchAnswer(this.questions[this.gameCounter].rightAnswer);
         if (whoClicked == "player") {
             if (ans === this.questions[this.gameCounter].rightAnswer) {
-                utils.updateDetails(this.nowOnline, this.gameCounter + 1, true);
+                utils.updateDetails(this.nowOnline, this.gameCounter + 1, true, "player", this.timeForQuestion - this.timeLeft);
                 this.playerPoints.current += 1;
             } else {
-                utils.updateDetails(this.nowOnline, this.gameCounter + 1, false);
+                utils.updateDetails(this.nowOnline, this.gameCounter + 1, false, "player", this.timeForQuestion - this.timeLeft);
             }
         }
         else if (whoClicked == "agent"){
             if (ans === this.questions[this.gameCounter].rightAnswer) {
                 this.agentPoints.current += 1;
+                utils.updateDetails(this.nowOnline, this.gameCounter + 1, true, "agent", this.timeForQuestion - this.timeLeft);
+            }
+            else {
+                utils.updateDetails(this.nowOnline, this.gameCounter + 1, false, "agent", this.timeForQuestion - this.timeLeft);
             }
         }
         utils.removeBlink()
